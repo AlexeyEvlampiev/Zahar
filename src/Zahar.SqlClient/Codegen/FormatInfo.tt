@@ -1,0 +1,161 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".generated.cs" #>
+<# 
+	var methods = new []{
+		new { Name = "GetUserDefinedDataTableClassName", Params = "string tableFullName", Assert="AssertCsIdentifier" },
+		new { Name = "GetUserDefinedDataRowClassName", Params = "string tableFullName", Assert="AssertCsIdentifier" },
+		new { Name = "GetPropertyName", Params = "string name", Assert="AssertCsIdentifier" },
+		new { Name = "GetParameterName", Params = "string name", Assert="AssertCsIdentifier" },
+		new { Name = "GetFieldName", Params = "string name", Assert="AssertCsIdentifier" },
+		new { Name = "GetPropertyTypeName", Params = "Type propertyDataType, bool allowDBNull", Assert="AssertDataTypeName" },
+		new { Name = "GetDataTableClassName", Params = "string tblFullName", Assert="AssertCsIdentifier" },
+		new { Name = "GetDataRowClassName", Params = "string tblFullName", Assert="AssertCsIdentifier" },
+		new { Name = "GetStoredProcedureComponentFactoryClassName", Params = "string spFullName", Assert="AssertCsIdentifier" },
+		new { Name = "GetStoredProcedureReaderAdapterClassName", Params = "string spFullName, int ordinal", Assert="AssertCsIdentifier" },
+		new { Name = "GetStoredProcedureOutputClassName", Params = "string spFullName", Assert="AssertCsIdentifier" },
+	};
+
+	var properties = new []{
+		new { Name = "FrameworkUtilitiesClassName", DataType = "string", Assert="AssertCsIdentifier" },
+		new { Name = "StoredProcedureBasicOutputClassName", DataType = "string", Assert="AssertCsIdentifier" },
+		new { Name = "BuildCommandMethodName", DataType = "string", Assert="AssertCsIdentifier" },
+		new { Name = "SuperFactoryClassName", DataType = "string", Assert="AssertCsIdentifier" },
+		new { Name = "FieldPrefix", DataType = "string", Assert="AssertCsIdentifier" }
+	};
+
+	var ixPlistByName = 
+		(from m in methods
+		let plist = Regex.Match(m.Params, @"(?:\W*\w+\s+(?<p>\w+)\W*)*").Groups["p"].Captures.Cast<Capture>().Select(c=> c.Value).ToList()
+		let csvList = string.Join(", ", plist)
+		let format = string.Join("_", plist.Select(p=> string.Format("{{{0}}}", p)))
+		select new {
+			Name = m.Name,
+			Params = csvList,
+			Format = format
+		}).ToDictionary(i=> i.Name);
+
+ #>
+namespace Zahar.SqlClient.Codegen
+{
+	using System;
+    using System.Collections.Concurrent;
+    using System.Diagnostics;
+    using System.Text.RegularExpressions;
+
+
+	public interface IFormatInfo
+	{<# foreach(var property in properties.OrderBy(p=> p.Name)){ #> 
+
+        /// <summary>
+        /// 
+        /// </summary>
+		<#= property.DataType #> <#= property.Name #> { get; }
+	<# } #><# foreach(var method in methods.OrderBy(m=> m.Name)){ #>  
+
+        /// <summary>
+        /// 
+        /// </summary>
+		string <#= method.Name #>(<#= method.Params #>);<# } #>
+	}
+
+	public class FormatInfoProxy : IFormatInfo
+	{
+		private readonly IFormatInfo m_innerFormatInfo;
+		private readonly Regex m_validCsIdentifier = new Regex(@"^\w+$");
+		private readonly Regex m_validDataTypeName = new Regex(@"^\w+(?:\.\w+)*\??$");
+		readonly ConcurrentDictionary<string, string> m_cache = new ConcurrentDictionary<string, string>(StringComparer.Ordinal); 
+
+        private FormatInfoProxy(IFormatInfo formatInfo)
+        {
+            m_innerFormatInfo = formatInfo;
+        }
+
+		public static FormatInfoProxy Create(IFormatInfo formatInfo)
+		{
+			if(ReferenceEquals(formatInfo, null))
+                throw new ArgumentNullException(nameof(formatInfo));
+			return formatInfo as FormatInfoProxy ?? new FormatInfoProxy(formatInfo);
+		}
+
+		private void AssertCsIdentifier(string memberName, string csName)
+		{
+			if(!m_validCsIdentifier.IsMatch(csName))
+			{
+				var type = m_innerFormatInfo.GetType();
+				string message = $@"{type.Name} > ""{csName}"" is not a valid C# identifier.";
+				if(type == typeof(FormatInfo))
+					throw new InvalidOperationException(message);
+				throw new CustomizationException(message);
+			}
+		}
+
+		private void AssertDataTypeName(string memberName, string dataType)
+		{
+			if(!m_validDataTypeName.IsMatch(dataType))
+			{
+				var type = m_innerFormatInfo.GetType();
+				string message = $@"{type.Name} > ""{dataType}"" is not a valid C# type name.";
+				if(type == typeof(FormatInfo))
+					throw new InvalidOperationException(message);
+				throw new CustomizationException(message);
+			}
+		}
+
+		<# foreach(var property in properties.OrderBy(p=> p.Name)){ #> 
+
+        /// <summary>
+        /// 
+        /// </summary>
+		public <#= property.DataType #> <#= property.Name #> 
+		{ 
+			[DebuggerStepThrough]
+			get { return m_cache.GetOrAdd("<#= property.Name #>", m_innerFormatInfo.<#= property.Name #>); }
+		}
+		<# } #><# foreach(var method in methods.OrderBy(m=> m.Name)){ var plist = ixPlistByName[method.Name]; #>  
+
+        /// <summary>
+        /// 
+        /// </summary>
+		[DebuggerStepThrough]
+		public string <#= method.Name #>(<#= method.Params #>)
+		{
+			return m_cache.GetOrAdd($"<#= method.Name #>_<#= plist.Format #>", Invoke<#= method.Name #>(<#= plist.Params #>));
+		}<# } #> <# foreach(var method in methods.OrderBy(m=> m.Name)){ var plist = ixPlistByName[method.Name]; #>  
+
+		private string Invoke<#= method.Name #>(<#= method.Params #>)
+		{
+			string result = m_innerFormatInfo.<#= method.Name #>(<#= plist.Params #>);
+			<#= method.Assert #>("<#= method.Name #>", result);
+			return result;
+		}<# } #> 
+	}
+
+	public abstract partial class RuntimeTextTemplate
+	{<# foreach(var property in properties.OrderBy(p=> p.Name)){ #> 
+
+        /// <summary>
+        /// 
+        /// </summary>
+		public <#= property.DataType #> <#= property.Name #> 
+		{ 
+			[DebuggerStepThrough]
+			get { return m_formatInfo.<#= property.Name #>; }
+		}
+		<# } #> <# foreach(var method in methods.OrderBy(m=> m.Name)){ var plist = ixPlistByName[method.Name]; #>  
+
+        /// <summary>
+        /// 
+        /// </summary>
+		[DebuggerStepThrough]
+		public string <#= method.Name #>(<#= method.Params #>)
+		{
+			return m_formatInfo.<#= method.Name #>(<#= plist.Params #>);
+		}<# } #>
+
+	}
+}
