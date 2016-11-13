@@ -118,8 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DbCatalogQuery" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>DbCatalogQuery.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="DbCatalogQueryResult" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>DbCatalogQueryResult.xsd;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Disposable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Disposable.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Selectors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Selectors.xsd;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SqlDbClient" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>SqlDbClient.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

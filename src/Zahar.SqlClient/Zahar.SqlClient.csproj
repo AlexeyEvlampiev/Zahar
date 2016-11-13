@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Catalog\CatalogReader.cs" />
+    <Compile Include="Catalog\CatalogSerializer.cs" />
+    <Compile Include="Catalog\ICatalogReader.cs" />
+    <Compile Include="Catalog\ProcedureInfo.cs" />
+    <Compile Include="Catalog\SqlParameterInfo.cs" />
     <Compile Include="Codegen\FormatInfo.cs" />
     <Compile Include="Codegen\FormatInfo.generated.cs">
       <AutoGen>True</AutoGen>
@@ -47,10 +52,19 @@
       <DependentUpon>FormatInfo.tt</DependentUpon>
     </Compile>
     <Compile Include="Codegen\RuntimeTextTemplate.cs" />
+    <Compile Include="ConnectionStringFormatException.cs" />
     <Compile Include="CustomizationException.cs" />
+    <Compile Include="DatabaseNotAccessibleException.cs" />
+    <Compile Include="DbCatalogQueryResult.generated.cs">
+      <SubType>code</SubType>
+      <DependentUpon>DbCatalogQueryResult.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DbObjectInfo.cs" />
+    <Compile Include="DiagnosticsCallbackScope.cs" />
     <Compile Include="Disposable.cs" />
     <Compile Include="IDiagnosticsCallback.cs" />
+    <Compile Include="SqlDbTypeInfo.cs" />
+    <Compile Include="XmlValidationException.cs" />
     <Compile Include="ProcessingCancelledException.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -58,6 +72,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ReturnValueSqlCommandOutput.cs" />
+    <Compile Include="Selectors.generated.cs">
+      <SubType>code</SubType>
+      <DependentUpon>Selectors.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SelectorsFileNotFoundException.cs" />
+    <Compile Include="SchemaValidatingXmlSerializer.cs" />
     <Compile Include="SqlDbClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,10 +92,21 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FormatInfo.generated.cs</LastGenOutput>
     </Content>
+    <Content Include="DbCatalogQuery.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="DbCatalogQueryResult.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="pre-build.ps1" />
+    <None Include="Selectors.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
