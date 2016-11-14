@@ -78,27 +78,22 @@
                 if (string.IsNullOrWhiteSpace(value))
                     throw new InvalidOperationException("FullName must not be null or a white space string.");
                 var match = Regex.Match(value, @"^@part(?:\.@part)*$".Replace("@part", @"(?<part>[^.]+)"));
-                if (match.Success)
-                {
-                    var captures = match.Groups["part"].Captures;
-                    if (captures.Count == 1)
-                    {
-                        Schema = DefaultSchema;
-                        Name = GetStrippedName(captures[0].Value);
-                        return;
-                    }
-                    else if (captures.Count > 4)
-                    {
-                        throw new InvalidOperationException();
-                    }
-
-                    Schema = captures[captures.Count - 2].Value;
-                    Name = captures[captures.Count - 1].Value;
-                }
-                else
-                {
+                if (!match.Success)
                     throw new FormatException();
+                var captures = match.Groups["part"].Captures;
+                if (captures.Count == 1)
+                {
+                    Schema = DefaultSchema;
+                    Name = GetStrippedName(captures[0].Value);
+                    return;
                 }
+                else if (captures.Count > 4)
+                {
+                    throw new InvalidOperationException();
+                }
+
+                Schema = captures[captures.Count - 2].Value;
+                Name = captures[captures.Count - 1].Value;
             }
         }
 

@@ -56,7 +56,7 @@
 
 
         public T Deserialize(string xmlString)
-        {
+        {            
             using (var input = new StringReader(xmlString))
             using (var reader = XmlReader.Create(input, m_settings))
             {

@@ -3,10 +3,10 @@
     using System;
     using System.Diagnostics;
 
-    class CatalogSerializer : SchemaValidatingXmlSerializer<DbCatalog>
+    class CatalogSerializer : SchemaValidatingXmlSerializer<Catalog>
     {
         public CatalogSerializer(DiagnosticsCallbackScope host)
-            : base(Resources.DbCatalogQueryResult, host)
+            : base(Resources.Catalog, host)
         {
         }
 

@@ -19,10 +19,10 @@
         private readonly ConcurrentDictionary<string, DataTable> m_ixTableTypeSchemaByName = new ConcurrentDictionary<string, DataTable>();
         readonly SqlDbTypeInfo m_sqlDbTypeInfo = new SqlDbTypeInfo();
 
-        public CatalogReader(string connectionString, DiagnosticsCallbackScope diagnosticsCallback)
+        public CatalogReader(string connectionString, IDiagnosticsCallback diagnosticsCallback)
         {
             m_connectionString = connectionString;
-            m_diagnosticsCallback = diagnosticsCallback;
+            m_diagnosticsCallback = new DiagnosticsCallbackScope( diagnosticsCallback);
             try
             {
                 var connection = new SqlConnection(connectionString);
@@ -63,10 +63,10 @@
             return m_ixTableTypeSchemaByName.Values.Select(dt => dt.Clone()).ToList();
         }
 
-        public async Task<DbCatalog> ReadAsync()
+        public async Task<Catalog> ReadAsync()
         {
             using (var connection = new SqlConnection(m_connectionString))
-            using (var command = new SqlCommand(Resources.DbCatalogQuery, connection))
+            using (var command = new SqlCommand(Resources.CatalogQuery, connection))
             {
                 await connection.OpenAsync();
                 using (var reader = await command.ExecuteReaderAsync(CommandBehavior.SequentialAccess, CancellationToken.None))

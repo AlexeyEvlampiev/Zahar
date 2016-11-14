@@ -4,7 +4,7 @@
 
     interface ICatalogReader
     {
-        Task<DbCatalog> ReadAsync();
+        Task<Catalog> ReadAsync();
 
         Task<ProcedureInfo> ReadSpInfoAsync(string spFullName);
     }

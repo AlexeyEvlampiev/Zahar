@@ -61,6 +61,25 @@ namespace Zahar.SqlClient {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;xs:schema attributeFormDefault=&quot;unqualified&quot; elementFormDefault=&quot;qualified&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+        ///  &lt;xs:element name=&quot;Catalog&quot;&gt;
+        ///    &lt;xs:complexType&gt;
+        ///      &lt;xs:sequence&gt;
+        ///        &lt;xs:element maxOccurs=&quot;unbounded&quot; name=&quot;Schema&quot;&gt;
+        ///          &lt;xs:complexType&gt;
+        ///            &lt;xs:sequence&gt;
+        ///              &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; name=&quot;Procedure&quot;&gt;
+        ///                &lt;xs:complexType&gt;
+        ///                  &lt;xs:attribute name=&quot;Name&quot; typ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Catalog {
+            get {
+                return ResourceManager.GetString("Catalog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT 
         ///	s.[Name],
         ///	(
@@ -85,28 +104,9 @@ namespace Zahar.SqlClient {
         ///	,&apos;INFORMATION_SCHEMA&apos;
         ///	,&apos;sy [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DbCatalogQuery {
+        internal static string CatalogQuery {
             get {
-                return ResourceManager.GetString("DbCatalogQuery", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;xs:schema attributeFormDefault=&quot;unqualified&quot; elementFormDefault=&quot;qualified&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
-        ///  &lt;xs:element name=&quot;DbCatalog&quot;&gt;
-        ///    &lt;xs:complexType&gt;
-        ///      &lt;xs:sequence&gt;
-        ///        &lt;xs:element maxOccurs=&quot;unbounded&quot; name=&quot;Schema&quot;&gt;
-        ///          &lt;xs:complexType&gt;
-        ///            &lt;xs:sequence&gt;
-        ///              &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; name=&quot;Procedure&quot;&gt;
-        ///                &lt;xs:complexType&gt;
-        ///                  &lt;xs:attribute name=&quot;Name&quot; t [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string DbCatalogQueryResult {
-            get {
-                return ResourceManager.GetString("DbCatalogQueryResult", resourceCulture);
+                return ResourceManager.GetString("CatalogQuery", resourceCulture);
             }
         }
         
@@ -138,27 +138,6 @@ namespace Zahar.SqlClient {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;xs:schema attributeFormDefault=&quot;unqualified&quot; elementFormDefault=&quot;qualified&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
-        ///  &lt;xs:element name=&quot;Selectors&quot;&gt;
-        ///    &lt;xs:complexType&gt;
-        ///      &lt;xs:sequence&gt;
-        ///        &lt;xs:element name=&quot;Procedures&quot;&gt;
-        ///          &lt;xs:complexType&gt;
-        ///            &lt;xs:sequence&gt;
-        ///              &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; name=&quot;Add&quot; type=&quot;Procedure&quot; /&gt;
-        ///            &lt;/xs:sequence&gt;
-        ///          &lt;/xs:complexType&gt;
-        ///        &lt;/xs:element&gt;
-        ///     [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Selectors {
-            get {
-                return ResourceManager.GetString("Selectors", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to namespace Zahar.SqlClient
         ///{
         ///    using System;
@@ -183,6 +162,27 @@ namespace Zahar.SqlClient {
         internal static string SqlDbClient {
             get {
                 return ResourceManager.GetString("SqlDbClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;xs:schema attributeFormDefault=&quot;unqualified&quot; elementFormDefault=&quot;qualified&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+        ///  &lt;xs:element name=&quot;Mapping&quot;&gt;
+        ///    &lt;xs:complexType&gt;
+        ///      &lt;xs:sequence&gt;
+        ///        &lt;xs:element name=&quot;Procedures&quot;&gt;
+        ///          &lt;xs:complexType&gt;
+        ///            &lt;xs:sequence&gt;
+        ///              &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; name=&quot;Add&quot; type=&quot;Procedure&quot; /&gt;
+        ///            &lt;/xs:sequence&gt;
+        ///          &lt;/xs:complexType&gt;
+        ///        &lt;/xs:element&gt;
+        ///       [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Zahar_SqlClient {
+            get {
+                return ResourceManager.GetString("Zahar_SqlClient", resourceCulture);
             }
         }
     }

@@ -5,16 +5,14 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Zahar.SqlClient")]
+[assembly: AssemblyTitle("IntegrationTests.Zahar.SqlClient")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Zahar")]
-[assembly: AssemblyProduct("Zahar.SqlClient")]
-[assembly: AssemblyCopyright("Copyright © Zahar 2016")]
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyProduct("IntegrationTests.Zahar.SqlClient")]
+[assembly: AssemblyCopyright("Copyright © Microsoft Corporation 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: InternalsVisibleTo("UnitTests.Zahar.SqlClient")]
-[assembly: InternalsVisibleTo("IntegrationTests.Zahar.SqlClient")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -22,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d3844458-798b-4fb8-a040-40f76ec99a48")]
+[assembly: Guid("90c846d7-5b19-43c0-b268-7d148303cbac")]
 
 // Version information for an assembly consists of the following four values:
 //

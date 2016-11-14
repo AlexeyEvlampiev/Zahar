@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Catalog.generated.cs" />
     <Compile Include="Catalog\CatalogReader.cs" />
     <Compile Include="Catalog\CatalogSerializer.cs" />
     <Compile Include="Catalog\ICatalogReader.cs" />
@@ -55,27 +56,26 @@
     <Compile Include="ConnectionStringFormatException.cs" />
     <Compile Include="CustomizationException.cs" />
     <Compile Include="DatabaseNotAccessibleException.cs" />
-    <Compile Include="DbCatalogQueryResult.generated.cs">
-      <SubType>code</SubType>
-      <DependentUpon>DbCatalogQueryResult.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DbObjectInfo.cs" />
+    <Compile Include="DiagnosticsCallbackErrorException.cs" />
     <Compile Include="DiagnosticsCallbackScope.cs" />
     <Compile Include="Disposable.cs" />
     <Compile Include="IDiagnosticsCallback.cs" />
-    <Compile Include="SqlDbTypeInfo.cs" />
-    <Compile Include="XmlValidationException.cs" />
-    <Compile Include="ProcessingCancelledException.cs" />
+    <Compile Include="Mapping\Procedure.cs" />
+    <Compile Include="RelayDiagnosticsCallback.cs" />
+    <Compile Include="Mapping.generated.cs" />
+    <Compile Include="Mapping\IMappingReader.cs" />
+    <Compile Include="Mapping\MappingReader.cs" />
+    <Compile Include="Mapping\MappingSerializer.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SqlDbTypeInfo.cs" />
+    <Compile Include="XmlValidationException.cs" />
+    <Compile Include="ProcessingCancelledException.cs" />
     <Compile Include="ReturnValueSqlCommandOutput.cs" />
-    <Compile Include="Selectors.generated.cs">
-      <SubType>code</SubType>
-      <DependentUpon>Selectors.xsd</DependentUpon>
-    </Compile>
     <Compile Include="SelectorsFileNotFoundException.cs" />
     <Compile Include="SchemaValidatingXmlSerializer.cs" />
     <Compile Include="SqlDbClient.cs" />
@@ -92,17 +92,17 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FormatInfo.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="DbCatalogQuery.sql" />
+    <Content Include="Catalog.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DbCatalogQueryResult.xsd">
+    <None Include="Catalog.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="pre-build.ps1" />
-    <None Include="Selectors.xsd">
+    <None Include="Zahar.SqlClient.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

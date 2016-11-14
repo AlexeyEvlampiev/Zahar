@@ -3,15 +3,15 @@ $xsd = [System.IO.Path]::Combine($PSScriptRoot, "xsd.exe")
 
 $sources = @{
     Catalog = @{
-        Xsd = "DbCatalogQueryResult.xsd";
-        Cs = "DbCatalogQueryResult.generated.cs";
-        Namespace = "Zahar.SqlClient";
+        Xsd = "Catalog.xsd";
+        Cs = "Catalog.generated.cs";
+        Namespace = "Zahar.SqlClient.Catalog";
 
     };
     Mapping = @{
-        Xsd = "Selectors.xsd";
-        Cs = "Selectors.generated.cs";
-        Namespace = "Zahar.SqlClient";
+        Xsd = "Zahar.SqlClient.xsd";
+        Cs = "Mapping.generated.cs";
+        Namespace = "Zahar.SqlClient.Mapping";
     };
 };
 
