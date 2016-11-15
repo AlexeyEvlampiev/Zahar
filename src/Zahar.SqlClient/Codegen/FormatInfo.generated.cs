@@ -24,19 +24,13 @@
         /// <summary>
         /// 
         /// </summary>
-		string FrameworkUtilitiesClassName { get; }
+		string SqlDbClientClassName { get; }
 	 
 
         /// <summary>
         /// 
         /// </summary>
 		string StoredProcedureBasicOutputClassName { get; }
-	 
-
-        /// <summary>
-        /// 
-        /// </summary>
-		string SuperFactoryClassName { get; }
 	  
 
         /// <summary>
@@ -162,10 +156,10 @@
         /// <summary>
         /// 
         /// </summary>
-		public string FrameworkUtilitiesClassName 
+		public string SqlDbClientClassName 
 		{ 
 			[DebuggerStepThrough]
-			get { return m_cache.GetOrAdd("FrameworkUtilitiesClassName", m_innerFormatInfo.FrameworkUtilitiesClassName); }
+			get { return m_cache.GetOrAdd("SqlDbClientClassName", m_innerFormatInfo.SqlDbClientClassName); }
 		}
 		 
 
@@ -176,16 +170,6 @@
 		{ 
 			[DebuggerStepThrough]
 			get { return m_cache.GetOrAdd("StoredProcedureBasicOutputClassName", m_innerFormatInfo.StoredProcedureBasicOutputClassName); }
-		}
-		 
-
-        /// <summary>
-        /// 
-        /// </summary>
-		public string SuperFactoryClassName 
-		{ 
-			[DebuggerStepThrough]
-			get { return m_cache.GetOrAdd("SuperFactoryClassName", m_innerFormatInfo.SuperFactoryClassName); }
 		}
 		  
 
@@ -392,10 +376,10 @@
         /// <summary>
         /// 
         /// </summary>
-		public string FrameworkUtilitiesClassName 
+		public string SqlDbClientClassName 
 		{ 
 			[DebuggerStepThrough]
-			get { return m_formatInfo.FrameworkUtilitiesClassName; }
+			get { return m_formatInfo.SqlDbClientClassName; }
 		}
 		 
 
@@ -406,16 +390,6 @@
 		{ 
 			[DebuggerStepThrough]
 			get { return m_formatInfo.StoredProcedureBasicOutputClassName; }
-		}
-		 
-
-        /// <summary>
-        /// 
-        /// </summary>
-		public string SuperFactoryClassName 
-		{ 
-			[DebuggerStepThrough]
-			get { return m_formatInfo.SuperFactoryClassName; }
 		}
 		   
 

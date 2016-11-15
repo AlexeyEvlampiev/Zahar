@@ -1,29 +1,24 @@
 ﻿namespace Zahar.SqlClient
 {
-    using System;
-    using System.Data;
-    using System.Data.SqlClient;
-    using System.Diagnostics;
-
-    public struct SqlCommandReturnValue
+    public struct ReturnValueSqlCommandOutput
     {
-        readonly SqlParameter m_returnValueParameter;
+        readonly System.Data.SqlClient.SqlParameter m_returnValueParameter;
 
         /// <summary>
         /// 
         /// </summary>
-        public SqlCommandReturnValue(SqlCommand command)
+        public ReturnValueSqlCommandOutput(System.Data.SqlClient.SqlCommand command)
 	    {
 		    if(ReferenceEquals(command, null))
-			    throw new ArgumentNullException(nameof(command));
+			    throw new System.ArgumentNullException(nameof(command));
             for (int i = 0; i < command.Parameters.Count; ++i)
             {
                 m_returnValueParameter = command.Parameters[i];
-                if (m_returnValueParameter.Direction == ParameterDirection.ReturnValue)
+                if (m_returnValueParameter.Direction == System.Data.ParameterDirection.ReturnValue)
                     return;
             }
 
-            throw new InvalidOperationException("RETURN_VALUE parameter not found.");
+            throw new System.InvalidOperationException("RETURN_VALUE parameter not found.");
 	    }
 
         /// <summary>

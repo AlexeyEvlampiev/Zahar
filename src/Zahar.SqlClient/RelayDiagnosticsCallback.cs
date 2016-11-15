@@ -22,6 +22,11 @@
             m_warningMessaheHandler = onWarning;
         }
 
+        public RelayDiagnosticsCallback() 
+            : this(null)
+        {
+        }
+
         public void Error(string message)
         {
             m_errorMessageHandler?.Invoke(message);

@@ -1,0 +1,314 @@
+﻿<#@ template language="C#" inherits="Zahar.SqlClient.Codegen.RuntimeTextTemplate"  linePragmas="false" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#
+	string factoryClassName = GetStoredProcedureComponentFactoryClassName(Procedure.FullName);		
+	var adapterClassNames = Procedure.ResultSchemas.Select(tbl=> GetStoredProcedureReaderAdapterClassName(Procedure.FullName, Procedure.GetResultOrdinal(tbl))).ToList();
+	var parameters = Procedure.Parameters.ToList();
+	var resultSchemas = Procedure.ResultSchemas.ToList();
+	var inputParameters = parameters.Where(p=> p.Direction == ParameterDirection.Input || p.Direction == ParameterDirection.InputOutput).ToList();
+	var outputParameters = parameters.Where(p=> p.Direction != ParameterDirection.Input).ToList();
+	string outputValuesClassName = outputParameters.Count > 1 
+		? GetStoredProcedureOutputClassName(Procedure.FullName)
+		: StoredProcedureBasicOutputClassName;
+	bool requireOutputClass = outputParameters.Count > 1;
+	var nonTableInputParameters = inputParameters.Where(p=> p.TableTypeSchema == null);
+	var tableInputParameters = inputParameters.Where(p=> p.TableTypeSchema != null);
+	var ixPropertyTypeNamesByParameter = new Dictionary<object, string>();
+	foreach(var p in parameters)
+	{
+		ixPropertyTypeNamesByParameter[p] = GetPropertyTypeName(p.DataType, true);
+	}
+	foreach(var p in tableInputParameters)
+	{
+		var schema = p.TableTypeSchema;
+		var dataTypeName = GetUserDefinedDataTableClassName(schema.TableName);
+		ixPropertyTypeNamesByParameter[p] = dataTypeName;
+	}
+
+	string paramsDeclaration = string.Join(", ",
+		from p in inputParameters
+		let type = ixPropertyTypeNamesByParameter[p]
+		let name = GetParameterName(p.ParameterName)
+		select string.Format("{0} {1}", type, name));
+
+ #> 
+
+
+/// <summary>
+/// <#= Procedure.FullName #> typed component factory.
+/// </summary>
+public partial class <#= factoryClassName #>
+{
+	public const string ProcedureName = "<#= Procedure.FullName #>";
+
+	#region Private Fields
+	<# foreach(var p in tableInputParameters){ #> 
+	[global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+	private <#= ixPropertyTypeNamesByParameter[p] #> <#= GetFieldName(p.ParameterName) #>; <# } #> 
+	#endregion
+
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public <#= factoryClassName #>()
+	{
+		OnInit();
+	}
+
+	#region Partial Methods
+	static partial void OnInit();
+	static partial void OnCommandCreated(global::System.Data.SqlClient.SqlCommand command);
+	<# foreach(var p in parameters.Where(p=> p.Direction != ParameterDirection.ReturnValue)){ 
+		var propertyName = GetPropertyName(p.ParameterName); #> 
+	static partial void On<#= propertyName #>ParameterCreated(global::System.Data.SqlClient.SqlParameter parameter); <# } #> 
+	#endregion
+
+	/// <summary>
+	/// Creates new <#= Procedure.FullName #> -command pre-configured based on this factory object.
+	/// </summary>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public global::System.Data.SqlClient.SqlCommand <#= BuildCommandMethodName #>(global::System.Data.SqlClient.SqlConnection connection)
+	{
+		if(ReferenceEquals(connection, null))
+			throw new global::System.ArgumentNullException(nameof(connection));
+		var command = this.<#= BuildCommandMethodName #>();
+		command.Connection = connection;
+		return command;
+	}
+
+	/// <summary>
+	/// Creates new <#= Procedure.FullName #> -command pre-configured based on this factory object.
+	/// </summary>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public global::System.Data.SqlClient.SqlCommand <#= BuildCommandMethodName #>(global::System.Data.SqlClient.SqlTransaction transaction)
+	{
+		if(ReferenceEquals(transaction, null))
+			throw new global::System.ArgumentNullException(nameof(transaction));
+		if(ReferenceEquals(transaction.Connection, null))
+			throw new global::System.InvalidOperationException("transaction.Connection is null");
+		var command = this.<#= BuildCommandMethodName #>();
+		command.Connection = transaction.Connection;
+		command.Transaction = transaction;
+		return command;
+	}
+
+	/// <summary>
+	/// Creates new <#= Procedure.FullName #> -command pre-configured based on this factory object.
+	/// </summary>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public global::System.Data.SqlClient.SqlCommand <#= BuildCommandMethodName #>()
+	{
+		var command = new global::System.Data.SqlClient.SqlCommand();
+		this.<#= BuildCommandMethodName #>(command);
+		return command;
+	}
+
+	/// <summary>
+	/// Configures the given command object to execute the <#= Procedure.FullName #> -procedure.
+	/// </summary>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public void <#= BuildCommandMethodName #>(global::System.Data.SqlClient.SqlCommand command)
+	{
+		if(ReferenceEquals(command, null))
+			throw new global::System.ArgumentNullException(nameof(command));		
+		var parameters = CreateParametersArray();<# foreach(var p in inputParameters){ 
+			int index = parameters.IndexOf(p); 
+			var propertyName = GetPropertyName(p.ParameterName); #> 
+		parameters[<#= index #>].Value = this.<#= propertyName #>; <# } #> 
+		for (int i = 0; i < parameters.Length; ++i)
+		{
+			var parameter = parameters[i];
+			if (parameter.Value == null)
+				parameter.Value = global::System.DBNull.Value;
+		}
+		command.CommandText = ProcedureName;
+		command.CommandType = global::System.Data.CommandType.StoredProcedure;		
+		command.Parameters.Clear();
+		command.Parameters.AddRange(parameters);
+		OnCommandCreated(command);
+	}
+
+	/// <summary>
+	/// Creates new <#= Procedure.FullName #> -command output values set
+	/// </summary>
+	/// <param name="command"></param>
+	/// <returns></returns>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public <#= outputValuesClassName #> BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
+	{			
+		return new <#= outputValuesClassName #>(command);
+	}
+	<# if(adapterClassNames.Count > 0){  #> 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public <#= adapterClassNames[0] #> BuildRecordAdapter(global::System.Data.SqlClient.SqlDataReader reader)
+	{		
+		return new <#= adapterClassNames[0] #>(reader);
+	}
+	<# } #>
+
+	/// <summary>
+	/// 
+	/// </summary>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public static global::System.Data.SqlClient.SqlCommand CreateCommand(<#= paramsDeclaration #>)
+	{
+		var builder = new <#= factoryClassName #>()		
+		{<# foreach(var p in inputParameters){ #> 
+			<#= GetPropertyName(p.ParameterName) #> = <#= GetParameterName(p.ParameterName) #>, <# } #> 
+		};
+		
+		return builder.<#= BuildCommandMethodName #>();
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
+	{
+		var parameters = new []
+		{<# for(int i = 0; i < parameters.Count; ++i){ 
+			var parameter = parameters[i];  #> 
+			new global::System.Data.SqlClient.SqlParameter("<#= parameter.ParameterName #>", global::System.Data.SqlDbType.<#= parameter.SqlDbType #>){ <#  
+				Write("Direction = global::System.Data.ParameterDirection.{0}", parameter.Direction);
+				if(parameter.IsNullable)Write(", IsNullable = true");
+				if(parameter.Precision > 0)Write(", Precision = {0}", parameter.Precision);
+				if(parameter.Scale > 0)Write(", Scale = {0}", parameter.Scale);
+				if(parameter.Size != 0)Write(", Size = {0}", parameter.Size); 
+				Write("},");
+				} #> 
+		};
+
+		<# foreach(var p in parameters.Where(p=> p.Direction != ParameterDirection.ReturnValue)){ 
+			var index = parameters.IndexOf(p);
+			var propertyName = GetPropertyName(p.ParameterName); #> 
+		On<#= propertyName #>ParameterCreated(parameters[<#= index #>]); <# } #> 
+
+		return parameters;
+	}
+	#region Sql Parameter Properties
+<# foreach(var p in nonTableInputParameters){ 
+	   var propertyName = GetPropertyName(p.ParameterName);
+	   var dataTypeName = GetPropertyTypeName(p.DataType, true);	   
+#>
+	/// <summary>
+	/// Parameter <#= parameters.IndexOf(p) #>
+	/// </summary>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public <#= dataTypeName #> <#= propertyName #> { get; set; }
+<# } #>
+
+
+<# foreach(var p in tableInputParameters){ 
+	   var schema = p.TableTypeSchema;
+	   var propertyName = GetPropertyName(p.ParameterName);
+	   var fieldName = GetFieldName(propertyName);
+	   var dataTypeName = GetUserDefinedDataTableClassName(schema.TableName);
+#>
+	/// <summary>
+	/// Parameter <#= parameters.IndexOf(p) #>
+	/// </summary>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public <#= dataTypeName #> <#= propertyName #>
+	{
+		get { return this.<#= fieldName #> ?? (this.<#= fieldName #> = new <#= dataTypeName #>()); }
+		set { this.<#= fieldName #> = value; }
+	}
+<# } #>
+	#endregion
+}
+
+
+<# if(requireOutputClass){ #>
+/// <summary>
+/// <#= Procedure.FullName #> output parameters
+/// </summary>
+public partial struct <#= outputValuesClassName #>
+{
+	readonly global::System.Data.SqlClient.SqlCommand m_command;
+	public <#= outputValuesClassName #>(global::System.Data.SqlClient.SqlCommand command)
+	{
+		if(ReferenceEquals(command, null))
+			throw new global::System.ArgumentNullException(nameof(command));<# foreach(var p in outputParameters){ #> 
+		global::System.Diagnostics.Debug.Assert(command.Parameters.Contains("<#= p.ParameterName #>")); <# } #>	
+		global::System.Diagnostics.Debug.Assert("<#= Procedure.FullName #>".Equals(command.CommandText, global::System.StringComparison.OrdinalIgnoreCase));				
+		m_command = command;
+	}
+
+	<# foreach(var p in outputParameters){ 
+		var typeName = ixPropertyTypeNamesByParameter[p];
+		var propertyName = GetPropertyName(p.ParameterName); #> 
+	/// <summary>
+	/// 
+	/// </summary>
+	public <#= typeName #> <#= propertyName #> => <#= SqlDbClientClassName #>.ToClrValue<<#= typeName #>>(m_command.Parameters["<#= p.ParameterName #>"].Value);
+	<# } #>
+}
+<# } #>
+
+
+<# for(int i = 0; i < adapterClassNames.Count; ++i){ 
+	string className = adapterClassNames[i]; 
+	string nextReaderClassName = i+1 < adapterClassNames.Count ? adapterClassNames[i+1] : null; 
+	var schema = resultSchemas[i]; #>
+/// <summary>
+/// <#= Procedure.FullName #> result[<#= i #>]
+/// </summary>
+public partial struct <#= className #>
+{
+	/// <summary>
+	/// 
+	/// </summary>
+	public global::System.Data.SqlClient.SqlDataReader InnerReader { get; }
+
+	public <#= className #>(
+		global::System.Data.SqlClient.SqlDataReader reader) : this()
+	{
+		if(ReferenceEquals(reader, null))
+			throw new global::System.ArgumentNullException(nameof(reader));
+		InnerReader = reader;
+	}
+
+	/// <summary>
+	/// 
+	/// </summary>
+	public bool Read() { return InnerReader.Read(); } <# if( nextReaderClassName != null ){ #> 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	public <#= nextReaderClassName #> NextResult() 
+	{ 
+		if(!InnerReader.NextResult())
+			throw new global::System.InvalidOperationException($"<#= Procedure.FullName #> > InnerReader.NextResult() returned false (next result number: <#= i+1 #>).");
+		return new <#= nextReaderClassName #>(InnerReader); 
+	}
+	<# } #> 
+
+	<# foreach(DataColumn column in schema.Columns){ 
+		int ordinal = column.Ordinal;
+		string propertyName = GetPropertyName(column.ColumnName);
+		string propertyDataType = GetPropertyTypeName(column.DataType, column.AllowDBNull); #> 
+	/// <summary>
+	/// 
+	/// </summary>
+	public <#= propertyDataType #> <#= propertyName #> => <#= SqlDbClientClassName #>.ToClrValue<<#= propertyDataType #>>(InnerReader[<#= ordinal #>]); <# } #> 
+}
+<# } #>

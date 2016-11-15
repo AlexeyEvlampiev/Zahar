@@ -1,5 +1,5 @@
 ﻿namespace Zahar.SqlClient
-{
+{    
     using System;
     using Xunit;
 

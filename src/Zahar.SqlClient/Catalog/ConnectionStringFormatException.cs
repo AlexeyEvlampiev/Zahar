@@ -1,4 +1,4 @@
-﻿namespace Zahar.SqlClient
+﻿namespace Zahar.SqlClient.Catalog
 {
     using System;
     using System.Text;

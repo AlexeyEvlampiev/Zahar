@@ -21,10 +21,9 @@
 	};
 
 	var properties = new []{
-		new { Name = "FrameworkUtilitiesClassName", DataType = "string", Assert="AssertCsIdentifier" },
+		new { Name = "SqlDbClientClassName", DataType = "string", Assert="AssertCsIdentifier" },
 		new { Name = "StoredProcedureBasicOutputClassName", DataType = "string", Assert="AssertCsIdentifier" },
 		new { Name = "BuildCommandMethodName", DataType = "string", Assert="AssertCsIdentifier" },
-		new { Name = "SuperFactoryClassName", DataType = "string", Assert="AssertCsIdentifier" },
 		new { Name = "FieldPrefix", DataType = "string", Assert="AssertCsIdentifier" }
 	};
 

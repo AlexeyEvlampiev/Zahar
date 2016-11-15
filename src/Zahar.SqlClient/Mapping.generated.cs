@@ -20,8 +20,8 @@ namespace Zahar.SqlClient.Mapping {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Zahar.SqlClient.Mapping")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="Zahar.SqlClient.Mapping", IsNullable=false)]
     public partial class Mapping {
         
         private Procedure[] proceduresField;
@@ -43,6 +43,7 @@ namespace Zahar.SqlClient.Mapping {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="Zahar.SqlClient.Mapping")]
     public partial class Procedure {
         
         private string schemaField;

@@ -46,14 +46,27 @@
     <Compile Include="Catalog\ICatalogReader.cs" />
     <Compile Include="Catalog\ProcedureInfo.cs" />
     <Compile Include="Catalog\SqlParameterInfo.cs" />
+    <Compile Include="Codegen\CommonRtt.cs" />
     <Compile Include="Codegen\FormatInfo.cs" />
     <Compile Include="Codegen\FormatInfo.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FormatInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Codegen\IRuntimeTextTemplate.cs" />
     <Compile Include="Codegen\RuntimeTextTemplate.cs" />
-    <Compile Include="ConnectionStringFormatException.cs" />
+    <Compile Include="Catalog\ConnectionStringFormatException.cs" />
+    <Compile Include="Codegen\RuntimeTextTemplateFactory.cs" />
+    <Compile Include="Codegen\StoredProcedureRtt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoredProcedureRtt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Codegen\UserDefinedTableTypeRtt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDefinedTableTypeRtt.tt</DependentUpon>
+    </Compile>
     <Compile Include="CustomizationException.cs" />
     <Compile Include="DatabaseNotAccessibleException.cs" />
     <Compile Include="DbObjectInfo.cs" />
@@ -61,7 +74,10 @@
     <Compile Include="DiagnosticsCallbackScope.cs" />
     <Compile Include="Disposable.cs" />
     <Compile Include="IDiagnosticsCallback.cs" />
+    <Compile Include="Mapping\MappingFileNotFoundException.cs" />
     <Compile Include="Mapping\Procedure.cs" />
+    <Compile Include="Projection\Projection.cs" />
+    <Compile Include="Projection\ProjectionBuilder.cs" />
     <Compile Include="RelayDiagnosticsCallback.cs" />
     <Compile Include="Mapping.generated.cs" />
     <Compile Include="Mapping\IMappingReader.cs" />
@@ -92,7 +108,15 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FormatInfo.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Catalog.sql" />
+    <Content Include="CatalogQuery.sql" />
+    <Content Include="Codegen\StoredProcedureRtt.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StoredProcedureRtt.cs</LastGenOutput>
+    </Content>
+    <Content Include="Codegen\UserDefinedTableTypeRtt.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>UserDefinedTableTypeRtt.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

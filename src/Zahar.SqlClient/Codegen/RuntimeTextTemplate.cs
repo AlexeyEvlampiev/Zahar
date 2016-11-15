@@ -10,12 +10,13 @@
     /// <summary>
     /// Base class for this transformation
     /// </summary>
-    public abstract partial class RuntimeTextTemplate
+    public abstract partial class RuntimeTextTemplate : IRuntimeTextTemplate
     {
         #region Private Fields
+        const int GenerationEnvironmentInitialCapacity = 100000;
         private IDiagnosticsCallback m_diagnosticsCallback;
         private IFormatInfo m_formatInfo;
-        private Lazy<StringBuilder> m_generationEnvironment = new Lazy<StringBuilder>(() => new StringBuilder(100000));
+        private Lazy<StringBuilder> m_generationEnvironment = new Lazy<StringBuilder>(() => new StringBuilder(GenerationEnvironmentInitialCapacity));
         private CompilerErrorCollection m_errors;
         private List<int> m_indentLengths;
         private string m_currentIndent = string.Empty;
@@ -290,5 +291,12 @@
         public abstract string TransformText();
 
         protected string GeneratedCodeAttribute => s_generatedCodeAttribute.Value;
+
+        string IRuntimeTextTemplate.TransformText()
+        {
+            string output = this.TransformText();
+            m_generationEnvironment = new Lazy<StringBuilder>(()=> new StringBuilder(GenerationEnvironmentInitialCapacity));
+            return output;
+        }
     }
 }

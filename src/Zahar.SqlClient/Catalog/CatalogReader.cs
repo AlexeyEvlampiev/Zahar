@@ -93,6 +93,9 @@
                 foreach (SqlParameter parameter in command.Parameters)
                 {
                     var dataType = m_sqlDbTypeInfo.GetDataType(parameter.SqlDbType);
+                    if (dataType == typeof(string)) {
+                        parameter.Value = "a";
+                    }
                     var parameterInfo = new SqlParameterInfo(parameter, dataType);
                     sp.AddParameter(parameterInfo);
                     if (false != string.IsNullOrWhiteSpace(parameter.TypeName))
@@ -128,15 +131,25 @@
                     }
                 }
 
-                DataSet schema = new DataSet();
-                var adapter = new SqlDataAdapter(command);
-                adapter.FillSchema(schema, SchemaType.Source);
-                for (int i = 0; i < schema.Tables.Count; ++i)
+                try
                 {
-                    schema.Tables[i].TableName = $"{spFullName} > result {i}";
+                    DataSet schema = new DataSet();
+                    var adapter = new SqlDataAdapter(command);
+                    adapter.FillSchema(schema, SchemaType.Source);
+                    for (int i = 0; i < schema.Tables.Count; ++i)
+                    {
+                        schema.Tables[i].TableName = $"{spFullName} > result {i}";
+                    }
+
+                    sp.AddResultSchemas(schema.Tables.OfType<DataTable>());
+                }
+                catch (SqlException ex)
+                {
+                    var message = new StringBuilder($"Could not retrieve {spFullName} result schema information.");
+                    message.Append($" Error: {ex.Message}");
+                    m_diagnosticsCallback.Error(message.ToString());
                 }
 
-                sp.AddResultSchemas(schema.Tables.OfType<DataTable>());
                 return sp;
             }
         }
@@ -155,6 +168,8 @@
                 if (stringComparer.Compare(p1.ParameterName, p2.ParameterName) != 0)
                     return false;
                 if (p1.SqlDbType != p2.SqlDbType)
+                    return false;
+                if (p1.Direction != p2.Direction)
                     return false;
             }
             return true;

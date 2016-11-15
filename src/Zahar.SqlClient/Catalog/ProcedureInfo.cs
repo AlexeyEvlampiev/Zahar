@@ -31,6 +31,8 @@ namespace Zahar.SqlClient.Catalog
 
         public IEnumerable<DataTable> ResultSchemas => _resultSchemas.AsReadOnly();
 
+        public int GetResultOrdinal(DataTable result) { return _resultSchemas.IndexOf(result); }
+
         internal void AddParameter(SqlParameterInfo parameter) { _parameters.Add(parameter); }
 
         internal void AddResultSchema(DataTable schema) { _resultSchemas.Add(schema); }

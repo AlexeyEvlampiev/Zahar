@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns="Zahar.SqlClient.Mapping">
+  <Procedures>
+    <Add Schema="dbo" Name="uspGetBillOfMaterials"/>
+    <Add Schema="dbo" Name="uspGetEmployeeManagers"/>
+    <Add Schema="dbo" Name="uspGetWhereUsedProductID"/>
+    <Add Schema="dbo" Name="uspGetManagerEmployees"/>
+    <Add Schema="dbo" Name="uspLogError"/>
+    <Add Schema="dbo" Name="uspPrintError"/>
+    <Add Schema="dbo" Name="uspSearchCandidateResumes"/>
+    <Add Schema="HumanResources" Name="uspUpdateEmployeeHireInfo"/>
+    <Add Schema="HumanResources" Name="uspUpdateEmployeeLogin"/>
+    <Add Schema="HumanResources" Name="uspUpdateEmployeePersonalInfo"/> 
+  </Procedures>
+</Mapping>

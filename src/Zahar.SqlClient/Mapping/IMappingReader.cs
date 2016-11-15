@@ -1,12 +1,9 @@
 ﻿namespace Zahar.SqlClient.Mapping
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
-    public interface IMappingReader
+    interface IMappingReader
     {
+        Task<Mapping> ReadAsync();
     }
 }

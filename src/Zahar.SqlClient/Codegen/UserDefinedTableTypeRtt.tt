@@ -1,0 +1,118 @@
+﻿<#@ template language="C#" inherits="Zahar.SqlClient.Codegen.RuntimeTextTemplate"  linePragmas="false" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#  
+	string dataTableClassName = GetUserDefinedDataTableClassName(Schema.TableName);
+	string dataRowClassName = GetUserDefinedDataRowClassName(Schema.TableName);
+	var columns = Schema.Columns.OfType<DataColumn>().ToList();
+	var primaryKey = Schema.PrimaryKey ?? new DataColumn[0];
+	var uniqueConstraints = Schema.Constraints.OfType<UniqueConstraint>().ToList();
+#>
+
+/// <summary>
+/// <#= Schema.TableName #> user defined tabletype.
+/// </summary>	
+[global::System.Serializable()]
+public partial class <#= dataTableClassName #> : global::System.Data.TypedTableBase<<#= dataRowClassName #>>
+{
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public <#= dataTableClassName #>()
+	{
+		this.TableName = @"<#= Schema.TableName #>";
+		this.BeginInit();
+		this.InitClass();
+		this.EndInit();
+	}
+
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	protected <#= dataTableClassName #>(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+			base(info, context) 
+	{
+		
+	}
+
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public new <#= dataRowClassName #> NewRow() { return ((<#= dataRowClassName #>)(base.NewRow())); }
+			
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) { return new <#= dataRowClassName #>(builder); }
+			
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	protected override global::System.Type GetRowType() { return typeof(<#= dataRowClassName #>); }
+
+	public static global::System.Data.DataColumn[] CreateColumnsArray()
+	{
+		var columns = new global::System.Data.DataColumn[]{<# foreach(DataColumn column in Schema.Columns){ #> 
+			new global::System.Data.DataColumn("<#= column.ColumnName  #>", typeof(<#= column.DataType #>), null, global::System.Data.MappingType.Element), <# } #> 
+		};
+		<# foreach(var column in columns.Where(c=> !c.AllowDBNull)){ #> 
+		columns[<#= column.Ordinal #>].AllowDBNull = false; // <#= column.ColumnName #> <# } #> <# foreach(var column in columns.Where(c=> c.MaxLength > 0)){ #> 
+		columns[<#= column.Ordinal #>].MaxLength = <#= column.MaxLength #>; // <#= column.ColumnName #> <# } #>  <# foreach(var column in columns.Where(c=> c.AutoIncrement)){ #> 
+		columns[<#= column.Ordinal #>].AutoIncrement = true; // <#= column.ColumnName #> 
+		columns[<#= column.Ordinal #>].AutoIncrementSeed = <#= column.AutoIncrementSeed #>; // <#= column.ColumnName #> 
+		columns[<#= column.Ordinal #>].AutoIncrementStep = <#= column.AutoIncrementStep #>; // <#= column.ColumnName #> <# } #>  <# foreach(var column in columns.Where(c=> c.ReadOnly)){ #> 
+		columns[<#= column.Ordinal #>].ReadOnly = true; // <#= column.ColumnName #> <# } #>  <# foreach(var column in columns.Where(c=> c.Unique)){ #> 
+		columns[<#= column.Ordinal #>].Unique = true; // <#= column.ColumnName #> <# } #>  <# foreach(var column in columns.Where(c=> c.DataType.IsValueType && c.AllowDBNull == false && !c.AutoIncrement)){ #> 
+		columns[<#= column.Ordinal #>].DefaultValue = default(<#= GetPropertyTypeName(column.DataType, false) #>); // <#= column.ColumnName #> <# } #>  
+
+		return columns;
+	}
+
+	private void InitClass()
+	{
+		var columns = DboDemoTableTypeUserDefinedDataTable.CreateColumnsArray();
+		foreach (var column in columns) { this.Columns.Add(column); } 
+		this.Constraints.Clear(); <# foreach(var dc in uniqueConstraints){ int indx = uniqueConstraints.IndexOf(dc); #> 
+		this.Constraints.Add(new global::System.Data.UniqueConstraint("<#= "UniqueConstraint_" + indx.ToString() #>", 
+			 new global::System.Data.DataColumn[]
+			 {<# foreach(DataColumn c in dc.Columns){ #> 
+				this.Columns[<#= c.Ordinal #>], // <#= c.ColumnName #> <# } #> 
+			 }, isPrimaryKey: <#= dc.IsPrimaryKey.ToString().ToLower() #>));
+		<# } #> <# if(primaryKey.Length > 0){ #> 
+		this.PrimaryKey = new []{ <# for(int i = 0; i < primaryKey.Length; ++i)Write("this.Columns[{0}]", primaryKey[i].Ordinal); #> }; <# } #> 
+	}
+}
+
+/// <summary>
+/// <#= Schema.TableName #> data row
+/// </summary>		
+public partial class <#= dataRowClassName #> : global::System.Data.DataRow
+{	
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	internal <#= dataRowClassName #>(global::System.Data.DataRowBuilder rb) : base(rb) 
+	{
+	}
+
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public new <#= dataTableClassName #> Table => (<#= dataTableClassName #>)base.Table;
+
+	<# for(int i = 0; i < Schema.Columns.Count; ++i){ 
+		DataColumn column = Schema.Columns[i];
+		string propertyName = GetPropertyName( column.ColumnName );
+		string propertyType = GetPropertyTypeName( column.DataType, column.AllowDBNull );
+
+	#> 
+	/// <summary>
+    /// Gets or sets the "<#= column.ColumnName #>" value.
+    /// </summary>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]<# if(Schema.PrimaryKey.Contains(column)){ #> 
+	[global::System.ComponentModel.DataAnnotations.Key()] <# } #> 
+	[global::System.ComponentModel.DataAnnotations.Schema.Column("<#= column.ColumnName #>", Order = <#= column.Ordinal #>)]
+	public <#= propertyType #> <#= propertyName #>
+	{
+		get { return <#= SqlDbClientClassName #>.ToClrValue<<#= propertyType #>>(this[<#= i #>]); }
+		set { this[<#= i #>] = <#= SqlDbClientClassName #>.ToSqlValue(value); }
+	}
+	<# } #> 
+}

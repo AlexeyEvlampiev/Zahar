@@ -1,26 +1,24 @@
 ﻿namespace Zahar.SqlClient
-{
-    using System;
-
+{    
     /// <summary>
     /// <see cref="System.IDisposable"/> factory.
     /// </summary>
     public static class Disposable
     {
-        public static readonly IDisposable Null = new DisposableNullObject();
+        public static readonly System.IDisposable Null = new DisposableNullObject();
 
-        public static IDisposable Create(Action callback) { return new RelayDisposable(callback); }
+        public static System.IDisposable Create(System.Action callback) { return new RelayDisposable(callback); }
 
-        sealed class DisposableNullObject : IDisposable
+        sealed class DisposableNullObject : System.IDisposable
         {
             public void Dispose() { }
         }
 
-        sealed class RelayDisposable : IDisposable
+        sealed class RelayDisposable : System.IDisposable
         {
-            private Action m_callback;
+            private System.Action m_callback;
 
-            public RelayDisposable(Action callback)
+            public RelayDisposable(System.Action callback)
             {
                 m_callback = callback;
             }

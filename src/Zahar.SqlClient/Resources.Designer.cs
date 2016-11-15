@@ -141,23 +141,71 @@ namespace Zahar.SqlClient {
         ///   Looks up a localized string similar to namespace Zahar.SqlClient
         ///{
         ///    using System;
-        ///    using System.Data;
-        ///    using System.Data.SqlClient;
-        ///    using System.Threading;
-        ///    using System.Threading.Tasks;
         ///
+        ///    /// &lt;summary&gt;
+        ///    /// &lt;see cref=&quot;System.IDisposable&quot;/&gt; factory.
+        ///    /// &lt;/summary&gt;
+        ///    public static class Disposable
+        ///    {
+        ///        public static readonly IDisposable Null = new DisposableNullObject();
+        ///
+        ///        public static IDisposable Create(Action callback) { return new RelayDisposable(callback); }
+        ///
+        ///        sealed class DisposableNullObject : IDisposable
+        ///        {
+        ///            public void Dispose() { }
+        ///        }
+        ///
+        ///        sealed class Rel [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Disposable1 {
+            get {
+                return ResourceManager.GetString("Disposable1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to namespace Zahar.SqlClient
+        ///{
+        ///    public struct SqlCommandReturnValue
+        ///    {
+        ///        readonly System.Data.SqlClient.SqlParameter m_returnValueParameter;
+        ///
+        ///        /// &lt;summary&gt;
+        ///        /// 
+        ///        /// &lt;/summary&gt;
+        ///        public SqlCommandReturnValue(System.Data.SqlClient.SqlCommand command)
+        ///	    {
+        ///		    if(ReferenceEquals(command, null))
+        ///			    throw new System.ArgumentNullException(nameof(command));
+        ///            for (int i = 0; i &lt; command.Parameters.Count; ++i)
+        ///            {
+        ///                m_re [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ReturnValueSqlCommandOutput {
+            get {
+                return ResourceManager.GetString("ReturnValueSqlCommandOutput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to namespace Zahar.SqlClient
+        ///{
+        ///    /// &lt;summary&gt;
+        ///    /// 
+        ///    /// &lt;/summary&gt;
         ///    public class SqlDbClient
         ///    {
         ///        #region Nested Types
         ///        struct SqlCommandState
         ///        {
-        ///            readonly SqlConnection Connection;
-        ///            readonly SqlTransaction Transaction;
+        ///            readonly System.Data.SqlClient.SqlConnection Connection;
+        ///            readonly System.Data.SqlClient.SqlTransaction Transaction;
         ///
-        ///            public SqlCommandState(SqlCommand command)
+        ///            public SqlCommandState(System.Data.SqlClient.SqlCommand command)
         ///            {
         ///                Connection = command.Connection;
-        ///         [rest of string was truncated]&quot;;.
+        ///                Transaction = comman [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SqlDbClient {
             get {
@@ -167,18 +215,17 @@ namespace Zahar.SqlClient {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;xs:schema attributeFormDefault=&quot;unqualified&quot; elementFormDefault=&quot;qualified&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+        ///&lt;xs:schema attributeFormDefault=&quot;unqualified&quot; elementFormDefault=&quot;qualified&quot; 
+        ///           xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; 
+        ///           targetNamespace=&quot;Zahar.SqlClient.Mapping&quot; 
+        ///           xmlns:z=&quot;Zahar.SqlClient.Mapping&quot;&gt;
         ///  &lt;xs:element name=&quot;Mapping&quot;&gt;
         ///    &lt;xs:complexType&gt;
         ///      &lt;xs:sequence&gt;
         ///        &lt;xs:element name=&quot;Procedures&quot;&gt;
         ///          &lt;xs:complexType&gt;
         ///            &lt;xs:sequence&gt;
-        ///              &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; name=&quot;Add&quot; type=&quot;Procedure&quot; /&gt;
-        ///            &lt;/xs:sequence&gt;
-        ///          &lt;/xs:complexType&gt;
-        ///        &lt;/xs:element&gt;
-        ///       [rest of string was truncated]&quot;;.
+        ///              &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; nam [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Zahar_SqlClient {
             get {

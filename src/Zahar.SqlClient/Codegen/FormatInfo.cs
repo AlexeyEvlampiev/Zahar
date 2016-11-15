@@ -48,13 +48,11 @@
 
         public virtual string BuildCommandMethodName => "BuildCommand";
 
-        public virtual string StoredProcedureBasicOutputClassName => "Basic" + StoredProcedureOutputValueSetClassNamePostfix;
-
-        public virtual string SuperFactoryClassName => "TypedComponentSuperFactory";
-
+        public string StoredProcedureBasicOutputClassName => typeof(ReturnValueSqlCommandOutput).Name;
+        
         public virtual string FieldPrefix => "m_";
 
-        public virtual string FrameworkUtilitiesClassName => "TransactionScriptUtils";
+        public string SqlDbClientClassName => typeof(SqlDbClient).Name;
 
         [DebuggerStepThrough]
         private DbObjectInfo GetDbObjectInfo(string fullName)
