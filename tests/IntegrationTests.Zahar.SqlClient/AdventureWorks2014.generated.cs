@@ -157,16 +157,18 @@
 		}
 		#region Sql Parameter Properties
 		/// <summary>
-		/// Parameter 1
+		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(1,"StartProductID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? StartProductID { get; set; }
 		/// <summary>
-		/// Parameter 2
+		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(2,"CheckDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? CheckDate { get; set; }
 	
 	
@@ -387,10 +389,11 @@
 		}
 		#region Sql Parameter Properties
 		/// <summary>
-		/// Parameter 1
+		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(1,"BusinessEntityID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? BusinessEntityID { get; set; }
 	
 	
@@ -607,10 +610,11 @@
 		}
 		#region Sql Parameter Properties
 		/// <summary>
-		/// Parameter 1
+		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(1,"BusinessEntityID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? BusinessEntityID { get; set; }
 	
 	
@@ -832,16 +836,18 @@
 		}
 		#region Sql Parameter Properties
 		/// <summary>
-		/// Parameter 1
+		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(1,"StartProductID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? StartProductID { get; set; }
 		/// <summary>
-		/// Parameter 2
+		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(2,"CheckDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? CheckDate { get; set; }
 	
 	
@@ -1051,10 +1057,11 @@
 		}
 		#region Sql Parameter Properties
 		/// <summary>
-		/// Parameter 1
+		/// Parameter 1 (InputOutput).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(1,"ErrorLogID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
 		public int? ErrorLogID { get; set; }
 	
 	
@@ -1082,13 +1089,16 @@
 		/// <summary>
 		/// 
 		/// </summary>
+		[SqlParameter(0,"RETURN_VALUE", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.ReturnValue)]
 		public int? RETURN_VALUE => SqlDbClient.ToClrValue<int?>(m_command.Parameters["@RETURN_VALUE"].Value);
 		 
 		/// <summary>
 		/// 
 		/// </summary>
+		[SqlParameter(1,"ErrorLogID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
 		public int? ErrorLogID => SqlDbClient.ToClrValue<int?>(m_command.Parameters["@ErrorLogID"].Value);
-		}
+		 
+	}
 	
 	
 
@@ -1405,28 +1415,32 @@
 		}
 		#region Sql Parameter Properties
 		/// <summary>
-		/// Parameter 1
+		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(1,"searchString", global::System.Data.SqlDbType.NVarChar, global::System.Data.ParameterDirection.Input, 1000)]
 		public string SearchString { get; set; }
 		/// <summary>
-		/// Parameter 2
+		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(2,"useInflectional", global::System.Data.SqlDbType.Bit, global::System.Data.ParameterDirection.Input)]
 		public bool? UseInflectional { get; set; }
 		/// <summary>
-		/// Parameter 3
+		/// Parameter 3 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(3,"useThesaurus", global::System.Data.SqlDbType.Bit, global::System.Data.ParameterDirection.Input)]
 		public bool? UseThesaurus { get; set; }
 		/// <summary>
-		/// Parameter 4
+		/// Parameter 4 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(4,"language", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? Language { get; set; }
 	
 	
@@ -1774,46 +1788,53 @@
 		}
 		#region Sql Parameter Properties
 		/// <summary>
-		/// Parameter 1
+		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(1,"BusinessEntityID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? BusinessEntityID { get; set; }
 		/// <summary>
-		/// Parameter 2
+		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(2,"JobTitle", global::System.Data.SqlDbType.NVarChar, global::System.Data.ParameterDirection.Input, 50)]
 		public string JobTitle { get; set; }
 		/// <summary>
-		/// Parameter 3
+		/// Parameter 3 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(3,"HireDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? HireDate { get; set; }
 		/// <summary>
-		/// Parameter 4
+		/// Parameter 4 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(4,"RateChangeDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? RateChangeDate { get; set; }
 		/// <summary>
-		/// Parameter 5
+		/// Parameter 5 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(5,"Rate", global::System.Data.SqlDbType.Money, global::System.Data.ParameterDirection.Input)]
 		public decimal? Rate { get; set; }
 		/// <summary>
-		/// Parameter 6
+		/// Parameter 6 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(6,"PayFrequency", global::System.Data.SqlDbType.TinyInt, global::System.Data.ParameterDirection.Input)]
 		public byte? PayFrequency { get; set; }
 		/// <summary>
-		/// Parameter 7
+		/// Parameter 7 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(7,"CurrentFlag", global::System.Data.SqlDbType.Bit, global::System.Data.ParameterDirection.Input)]
 		public bool? CurrentFlag { get; set; }
 	
 	
@@ -1991,40 +2012,46 @@
 		}
 		#region Sql Parameter Properties
 		/// <summary>
-		/// Parameter 1
+		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(1,"BusinessEntityID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? BusinessEntityID { get; set; }
 		/// <summary>
-		/// Parameter 2
+		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(2,"OrganizationNode", global::System.Data.SqlDbType.Udt, global::System.Data.ParameterDirection.Input, 892)]
 		public object OrganizationNode { get; set; }
 		/// <summary>
-		/// Parameter 3
+		/// Parameter 3 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(3,"LoginID", global::System.Data.SqlDbType.NVarChar, global::System.Data.ParameterDirection.Input, 256)]
 		public string LoginID { get; set; }
 		/// <summary>
-		/// Parameter 4
+		/// Parameter 4 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(4,"JobTitle", global::System.Data.SqlDbType.NVarChar, global::System.Data.ParameterDirection.Input, 50)]
 		public string JobTitle { get; set; }
 		/// <summary>
-		/// Parameter 5
+		/// Parameter 5 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(5,"HireDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? HireDate { get; set; }
 		/// <summary>
-		/// Parameter 6
+		/// Parameter 6 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(6,"CurrentFlag", global::System.Data.SqlDbType.Bit, global::System.Data.ParameterDirection.Input)]
 		public bool? CurrentFlag { get; set; }
 	
 	
@@ -2197,34 +2224,39 @@
 		}
 		#region Sql Parameter Properties
 		/// <summary>
-		/// Parameter 1
+		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(1,"BusinessEntityID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? BusinessEntityID { get; set; }
 		/// <summary>
-		/// Parameter 2
+		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(2,"NationalIDNumber", global::System.Data.SqlDbType.NVarChar, global::System.Data.ParameterDirection.Input, 15)]
 		public string NationalIDNumber { get; set; }
 		/// <summary>
-		/// Parameter 3
+		/// Parameter 3 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(3,"BirthDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? BirthDate { get; set; }
 		/// <summary>
-		/// Parameter 4
+		/// Parameter 4 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(4,"MaritalStatus", global::System.Data.SqlDbType.NChar, global::System.Data.ParameterDirection.Input, 1)]
 		public string MaritalStatus { get; set; }
 		/// <summary>
-		/// Parameter 5
+		/// Parameter 5 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(5,"Gender", global::System.Data.SqlDbType.NChar, global::System.Data.ParameterDirection.Input, 1)]
 		public string Gender { get; set; }
 	
 	
@@ -2421,7 +2453,49 @@
         /// <summary>
         /// 
         /// </summary>
+        [SqlParameter(0, "RETURN_VALUE", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.ReturnValue)]
         public int? RETURN_VALUE => SqlDbClient.ToClrValue<int?>(m_returnValueParameter.Value);
+    }
+
+
+    [global::System.AttributeUsage(global::System.AttributeTargets.Property)]
+    public sealed class SqlParameterAttribute : global::System.Attribute
+    {
+        public SqlParameterAttribute(
+            int ordinal,
+            string parameterName, 
+            global::System.Data.SqlDbType sqlDbType, 
+            global::System.Data.ParameterDirection direction)
+        {
+            this.Ordinal = ordinal;
+            this.ParameterName = parameterName;
+            this.SqlDbType = sqlDbType;
+            this.Direction = direction;
+        }
+
+        public SqlParameterAttribute(
+            int ordinal,
+            string parameterName,
+            global::System.Data.SqlDbType sqlDbType,
+            global::System.Data.ParameterDirection direction,
+            int size)
+        {
+            this.Ordinal = ordinal;
+            this.ParameterName = parameterName;
+            this.SqlDbType = sqlDbType;
+            this.Direction = direction;
+            this.Size = size;
+        }
+
+        public int Ordinal { get; }
+
+        public string ParameterName { get; }
+
+        public global::System.Data.SqlDbType SqlDbType { get; }
+
+        public global::System.Data.ParameterDirection Direction { get; }
+
+        public int? Size { get; }
     }
 
 

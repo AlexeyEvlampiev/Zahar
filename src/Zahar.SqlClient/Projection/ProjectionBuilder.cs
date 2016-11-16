@@ -3,6 +3,7 @@
     using Catalog;
     using Mapping;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Data.SqlClient;
     using System.Diagnostics;
@@ -42,6 +43,7 @@
 
         internal async Task<Projection> BuildAsync()
         {
+            var session = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
             var readCatalogTask = _catalogReader.ReadAsync();
             var mapping = await _mappingReader.ReadAsync();
             var catalog = await readCatalogTask;
@@ -57,18 +59,22 @@
                 throw new NotImplementedException();
 
             var projection = new Projection();
+            var tasks = mapping.Procedures
+                .Where(sp => ixProcedureFullNames.Contains(sp.FullName))
+                .Select(sp => _catalogReader.ReadSpInfoAsync(sp.FullName, session))
+                .ToList();
 
-            foreach (var selectedProcedure in mapping.Procedures)
+            foreach (var sp in mapping.Procedures
+                .Where(sp => false == ixProcedureFullNames.Contains(sp.FullName)))
             {
-                var spFullName = selectedProcedure.FullName;
-                if (!ixProcedureFullNames.Contains(spFullName))
-                {
-                    _diagnosticsCallbackScope.Error($"{spFullName} could not be found.");
-                    continue;
-                }
+                _diagnosticsCallbackScope.Error($"{sp.FullName} could not be found.");
+            }
+
+            foreach (var task in tasks)
+            {
                 try
                 {
-                    var spInfo = await _catalogReader.ReadSpInfoAsync(spFullName);
+                    var spInfo = await task;
                     projection.AddProcedure(spInfo);
                 }
                 catch (SqlException ex)

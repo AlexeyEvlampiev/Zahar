@@ -15,7 +15,8 @@
             {
                 Resources.Disposable,
                 Resources.SqlDbClient,
-                Resources.ReturnValueSqlCommandOutput
+                Resources.ReturnValueSqlCommandOutput,
+                Resources.SqlParameterAttribute
             };
 
             var sb = new StringBuilder();

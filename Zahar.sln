@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.Zahar.SqlC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{83C800AA-17A1-4ACC-953D-921816E4F3C3}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Zahar", "tests\Zahar\Zahar.sqlproj", "{FC25CC12-AE9F-49A9-B379-E76D36329CE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,12 @@ Global
 		{90C846D7-5B19-43C0-B268-7D148303CBAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90C846D7-5B19-43C0-B268-7D148303CBAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90C846D7-5B19-43C0-B268-7D148303CBAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC25CC12-AE9F-49A9-B379-E76D36329CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC25CC12-AE9F-49A9-B379-E76D36329CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC25CC12-AE9F-49A9-B379-E76D36329CE5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FC25CC12-AE9F-49A9-B379-E76D36329CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC25CC12-AE9F-49A9-B379-E76D36329CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC25CC12-AE9F-49A9-B379-E76D36329CE5}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,5 +44,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{571A1259-249F-4D3C-8FE8-93CD03472F70} = {83C800AA-17A1-4ACC-953D-921816E4F3C3}
 		{90C846D7-5B19-43C0-B268-7D148303CBAC} = {83C800AA-17A1-4ACC-953D-921816E4F3C3}
+		{FC25CC12-AE9F-49A9-B379-E76D36329CE5} = {83C800AA-17A1-4ACC-953D-921816E4F3C3}
 	EndGlobalSection
 EndGlobal

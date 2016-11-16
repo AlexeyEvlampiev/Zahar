@@ -6,6 +6,7 @@
     using System.Globalization;
     using System.Reflection;
     using System.Text;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// Base class for this transformation
@@ -25,6 +26,7 @@
         private static Lazy<string> s_generatedCodeAttribute;
         private const string ToolName = "Zahar";
         protected const string DebuggerNonUserCodeAttribute = "global::System.Diagnostics.DebuggerNonUserCodeAttribute()";
+        public readonly string SqlParameterAttribute = Regex.Replace(typeof(SqlParameterAttribute).Name, @"Attribute$", string.Empty);
         #endregion
 
         static RuntimeTextTemplate()

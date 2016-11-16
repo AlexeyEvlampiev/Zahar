@@ -12,6 +12,7 @@ namespace Zahar.SqlClient.Codegen
     using System.Data;
     using System.Linq;
     using System.Text;
+    using System.Text.RegularExpressions;
     using System.Collections.Generic;
     using System;
     
@@ -240,16 +241,31 @@ namespace Zahar.SqlClient.Codegen
  } 
             this.Write(" \r\n\r\n\t\treturn parameters;\r\n\t}\r\n\t#region Sql Parameter Properties\r\n");
  foreach(var p in nonTableInputParameters){ 
+	   int ordinal = parameters.IndexOf(p);
 	   var propertyName = GetPropertyName(p.ParameterName);
+	   var csParameterName = Regex.Replace(p.ParameterName, "^@", string.Empty);
 	   var dataTypeName = GetPropertyTypeName(p.DataType, true);	   
 
             this.Write("\t/// <summary>\r\n\t/// Parameter ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(parameters.IndexOf(p)));
-            this.Write("\r\n\t/// </summary>\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(ordinal));
+            this.Write(" (");
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Direction));
+            this.Write(").\r\n\t/// </summary>\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
             this.Write("]\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
-            this.Write("]\r\n\tpublic ");
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlParameterAttribute));
+            this.Write("(");
+            this.Write(this.ToStringHelper.ToStringWithCulture(ordinal));
+            this.Write(",\"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(csParameterName));
+            this.Write("\", global::System.Data.SqlDbType.");
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.SqlDbType));
+            this.Write(", global::System.Data.ParameterDirection.");
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Direction));
+ if(p.Size > 0)Write(", {0}", p.Size); 
+            this.Write(")]\r\n\tpublic ");
             this.Write(this.ToStringHelper.ToStringWithCulture(dataTypeName));
             this.Write(" ");
             this.Write(this.ToStringHelper.ToStringWithCulture(propertyName));
@@ -257,8 +273,10 @@ namespace Zahar.SqlClient.Codegen
  } 
             this.Write("\r\n\r\n");
  foreach(var p in tableInputParameters){ 
+	   int ordinal = parameters.IndexOf(p);
 	   var schema = p.TableTypeSchema;
 	   var propertyName = GetPropertyName(p.ParameterName);
+	   var csParameterName = Regex.Replace(p.ParameterName, "^@", string.Empty);
 	   var fieldName = GetFieldName(propertyName);
 	   var dataTypeName = GetUserDefinedDataTableClassName(schema.TableName);
 
@@ -268,7 +286,17 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
             this.Write("]\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
-            this.Write("]\r\n\tpublic ");
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlParameterAttribute));
+            this.Write("(");
+            this.Write(this.ToStringHelper.ToStringWithCulture(ordinal));
+            this.Write(",\"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(csParameterName));
+            this.Write("\", global::System.Data.SqlDbType.");
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.SqlDbType));
+            this.Write(", global::System.Data.ParameterDirection.");
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Direction));
+            this.Write(")]\r\n\tpublic ");
             this.Write(this.ToStringHelper.ToStringWithCulture(dataTypeName));
             this.Write(" ");
             this.Write(this.ToStringHelper.ToStringWithCulture(propertyName));
@@ -303,9 +331,21 @@ namespace Zahar.SqlClient.Codegen
             this.Write("\".Equals(command.CommandText, global::System.StringComparison.OrdinalIgnoreCase))" +
                     ";\t\t\t\t\r\n\t\tm_command = command;\r\n\t}\r\n\r\n\t");
  foreach(var p in outputParameters){ 
+		int ordinal = parameters.IndexOf(p);
+		var csParameterName = Regex.Replace(p.ParameterName, "^@", string.Empty);
 		var typeName = ixPropertyTypeNamesByParameter[p];
 		var propertyName = GetPropertyName(p.ParameterName); 
-            this.Write(" \r\n\t/// <summary>\r\n\t/// \r\n\t/// </summary>\r\n\tpublic ");
+            this.Write(" \r\n\t/// <summary>\r\n\t/// \r\n\t/// </summary>\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlParameterAttribute));
+            this.Write("(");
+            this.Write(this.ToStringHelper.ToStringWithCulture(ordinal));
+            this.Write(",\"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(csParameterName));
+            this.Write("\", global::System.Data.SqlDbType.");
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.SqlDbType));
+            this.Write(", global::System.Data.ParameterDirection.");
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Direction));
+            this.Write(")]\r\n\tpublic ");
             this.Write(this.ToStringHelper.ToStringWithCulture(typeName));
             this.Write(" ");
             this.Write(this.ToStringHelper.ToStringWithCulture(propertyName));
@@ -317,7 +357,7 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(p.ParameterName));
             this.Write("\"].Value);\r\n\t");
  } 
-            this.Write("}\r\n");
+            this.Write(" \r\n}\r\n");
  } 
             this.Write("\r\n\r\n");
  for(int i = 0; i < adapterClassNames.Count; ++i){ 

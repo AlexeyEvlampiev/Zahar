@@ -1,12 +1,12 @@
 ﻿namespace Zahar.SqlClient.Catalog
 {
     using System;
-    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Data;
     using System.Data.SqlClient;
     using System.Linq;
     using System.Text;
+    using System.Text.RegularExpressions;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -15,12 +15,14 @@
         private readonly string m_connectionString;
         private readonly DiagnosticsCallbackScope m_diagnosticsCallback;
         private readonly string DataSource;
-        private readonly string Database;
-        private readonly ConcurrentDictionary<string, DataTable> m_ixTableTypeSchemaByName = new ConcurrentDictionary<string, DataTable>();
+        private readonly string Database;        
         readonly SqlDbTypeInfo m_sqlDbTypeInfo = new SqlDbTypeInfo();
+        private readonly ReaderWriterLockSlim m_sessionLock = new ReaderWriterLockSlim();
 
         public CatalogReader(string connectionString, IDiagnosticsCallback diagnosticsCallback)
         {
+            string pattern = Regex.Replace(@"(?:xis);? Max Pool Size\s*=\s*\d+ |;?$", @"\s+", @"\s+");
+            connectionString = Regex.Replace(connectionString, pattern, ";Max Pool Size=10");
             m_connectionString = connectionString;
             m_diagnosticsCallback = new DiagnosticsCallbackScope( diagnosticsCallback);
             try
@@ -58,10 +60,11 @@
             }
         }
 
-        public List<DataTable> GetUserDefinedTableTypes()
+        public override string ToString()
         {
-            return m_ixTableTypeSchemaByName.Values.Select(dt => dt.Clone()).ToList();
+            return $"[{DataSource}].[{Database}]";
         }
+
 
         public async Task<Catalog> ReadAsync()
         {
@@ -79,7 +82,7 @@
             }
         }
 
-        public async Task<ProcedureInfo> ReadSpInfoAsync(string spFullName)
+        public async Task<ProcedureInfo> ReadSpInfoAsync(string spFullName, IDictionary<string, object> session = null)
         {
             using (var connection = new SqlConnection(m_connectionString))
             using (var command = new SqlCommand(spFullName, connection))
@@ -103,9 +106,9 @@
 
                     string tableTypeName = new DbObjectInfo(parameter.TypeName).FullName;
                     parameter.TypeName = tableTypeName;
-                    DataTable tableTypeSchema = null;
-                    if (m_ixTableTypeSchemaByName.TryGetValue(tableTypeName, out tableTypeSchema))
-                    {
+                    var tableTypeSchema = GetFromSession<DataTable>(tableTypeName, session);
+                    if (!ReferenceEquals(tableTypeSchema, null) )
+                    {      
                         parameter.Value = tableTypeSchema.Clone();
                         parameterInfo.TableTypeSchema = tableTypeSchema;
                         continue;
@@ -123,8 +126,7 @@
                         {
                             tableTypeSchema = new DataTable(tableTypeName);
                             tableTypeSchema.Load(reader);
-                            tableTypeSchema = m_ixTableTypeSchemaByName.GetOrAdd(tableTypeSchema.TableName,
-                                tableTypeSchema);
+                            AddToSession(tableTypeName, tableTypeSchema, session);
                             parameter.Value = tableTypeSchema.Clone();
                             parameterInfo.TableTypeSchema = tableTypeSchema;
                         }
@@ -173,6 +175,41 @@
                     return false;
             }
             return true;
+        }
+
+        private T GetFromSession<T>(string key, IDictionary<string, object> session) where T : class
+        {
+            if (ReferenceEquals(session, null))
+                return null;
+            if (!m_sessionLock.TryEnterReadLock(300))
+                throw new TimeoutException("Threading > failed to equire read lock.");
+            try
+            {
+                if (session.ContainsKey(key))
+                    return session[key] as T;
+                return null;
+            }
+            finally
+            {
+                m_sessionLock.ExitReadLock();
+            }
+        }
+
+        private void AddToSession(string key, object value, IDictionary<string, object> session)
+        {
+            if (ReferenceEquals(session, null))
+                return;
+            if (!m_sessionLock.TryEnterWriteLock(300))
+                throw new TimeoutException("Threading > failed to equire write lock.");
+            try
+            {
+                if (session.ContainsKey(key))
+                    session[key] = value;
+            }
+            finally
+            {
+                m_sessionLock.ExitWriteLock();
+            }
         }
     }
 }

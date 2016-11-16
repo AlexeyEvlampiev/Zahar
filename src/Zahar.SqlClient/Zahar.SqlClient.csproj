@@ -89,6 +89,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SqlDbTypeInfo.cs" />
+    <Compile Include="SqlParameterAttribute.cs" />
     <Compile Include="XmlValidationException.cs" />
     <Compile Include="ProcessingCancelledException.cs" />
     <Compile Include="ReturnValueSqlCommandOutput.cs" />

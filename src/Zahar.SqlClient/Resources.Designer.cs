@@ -112,24 +112,22 @@ namespace Zahar.SqlClient {
         
         /// <summary>
         ///   Looks up a localized string similar to namespace Zahar.SqlClient
-        ///{
-        ///    using System;
-        ///
+        ///{    
         ///    /// &lt;summary&gt;
         ///    /// &lt;see cref=&quot;System.IDisposable&quot;/&gt; factory.
         ///    /// &lt;/summary&gt;
         ///    public static class Disposable
         ///    {
-        ///        public static readonly IDisposable Null = new DisposableNullObject();
+        ///        public static readonly System.IDisposable Null = new DisposableNullObject();
         ///
-        ///        public static IDisposable Create(Action callback) { return new RelayDisposable(callback); }
+        ///        public static System.IDisposable Create(System.Action callback) { return new RelayDisposable(callback); }
         ///
-        ///        sealed class DisposableNullObject : IDisposable
+        ///        sealed class DisposableNullObject : System.IDisposable
         ///        {
         ///            public void Dispose() { }
         ///        }
         ///
-        ///        sealed class Rel [rest of string was truncated]&quot;;.
+        ///        seale [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Disposable {
             get {
@@ -139,24 +137,22 @@ namespace Zahar.SqlClient {
         
         /// <summary>
         ///   Looks up a localized string similar to namespace Zahar.SqlClient
-        ///{
-        ///    using System;
-        ///
+        ///{    
         ///    /// &lt;summary&gt;
         ///    /// &lt;see cref=&quot;System.IDisposable&quot;/&gt; factory.
         ///    /// &lt;/summary&gt;
         ///    public static class Disposable
         ///    {
-        ///        public static readonly IDisposable Null = new DisposableNullObject();
+        ///        public static readonly System.IDisposable Null = new DisposableNullObject();
         ///
-        ///        public static IDisposable Create(Action callback) { return new RelayDisposable(callback); }
+        ///        public static System.IDisposable Create(System.Action callback) { return new RelayDisposable(callback); }
         ///
-        ///        sealed class DisposableNullObject : IDisposable
+        ///        sealed class DisposableNullObject : System.IDisposable
         ///        {
         ///            public void Dispose() { }
         ///        }
         ///
-        ///        sealed class Rel [rest of string was truncated]&quot;;.
+        ///        seale [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Disposable1 {
             get {
@@ -167,20 +163,20 @@ namespace Zahar.SqlClient {
         /// <summary>
         ///   Looks up a localized string similar to namespace Zahar.SqlClient
         ///{
-        ///    public struct SqlCommandReturnValue
+        ///    public struct ReturnValueSqlCommandOutput
         ///    {
         ///        readonly System.Data.SqlClient.SqlParameter m_returnValueParameter;
         ///
         ///        /// &lt;summary&gt;
         ///        /// 
         ///        /// &lt;/summary&gt;
-        ///        public SqlCommandReturnValue(System.Data.SqlClient.SqlCommand command)
+        ///        public ReturnValueSqlCommandOutput(System.Data.SqlClient.SqlCommand command)
         ///	    {
         ///		    if(ReferenceEquals(command, null))
         ///			    throw new System.ArgumentNullException(nameof(command));
         ///            for (int i = 0; i &lt; command.Parameters.Count; ++i)
         ///            {
-        ///                m_re [rest of string was truncated]&quot;;.
+        ///         [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReturnValueSqlCommandOutput {
             get {
@@ -210,6 +206,29 @@ namespace Zahar.SqlClient {
         internal static string SqlDbClient {
             get {
                 return ResourceManager.GetString("SqlDbClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to namespace Zahar.SqlClient
+        ///{
+        ///    [System.AttributeUsage(System.AttributeTargets.Property)]
+        ///    public sealed class SqlParameterAttribute : System.Attribute
+        ///    {
+        ///        public SqlParameterAttribute(
+        ///            string parameterName, 
+        ///            System.Data.SqlDbType sqlDbType, 
+        ///            System.Data.ParameterDirection parameterDirection)
+        ///        {
+        ///
+        ///        }
+        ///    }
+        ///}
+        ///.
+        /// </summary>
+        internal static string SqlParameterAttribute {
+            get {
+                return ResourceManager.GetString("SqlParameterAttribute", resourceCulture);
             }
         }
         

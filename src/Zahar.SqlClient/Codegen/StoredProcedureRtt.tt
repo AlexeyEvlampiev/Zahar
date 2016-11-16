@@ -3,6 +3,7 @@
 <#@ import namespace="System.Data" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#
 	string factoryClassName = GetStoredProcedureComponentFactoryClassName(Procedure.FullName);		
@@ -203,21 +204,26 @@ public partial class <#= factoryClassName #>
 	}
 	#region Sql Parameter Properties
 <# foreach(var p in nonTableInputParameters){ 
+	   int ordinal = parameters.IndexOf(p);
 	   var propertyName = GetPropertyName(p.ParameterName);
+	   var csParameterName = Regex.Replace(p.ParameterName, "^@", string.Empty);
 	   var dataTypeName = GetPropertyTypeName(p.DataType, true);	   
 #>
 	/// <summary>
-	/// Parameter <#= parameters.IndexOf(p) #>
+	/// Parameter <#= ordinal #> (<#= p.Direction #>).
 	/// </summary>
 	[<#= DebuggerNonUserCodeAttribute #>]
 	[<#= GeneratedCodeAttribute #>]
+	[<#= SqlParameterAttribute #>(<#= ordinal #>,"<#= csParameterName #>", global::System.Data.SqlDbType.<#= p.SqlDbType #>, global::System.Data.ParameterDirection.<#= p.Direction #><# if(p.Size > 0)Write(", {0}", p.Size); #>)]
 	public <#= dataTypeName #> <#= propertyName #> { get; set; }
 <# } #>
 
 
 <# foreach(var p in tableInputParameters){ 
+	   int ordinal = parameters.IndexOf(p);
 	   var schema = p.TableTypeSchema;
 	   var propertyName = GetPropertyName(p.ParameterName);
+	   var csParameterName = Regex.Replace(p.ParameterName, "^@", string.Empty);
 	   var fieldName = GetFieldName(propertyName);
 	   var dataTypeName = GetUserDefinedDataTableClassName(schema.TableName);
 #>
@@ -226,6 +232,7 @@ public partial class <#= factoryClassName #>
 	/// </summary>
 	[<#= DebuggerNonUserCodeAttribute #>]
 	[<#= GeneratedCodeAttribute #>]
+	[<#= SqlParameterAttribute #>(<#= ordinal #>,"<#= csParameterName #>", global::System.Data.SqlDbType.<#= p.SqlDbType #>, global::System.Data.ParameterDirection.<#= p.Direction #>)]
 	public <#= dataTypeName #> <#= propertyName #>
 	{
 		get { return this.<#= fieldName #> ?? (this.<#= fieldName #> = new <#= dataTypeName #>()); }
@@ -253,13 +260,16 @@ public partial struct <#= outputValuesClassName #>
 	}
 
 	<# foreach(var p in outputParameters){ 
+		int ordinal = parameters.IndexOf(p);
+		var csParameterName = Regex.Replace(p.ParameterName, "^@", string.Empty);
 		var typeName = ixPropertyTypeNamesByParameter[p];
 		var propertyName = GetPropertyName(p.ParameterName); #> 
 	/// <summary>
 	/// 
 	/// </summary>
+	[<#= SqlParameterAttribute #>(<#= ordinal #>,"<#= csParameterName #>", global::System.Data.SqlDbType.<#= p.SqlDbType #>, global::System.Data.ParameterDirection.<#= p.Direction #>)]
 	public <#= typeName #> <#= propertyName #> => <#= SqlDbClientClassName #>.ToClrValue<<#= typeName #>>(m_command.Parameters["<#= p.ParameterName #>"].Value);
-	<# } #>
+	<# } #> 
 }
 <# } #>
 
