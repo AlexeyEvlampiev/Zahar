@@ -5,6 +5,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#  
+	string utilsClassName = typeof(SqlDbClient).Name;
 	string dataTableClassName = GetUserDefinedDataTableClassName(Schema.TableName);
 	string dataRowClassName = GetUserDefinedDataRowClassName(Schema.TableName);
 	var columns = Schema.Columns.OfType<DataColumn>().ToList();
@@ -68,7 +69,7 @@ public partial class <#= dataTableClassName #> : global::System.Data.TypedTableB
 
 	private void InitClass()
 	{
-		var columns = DboDemoTableTypeUserDefinedDataTable.CreateColumnsArray();
+		var columns = <#= dataTableClassName #>.CreateColumnsArray();
 		foreach (var column in columns) { this.Columns.Add(column); } 
 		this.Constraints.Clear(); <# foreach(var dc in uniqueConstraints){ int indx = uniqueConstraints.IndexOf(dc); #> 
 		this.Constraints.Add(new global::System.Data.UniqueConstraint("<#= "UniqueConstraint_" + indx.ToString() #>", 
@@ -111,8 +112,8 @@ public partial class <#= dataRowClassName #> : global::System.Data.DataRow
 	[global::System.ComponentModel.DataAnnotations.Schema.Column("<#= column.ColumnName #>", Order = <#= column.Ordinal #>)]
 	public <#= propertyType #> <#= propertyName #>
 	{
-		get { return <#= SqlDbClientClassName #>.ToClrValue<<#= propertyType #>>(this[<#= i #>]); }
-		set { this[<#= i #>] = <#= SqlDbClientClassName #>.ToSqlValue(value); }
+		get { return <#= utilsClassName #>.ToClrValue<<#= propertyType #>>(this[<#= i #>]); }
+		set { this[<#= i #>] = <#= utilsClassName #>.ToSqlValue(value); }
 	}
 	<# } #> 
 }

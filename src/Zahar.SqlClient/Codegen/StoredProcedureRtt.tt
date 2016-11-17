@@ -6,6 +6,7 @@
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#
+	string utilsClassName = typeof(SqlDbClient).Name;
 	string factoryClassName = GetStoredProcedureComponentFactoryClassName(Procedure.FullName);		
 	var adapterClassNames = Procedure.ResultSchemas.Select(tbl=> GetStoredProcedureReaderAdapterClassName(Procedure.FullName, Procedure.GetResultOrdinal(tbl))).ToList();
 	var parameters = Procedure.Parameters.ToList();
@@ -268,7 +269,7 @@ public partial struct <#= outputValuesClassName #>
 	/// 
 	/// </summary>
 	[<#= SqlParameterAttribute #>(<#= ordinal #>,"<#= csParameterName #>", global::System.Data.SqlDbType.<#= p.SqlDbType #>, global::System.Data.ParameterDirection.<#= p.Direction #>)]
-	public <#= typeName #> <#= propertyName #> => <#= SqlDbClientClassName #>.ToClrValue<<#= typeName #>>(m_command.Parameters["<#= p.ParameterName #>"].Value);
+	public <#= typeName #> <#= propertyName #> => <#= utilsClassName #>.ToClrValue<<#= typeName #>>(m_command.Parameters["<#= p.ParameterName #>"].Value);
 	<# } #> 
 }
 <# } #>
@@ -319,6 +320,6 @@ public partial struct <#= className #>
 	/// <summary>
 	/// 
 	/// </summary>
-	public <#= propertyDataType #> <#= propertyName #> => <#= SqlDbClientClassName #>.ToClrValue<<#= propertyDataType #>>(InnerReader[<#= ordinal #>]); <# } #> 
+	public <#= propertyDataType #> <#= propertyName #> => <#= utilsClassName #>.ToClrValue<<#= propertyDataType #>>(InnerReader[<#= ordinal #>]); <# } #> 
 }
 <# } #>

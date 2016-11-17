@@ -27,6 +27,7 @@ namespace Zahar.SqlClient.Codegen
         public override string TransformText()
         {
   
+	string utilsClassName = typeof(SqlDbClient).Name;
 	string dataTableClassName = GetUserDefinedDataTableClassName(Schema.TableName);
 	string dataRowClassName = GetUserDefinedDataRowClassName(Schema.TableName);
 	var columns = Schema.Columns.OfType<DataColumn>().ToList();
@@ -150,9 +151,10 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
             this.Write(" ");
  } 
-            this.Write("  \r\n\r\n\t\treturn columns;\r\n\t}\r\n\r\n\tprivate void InitClass()\r\n\t{\r\n\t\tvar columns = Dbo" +
-                    "DemoTableTypeUserDefinedDataTable.CreateColumnsArray();\r\n\t\tforeach (var column i" +
-                    "n columns) { this.Columns.Add(column); } \r\n\t\tthis.Constraints.Clear(); ");
+            this.Write("  \r\n\r\n\t\treturn columns;\r\n\t}\r\n\r\n\tprivate void InitClass()\r\n\t{\r\n\t\tvar columns = ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(dataTableClassName));
+            this.Write(".CreateColumnsArray();\r\n\t\tforeach (var column in columns) { this.Columns.Add(colu" +
+                    "mn); } \r\n\t\tthis.Constraints.Clear(); ");
  foreach(var dc in uniqueConstraints){ int indx = uniqueConstraints.IndexOf(dc); 
             this.Write(" \r\n\t\tthis.Constraints.Add(new global::System.Data.UniqueConstraint(\"");
             this.Write(this.ToStringHelper.ToStringWithCulture("UniqueConstraint_" + indx.ToString()));
@@ -218,7 +220,7 @@ namespace Zahar.SqlClient.Codegen
             this.Write(" ");
             this.Write(this.ToStringHelper.ToStringWithCulture(propertyName));
             this.Write("\r\n\t{\r\n\t\tget { return ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(SqlDbClientClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(utilsClassName));
             this.Write(".ToClrValue<");
             this.Write(this.ToStringHelper.ToStringWithCulture(propertyType));
             this.Write(">(this[");
@@ -226,7 +228,7 @@ namespace Zahar.SqlClient.Codegen
             this.Write("]); }\r\n\t\tset { this[");
             this.Write(this.ToStringHelper.ToStringWithCulture(i));
             this.Write("] = ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(SqlDbClientClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(utilsClassName));
             this.Write(".ToSqlValue(value); }\r\n\t}\r\n\t");
  } 
             this.Write(" \r\n}\r\n");

@@ -1,0 +1,46 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="$(TargetDir)Zahar.SqlClient.dll" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="Zahar.SqlClient" #>
+<#@ import namespace="Zahar.SqlClient.Codegen" #>
+<#@ import namespace="Zahar.SqlClient.Projection" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".generated.cs" #><# 
+	var connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Zahar;Integrated Security=True;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+	var mappingFile = "Zahar.xml";
+	
+	var templates = new List<IRuntimeTextTemplate>();
+	try
+	{
+		mappingFile = Host.ResolvePath(mappingFile);
+		var diagnosticsCallback = RelayDiagnosticsCallback.FromT4(this);
+		var projection = ProjectionBuilder.Build(diagnosticsCallback, mappingFile,connectionString);
+		var formatInfo = new CustomFormatInfo();
+		var templateFactory = new RuntimeTextTemplateFactory(projection, diagnosticsCallback, formatInfo);
+		templates.AddRange(templateFactory.CreateStoredProcedureRtts());
+		templates.AddRange(templateFactory.CreateUserDefinedTableRtts());
+		templates.Add(templateFactory.CreateCommonRtt());
+	}
+	catch(Zahar.SqlClient.ProcessingCancelledException ex)
+	{
+		this.PushIndent("//\t");
+		this.WriteLine(ex.ToString());
+		return this.GenerationEnvironment.ToString();
+	}
+
+ #>
+namespace Zahar
+{<# 
+	foreach(var rtt in templates)
+	{
+	   rtt.PushIndent("\t");
+		this.WriteLine(rtt.TransformText());
+   } #> 	
+}<#+ 
+	sealed class CustomFormatInfo : Zahar.SqlClient.Codegen.FormatInfo
+	{
+		public override string SqlDbClientClassName { get { return "Zahar"; } }
+	} 
+#>

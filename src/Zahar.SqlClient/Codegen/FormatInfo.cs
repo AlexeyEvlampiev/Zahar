@@ -6,7 +6,7 @@
     using System.Diagnostics;
     using System.Text.RegularExpressions;
 
-    public class FormatInfo : IFormatInfo
+    public abstract class FormatInfo : IFormatInfo
     {
         #region Private Fields        
         readonly Dictionary<Type, string> m_csTypeAliases = new Dictionary<Type, string>();
@@ -52,7 +52,7 @@
         
         public virtual string FieldPrefix => "m_";
 
-        public string SqlDbClientClassName => typeof(SqlDbClient).Name;
+        public abstract string SqlDbClientClassName { get; }
 
         [DebuggerStepThrough]
         private DbObjectInfo GetDbObjectInfo(string fullName)

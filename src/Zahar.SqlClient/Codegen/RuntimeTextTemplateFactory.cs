@@ -33,6 +33,12 @@
             return new CommonRtt(m_diagnosticsCallback, m_formatInfo);
         }
 
+        public IRuntimeTextTemplate CreateDbClientRtt()
+        {
+            var spFullNames = m_projection.Procedures.Select(sp=> sp.FullName);
+            return new DbClientRtt(spFullNames, m_diagnosticsCallback, m_formatInfo);
+        }
+
         public IEnumerable<IRuntimeTextTemplate> CreateUserDefinedTableRtts()
         {
             return m_projection.UserDefinedTableTypes
@@ -45,7 +51,7 @@
             return m_projection.Procedures
                 .OrderBy(sp => sp.FullName)
                 .Select(sp => new StoredProcedureRtt(sp, m_diagnosticsCallback, m_formatInfo));
-        }
+        }        
     }
 
     public partial class UserDefinedTableTypeRtt
@@ -74,6 +80,21 @@
             : base(diagnosticsCallback, formatInfo)
         {
             Procedure = procedureInfo;
+        }
+    }
+
+    public partial class DbClientRtt
+    {
+        readonly IReadOnlyList<string> SpFullNames;
+
+        public DbClientRtt(IEnumerable<string> spFullNames, 
+                IDiagnosticsCallback diagnosticsCallback, 
+                IFormatInfo formatInfo)
+            : base(diagnosticsCallback, formatInfo)
+        {
+            if (ReferenceEquals(spFullNames, null))
+                throw new ArgumentNullException(nameof(spFullNames));
+            SpFullNames = spFullNames.OrderBy(fn=> fn, StringComparer.Ordinal).ToList();
         }
     }
 }

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns="Zahar.SqlClient.Mapping">
+  <Procedures>
+    <Add Schema="dbo" Name="uspEcho01"/>
+  </Procedures>
+</Mapping>

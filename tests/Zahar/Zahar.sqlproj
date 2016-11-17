@@ -63,4 +63,7 @@
     <Build Include="dbo\Udtt01.sql" />
     <Build Include="dbo\uspEcho01.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Zahar.sql-express.publish.publish.xml" />
+  </ItemGroup>
 </Project>

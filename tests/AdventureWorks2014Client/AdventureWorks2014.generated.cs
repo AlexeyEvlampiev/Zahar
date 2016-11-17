@@ -1,5 +1,90 @@
-﻿namespace Demo
-{	 
+﻿namespace AdventureWorks2014Client
+{	
+	/// <summary>
+	/// 
+	/// </summary>
+	public sealed class Client : SqlDbClient
+	{
+		/// <summary>
+	    /// 
+	    /// </summary>
+		public Client(string connectionString)
+			: base(connectionString)
+		{
+			
+		} 
+	
+		/// <summary>
+	    /// Creates a new instance of the [HumanResources].[uspUpdateEmployeeHireInfo] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public HumanResourcesUspUpdateEmployeeHireInfoComponentFactory CreateHumanResourcesUspUpdateEmployeeHireInfoComponentFactory() { return new HumanResourcesUspUpdateEmployeeHireInfoComponentFactory(); }  
+	
+		/// <summary>
+	    /// Creates a new instance of the [HumanResources].[uspUpdateEmployeeLogin] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public HumanResourcesUspUpdateEmployeeLoginComponentFactory CreateHumanResourcesUspUpdateEmployeeLoginComponentFactory() { return new HumanResourcesUspUpdateEmployeeLoginComponentFactory(); }  
+	
+		/// <summary>
+	    /// Creates a new instance of the [HumanResources].[uspUpdateEmployeePersonalInfo] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public HumanResourcesUspUpdateEmployeePersonalInfoComponentFactory CreateHumanResourcesUspUpdateEmployeePersonalInfoComponentFactory() { return new HumanResourcesUspUpdateEmployeePersonalInfoComponentFactory(); }  
+	
+		/// <summary>
+	    /// Creates a new instance of the [dbo].[uspGetBillOfMaterials] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public DboUspGetBillOfMaterialsComponentFactory CreateDboUspGetBillOfMaterialsComponentFactory() { return new DboUspGetBillOfMaterialsComponentFactory(); }  
+	
+		/// <summary>
+	    /// Creates a new instance of the [dbo].[uspGetEmployeeManagers] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public DboUspGetEmployeeManagersComponentFactory CreateDboUspGetEmployeeManagersComponentFactory() { return new DboUspGetEmployeeManagersComponentFactory(); }  
+	
+		/// <summary>
+	    /// Creates a new instance of the [dbo].[uspGetManagerEmployees] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public DboUspGetManagerEmployeesComponentFactory CreateDboUspGetManagerEmployeesComponentFactory() { return new DboUspGetManagerEmployeesComponentFactory(); }  
+	
+		/// <summary>
+	    /// Creates a new instance of the [dbo].[uspGetWhereUsedProductID] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public DboUspGetWhereUsedProductIDComponentFactory CreateDboUspGetWhereUsedProductIDComponentFactory() { return new DboUspGetWhereUsedProductIDComponentFactory(); }  
+	
+		/// <summary>
+	    /// Creates a new instance of the [dbo].[uspLogError] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public DboUspLogErrorComponentFactory CreateDboUspLogErrorComponentFactory() { return new DboUspLogErrorComponentFactory(); }  
+	
+		/// <summary>
+	    /// Creates a new instance of the [dbo].[uspPrintError] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public DboUspPrintErrorComponentFactory CreateDboUspPrintErrorComponentFactory() { return new DboUspPrintErrorComponentFactory(); }  
+	
+		/// <summary>
+	    /// Creates a new instance of the [dbo].[uspSearchCandidateResumes] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public DboUspSearchCandidateResumesComponentFactory CreateDboUspSearchCandidateResumesComponentFactory() { return new DboUspSearchCandidateResumesComponentFactory(); }  
+	}
+	 
 	
 	
 	/// <summary>
@@ -2378,7 +2463,7 @@
 
         public bool CloseSession()
         {
-            if ((Connection.State & global::System.Data.ConnectionState.Closed) == global::System.Data.ConnectionState.Closed)
+            if ((Connection.State | global::System.Data.ConnectionState.Closed) != global::System.Data.ConnectionState.Closed)
                 return false;
             Connection.Close();
             return true;
@@ -2386,7 +2471,7 @@
 
         public global::System.IDisposable OpenSession()
         {
-            if ((Connection.State & global::System.Data.ConnectionState.Closed) == global::System.Data.ConnectionState.Closed)
+            if ((Connection.State | global::System.Data.ConnectionState.Closed) == global::System.Data.ConnectionState.Closed)
             {
                 Connection.Open();
                 return Disposable.Create(Connection.Close);
@@ -2404,6 +2489,179 @@
             }
 
             return Disposable.Null;
+        }
+
+        public int ExecuteNonQuery(global::System.Data.SqlClient.SqlCommand command)
+        {
+            using (OpenSession())
+            {
+                var initialState = new SqlCommandState(command);
+                try
+                {
+                    command.Connection = this.Connection;
+                    //if (m_transactions.Count > 0)
+                    //    command.Transaction = m_transactions.Peek();
+                    return command.ExecuteNonQuery();
+                }
+                finally
+                {
+                    initialState.ApplyTo(command);
+                }
+            }
+        }
+
+        public async global::System.Threading.Tasks.Task<int> ExecuteNonQueryAsync(
+            global::System.Data.SqlClient.SqlCommand command, 
+            global::System.Threading.CancellationToken token)
+        {
+            using (await OpenSessionAsync(token))
+            {
+                var initialState = new SqlCommandState(command);
+                try
+                {
+                    //command.Connection = this.m_connection;
+                    //if (m_transactions.Count > 0)
+                    //    command.Transaction = m_transactions.Peek();
+                    return await command.ExecuteNonQueryAsync(token);
+                }
+                finally
+                {
+                    initialState.ApplyTo(command);
+                }
+            }
+        }
+
+        public object ExecuteScalar(global::System.Data.SqlClient.SqlCommand command)
+        {
+            using (OpenSession())
+            {
+                var initialState = new SqlCommandState(command);
+                try
+                {
+                    command.Connection = this.Connection;
+                    //if (m_transactions.Count > 0)
+                    //    command.Transaction = m_transactions.Peek();
+                    return command.ExecuteScalar();
+                }
+                finally
+                {
+                    initialState.ApplyTo(command);
+                }
+            }
+        }
+
+        public async global::System.Threading.Tasks.Task<object> ExecuteScalarAsync(
+            global::System.Data.SqlClient.SqlCommand command, 
+            global::System.Threading.CancellationToken token)
+        {
+            using (await OpenSessionAsync(token))
+            {
+                var initialState = new SqlCommandState(command);
+                try
+                {
+                    command.Connection = this.Connection;
+                    //if (m_transactions.Count > 0)
+                    //    command.Transaction = m_transactions.Peek();
+                    return await command.ExecuteScalarAsync(token);
+                }
+                finally
+                {
+                    initialState.ApplyTo(command);
+                }
+            }
+        }
+
+        public global::System.Data.SqlClient.SqlDataReader ExecuteReader(
+            global::System.Data.SqlClient.SqlCommand command,
+            global::System.Data.CommandBehavior commandBehavior = global::System.Data.CommandBehavior.Default)
+        {
+            commandBehavior = commandBehavior & ~global::System.Data.CommandBehavior.CloseConnection;
+            StatementCompletedHandler manager = null;
+            global::System.IDisposable session = null;
+            var initialState = new SqlCommandState(command);
+            try
+            {
+                session = OpenSession();
+                manager = new StatementCompletedHandler(command, session, initialState);
+                command.Connection = Connection;
+                //if (m_transactions.Count > 0)
+                //    command.Transaction = m_transactions.Peek();
+                return command.ExecuteReader(commandBehavior);
+            }
+            catch
+            {
+                session?.Dispose();
+                manager?.Dispose();
+                initialState.ApplyTo(command);
+                throw;
+            }
+        }
+
+        public async global::System.Threading.Tasks.Task<global::System.Data.SqlClient.SqlDataReader> ExecuteReaderAsync(
+            global::System.Data.SqlClient.SqlCommand command,
+            global::System.Threading.CancellationToken token, 
+            global::System.Data.CommandBehavior commandBehavior = global::System.Data.CommandBehavior.Default)
+        {
+            commandBehavior = commandBehavior & ~global::System.Data.CommandBehavior.CloseConnection;
+            StatementCompletedHandler handler = null;
+            global::System.IDisposable session = null;
+            var initialState = new SqlCommandState(command);
+            try
+            {
+                session = await OpenSessionAsync(token);
+                handler = new StatementCompletedHandler(command, session, initialState);
+                command.Connection = Connection;
+                //if (m_transactions.Count > 0)
+                //    command.Transaction = m_transactions.Peek();
+                return await command.ExecuteReaderAsync(commandBehavior);
+            }
+            catch
+            {
+                session?.Dispose();
+                handler?.Dispose();
+                initialState.ApplyTo(command);
+                throw;
+            }
+        }
+
+        public global::System.Xml.XmlReader ExecuteXmlReader(global::System.Data.SqlClient.SqlCommand command)
+        {
+            using (OpenSession())
+            {
+                var initialState = new SqlCommandState(command);
+                try
+                {
+                    command.Connection = this.Connection;
+                    //if (m_transactions.Count > 0)
+                    //    command.Transaction = m_transactions.Peek();
+                    return command.ExecuteXmlReader();
+                }
+                finally
+                {
+                    initialState.ApplyTo(command);
+                }
+            }
+        }
+
+        public async global::System.Threading.Tasks.Task<global::System.Xml.XmlReader> ExecuteXmlReaderAsync(
+            global::System.Data.SqlClient.SqlCommand command,
+            global::System.Threading.CancellationToken token)
+        {
+            using (await OpenSessionAsync(token))
+            {
+                var initialState = new SqlCommandState(command);
+                try
+                {
+                    command.Connection = Connection;
+                    //if (m_transactions.Count > 0)
+                    //    command.Transaction = m_transactions.Peek();
+                    return await command.ExecuteXmlReaderAsync(token);
+                }
+                finally
+                {
+                    initialState.ApplyTo(command);
+                }
+            }
         }
 
         /// <summary>

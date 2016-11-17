@@ -19,6 +19,7 @@
 		var projection = ProjectionBuilder.Build(diagnosticsCallback, mappingFile,connectionString);
 		var formatInfo = new CustomFormatInfo();
 		var templateFactory = new RuntimeTextTemplateFactory(projection, diagnosticsCallback, formatInfo);
+		templates.Add(templateFactory.CreateDbClientRtt());
 		templates.AddRange(templateFactory.CreateStoredProcedureRtts());
 		templates.AddRange(templateFactory.CreateUserDefinedTableRtts());
 		templates.Add(templateFactory.CreateCommonRtt());
@@ -31,7 +32,7 @@
 	}
 
  #>
-namespace Demo
+namespace AdventureWorks2014Client
 {<# 
 	foreach(var rtt in templates)
 	{
@@ -41,7 +42,7 @@ namespace Demo
 }<#+ 
 	sealed class CustomFormatInfo : Zahar.SqlClient.Codegen.FormatInfo
 	{
-		//public override string FrameworkUtilitiesClassName { get { return "TransactionScriptUtils"; } }
+		public override string SqlDbClientClassName { get { return "Client"; } }
 		//public override string SuperFactoryClassName { get { return "NorthwindSuperFactory"; } }
 	} 
 #>

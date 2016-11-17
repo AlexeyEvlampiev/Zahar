@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{90C846D7-5B19-43C0-B268-7D148303CBAC}</ProjectGuid>
+    <ProjectGuid>{A2968F88-5A70-4D08-A26A-966ED5265EE6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Zahar.SqlClient</RootNamespace>
-    <AssemblyName>IntegrationTests.Zahar.SqlClient</AssemblyName>
+    <RootNamespace>IntegrationTests.AdventureWorks2014Client</RootNamespace>
+    <AssemblyName>IntegrationTests.AdventureWorks2014Client</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -59,32 +59,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdventureWorks2014ClientTest.cs" />
-    <Compile Include="Catalog\CatalogReader_ReadAsync_Should.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="Projection\ProjectionBuilder_BuildAsync_Should.cs" />
+    <Compile Include="AdventureWorks2014_CreateDboUspGetBillOfMaterials_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Zahar.SqlClient\Zahar.SqlClient.csproj">
-      <Project>{d3844458-798b-4fb8-a040-40f76ec99a48}</Project>
-      <Name>Zahar.SqlClient</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+    <ProjectReference Include="..\AdventureWorks2014Client\AdventureWorks2014Client.csproj">
+      <Project>{21D11182-05EA-4EE5-9C90-DE5B4A5750D8}</Project>
+      <Name>AdventureWorks2014Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IntegrationTests.Zahar.SqlClient\IntegrationTests.Zahar.SqlClient.csproj">
+      <Project>{90C846D7-5B19-43C0-B268-7D148303CBAC}</Project>
+      <Name>IntegrationTests.Zahar.SqlClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdventureWorks2014.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Zahar.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

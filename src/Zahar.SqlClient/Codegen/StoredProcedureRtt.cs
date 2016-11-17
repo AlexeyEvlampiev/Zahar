@@ -28,6 +28,7 @@ namespace Zahar.SqlClient.Codegen
         public override string TransformText()
         {
 
+	string utilsClassName = typeof(SqlDbClient).Name;
 	string factoryClassName = GetStoredProcedureComponentFactoryClassName(Procedure.FullName);		
 	var adapterClassNames = Procedure.ResultSchemas.Select(tbl=> GetStoredProcedureReaderAdapterClassName(Procedure.FullName, Procedure.GetResultOrdinal(tbl))).ToList();
 	var parameters = Procedure.Parameters.ToList();
@@ -350,7 +351,7 @@ namespace Zahar.SqlClient.Codegen
             this.Write(" ");
             this.Write(this.ToStringHelper.ToStringWithCulture(propertyName));
             this.Write(" => ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(SqlDbClientClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(utilsClassName));
             this.Write(".ToClrValue<");
             this.Write(this.ToStringHelper.ToStringWithCulture(typeName));
             this.Write(">(m_command.Parameters[\"");
@@ -407,7 +408,7 @@ namespace Zahar.SqlClient.Codegen
             this.Write(" ");
             this.Write(this.ToStringHelper.ToStringWithCulture(propertyName));
             this.Write(" => ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(SqlDbClientClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(utilsClassName));
             this.Write(".ToClrValue<");
             this.Write(this.ToStringHelper.ToStringWithCulture(propertyDataType));
             this.Write(">(InnerReader[");
