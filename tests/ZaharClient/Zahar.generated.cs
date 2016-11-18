@@ -884,6 +884,11 @@
     /// </summary>
     public class SqlDbClient
     {
+        #region Private Fields
+        readonly global::System.Collections.Generic.Stack<global::System.Data.SqlClient.SqlTransaction>
+            m_transactions = new global::System.Collections.Generic.Stack<global::System.Data.SqlClient.SqlTransaction>(); 
+        #endregion
+
         #region Nested Types
         struct SqlCommandState
         {
@@ -1151,6 +1156,38 @@
         }
 
         /// <summary>
+        /// Starts a database transaction.
+        /// </summary>
+        /// <exception cref="global::System.Data.SqlClient.SqlException">Parallel transactions are not allowed when using Multiple Active Result Sets (MARS).</exception>
+        /// <exception cref="global::System.InvalidOperationException">Parallel transactions are not supported.</exception>
+        public ISqlTransaction BeginTransaction()
+        {
+            return new SqlTransactionWrapper(this.Connection.BeginTransaction(), m_transactions);
+        }
+
+        /// <summary>
+        /// Starts a database transaction with the specified isolation level.
+        /// </summary>
+        /// <param name="iso">The isolation level under which the transaction should run.</param>
+        /// <exception cref="global::System.Data.SqlClient.SqlException">Parallel transactions are not allowed when using Multiple Active Result Sets (MARS).</exception>
+        /// <exception cref="global::System.InvalidOperationException">Parallel transactions are not supported.</exception>
+        public ISqlTransaction BeginTransaction(global::System.Data.IsolationLevel iso)
+        {
+            return new SqlTransactionWrapper(this.Connection.BeginTransaction(iso), m_transactions);
+        }
+
+        /// <summary>
+        /// Starts a database transaction with the specified transaction name.
+        /// </summary>
+        /// <param name="transactionName">The name of the transaction..</param>
+        /// <exception cref="global::System.Data.SqlClient.SqlException">Parallel transactions are not allowed when using Multiple Active Result Sets (MARS).</exception>
+        /// <exception cref="global::System.InvalidOperationException">Parallel transactions are not supported.</exception>
+        public ISqlTransaction BeginTransaction(string transactionName)
+        {
+            return new SqlTransactionWrapper(this.Connection.BeginTransaction(transactionName), m_transactions);
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         public static T ToClrValue<T>(object value)
@@ -1240,6 +1277,143 @@
         public global::System.Data.ParameterDirection Direction { get; }
 
         public int? Size { get; }
+    }
+
+
+    /// <summary>
+    /// Represents a Transact-SQL transaction to be made in a SQL Server database.
+    /// </summary>
+    public interface ISqlTransaction : global::System.IDisposable
+    {
+        /// <summary>
+        /// Gets the isolation level for this transaction.
+        /// </summary>
+        global::System.Data.IsolationLevel IsolationLevel { get; }
+
+        /// <summary>
+        /// Commits the database transaction.
+        /// </summary>
+        /// <exception cref="global::System.Exception">An error occurred while trying to commit the transaction.</exception>
+        /// <exception cref="global::System.InvalidOperationException">The transaction has already been committed or rolled back or 
+        /// the connection is broken.</exception>
+        void Commit();
+
+        /// <summary>
+        /// Rolls back a transaction from a pending state.
+        /// </summary>
+        /// <exception cref="global::System.Exception">An error occurred while trying to rollback the transaction.</exception>
+        /// <exception cref="global::System.InvalidOperationException">The transaction has already been committed or rolled back or 
+        /// the connection is broken.</exception>
+        void Rollback();
+
+        /// <summary>
+        /// Rolls back a transaction from a pending state, and specifies the transaction or savepoint name.
+        /// </summary>
+        /// <param name="transactionName">The name of the transaction to roll back, or the savepoint to which to roll back.</param>
+        /// <exception cref="global::System.ArgumentException">No transaction name was specified.</exception>
+        /// <exception cref="global::System.InvalidOperationException">The transaction has already been committed or rolled back or 
+        /// the connection is broken.</exception>
+        void Rollback(string transactionName);
+
+        /// <summary>
+        /// Creates a savepoint in the transaction that can be used to roll back a part of the transaction, and specifies the savepoint name.
+        /// </summary>
+        /// <param name="savePointName">The name of the savepoint.</param>
+        /// <exception cref="global::System.Exception">An error occurred while trying to commit the transaction..</exception>
+        /// <exception cref="global::System.InvalidOperationException">The transaction has already been committed or rolled back or 
+        /// the connection is broken.</exception>
+        void Save(string savePointName);
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Zahar.SqlClient.ISqlTransaction" />
+    class SqlTransactionWrapper : ISqlTransaction
+    {
+        readonly global::System.Data.SqlClient.SqlTransaction m_innerTransaction;
+        readonly global::System.Collections.Generic.Stack<global::System.Data.SqlClient.SqlTransaction> m_stack;
+
+        public SqlTransactionWrapper(
+            global::System.Data.SqlClient.SqlTransaction innerTransaction,
+            global::System.Collections.Generic.Stack<global::System.Data.SqlClient.SqlTransaction> stack)
+        {
+            global::System.Diagnostics.Debug.Assert(innerTransaction != null);
+            global::System.Diagnostics.Debug.Assert(stack != null);
+            global::System.Diagnostics.Debug.Assert(stack.Peek() != innerTransaction);
+            m_innerTransaction = innerTransaction;
+            m_stack = stack;
+            m_stack.Push(innerTransaction);
+        }
+
+        public global::System.Data.IsolationLevel IsolationLevel => m_innerTransaction.IsolationLevel;
+
+        public void Commit()
+        {
+            try { }
+            finally {
+                while (m_stack.Count > 0)
+                {
+                    var transaction = m_stack.Pop();
+                    transaction.Commit();
+                    if (ReferenceEquals(m_innerTransaction, transaction))
+                        break;
+                }
+            }            
+        }
+
+        public void Dispose()
+        {
+            try { }
+            finally
+            {
+                while (m_stack.Count > 0)
+                {
+                    var transaction = m_stack.Pop();
+                    transaction.Dispose();
+                    if (ReferenceEquals(m_innerTransaction, transaction))
+                        break;
+                }
+            }
+        }
+
+        public void Rollback()
+        {
+            try { }
+            finally
+            {
+                while (m_stack.Count > 0)
+                {
+                    var transaction = m_stack.Pop();
+                    transaction.Rollback();
+                    if (ReferenceEquals(m_innerTransaction, transaction))
+                        break;
+                }
+            }
+        }
+
+        public void Rollback(string transactionName)
+        {
+            try { }
+            finally
+            {
+                while (m_stack.Count > 0)
+                {
+                    if (m_stack.Peek() == m_innerTransaction)
+                    {
+                        m_innerTransaction.Rollback(transactionName);
+                        break;
+                    }
+                    else { m_stack.Pop().Rollback(); }                    
+                }
+            }
+        }
+
+        public void Save(string savePointName)
+        {
+            m_innerTransaction.Save(savePointName);
+        }
     }
 
 

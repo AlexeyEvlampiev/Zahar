@@ -163,6 +163,30 @@ namespace Zahar.SqlClient {
         /// <summary>
         ///   Looks up a localized string similar to namespace Zahar.SqlClient
         ///{
+        ///    /// &lt;summary&gt;
+        ///    /// Represents a Transact-SQL transaction to be made in a SQL Server database.
+        ///    /// &lt;/summary&gt;
+        ///    public interface ISqlTransaction : System.IDisposable
+        ///    {
+        ///        /// &lt;summary&gt;
+        ///        /// Gets the isolation level for this transaction.
+        ///        /// &lt;/summary&gt;
+        ///        System.Data.IsolationLevel IsolationLevel { get; }
+        ///
+        ///        /// &lt;summary&gt;
+        ///        /// Commits the database transaction.
+        ///        /// &lt;/summary&gt;
+        ///        /// &lt;exception cref=&quot;S [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ISqlTransaction {
+            get {
+                return ResourceManager.GetString("ISqlTransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to namespace Zahar.SqlClient
+        ///{
         ///    public struct ReturnValueSqlCommandOutput
         ///    {
         ///        readonly System.Data.SqlClient.SqlParameter m_returnValueParameter;
@@ -185,7 +209,9 @@ namespace Zahar.SqlClient {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to namespace Zahar.SqlClient
+        ///   Looks up a localized string similar to using System.Data.SqlClient;
+        ///
+        ///namespace Zahar.SqlClient
         ///{
         ///    /// &lt;summary&gt;
         ///    /// 
@@ -201,7 +227,7 @@ namespace Zahar.SqlClient {
         ///            public SqlCommandState(System.Data.SqlClient.SqlCommand command)
         ///            {
         ///                Connection = command.Connection;
-        ///                Transaction = comman [rest of string was truncated]&quot;;.
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SqlDbClient {
             get {
@@ -216,19 +242,41 @@ namespace Zahar.SqlClient {
         ///    public sealed class SqlParameterAttribute : System.Attribute
         ///    {
         ///        public SqlParameterAttribute(
+        ///            int ordinal,
         ///            string parameterName, 
         ///            System.Data.SqlDbType sqlDbType, 
-        ///            System.Data.ParameterDirection parameterDirection)
+        ///            System.Data.ParameterDirection direction)
         ///        {
-        ///
-        ///        }
-        ///    }
-        ///}
-        ///.
+        ///            this.Ordinal = ordinal;
+        ///            this.ParameterName = parameterName;
+        ///            this.SqlDbType = sqlDbType;
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SqlParameterAttribute {
             get {
                 return ResourceManager.GetString("SqlParameterAttribute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to namespace Zahar.SqlClient
+        ///{
+        ///    /// &lt;summary&gt;
+        ///    /// 
+        ///    /// &lt;/summary&gt;
+        ///    /// &lt;seealso cref=&quot;Zahar.SqlClient.ISqlTransaction&quot; /&gt;
+        ///    class SqlTransactionWrapper : ISqlTransaction
+        ///    {
+        ///        readonly System.Data.SqlClient.SqlTransaction m_innerTransaction;
+        ///        readonly System.Collections.Generic.Stack&lt;System.Data.SqlClient.SqlTransaction&gt; m_stack;
+        ///
+        ///        public SqlTransactionWrapper(
+        ///            System.Data.SqlClient.SqlTransaction innerTransaction,
+        ///            System.Collections.Ge [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SqlTransactionWrapper {
+            get {
+                return ResourceManager.GetString("SqlTransactionWrapper", resourceCulture);
             }
         }
         

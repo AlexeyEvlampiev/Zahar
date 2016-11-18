@@ -16,7 +16,9 @@
                 Resources.Disposable,
                 Resources.SqlDbClient,
                 Resources.ReturnValueSqlCommandOutput,
-                Resources.SqlParameterAttribute
+                Resources.SqlParameterAttribute,
+                Resources.ISqlTransaction,
+                Resources.SqlTransactionWrapper
             };
 
             var sb = new StringBuilder();

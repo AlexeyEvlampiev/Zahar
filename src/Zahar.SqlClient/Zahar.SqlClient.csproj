@@ -79,6 +79,7 @@
     <Compile Include="DiagnosticsCallbackScope.cs" />
     <Compile Include="Disposable.cs" />
     <Compile Include="IDiagnosticsCallback.cs" />
+    <Compile Include="ISqlTransaction.cs" />
     <Compile Include="Mapping\MappingFileNotFoundException.cs" />
     <Compile Include="Mapping\Procedure.cs" />
     <Compile Include="Projection\Projection.cs" />
@@ -95,6 +96,7 @@
     </Compile>
     <Compile Include="SqlDbTypeInfo.cs" />
     <Compile Include="SqlParameterAttribute.cs" />
+    <Compile Include="SqlTransactionWrapper.cs" />
     <Compile Include="XmlValidationException.cs" />
     <Compile Include="ProcessingCancelledException.cs" />
     <Compile Include="ReturnValueSqlCommandOutput.cs" />

@@ -1,12 +1,15 @@
-﻿using System.Data.SqlClient;
-
-namespace Zahar.SqlClient
+﻿namespace Zahar.SqlClient
 {
     /// <summary>
     /// 
     /// </summary>
     public class SqlDbClient
     {
+        #region Private Fields
+        readonly System.Collections.Generic.Stack<System.Data.SqlClient.SqlTransaction>
+            m_transactions = new System.Collections.Generic.Stack<System.Data.SqlClient.SqlTransaction>(); 
+        #endregion
+
         #region Nested Types
         struct SqlCommandState
         {
@@ -96,8 +99,8 @@ namespace Zahar.SqlClient
                 try
                 {
                     command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
+                    if (m_transactions.Count > 0)
+                        command.Transaction = m_transactions.Peek();
                     return command.ExecuteNonQuery();
                 }
                 finally
@@ -116,9 +119,9 @@ namespace Zahar.SqlClient
                 var initialState = new SqlCommandState(command);
                 try
                 {
-                    //command.Connection = this.m_connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
+                    command.Connection = this.Connection;
+                    if (m_transactions.Count > 0)
+                        command.Transaction = m_transactions.Peek();
                     return await command.ExecuteNonQueryAsync(token);
                 }
                 finally
@@ -136,8 +139,8 @@ namespace Zahar.SqlClient
                 try
                 {
                     command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
+                    if (m_transactions.Count > 0)
+                        command.Transaction = m_transactions.Peek();
                     return command.ExecuteScalar();
                 }
                 finally
@@ -157,8 +160,8 @@ namespace Zahar.SqlClient
                 try
                 {
                     command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
+                    if (m_transactions.Count > 0)
+                        command.Transaction = m_transactions.Peek();
                     return await command.ExecuteScalarAsync(token);
                 }
                 finally
@@ -241,8 +244,8 @@ namespace Zahar.SqlClient
                 try
                 {
                     command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
+                    if (m_transactions.Count > 0)
+                        command.Transaction = m_transactions.Peek();
                     return command.ExecuteXmlReader();
                 }
                 finally
@@ -262,8 +265,8 @@ namespace Zahar.SqlClient
                 try
                 {
                     command.Connection = Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
+                    if (m_transactions.Count > 0)
+                        command.Transaction = m_transactions.Peek();
                     return await command.ExecuteXmlReaderAsync(token);
                 }
                 finally
@@ -271,6 +274,38 @@ namespace Zahar.SqlClient
                     initialState.ApplyTo(command);
                 }
             }
+        }
+
+        /// <summary>
+        /// Starts a database transaction.
+        /// </summary>
+        /// <exception cref="System.Data.SqlClient.SqlException">Parallel transactions are not allowed when using Multiple Active Result Sets (MARS).</exception>
+        /// <exception cref="System.InvalidOperationException">Parallel transactions are not supported.</exception>
+        public ISqlTransaction BeginTransaction()
+        {
+            return new SqlTransactionWrapper(this.Connection.BeginTransaction(), m_transactions);
+        }
+
+        /// <summary>
+        /// Starts a database transaction with the specified isolation level.
+        /// </summary>
+        /// <param name="iso">The isolation level under which the transaction should run.</param>
+        /// <exception cref="System.Data.SqlClient.SqlException">Parallel transactions are not allowed when using Multiple Active Result Sets (MARS).</exception>
+        /// <exception cref="System.InvalidOperationException">Parallel transactions are not supported.</exception>
+        public ISqlTransaction BeginTransaction(System.Data.IsolationLevel iso)
+        {
+            return new SqlTransactionWrapper(this.Connection.BeginTransaction(iso), m_transactions);
+        }
+
+        /// <summary>
+        /// Starts a database transaction with the specified transaction name.
+        /// </summary>
+        /// <param name="transactionName">The name of the transaction..</param>
+        /// <exception cref="System.Data.SqlClient.SqlException">Parallel transactions are not allowed when using Multiple Active Result Sets (MARS).</exception>
+        /// <exception cref="System.InvalidOperationException">Parallel transactions are not supported.</exception>
+        public ISqlTransaction BeginTransaction(string transactionName)
+        {
+            return new SqlTransactionWrapper(this.Connection.BeginTransaction(transactionName), m_transactions);
         }
 
         /// <summary>
