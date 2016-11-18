@@ -1,10 +1,6 @@
 ﻿namespace Zahar.SqlClient.Mapping
 {
-    using System;
-    using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     class MappingReader : IMappingReader
@@ -15,7 +11,7 @@
         public MappingReader(string filePath, IDiagnosticsCallback diagnosticsCallback)
         {
             m_filePath = filePath;
-            m_diagnosticsCallback = new DiagnosticsCallbackScope( diagnosticsCallback);
+            m_diagnosticsCallback = new DiagnosticsCallbackScope(diagnosticsCallback, $"{Path.GetFileName(filePath)} >");
         }
 
         public async Task<Mapping> ReadAsync()

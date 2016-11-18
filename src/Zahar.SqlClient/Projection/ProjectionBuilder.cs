@@ -3,10 +3,10 @@
     using Catalog;
     using Mapping;
     using System;
-    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Data.SqlClient;
     using System.Diagnostics;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -28,16 +28,22 @@
 
         public static async Task<Projection> BuildAsync(IDiagnosticsCallback diagnosticsCallback, string mappingFile, string connectionString)
         {
-            var diagnosticsCallbackScope = new DiagnosticsCallbackScope(diagnosticsCallback);
-            var catalogReader = new CatalogReader(connectionString, diagnosticsCallbackScope);
-            var mappingReader = new MappingReader(mappingFile, diagnosticsCallbackScope);
+            SqlConnection connection = null;
+            try { connection = new SqlConnection(connectionString); }
+            catch (InvalidOperationException){ throw new ConnectionStringFormatException(connectionString); }
+
+            var diagnosticsCallbackScope = new DiagnosticsCallbackScope(
+                    diagnosticsCallback,
+                    $"{Path.GetFileName(mappingFile)} <-> [{connection.DataSource}].[{connection.Database}] >");
+            var catalogReader = new CatalogReader(connectionString, diagnosticsCallback);
+            var mappingReader = new MappingReader(mappingFile, diagnosticsCallback);
             var modelReader = new ProjectionBuilder(catalogReader, mappingReader, diagnosticsCallbackScope);
             return await modelReader.BuildAsync();
         }
 
         [DebuggerStepThrough]
         public static Projection Build(IDiagnosticsCallback diagnosticsCallback, string mappingFile, string connectionString)
-        {
+        {            
             return ProjectionBuilder.BuildAsync(diagnosticsCallback, mappingFile, connectionString).GetAwaiter().GetResult();
         }
 

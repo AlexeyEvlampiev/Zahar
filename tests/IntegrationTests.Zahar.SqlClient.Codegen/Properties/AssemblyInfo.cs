@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("IntegrationTests.AdventureWorks2014Client")]
+[assembly: AssemblyTitle("IntegrationTests.Zahar.SqlClient.Codegen")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
-[assembly: AssemblyProduct("IntegrationTests.AdventureWorks2014Client")]
+[assembly: AssemblyProduct("IntegrationTests.Zahar.SqlClient.Codegen")]
 [assembly: AssemblyCopyright("Copyright © Microsoft Corporation 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a2968f88-5a70-4d08-a26a-966ed5265ee6")]
+[assembly: Guid("d22df00e-72b0-4ada-993b-0351398419a8")]
 
 // Version information for an assembly consists of the following four values:
 //

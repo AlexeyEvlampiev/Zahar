@@ -52,10 +52,6 @@
       <Project>{d3844458-798b-4fb8-a040-40f76ec99a48}</Project>
       <Name>Zahar.SqlClient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IntegrationTests.ZaharClient\IntegrationTests.ZaharClient.csproj">
-      <Project>{8ceb86bb-eaa8-4a5d-9926-90a389fa81be}</Project>
-      <Name>IntegrationTests.ZaharClient</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdventureWorks2014.tt">

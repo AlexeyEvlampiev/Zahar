@@ -37,6 +37,18 @@ public partial class <#= dataTableClassName #> : global::System.Data.TypedTableB
 		
 	}
 
+	public void Populate<T>(
+		System.Collections.Generic.IEnumerable<T> entities, 
+		System.Action<T, <#= dataRowClassName #>> initializeRow)
+	{
+		foreach(var entity in entities)
+		{
+			var row = this.NewRow();
+			initializeRow(entity, row);
+			this.Rows.Add(row);
+		}
+	}
+
 	[<#= DebuggerNonUserCodeAttribute #>]
 	[<#= GeneratedCodeAttribute #>]
 	public new <#= dataRowClassName #> NewRow() { return ((<#= dataRowClassName #>)(base.NewRow())); }

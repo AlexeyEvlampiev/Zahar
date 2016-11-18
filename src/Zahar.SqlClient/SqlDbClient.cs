@@ -1,4 +1,6 @@
-﻿namespace Zahar.SqlClient
+﻿using System.Data.SqlClient;
+
+namespace Zahar.SqlClient
 {
     /// <summary>
     /// 
@@ -21,47 +23,6 @@
             {
                 command.Connection = Connection;
                 command.Transaction = Transaction;
-            }
-        }
-
-        class StatementCompletedHandler : System.IDisposable
-        {
-            private System.Data.SqlClient.SqlCommand m_command;
-            private System.IDisposable m_session;
-            private SqlCommandState m_initialState;
-            private bool m_disposed;
-
-            public StatementCompletedHandler(System.Data.SqlClient.SqlCommand command, System.IDisposable session, SqlCommandState initialState)
-            {
-                m_command = command;
-                m_session = session;
-                m_initialState = initialState;
-                m_command.StatementCompleted += this.OnStatementCompleted;
-            }
-
-            private void OnStatementCompleted(object sender, System.Data.StatementCompletedEventArgs e)
-            {
-                this.Dispose();
-            }
-
-            public void Dispose()
-            {
-                if (m_disposed)
-                    return;
-
-                try
-                {
-                    m_command.StatementCompleted -= this.OnStatementCompleted;
-                    m_initialState.ApplyTo(m_command);
-                    m_session.Dispose();
-                    m_initialState = new SqlCommandState();
-                    m_session = null;
-                    m_command = null;
-                }
-                finally
-                {
-                    m_disposed = true;
-                }
             }
         }
 
@@ -211,25 +172,31 @@
             System.Data.SqlClient.SqlCommand command,
             System.Data.CommandBehavior commandBehavior = System.Data.CommandBehavior.Default)
         {
-            commandBehavior = commandBehavior & ~System.Data.CommandBehavior.CloseConnection;
-            StatementCompletedHandler manager = null;
-            System.IDisposable session = null;
             var initialState = new SqlCommandState(command);
+            bool autoOpen = Connection.State == System.Data.ConnectionState.Closed;
             try
             {
-                session = OpenSession();
-                manager = new StatementCompletedHandler(command, session, initialState);
                 command.Connection = Connection;
-                //if (m_transactions.Count > 0)
-                //    command.Transaction = m_transactions.Peek();
-                return command.ExecuteReader(commandBehavior);
+
+                if (autoOpen)
+                {
+                    Connection.Open();
+                    commandBehavior |= System.Data.CommandBehavior.CloseConnection;
+                }
+
+                var reader = command.ExecuteReader(commandBehavior);
+                return reader;
+
             }
             catch
             {
-                session?.Dispose();
-                manager?.Dispose();
-                initialState.ApplyTo(command);
+                if (autoOpen && Connection.State != System.Data.ConnectionState.Closed)
+                    Connection.Close();
                 throw;
+            }
+            finally
+            {
+                initialState.ApplyTo(command);
             }
         }
 
@@ -238,25 +205,31 @@
             System.Threading.CancellationToken token, 
             System.Data.CommandBehavior commandBehavior = System.Data.CommandBehavior.Default)
         {
-            commandBehavior = commandBehavior & ~System.Data.CommandBehavior.CloseConnection;
-            StatementCompletedHandler handler = null;
-            System.IDisposable session = null;
             var initialState = new SqlCommandState(command);
+            bool autoOpen = Connection.State == System.Data.ConnectionState.Closed;
             try
             {
-                session = await OpenSessionAsync(token);
-                handler = new StatementCompletedHandler(command, session, initialState);
                 command.Connection = Connection;
-                //if (m_transactions.Count > 0)
-                //    command.Transaction = m_transactions.Peek();
-                return await command.ExecuteReaderAsync(commandBehavior);
+
+                if (autoOpen)
+                {
+                    await Connection.OpenAsync();
+                    commandBehavior |= System.Data.CommandBehavior.CloseConnection;
+                }
+
+                var reader = command.ExecuteReader(commandBehavior);
+                return reader;
+
             }
             catch
             {
-                session?.Dispose();
-                handler?.Dispose();
-                initialState.ApplyTo(command);
+                if (autoOpen && Connection.State != System.Data.ConnectionState.Closed)
+                    Connection.Close();
                 throw;
+            }
+            finally
+            {
+                initialState.ApplyTo(command);
             }
         }
 

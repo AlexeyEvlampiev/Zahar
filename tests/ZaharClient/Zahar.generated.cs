@@ -1,5 +1,34 @@
 ﻿namespace Zahar
-{	 
+{	
+	/// <summary>
+	/// 
+	/// </summary>
+	public sealed class Client : SqlDbClient
+	{
+		/// <summary>
+	    /// 
+	    /// </summary>
+		public Client(string connectionString)
+			: base(connectionString)
+		{
+			
+		} 
+	
+		/// <summary>
+	    /// Creates a new instance of the [dbo].[uspEcho01] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public DboUspEcho01ComponentFactory CreateDboUspEcho01ComponentFactory() { return new DboUspEcho01ComponentFactory(); }  
+	
+		/// <summary>
+	    /// Creates a new instance of the [dbo].[uspSelectFromTemporaryTable] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public DboUspSelectFromTemporaryTableComponentFactory CreateDboUspSelectFromTemporaryTableComponentFactory() { return new DboUspSelectFromTemporaryTableComponentFactory(); }  
+	}
+	 
 	
 	
 	/// <summary>
@@ -12,7 +41,9 @@
 		#region Private Fields
 		 
 		[global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
-		private DboUdtt01UserDefinedDataTable m_udtt01;  
+		private DboUdtt01UserDefinedDataTable m_firstTableValueParam;  
+		[global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+		private DboUdtt02UserDefinedDataTable m_secondTableValueParam;  
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -26,11 +57,12 @@
 		static partial void OnInit();
 		static partial void OnCommandCreated(global::System.Data.SqlClient.SqlCommand command);
 		 
-		static partial void OnParam1ParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
-		static partial void OnParam2ParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
-		static partial void OnUdtt01ParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
-		static partial void OnOutput1ParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
-		static partial void OnOutput2ParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnFirstInputParameterParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnSecondInputParameterParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnFirstTableValueParamParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnFirstOutputParameterParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnSecondOutputParameterParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnSecondTableValueParamParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
 		#endregion
 	
 		/// <summary>
@@ -86,11 +118,12 @@
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
 			var parameters = CreateParametersArray(); 
-			parameters[1].Value = this.Param1;  
-			parameters[2].Value = this.Param2;  
-			parameters[3].Value = this.Udtt01;  
-			parameters[4].Value = this.Output1;  
-			parameters[5].Value = this.Output2;  
+			parameters[1].Value = this.FirstInputParameter;  
+			parameters[2].Value = this.SecondInputParameter;  
+			parameters[3].Value = this.FirstTableValueParam;  
+			parameters[4].Value = this.FirstOutputParameter;  
+			parameters[5].Value = this.SecondOutputParameter;  
+			parameters[6].Value = this.SecondTableValueParam;  
 			for (int i = 0; i < parameters.Length; ++i)
 			{
 				var parameter = parameters[i];
@@ -132,15 +165,16 @@
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? param1, int? param2, DboUdtt01UserDefinedDataTable udtt01, int? output1, int? output2)
+		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? firstInputParameter, int? secondInputParameter, DboUdtt01UserDefinedDataTable firstTableValueParam, int? firstOutputParameter, int? secondOutputParameter, DboUdtt02UserDefinedDataTable secondTableValueParam)
 		{
 			var builder = new DboUspEcho01ComponentFactory()		
 			{ 
-				Param1 = param1,  
-				Param2 = param2,  
-				Udtt01 = udtt01,  
-				Output1 = output1,  
-				Output2 = output2,  
+				FirstInputParameter = firstInputParameter,  
+				SecondInputParameter = secondInputParameter,  
+				FirstTableValueParam = firstTableValueParam,  
+				FirstOutputParameter = firstOutputParameter,  
+				SecondOutputParameter = secondOutputParameter,  
+				SecondTableValueParam = secondTableValueParam,  
 			};
 			
 			return builder.BuildCommand();
@@ -156,19 +190,21 @@
 			var parameters = new []
 			{ 
 				new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.ReturnValue}, 
-				new global::System.Data.SqlClient.SqlParameter("@param1", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
-				new global::System.Data.SqlClient.SqlParameter("@param2", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
-				new global::System.Data.SqlClient.SqlParameter("@udtt01", global::System.Data.SqlDbType.Structured){ Direction = global::System.Data.ParameterDirection.Input}, 
-				new global::System.Data.SqlClient.SqlParameter("@output1", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.InputOutput}, 
-				new global::System.Data.SqlClient.SqlParameter("@output2", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.InputOutput}, 
+				new global::System.Data.SqlClient.SqlParameter("@FirstInputParameter", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@SecondInputParameter", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@FirstTableValueParam", global::System.Data.SqlDbType.Structured){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@FirstOutputParameter", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.InputOutput}, 
+				new global::System.Data.SqlClient.SqlParameter("@SecondOutputParameter", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.InputOutput}, 
+				new global::System.Data.SqlClient.SqlParameter("@SecondTableValueParam", global::System.Data.SqlDbType.Structured){ Direction = global::System.Data.ParameterDirection.Input}, 
 			};
 	
 			 
-			OnParam1ParameterCreated(parameters[1]);  
-			OnParam2ParameterCreated(parameters[2]);  
-			OnUdtt01ParameterCreated(parameters[3]);  
-			OnOutput1ParameterCreated(parameters[4]);  
-			OnOutput2ParameterCreated(parameters[5]);  
+			OnFirstInputParameterParameterCreated(parameters[1]);  
+			OnSecondInputParameterParameterCreated(parameters[2]);  
+			OnFirstTableValueParamParameterCreated(parameters[3]);  
+			OnFirstOutputParameterParameterCreated(parameters[4]);  
+			OnSecondOutputParameterParameterCreated(parameters[5]);  
+			OnSecondTableValueParamParameterCreated(parameters[6]);  
 	
 			return parameters;
 		}
@@ -178,29 +214,29 @@
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		[SqlParameter(1,"param1", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
-		public int? Param1 { get; set; }
+		[SqlParameter(1,"FirstInputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? FirstInputParameter { get; set; }
 		/// <summary>
 		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		[SqlParameter(2,"param2", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
-		public int? Param2 { get; set; }
+		[SqlParameter(2,"SecondInputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? SecondInputParameter { get; set; }
 		/// <summary>
 		/// Parameter 4 (InputOutput).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		[SqlParameter(4,"output1", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
-		public int? Output1 { get; set; }
+		[SqlParameter(4,"FirstOutputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
+		public int? FirstOutputParameter { get; set; }
 		/// <summary>
 		/// Parameter 5 (InputOutput).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		[SqlParameter(5,"output2", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
-		public int? Output2 { get; set; }
+		[SqlParameter(5,"SecondOutputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
+		public int? SecondOutputParameter { get; set; }
 	
 	
 		/// <summary>
@@ -208,11 +244,22 @@
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		[SqlParameter(3,"udtt01", global::System.Data.SqlDbType.Structured, global::System.Data.ParameterDirection.Input)]
-		public DboUdtt01UserDefinedDataTable Udtt01
+		[SqlParameter(3,"FirstTableValueParam", global::System.Data.SqlDbType.Structured, global::System.Data.ParameterDirection.Input)]
+		public DboUdtt01UserDefinedDataTable FirstTableValueParam
 		{
-			get { return this.m_udtt01 ?? (this.m_udtt01 = new DboUdtt01UserDefinedDataTable()); }
-			set { this.m_udtt01 = value; }
+			get { return this.m_firstTableValueParam ?? (this.m_firstTableValueParam = new DboUdtt01UserDefinedDataTable()); }
+			set { this.m_firstTableValueParam = value; }
+		}
+		/// <summary>
+		/// Parameter 6
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(6,"SecondTableValueParam", global::System.Data.SqlDbType.Structured, global::System.Data.ParameterDirection.Input)]
+		public DboUdtt02UserDefinedDataTable SecondTableValueParam
+		{
+			get { return this.m_secondTableValueParam ?? (this.m_secondTableValueParam = new DboUdtt02UserDefinedDataTable()); }
+			set { this.m_secondTableValueParam = value; }
 		}
 		#endregion
 	}
@@ -229,8 +276,8 @@
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command)); 
 			global::System.Diagnostics.Debug.Assert(command.Parameters.Contains("@RETURN_VALUE"));  
-			global::System.Diagnostics.Debug.Assert(command.Parameters.Contains("@output1"));  
-			global::System.Diagnostics.Debug.Assert(command.Parameters.Contains("@output2")); 	
+			global::System.Diagnostics.Debug.Assert(command.Parameters.Contains("@FirstOutputParameter"));  
+			global::System.Diagnostics.Debug.Assert(command.Parameters.Contains("@SecondOutputParameter")); 	
 			global::System.Diagnostics.Debug.Assert("[dbo].[uspEcho01]".Equals(command.CommandText, global::System.StringComparison.OrdinalIgnoreCase));				
 			m_command = command;
 		}
@@ -245,14 +292,14 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		[SqlParameter(4,"output1", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
-		public int? Output1 => SqlDbClient.ToClrValue<int?>(m_command.Parameters["@output1"].Value);
+		[SqlParameter(4,"FirstOutputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
+		public int? FirstOutputParameter => SqlDbClient.ToClrValue<int?>(m_command.Parameters["@FirstOutputParameter"].Value);
 		 
 		/// <summary>
 		/// 
 		/// </summary>
-		[SqlParameter(5,"output2", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
-		public int? Output2 => SqlDbClient.ToClrValue<int?>(m_command.Parameters["@output2"].Value);
+		[SqlParameter(5,"SecondOutputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
+		public int? SecondOutputParameter => SqlDbClient.ToClrValue<int?>(m_command.Parameters["@SecondOutputParameter"].Value);
 		 
 	}
 	
@@ -295,11 +342,11 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Param1 => SqlDbClient.ToClrValue<int?>(InnerReader[0]);  
+		public int? Field1 => SqlDbClient.ToClrValue<int?>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Param2 => SqlDbClient.ToClrValue<int?>(InnerReader[1]);  
+		public int? Field2 => SqlDbClient.ToClrValue<int?>(InnerReader[1]);  
 	}
 	/// <summary>
 	/// [dbo].[uspEcho01] result[1]
@@ -324,6 +371,17 @@
 		/// </summary>
 		public bool Read() { return InnerReader.Read(); }  
 	
+		/// <summary>
+		/// 
+		/// </summary>
+		public DboUspEcho01SqlDataReaderAdapter3 NextResult() 
+		{ 
+			if(!InnerReader.NextResult())
+				throw new global::System.InvalidOperationException($"[dbo].[uspEcho01] > InnerReader.NextResult() returned false (next result number: 2).");
+			return new DboUspEcho01SqlDataReaderAdapter3(InnerReader); 
+		}
+		 
+	
 		 
 		/// <summary>
 		/// 
@@ -338,6 +396,208 @@
 		/// </summary>
 		public System.DateTime? Date => SqlDbClient.ToClrValue<System.DateTime?>(InnerReader[2]);  
 	}
+	/// <summary>
+	/// [dbo].[uspEcho01] result[2]
+	/// </summary>
+	public partial struct DboUspEcho01SqlDataReaderAdapter3
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		public global::System.Data.SqlClient.SqlDataReader InnerReader { get; }
+	
+		public DboUspEcho01SqlDataReaderAdapter3(
+			global::System.Data.SqlClient.SqlDataReader reader) : this()
+		{
+			if(ReferenceEquals(reader, null))
+				throw new global::System.ArgumentNullException(nameof(reader));
+			InnerReader = reader;
+		}
+	
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool Read() { return InnerReader.Read(); }  
+	
+		 
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? Id => SqlDbClient.ToClrValue<int?>(InnerReader[0]);  
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Name => SqlDbClient.ToClrValue<string>(InnerReader[1]);  
+	}
+
+	 
+	
+	
+	/// <summary>
+	/// [dbo].[uspSelectFromTemporaryTable] typed component factory.
+	/// </summary>
+	public partial class DboUspSelectFromTemporaryTableComponentFactory
+	{
+		public const string ProcedureName = "[dbo].[uspSelectFromTemporaryTable]";
+	
+		#region Private Fields
+		 
+		#endregion
+	
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public DboUspSelectFromTemporaryTableComponentFactory()
+		{
+			OnInit();
+		}
+	
+		#region Partial Methods
+		static partial void OnInit();
+		static partial void OnCommandCreated(global::System.Data.SqlClient.SqlCommand command);
+		 
+		static partial void OnParam1ParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnParam2ParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		#endregion
+	
+		/// <summary>
+		/// Creates new [dbo].[uspSelectFromTemporaryTable] -command pre-configured based on this factory object.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
+		{
+			if(ReferenceEquals(connection, null))
+				throw new global::System.ArgumentNullException(nameof(connection));
+			var command = this.BuildCommand();
+			command.Connection = connection;
+			return command;
+		}
+	
+		/// <summary>
+		/// Creates new [dbo].[uspSelectFromTemporaryTable] -command pre-configured based on this factory object.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
+		{
+			if(ReferenceEquals(transaction, null))
+				throw new global::System.ArgumentNullException(nameof(transaction));
+			if(ReferenceEquals(transaction.Connection, null))
+				throw new global::System.InvalidOperationException("transaction.Connection is null");
+			var command = this.BuildCommand();
+			command.Connection = transaction.Connection;
+			command.Transaction = transaction;
+			return command;
+		}
+	
+		/// <summary>
+		/// Creates new [dbo].[uspSelectFromTemporaryTable] -command pre-configured based on this factory object.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public global::System.Data.SqlClient.SqlCommand BuildCommand()
+		{
+			var command = new global::System.Data.SqlClient.SqlCommand();
+			this.BuildCommand(command);
+			return command;
+		}
+	
+		/// <summary>
+		/// Configures the given command object to execute the [dbo].[uspSelectFromTemporaryTable] -procedure.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		{
+			if(ReferenceEquals(command, null))
+				throw new global::System.ArgumentNullException(nameof(command));		
+			var parameters = CreateParametersArray(); 
+			parameters[1].Value = this.Param1;  
+			parameters[2].Value = this.Param2;  
+			for (int i = 0; i < parameters.Length; ++i)
+			{
+				var parameter = parameters[i];
+				if (parameter.Value == null)
+					parameter.Value = global::System.DBNull.Value;
+			}
+			command.CommandText = ProcedureName;
+			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
+			command.Parameters.Clear();
+			command.Parameters.AddRange(parameters);
+			OnCommandCreated(command);
+		}
+	
+		/// <summary>
+		/// Creates new [dbo].[uspSelectFromTemporaryTable] -command output values set
+		/// </summary>
+		/// <param name="command"></param>
+		/// <returns></returns>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
+		{			
+			return new ReturnValueSqlCommandOutput(command);
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? param1, int? param2)
+		{
+			var builder = new DboUspSelectFromTemporaryTableComponentFactory()		
+			{ 
+				Param1 = param1,  
+				Param2 = param2,  
+			};
+			
+			return builder.BuildCommand();
+		}
+	
+		/// <summary>
+		/// 
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
+		{
+			var parameters = new []
+			{ 
+				new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.ReturnValue}, 
+				new global::System.Data.SqlClient.SqlParameter("@param1", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@param2", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+			};
+	
+			 
+			OnParam1ParameterCreated(parameters[1]);  
+			OnParam2ParameterCreated(parameters[2]);  
+	
+			return parameters;
+		}
+		#region Sql Parameter Properties
+		/// <summary>
+		/// Parameter 1 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(1,"param1", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Param1 { get; set; }
+		/// <summary>
+		/// Parameter 2 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[SqlParameter(2,"param2", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Param2 { get; set; }
+	
+	
+		#endregion
+	}
+	
+	
+	
+	
 
 	
 	/// <summary>
@@ -362,6 +622,18 @@
 				base(info, context) 
 		{
 			
+		}
+	
+		public void Populate<T>(
+			System.Collections.Generic.IEnumerable<T> entities, 
+			System.Action<T, DboUdtt01UserDefinedDataTableRow> initializeRow)
+		{
+			foreach(var entity in entities)
+			{
+				var row = this.NewRow();
+				initializeRow(entity, row);
+				this.Rows.Add(row);
+			}
 		}
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -463,6 +735,117 @@
 		 
 	}
 
+	
+	/// <summary>
+	/// [dbo].[Udtt02] user defined tabletype.
+	/// </summary>	
+	[global::System.Serializable()]
+	public partial class DboUdtt02UserDefinedDataTable : global::System.Data.TypedTableBase<DboUdtt02UserDefinedDataTableRow>
+	{
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public DboUdtt02UserDefinedDataTable()
+		{
+			this.TableName = @"[dbo].[Udtt02]";
+			this.BeginInit();
+			this.InitClass();
+			this.EndInit();
+		}
+	
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		protected DboUdtt02UserDefinedDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+				base(info, context) 
+		{
+			
+		}
+	
+		public void Populate<T>(
+			System.Collections.Generic.IEnumerable<T> entities, 
+			System.Action<T, DboUdtt02UserDefinedDataTableRow> initializeRow)
+		{
+			foreach(var entity in entities)
+			{
+				var row = this.NewRow();
+				initializeRow(entity, row);
+				this.Rows.Add(row);
+			}
+		}
+	
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public new DboUdtt02UserDefinedDataTableRow NewRow() { return ((DboUdtt02UserDefinedDataTableRow)(base.NewRow())); }
+				
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) { return new DboUdtt02UserDefinedDataTableRow(builder); }
+				
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		protected override global::System.Type GetRowType() { return typeof(DboUdtt02UserDefinedDataTableRow); }
+	
+		public static global::System.Data.DataColumn[] CreateColumnsArray()
+		{
+			var columns = new global::System.Data.DataColumn[]{ 
+				new global::System.Data.DataColumn("Id", typeof(System.Int32), null, global::System.Data.MappingType.Element),  
+				new global::System.Data.DataColumn("Name", typeof(System.String), null, global::System.Data.MappingType.Element),  
+			};
+			  
+			columns[1].MaxLength = 128; // Name           
+	
+			return columns;
+		}
+	
+		private void InitClass()
+		{
+			var columns = DboUdtt02UserDefinedDataTable.CreateColumnsArray();
+			foreach (var column in columns) { this.Columns.Add(column); } 
+			this.Constraints.Clear();   
+		}
+	}
+	
+	/// <summary>
+	/// [dbo].[Udtt02] data row
+	/// </summary>		
+	public partial class DboUdtt02UserDefinedDataTableRow : global::System.Data.DataRow
+	{	
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		internal DboUdtt02UserDefinedDataTableRow(global::System.Data.DataRowBuilder rb) : base(rb) 
+		{
+		}
+	
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		public new DboUdtt02UserDefinedDataTable Table => (DboUdtt02UserDefinedDataTable)base.Table;
+	
+		 
+		/// <summary>
+	    /// Gets or sets the "Id" value.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")] 
+		[global::System.ComponentModel.DataAnnotations.Schema.Column("Id", Order = 0)]
+		public int? Id
+		{
+			get { return SqlDbClient.ToClrValue<int?>(this[0]); }
+			set { this[0] = SqlDbClient.ToSqlValue(value); }
+		}
+		 
+		/// <summary>
+	    /// Gets or sets the "Name" value.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")] 
+		[global::System.ComponentModel.DataAnnotations.Schema.Column("Name", Order = 1)]
+		public string Name
+		{
+			get { return SqlDbClient.ToClrValue<string>(this[1]); }
+			set { this[1] = SqlDbClient.ToSqlValue(value); }
+		}
+		 
+	}
+
     
     /// <summary>
     /// <see cref="global::System.IDisposable"/> factory.
@@ -520,51 +903,18 @@
             }
         }
 
-        class StatementCompletedHandler : global::System.IDisposable
-        {
-            private global::System.Data.SqlClient.SqlCommand m_command;
-            private global::System.IDisposable m_session;
-            private SqlCommandState m_initialState;
-            private bool m_disposed;
-
-            public StatementCompletedHandler(global::System.Data.SqlClient.SqlCommand command, global::System.IDisposable session, SqlCommandState initialState)
-            {
-                m_command = command;
-                m_session = session;
-                m_initialState = initialState;
-                m_command.StatementCompleted += this.OnStatementCompleted;
-            }
-
-            private void OnStatementCompleted(object sender, global::System.Data.StatementCompletedEventArgs e)
-            {
-                this.Dispose();
-            }
-
-            public void Dispose()
-            {
-                if (m_disposed)
-                    return;
-
-                try
-                {
-                    m_command.StatementCompleted -= this.OnStatementCompleted;
-                    m_initialState.ApplyTo(m_command);
-                    m_session.Dispose();
-                    m_initialState = new SqlCommandState();
-                    m_session = null;
-                    m_command = null;
-                }
-                finally
-                {
-                    m_disposed = true;
-                }
-            }
-        }
-
         #endregion
 
+        /// <summary>
+        /// Gets the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> object.
+        /// </summary>
         public global::System.Data.SqlClient.SqlConnection Connection { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SqlDbClient"/> class.
+        /// </summary>
+        /// <param name="connectionString">The connection string.</param>
+        /// <exception cref="global::System.ArgumentNullException">connectionString</exception>
         public SqlDbClient(string connectionString)
         {
             if (ReferenceEquals(connectionString, null))
@@ -572,6 +922,10 @@
             Connection = new global::System.Data.SqlClient.SqlConnection(connectionString);
         }
 
+        /// <summary>
+        /// Closes the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> object.
+        /// </summary>
+        /// <returns></returns>
         public bool CloseSession()
         {
             if ((Connection.State | global::System.Data.ConnectionState.Closed) != global::System.Data.ConnectionState.Closed)
@@ -580,6 +934,10 @@
             return true;
         }
 
+        /// <summary>
+        /// Opens the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> if not yet opened.
+        /// </summary>
+        /// <returns></returns>
         public global::System.IDisposable OpenSession()
         {
             if ((Connection.State | global::System.Data.ConnectionState.Closed) == global::System.Data.ConnectionState.Closed)
@@ -591,6 +949,11 @@
             return Disposable.Null;
         }
 
+        /// <summary>
+        /// Opens the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> asynchronously if not yet opened.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns></returns>
         public async global::System.Threading.Tasks.Task<global::System.IDisposable> OpenSessionAsync(global::System.Threading.CancellationToken token)
         {
             if ((Connection.State & global::System.Data.ConnectionState.Closed) == global::System.Data.ConnectionState.Closed)
@@ -686,25 +1049,31 @@
             global::System.Data.SqlClient.SqlCommand command,
             global::System.Data.CommandBehavior commandBehavior = global::System.Data.CommandBehavior.Default)
         {
-            commandBehavior = commandBehavior & ~global::System.Data.CommandBehavior.CloseConnection;
-            StatementCompletedHandler manager = null;
-            global::System.IDisposable session = null;
             var initialState = new SqlCommandState(command);
+            bool autoOpen = Connection.State == global::System.Data.ConnectionState.Closed;
             try
             {
-                session = OpenSession();
-                manager = new StatementCompletedHandler(command, session, initialState);
                 command.Connection = Connection;
-                //if (m_transactions.Count > 0)
-                //    command.Transaction = m_transactions.Peek();
-                return command.ExecuteReader(commandBehavior);
+
+                if (autoOpen)
+                {
+                    Connection.Open();
+                    commandBehavior |= global::System.Data.CommandBehavior.CloseConnection;
+                }
+
+                var reader = command.ExecuteReader(commandBehavior);
+                return reader;
+
             }
             catch
             {
-                session?.Dispose();
-                manager?.Dispose();
-                initialState.ApplyTo(command);
+                if (autoOpen && Connection.State != global::System.Data.ConnectionState.Closed)
+                    Connection.Close();
                 throw;
+            }
+            finally
+            {
+                initialState.ApplyTo(command);
             }
         }
 
@@ -713,25 +1082,31 @@
             global::System.Threading.CancellationToken token, 
             global::System.Data.CommandBehavior commandBehavior = global::System.Data.CommandBehavior.Default)
         {
-            commandBehavior = commandBehavior & ~global::System.Data.CommandBehavior.CloseConnection;
-            StatementCompletedHandler handler = null;
-            global::System.IDisposable session = null;
             var initialState = new SqlCommandState(command);
+            bool autoOpen = Connection.State == global::System.Data.ConnectionState.Closed;
             try
             {
-                session = await OpenSessionAsync(token);
-                handler = new StatementCompletedHandler(command, session, initialState);
                 command.Connection = Connection;
-                //if (m_transactions.Count > 0)
-                //    command.Transaction = m_transactions.Peek();
-                return await command.ExecuteReaderAsync(commandBehavior);
+
+                if (autoOpen)
+                {
+                    await Connection.OpenAsync();
+                    commandBehavior |= global::System.Data.CommandBehavior.CloseConnection;
+                }
+
+                var reader = command.ExecuteReader(commandBehavior);
+                return reader;
+
             }
             catch
             {
-                session?.Dispose();
-                handler?.Dispose();
-                initialState.ApplyTo(command);
+                if (autoOpen && Connection.State != global::System.Data.ConnectionState.Closed)
+                    Connection.Close();
                 throw;
+            }
+            finally
+            {
+                initialState.ApplyTo(command);
             }
         }
 

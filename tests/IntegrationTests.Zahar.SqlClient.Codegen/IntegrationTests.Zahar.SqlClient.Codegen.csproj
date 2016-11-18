@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A2968F88-5A70-4D08-A26A-966ED5265EE6}</ProjectGuid>
+    <ProjectGuid>{D22DF00E-72B0-4ADA-993B-0351398419A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IntegrationTests.AdventureWorks2014Client</RootNamespace>
-    <AssemblyName>IntegrationTests.AdventureWorks2014Client</AssemblyName>
+    <RootNamespace>Zahar.SqlClient</RootNamespace>
+    <AssemblyName>IntegrationTests.Zahar.SqlClient.Codegen</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -61,18 +61,23 @@
   <ItemGroup>
     <Compile Include="AdventureWorks2014_CreateDboUspGetBillOfMaterials_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Zahar_uspEcho01_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdventureWorks2014Client\AdventureWorks2014Client.csproj">
-      <Project>{21D11182-05EA-4EE5-9C90-DE5B4A5750D8}</Project>
+      <Project>{21d11182-05ea-4ee5-9c90-de5b4a5750d8}</Project>
       <Name>AdventureWorks2014Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\IntegrationTests.Zahar.SqlClient\IntegrationTests.Zahar.SqlClient.csproj">
-      <Project>{90C846D7-5B19-43C0-B268-7D148303CBAC}</Project>
+      <Project>{90c846d7-5b19-43c0-b268-7d148303cbac}</Project>
       <Name>IntegrationTests.Zahar.SqlClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZaharClient\ZaharClient.csproj">
+      <Project>{1a8f823d-5710-4bde-92bf-a72a79af49de}</Project>
+      <Name>ZaharClient</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

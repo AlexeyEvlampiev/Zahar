@@ -2409,51 +2409,18 @@
             }
         }
 
-        class StatementCompletedHandler : global::System.IDisposable
-        {
-            private global::System.Data.SqlClient.SqlCommand m_command;
-            private global::System.IDisposable m_session;
-            private SqlCommandState m_initialState;
-            private bool m_disposed;
-
-            public StatementCompletedHandler(global::System.Data.SqlClient.SqlCommand command, global::System.IDisposable session, SqlCommandState initialState)
-            {
-                m_command = command;
-                m_session = session;
-                m_initialState = initialState;
-                m_command.StatementCompleted += this.OnStatementCompleted;
-            }
-
-            private void OnStatementCompleted(object sender, global::System.Data.StatementCompletedEventArgs e)
-            {
-                this.Dispose();
-            }
-
-            public void Dispose()
-            {
-                if (m_disposed)
-                    return;
-
-                try
-                {
-                    m_command.StatementCompleted -= this.OnStatementCompleted;
-                    m_initialState.ApplyTo(m_command);
-                    m_session.Dispose();
-                    m_initialState = new SqlCommandState();
-                    m_session = null;
-                    m_command = null;
-                }
-                finally
-                {
-                    m_disposed = true;
-                }
-            }
-        }
-
         #endregion
 
+        /// <summary>
+        /// Gets the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> object.
+        /// </summary>
         public global::System.Data.SqlClient.SqlConnection Connection { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SqlDbClient"/> class.
+        /// </summary>
+        /// <param name="connectionString">The connection string.</param>
+        /// <exception cref="global::System.ArgumentNullException">connectionString</exception>
         public SqlDbClient(string connectionString)
         {
             if (ReferenceEquals(connectionString, null))
@@ -2461,6 +2428,10 @@
             Connection = new global::System.Data.SqlClient.SqlConnection(connectionString);
         }
 
+        /// <summary>
+        /// Closes the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> object.
+        /// </summary>
+        /// <returns></returns>
         public bool CloseSession()
         {
             if ((Connection.State | global::System.Data.ConnectionState.Closed) != global::System.Data.ConnectionState.Closed)
@@ -2469,6 +2440,10 @@
             return true;
         }
 
+        /// <summary>
+        /// Opens the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> if not yet opened.
+        /// </summary>
+        /// <returns></returns>
         public global::System.IDisposable OpenSession()
         {
             if ((Connection.State | global::System.Data.ConnectionState.Closed) == global::System.Data.ConnectionState.Closed)
@@ -2480,6 +2455,11 @@
             return Disposable.Null;
         }
 
+        /// <summary>
+        /// Opens the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> asynchronously if not yet opened.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns></returns>
         public async global::System.Threading.Tasks.Task<global::System.IDisposable> OpenSessionAsync(global::System.Threading.CancellationToken token)
         {
             if ((Connection.State & global::System.Data.ConnectionState.Closed) == global::System.Data.ConnectionState.Closed)
@@ -2575,25 +2555,31 @@
             global::System.Data.SqlClient.SqlCommand command,
             global::System.Data.CommandBehavior commandBehavior = global::System.Data.CommandBehavior.Default)
         {
-            commandBehavior = commandBehavior & ~global::System.Data.CommandBehavior.CloseConnection;
-            StatementCompletedHandler manager = null;
-            global::System.IDisposable session = null;
             var initialState = new SqlCommandState(command);
+            bool autoOpen = Connection.State == global::System.Data.ConnectionState.Closed;
             try
             {
-                session = OpenSession();
-                manager = new StatementCompletedHandler(command, session, initialState);
                 command.Connection = Connection;
-                //if (m_transactions.Count > 0)
-                //    command.Transaction = m_transactions.Peek();
-                return command.ExecuteReader(commandBehavior);
+
+                if (autoOpen)
+                {
+                    Connection.Open();
+                    commandBehavior |= global::System.Data.CommandBehavior.CloseConnection;
+                }
+
+                var reader = command.ExecuteReader(commandBehavior);
+                return reader;
+
             }
             catch
             {
-                session?.Dispose();
-                manager?.Dispose();
-                initialState.ApplyTo(command);
+                if (autoOpen && Connection.State != global::System.Data.ConnectionState.Closed)
+                    Connection.Close();
                 throw;
+            }
+            finally
+            {
+                initialState.ApplyTo(command);
             }
         }
 
@@ -2602,25 +2588,31 @@
             global::System.Threading.CancellationToken token, 
             global::System.Data.CommandBehavior commandBehavior = global::System.Data.CommandBehavior.Default)
         {
-            commandBehavior = commandBehavior & ~global::System.Data.CommandBehavior.CloseConnection;
-            StatementCompletedHandler handler = null;
-            global::System.IDisposable session = null;
             var initialState = new SqlCommandState(command);
+            bool autoOpen = Connection.State == global::System.Data.ConnectionState.Closed;
             try
             {
-                session = await OpenSessionAsync(token);
-                handler = new StatementCompletedHandler(command, session, initialState);
                 command.Connection = Connection;
-                //if (m_transactions.Count > 0)
-                //    command.Transaction = m_transactions.Peek();
-                return await command.ExecuteReaderAsync(commandBehavior);
+
+                if (autoOpen)
+                {
+                    await Connection.OpenAsync();
+                    commandBehavior |= global::System.Data.CommandBehavior.CloseConnection;
+                }
+
+                var reader = command.ExecuteReader(commandBehavior);
+                return reader;
+
             }
             catch
             {
-                session?.Dispose();
-                handler?.Dispose();
-                initialState.ApplyTo(command);
+                if (autoOpen && Connection.State != global::System.Data.ConnectionState.Closed)
+                    Connection.Close();
                 throw;
+            }
+            finally
+            {
+                initialState.ApplyTo(command);
             }
         }
 

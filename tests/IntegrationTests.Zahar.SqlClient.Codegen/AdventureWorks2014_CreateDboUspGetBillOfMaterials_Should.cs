@@ -1,6 +1,5 @@
-﻿namespace AdventureWorks2014Client
+﻿namespace Zahar.SqlClient
 {
-    using Zahar.SqlClient;
     using Xunit;
     using System;
 
@@ -9,7 +8,7 @@
         [Fact]
         public void SupportExecutingReader()
         {
-            var client = new Client(Constants.AdventureWorks2014ConnectionString);
+            var client = new AdventureWorks2014Client.Client(Constants.AdventureWorks2014ConnectionString);
             using (client.OpenSession())
             {
                 var factory = client.CreateDboUspGetBillOfMaterialsComponentFactory();

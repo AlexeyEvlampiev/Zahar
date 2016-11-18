@@ -3,5 +3,6 @@
          xmlns="Zahar.SqlClient.Mapping">
   <Procedures>
     <Add Schema="dbo" Name="uspEcho01"/>
+    <Add Schema="dbo" Name="uspSelectFromTemporaryTable"/>
   </Procedures>
 </Mapping>

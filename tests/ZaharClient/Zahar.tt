@@ -19,6 +19,7 @@
 		var projection = ProjectionBuilder.Build(diagnosticsCallback, mappingFile,connectionString);
 		var formatInfo = new CustomFormatInfo();
 		var templateFactory = new RuntimeTextTemplateFactory(projection, diagnosticsCallback, formatInfo);
+		templates.Add(templateFactory.CreateDbClientRtt());
 		templates.AddRange(templateFactory.CreateStoredProcedureRtts());
 		templates.AddRange(templateFactory.CreateUserDefinedTableRtts());
 		templates.Add(templateFactory.CreateCommonRtt());
@@ -41,6 +42,6 @@ namespace Zahar
 }<#+ 
 	sealed class CustomFormatInfo : Zahar.SqlClient.Codegen.FormatInfo
 	{
-		public override string SqlDbClientClassName { get { return "Zahar"; } }
+		public override string SqlDbClientClassName { get { return "Client"; } }
 	} 
 #>

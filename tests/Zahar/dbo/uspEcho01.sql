@@ -1,16 +1,21 @@
 ﻿CREATE PROCEDURE [dbo].[uspEcho01]
-	@param1 int = 0,
-	@param2 int,
-	@udtt01 [dbo].[Udtt01] READONLY,
-	@output1 INT OUTPUT,
-	@output2 INT OUTPUT
+	@FirstInputParameter int = 0,
+	@SecondInputParameter int,
+	@FirstTableValueParam [dbo].[Udtt01] READONLY,	
+	@FirstOutputParameter INT OUTPUT,
+	@SecondOutputParameter INT OUTPUT,
+	@SecondTableValueParam [dbo].[Udtt02] READONLY
 AS
 	
-	SELECT @param1 AS Param1, @param2 AS Param2
+	SELECT 
+		@FirstInputParameter  AS Field1, 
+		@SecondInputParameter AS Field2
 
-	SELECT * FROM @udtt01 AS tbl1
+	SELECT * FROM @FirstTableValueParam
 
-	SET @output1 = @param1
-	SET @output2 = @param2
+	SET @FirstOutputParameter = @FirstInputParameter
+	SET @SecondOutputParameter = @SecondInputParameter
 
-RETURN 0
+	SELECT * FROM @SecondTableValueParam
+
+RETURN (-123)

@@ -23,13 +23,14 @@
         {
             string pattern = Regex.Replace(@"(?:xis);? Max Pool Size\s*=\s*\d+ |;?$", @"\s+", @"\s+");
             connectionString = Regex.Replace(connectionString, pattern, ";Max Pool Size=10");
-            m_connectionString = connectionString;
-            m_diagnosticsCallback = new DiagnosticsCallbackScope( diagnosticsCallback);
+            m_connectionString = connectionString;            
             try
             {
                 var connection = new SqlConnection(connectionString);
                 DataSource = connection.DataSource;
                 Database = connection.Database;
+
+                m_diagnosticsCallback = new DiagnosticsCallbackScope(diagnosticsCallback, $"[{DataSource}].[{Database}] > ");
                 //TODO: verify sever version
                 using (connection)
                 {
@@ -148,8 +149,16 @@
                 catch (SqlException ex)
                 {
                     var message = new StringBuilder($"Could not retrieve {spFullName} result schema information.");
-                    message.Append($" Error: {ex.Message}");
-                    m_diagnosticsCallback.Error(message.ToString());
+                    if (ex.Message.Contains("Invalid object name '#"))
+                    {
+                        message.Append($" In order to resolve this issue, alter the {spFullName} procedure code so that it does not use temporary tables.");
+                        m_diagnosticsCallback.Warning(message.ToString());
+                    }
+                    else
+                    {
+                        message.Append($" Error: {ex.Message}");
+                        m_diagnosticsCallback.Error(message.ToString());
+                    }
                 }
 
                 return sp;

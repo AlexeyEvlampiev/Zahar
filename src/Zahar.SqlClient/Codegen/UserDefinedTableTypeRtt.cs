@@ -55,9 +55,18 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
             this.Write("]\r\n\tprotected ");
             this.Write(this.ToStringHelper.ToStringWithCulture(dataTableClassName));
-            this.Write("(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runt" +
-                    "ime.Serialization.StreamingContext context) : \r\n\t\t\tbase(info, context) \r\n\t{\r\n\t\t\r" +
-                    "\n\t}\r\n\r\n\t[");
+            this.Write(@"(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+			base(info, context) 
+	{
+		
+	}
+
+	public void Populate<T>(
+		System.Collections.Generic.IEnumerable<T> entities, 
+		System.Action<T, ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(dataRowClassName));
+            this.Write("> initializeRow)\r\n\t{\r\n\t\tforeach(var entity in entities)\r\n\t\t{\r\n\t\t\tvar row = this.N" +
+                    "ewRow();\r\n\t\t\tinitializeRow(entity, row);\r\n\t\t\tthis.Rows.Add(row);\r\n\t\t}\r\n\t}\r\n\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
             this.Write("]\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
