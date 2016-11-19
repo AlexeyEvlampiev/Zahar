@@ -15,7 +15,7 @@
 
         internal const string UserDefinedDataTableClassNamePostfix = "UserDefinedDataTable";
         internal const string UserDefinedDataTableRowClassNamePostfix = "UserDefinedDataTableRow";
-        internal const string StoredProcedureComponentFactoryClassNamePostfix = "ComponentFactory";
+        internal const string StoredProcedureComponentFactoryClassNamePostfix = "CmdBuilder";
         internal const string StoredProcedureReaderAdapterClassNamePostfix = "SqlDataReaderAdapter";
         internal const string StoredProcedureOutputValueSetClassNamePostfix = "OutputValueSet";
         internal const string DataTableClassNamePostfix = "DataTable";

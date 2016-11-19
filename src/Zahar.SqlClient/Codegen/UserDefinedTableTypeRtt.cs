@@ -61,7 +61,7 @@ namespace Zahar.SqlClient.Codegen
 		
 	}
 
-	public void Populate<T>(
+	public void AddRows<T>(
 		System.Collections.Generic.IEnumerable<T> entities, 
 		System.Action<T, ");
             this.Write(this.ToStringHelper.ToStringWithCulture(dataRowClassName));

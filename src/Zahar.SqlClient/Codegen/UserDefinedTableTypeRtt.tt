@@ -37,7 +37,7 @@ public partial class <#= dataTableClassName #> : global::System.Data.TypedTableB
 		
 	}
 
-	public void Populate<T>(
+	public void AddRows<T>(
 		System.Collections.Generic.IEnumerable<T> entities, 
 		System.Action<T, <#= dataRowClassName #>> initializeRow)
 	{

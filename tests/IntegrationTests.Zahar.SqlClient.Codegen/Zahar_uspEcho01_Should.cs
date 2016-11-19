@@ -11,14 +11,14 @@
         public void BeReaderExecutable()
         {
             const int testRowsCount = 3;
-            var client = new Zahar.Client(Constants.ZaharConnectionString);
-            var factory = client.CreateDboUspEcho01ComponentFactory();
-            
+            var factory = new Zahar.ZaharCmdBuilderFactory(Constants.ZaharConnectionString);
+            var builder = factory.CreateDboUspEcho01CmdBuilder();
 
-            factory.FirstInputParameter = 123;
-            factory.SecondInputParameter = 321;
 
-            factory.FirstTableValueParam.Populate(
+            builder.FirstInputParameter = 123;
+            builder.SecondInputParameter = 321;
+
+            builder.FirstTableValueParam.AddRows(
                 from i in Enumerable.Range(1, testRowsCount)
                 select i, (i, row)=> 
                 {
@@ -27,25 +27,26 @@
                     row.Date = new DateTime(2016, i, i);
                 });
 
-            factory.SecondTableValueParam.Populate(
+            builder.SecondTableValueParam.AddRows(
                 from i in Enumerable.Range(1, testRowsCount)
                 select i, (i, row) =>
                 {
                     row.Id = i;
                     row.Name = $"Name {i}";
                 });
-
-            using (var command = factory.BuildCommand())
-            using(var reader = client.ExecuteReader(command))
-            {                   
-                var output = factory.BuildOutputValues(command);
-                var record1 = factory.BuildRecordAdapter(reader);
+            using (var connection = factory.CreateConnection())
+            using (var command = builder.BuildCommand(connection))            
+            {
+                connection.Open();
+                var reader = command.ExecuteReader();
+                var output = builder.BuildOutputValues(command);
+                var record1 = builder.BuildRecordAdapter(reader);
                 Assert.True(reader.Read());
                 Assert.Equal(123, record1.Field1);
                 Assert.Equal(321, record1.Field2);
                 Assert.False(reader.Read());
 
-                var record2 = record1.NextResult();                
+                var record2 = record1.NextResult();
                 for (int i = 1; i < testRowsCount + 1; ++i)
                 {
                     Assert.True(reader.Read());
@@ -60,9 +61,9 @@
                 {
                     Assert.True(reader.Read());
                     Assert.Equal(i, record3.Id);
-                    Assert.Equal($"Name {i}", record3.Name);                    
+                    Assert.Equal($"Name {i}", record3.Name);
                 }
-                
+
                 Assert.False(reader.Read());
 
                 reader.Close();
@@ -71,11 +72,7 @@
                 Assert.Equal(321, output.SecondOutputParameter);
                 Assert.Equal(-123, output.RETURN_VALUE);
 
-            }
-
-            Assert.Equal(ConnectionState.Closed, client.Connection.State);
-
-            
+            }            
         }
     }
 }

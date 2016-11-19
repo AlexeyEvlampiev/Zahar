@@ -8,17 +8,18 @@
         [Fact]
         public void SupportExecutingReader()
         {
-            var client = new AdventureWorks2014Client.Client(Constants.AdventureWorks2014ConnectionString);
-            using (client.OpenSession())
+            var factory = new AdventureWorks2014Client.AdventureWorks2014CmdBuilderFactory(Constants.AdventureWorks2014ConnectionString);
+            using (var connection = factory.CreateConnection())
             {
-                var factory = client.CreateDboUspGetBillOfMaterialsComponentFactory();
-                factory.StartProductID = 3;
-                factory.CheckDate = new DateTime(2016, 01, 01);
+                connection.Open();
+                var builder = factory.CreateDboUspGetBillOfMaterialsCmdBuilder();
+                builder.StartProductID = 3;
+                builder.CheckDate = new DateTime(2016, 01, 01);
 
-                var command = factory.BuildCommand();
-                using (var reader = client.ExecuteReader(command))
+                var command = builder.BuildCommand(connection);
+                using (var reader = command.ExecuteReader())
                 {
-                    var current = factory.BuildRecordAdapter(reader);
+                    var current = builder.BuildRecordAdapter(reader);
 
                     Assert.True(reader.Read());
                     Assert.Equal(3, current.ProductAssemblyID);

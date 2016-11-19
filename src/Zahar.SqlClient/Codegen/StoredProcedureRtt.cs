@@ -240,7 +240,9 @@ namespace Zahar.SqlClient.Codegen
 
             this.Write("\t/// <summary>\r\n\t/// Parameter ");
             this.Write(this.ToStringHelper.ToStringWithCulture(parameters.IndexOf(p)));
-            this.Write("\r\n\t/// </summary>\r\n\t[");
+            this.Write(" (User defined table type: ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(schema.TableName));
+            this.Write(")\r\n\t/// </summary>\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
             this.Write("]\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));

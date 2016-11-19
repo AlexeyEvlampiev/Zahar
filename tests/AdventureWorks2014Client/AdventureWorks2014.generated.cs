@@ -23,70 +23,70 @@
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public HumanResourcesUspUpdateEmployeeHireInfoComponentFactory CreateHumanResourcesUspUpdateEmployeeHireInfoComponentFactory() { return new HumanResourcesUspUpdateEmployeeHireInfoComponentFactory(); }  
+		public HumanResourcesUspUpdateEmployeeHireInfoCmdBuilder CreateHumanResourcesUspUpdateEmployeeHireInfoCmdBuilder() { return new HumanResourcesUspUpdateEmployeeHireInfoCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [HumanResources].[uspUpdateEmployeeLogin] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public HumanResourcesUspUpdateEmployeeLoginComponentFactory CreateHumanResourcesUspUpdateEmployeeLoginComponentFactory() { return new HumanResourcesUspUpdateEmployeeLoginComponentFactory(); }  
+		public HumanResourcesUspUpdateEmployeeLoginCmdBuilder CreateHumanResourcesUspUpdateEmployeeLoginCmdBuilder() { return new HumanResourcesUspUpdateEmployeeLoginCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [HumanResources].[uspUpdateEmployeePersonalInfo] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public HumanResourcesUspUpdateEmployeePersonalInfoComponentFactory CreateHumanResourcesUspUpdateEmployeePersonalInfoComponentFactory() { return new HumanResourcesUspUpdateEmployeePersonalInfoComponentFactory(); }  
+		public HumanResourcesUspUpdateEmployeePersonalInfoCmdBuilder CreateHumanResourcesUspUpdateEmployeePersonalInfoCmdBuilder() { return new HumanResourcesUspUpdateEmployeePersonalInfoCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspGetBillOfMaterials] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetBillOfMaterialsComponentFactory CreateDboUspGetBillOfMaterialsComponentFactory() { return new DboUspGetBillOfMaterialsComponentFactory(); }  
+		public DboUspGetBillOfMaterialsCmdBuilder CreateDboUspGetBillOfMaterialsCmdBuilder() { return new DboUspGetBillOfMaterialsCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspGetEmployeeManagers] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetEmployeeManagersComponentFactory CreateDboUspGetEmployeeManagersComponentFactory() { return new DboUspGetEmployeeManagersComponentFactory(); }  
+		public DboUspGetEmployeeManagersCmdBuilder CreateDboUspGetEmployeeManagersCmdBuilder() { return new DboUspGetEmployeeManagersCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspGetManagerEmployees] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetManagerEmployeesComponentFactory CreateDboUspGetManagerEmployeesComponentFactory() { return new DboUspGetManagerEmployeesComponentFactory(); }  
+		public DboUspGetManagerEmployeesCmdBuilder CreateDboUspGetManagerEmployeesCmdBuilder() { return new DboUspGetManagerEmployeesCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspGetWhereUsedProductID] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetWhereUsedProductIDComponentFactory CreateDboUspGetWhereUsedProductIDComponentFactory() { return new DboUspGetWhereUsedProductIDComponentFactory(); }  
+		public DboUspGetWhereUsedProductIDCmdBuilder CreateDboUspGetWhereUsedProductIDCmdBuilder() { return new DboUspGetWhereUsedProductIDCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspLogError] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspLogErrorComponentFactory CreateDboUspLogErrorComponentFactory() { return new DboUspLogErrorComponentFactory(); }  
+		public DboUspLogErrorCmdBuilder CreateDboUspLogErrorCmdBuilder() { return new DboUspLogErrorCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspPrintError] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspPrintErrorComponentFactory CreateDboUspPrintErrorComponentFactory() { return new DboUspPrintErrorComponentFactory(); }  
+		public DboUspPrintErrorCmdBuilder CreateDboUspPrintErrorCmdBuilder() { return new DboUspPrintErrorCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspSearchCandidateResumes] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspSearchCandidateResumesComponentFactory CreateDboUspSearchCandidateResumesComponentFactory() { return new DboUspSearchCandidateResumesComponentFactory(); }  
+		public DboUspSearchCandidateResumesCmdBuilder CreateDboUspSearchCandidateResumesCmdBuilder() { return new DboUspSearchCandidateResumesCmdBuilder(); }  
 	}
 	 
 	
@@ -94,7 +94,7 @@
 	/// <summary>
 	/// [dbo].[uspGetBillOfMaterials] typed component factory.
 	/// </summary>
-	public sealed partial class DboUspGetBillOfMaterialsComponentFactory : SqlSpCmdBuilder
+	public sealed partial class DboUspGetBillOfMaterialsCmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -102,7 +102,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetBillOfMaterialsComponentFactory() : base("dbo", "uspGetBillOfMaterials", "[dbo].[uspGetBillOfMaterials]")
+		public DboUspGetBillOfMaterialsCmdBuilder() : base("dbo", "uspGetBillOfMaterials", "[dbo].[uspGetBillOfMaterials]")
 		{
 			OnInit();
 		}
@@ -170,7 +170,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? startProductID, System.DateTime? checkDate)
 		{
-			var builder = new DboUspGetBillOfMaterialsComponentFactory()		
+			var builder = new DboUspGetBillOfMaterialsCmdBuilder()		
 			{ 
 				StartProductID = startProductID,  
 				CheckDate = checkDate,  
@@ -286,7 +286,7 @@
 	/// <summary>
 	/// [dbo].[uspGetEmployeeManagers] typed component factory.
 	/// </summary>
-	public sealed partial class DboUspGetEmployeeManagersComponentFactory : SqlSpCmdBuilder
+	public sealed partial class DboUspGetEmployeeManagersCmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -294,7 +294,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetEmployeeManagersComponentFactory() : base("dbo", "uspGetEmployeeManagers", "[dbo].[uspGetEmployeeManagers]")
+		public DboUspGetEmployeeManagersCmdBuilder() : base("dbo", "uspGetEmployeeManagers", "[dbo].[uspGetEmployeeManagers]")
 		{
 			OnInit();
 		}
@@ -360,7 +360,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? businessEntityID)
 		{
-			var builder = new DboUspGetEmployeeManagersComponentFactory()		
+			var builder = new DboUspGetEmployeeManagersCmdBuilder()		
 			{ 
 				BusinessEntityID = businessEntityID,  
 			};
@@ -462,7 +462,7 @@
 	/// <summary>
 	/// [dbo].[uspGetManagerEmployees] typed component factory.
 	/// </summary>
-	public sealed partial class DboUspGetManagerEmployeesComponentFactory : SqlSpCmdBuilder
+	public sealed partial class DboUspGetManagerEmployeesCmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -470,7 +470,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetManagerEmployeesComponentFactory() : base("dbo", "uspGetManagerEmployees", "[dbo].[uspGetManagerEmployees]")
+		public DboUspGetManagerEmployeesCmdBuilder() : base("dbo", "uspGetManagerEmployees", "[dbo].[uspGetManagerEmployees]")
 		{
 			OnInit();
 		}
@@ -536,7 +536,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? businessEntityID)
 		{
-			var builder = new DboUspGetManagerEmployeesComponentFactory()		
+			var builder = new DboUspGetManagerEmployeesCmdBuilder()		
 			{ 
 				BusinessEntityID = businessEntityID,  
 			};
@@ -638,7 +638,7 @@
 	/// <summary>
 	/// [dbo].[uspGetWhereUsedProductID] typed component factory.
 	/// </summary>
-	public sealed partial class DboUspGetWhereUsedProductIDComponentFactory : SqlSpCmdBuilder
+	public sealed partial class DboUspGetWhereUsedProductIDCmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -646,7 +646,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetWhereUsedProductIDComponentFactory() : base("dbo", "uspGetWhereUsedProductID", "[dbo].[uspGetWhereUsedProductID]")
+		public DboUspGetWhereUsedProductIDCmdBuilder() : base("dbo", "uspGetWhereUsedProductID", "[dbo].[uspGetWhereUsedProductID]")
 		{
 			OnInit();
 		}
@@ -714,7 +714,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? startProductID, System.DateTime? checkDate)
 		{
-			var builder = new DboUspGetWhereUsedProductIDComponentFactory()		
+			var builder = new DboUspGetWhereUsedProductIDCmdBuilder()		
 			{ 
 				StartProductID = startProductID,  
 				CheckDate = checkDate,  
@@ -830,7 +830,7 @@
 	/// <summary>
 	/// [dbo].[uspLogError] typed component factory.
 	/// </summary>
-	public sealed partial class DboUspLogErrorComponentFactory : SqlSpCmdBuilder
+	public sealed partial class DboUspLogErrorCmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -838,7 +838,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspLogErrorComponentFactory() : base("dbo", "uspLogError", "[dbo].[uspLogError]")
+		public DboUspLogErrorCmdBuilder() : base("dbo", "uspLogError", "[dbo].[uspLogError]")
 		{
 			OnInit();
 		}
@@ -893,7 +893,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? errorLogID)
 		{
-			var builder = new DboUspLogErrorComponentFactory()		
+			var builder = new DboUspLogErrorCmdBuilder()		
 			{ 
 				ErrorLogID = errorLogID,  
 			};
@@ -972,7 +972,7 @@
 	/// <summary>
 	/// [dbo].[uspPrintError] typed component factory.
 	/// </summary>
-	public sealed partial class DboUspPrintErrorComponentFactory : SqlSpCmdBuilder
+	public sealed partial class DboUspPrintErrorCmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -980,7 +980,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspPrintErrorComponentFactory() : base("dbo", "uspPrintError", "[dbo].[uspPrintError]")
+		public DboUspPrintErrorCmdBuilder() : base("dbo", "uspPrintError", "[dbo].[uspPrintError]")
 		{
 			OnInit();
 		}
@@ -1033,7 +1033,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand()
 		{
-			var builder = new DboUspPrintErrorComponentFactory()		
+			var builder = new DboUspPrintErrorCmdBuilder()		
 			{ 
 			};
 			
@@ -1072,7 +1072,7 @@
 	/// <summary>
 	/// [dbo].[uspSearchCandidateResumes] typed component factory.
 	/// </summary>
-	public sealed partial class DboUspSearchCandidateResumesComponentFactory : SqlSpCmdBuilder
+	public sealed partial class DboUspSearchCandidateResumesCmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -1080,7 +1080,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspSearchCandidateResumesComponentFactory() : base("dbo", "uspSearchCandidateResumes", "[dbo].[uspSearchCandidateResumes]")
+		public DboUspSearchCandidateResumesCmdBuilder() : base("dbo", "uspSearchCandidateResumes", "[dbo].[uspSearchCandidateResumes]")
 		{
 			OnInit();
 		}
@@ -1152,7 +1152,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(string searchString, bool? useInflectional, bool? useThesaurus, int? language)
 		{
-			var builder = new DboUspSearchCandidateResumesComponentFactory()		
+			var builder = new DboUspSearchCandidateResumesCmdBuilder()		
 			{ 
 				SearchString = searchString,  
 				UseInflectional = useInflectional,  
@@ -1396,7 +1396,7 @@
 	/// <summary>
 	/// [HumanResources].[uspUpdateEmployeeHireInfo] typed component factory.
 	/// </summary>
-	public sealed partial class HumanResourcesUspUpdateEmployeeHireInfoComponentFactory : SqlSpCmdBuilder
+	public sealed partial class HumanResourcesUspUpdateEmployeeHireInfoCmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -1404,7 +1404,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public HumanResourcesUspUpdateEmployeeHireInfoComponentFactory() : base("HumanResources", "uspUpdateEmployeeHireInfo", "[HumanResources].[uspUpdateEmployeeHireInfo]")
+		public HumanResourcesUspUpdateEmployeeHireInfoCmdBuilder() : base("HumanResources", "uspUpdateEmployeeHireInfo", "[HumanResources].[uspUpdateEmployeeHireInfo]")
 		{
 			OnInit();
 		}
@@ -1471,7 +1471,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? businessEntityID, string jobTitle, System.DateTime? hireDate, System.DateTime? rateChangeDate, decimal? rate, byte? payFrequency, bool? currentFlag)
 		{
-			var builder = new HumanResourcesUspUpdateEmployeeHireInfoComponentFactory()		
+			var builder = new HumanResourcesUspUpdateEmployeeHireInfoCmdBuilder()		
 			{ 
 				BusinessEntityID = businessEntityID,  
 				JobTitle = jobTitle,  
@@ -1580,7 +1580,7 @@
 	/// <summary>
 	/// [HumanResources].[uspUpdateEmployeeLogin] typed component factory.
 	/// </summary>
-	public sealed partial class HumanResourcesUspUpdateEmployeeLoginComponentFactory : SqlSpCmdBuilder
+	public sealed partial class HumanResourcesUspUpdateEmployeeLoginCmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -1588,7 +1588,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public HumanResourcesUspUpdateEmployeeLoginComponentFactory() : base("HumanResources", "uspUpdateEmployeeLogin", "[HumanResources].[uspUpdateEmployeeLogin]")
+		public HumanResourcesUspUpdateEmployeeLoginCmdBuilder() : base("HumanResources", "uspUpdateEmployeeLogin", "[HumanResources].[uspUpdateEmployeeLogin]")
 		{
 			OnInit();
 		}
@@ -1653,7 +1653,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? businessEntityID, object organizationNode, string loginID, string jobTitle, System.DateTime? hireDate, bool? currentFlag)
 		{
-			var builder = new HumanResourcesUspUpdateEmployeeLoginComponentFactory()		
+			var builder = new HumanResourcesUspUpdateEmployeeLoginCmdBuilder()		
 			{ 
 				BusinessEntityID = businessEntityID,  
 				OrganizationNode = organizationNode,  
@@ -1752,7 +1752,7 @@
 	/// <summary>
 	/// [HumanResources].[uspUpdateEmployeePersonalInfo] typed component factory.
 	/// </summary>
-	public sealed partial class HumanResourcesUspUpdateEmployeePersonalInfoComponentFactory : SqlSpCmdBuilder
+	public sealed partial class HumanResourcesUspUpdateEmployeePersonalInfoCmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -1760,7 +1760,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public HumanResourcesUspUpdateEmployeePersonalInfoComponentFactory() : base("HumanResources", "uspUpdateEmployeePersonalInfo", "[HumanResources].[uspUpdateEmployeePersonalInfo]")
+		public HumanResourcesUspUpdateEmployeePersonalInfoCmdBuilder() : base("HumanResources", "uspUpdateEmployeePersonalInfo", "[HumanResources].[uspUpdateEmployeePersonalInfo]")
 		{
 			OnInit();
 		}
@@ -1823,7 +1823,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? businessEntityID, string nationalIDNumber, System.DateTime? birthDate, string maritalStatus, string gender)
 		{
-			var builder = new HumanResourcesUspUpdateEmployeePersonalInfoComponentFactory()		
+			var builder = new HumanResourcesUspUpdateEmployeePersonalInfoCmdBuilder()		
 			{ 
 				BusinessEntityID = businessEntityID,  
 				NationalIDNumber = nationalIDNumber,  

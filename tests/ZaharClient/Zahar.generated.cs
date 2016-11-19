@@ -23,14 +23,14 @@
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspEcho01ComponentFactory CreateDboUspEcho01ComponentFactory() { return new DboUspEcho01ComponentFactory(); }  
+		public DboUspEcho01CmdBuilder CreateDboUspEcho01CmdBuilder() { return new DboUspEcho01CmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspSelectFromTemporaryTable] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspSelectFromTemporaryTableComponentFactory CreateDboUspSelectFromTemporaryTableComponentFactory() { return new DboUspSelectFromTemporaryTableComponentFactory(); }  
+		public DboUspSelectFromTemporaryTableCmdBuilder CreateDboUspSelectFromTemporaryTableCmdBuilder() { return new DboUspSelectFromTemporaryTableCmdBuilder(); }  
 	}
 	 
 	
@@ -38,7 +38,7 @@
 	/// <summary>
 	/// [dbo].[uspEcho01] typed component factory.
 	/// </summary>
-	public sealed partial class DboUspEcho01ComponentFactory : SqlSpCmdBuilder
+	public sealed partial class DboUspEcho01CmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -50,7 +50,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspEcho01ComponentFactory() : base("dbo", "uspEcho01", "[dbo].[uspEcho01]")
+		public DboUspEcho01CmdBuilder() : base("dbo", "uspEcho01", "[dbo].[uspEcho01]")
 		{
 			OnInit();
 		}
@@ -126,7 +126,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? firstInputParameter, int? secondInputParameter, DboUdtt01UserDefinedDataTable firstTableValueParam, int? firstOutputParameter, int? secondOutputParameter, DboUdtt02UserDefinedDataTable secondTableValueParam)
 		{
-			var builder = new DboUspEcho01ComponentFactory()		
+			var builder = new DboUspEcho01CmdBuilder()		
 			{ 
 				FirstInputParameter = firstInputParameter,  
 				SecondInputParameter = secondInputParameter,  
@@ -199,7 +199,7 @@
 	
 	
 		/// <summary>
-		/// Parameter 3
+		/// Parameter 3 (User defined table type: [dbo].[Udtt01])
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
@@ -210,7 +210,7 @@
 			set { this.m_firstTableValueParam = value; }
 		}
 		/// <summary>
-		/// Parameter 6
+		/// Parameter 6 (User defined table type: [dbo].[Udtt02])
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
@@ -395,7 +395,7 @@
 	/// <summary>
 	/// [dbo].[uspSelectFromTemporaryTable] typed component factory.
 	/// </summary>
-	public sealed partial class DboUspSelectFromTemporaryTableComponentFactory : SqlSpCmdBuilder
+	public sealed partial class DboUspSelectFromTemporaryTableCmdBuilder : SqlSpCmdBuilder
 	{
 		#region Private Fields
 		 
@@ -403,7 +403,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspSelectFromTemporaryTableComponentFactory() : base("dbo", "uspSelectFromTemporaryTable", "[dbo].[uspSelectFromTemporaryTable]")
+		public DboUspSelectFromTemporaryTableCmdBuilder() : base("dbo", "uspSelectFromTemporaryTable", "[dbo].[uspSelectFromTemporaryTable]")
 		{
 			OnInit();
 		}
@@ -460,7 +460,7 @@
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? param1, int? param2)
 		{
-			var builder = new DboUspSelectFromTemporaryTableComponentFactory()		
+			var builder = new DboUspSelectFromTemporaryTableCmdBuilder()		
 			{ 
 				Param1 = param1,  
 				Param2 = param2,  
@@ -538,7 +538,7 @@
 			
 		}
 	
-		public void Populate<T>(
+		public void AddRows<T>(
 			System.Collections.Generic.IEnumerable<T> entities, 
 			System.Action<T, DboUdtt01UserDefinedDataTableRow> initializeRow)
 		{
@@ -674,7 +674,7 @@
 			
 		}
 	
-		public void Populate<T>(
+		public void AddRows<T>(
 			System.Collections.Generic.IEnumerable<T> entities, 
 			System.Action<T, DboUdtt02UserDefinedDataTableRow> initializeRow)
 		{
