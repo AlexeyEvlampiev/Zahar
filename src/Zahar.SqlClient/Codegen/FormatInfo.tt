@@ -15,13 +15,13 @@
 		new { Name = "GetPropertyTypeName", Params = "Type propertyDataType, bool allowDBNull", Assert="AssertDataTypeName" },
 		new { Name = "GetDataTableClassName", Params = "string tblFullName", Assert="AssertCsIdentifier" },
 		new { Name = "GetDataRowClassName", Params = "string tblFullName", Assert="AssertCsIdentifier" },
-		new { Name = "GetStoredProcedureComponentFactoryClassName", Params = "string spFullName", Assert="AssertCsIdentifier" },
+		new { Name = "GetStoredProcedureCmdBuilderClassName", Params = "string spFullName", Assert="AssertCsIdentifier" },
 		new { Name = "GetStoredProcedureReaderAdapterClassName", Params = "string spFullName, int ordinal", Assert="AssertCsIdentifier" },
 		new { Name = "GetStoredProcedureOutputClassName", Params = "string spFullName", Assert="AssertCsIdentifier" },
 	};
 
 	var properties = new []{
-		new { Name = "SqlDbClientClassName", DataType = "string", Assert="AssertCsIdentifier" },
+		new { Name = "SqlCmdBuilderFactoryClassName", DataType = "string", Assert="AssertCsIdentifier" },
 		new { Name = "StoredProcedureBasicOutputClassName", DataType = "string", Assert="AssertCsIdentifier" },
 		new { Name = "BuildCommandMethodName", DataType = "string", Assert="AssertCsIdentifier" },
 		new { Name = "FieldPrefix", DataType = "string", Assert="AssertCsIdentifier" }

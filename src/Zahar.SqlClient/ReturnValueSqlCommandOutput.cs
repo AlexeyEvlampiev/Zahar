@@ -25,6 +25,6 @@
         /// 
         /// </summary>
         [SqlParameter(0, "RETURN_VALUE", System.Data.SqlDbType.Int, System.Data.ParameterDirection.ReturnValue)]
-        public int? RETURN_VALUE => SqlDbClient.ToClrValue<int?>(m_returnValueParameter.Value);
+        public int? RETURN_VALUE => SqlCmdBuilder.ToClrValue<int?>(m_returnValueParameter.Value);
     }
 }

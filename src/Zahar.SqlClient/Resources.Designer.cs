@@ -163,30 +163,6 @@ namespace Zahar.SqlClient {
         /// <summary>
         ///   Looks up a localized string similar to namespace Zahar.SqlClient
         ///{
-        ///    /// &lt;summary&gt;
-        ///    /// Represents a Transact-SQL transaction to be made in a SQL Server database.
-        ///    /// &lt;/summary&gt;
-        ///    public interface ISqlTransaction : System.IDisposable
-        ///    {
-        ///        /// &lt;summary&gt;
-        ///        /// Gets the isolation level for this transaction.
-        ///        /// &lt;/summary&gt;
-        ///        System.Data.IsolationLevel IsolationLevel { get; }
-        ///
-        ///        /// &lt;summary&gt;
-        ///        /// Commits the database transaction.
-        ///        /// &lt;/summary&gt;
-        ///        /// &lt;exception cref=&quot;S [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string ISqlTransaction {
-            get {
-                return ResourceManager.GetString("ISqlTransaction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to namespace Zahar.SqlClient
-        ///{
         ///    public struct ReturnValueSqlCommandOutput
         ///    {
         ///        readonly System.Data.SqlClient.SqlParameter m_returnValueParameter;
@@ -209,29 +185,51 @@ namespace Zahar.SqlClient {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to using System.Data.SqlClient;
+        ///   Looks up a localized string similar to namespace Zahar.SqlClient
+        ///{
+        ///    public abstract class SqlCmdBuilder
+        ///    {
+        ///        public abstract void BuildCommand(System.Data.SqlClient.SqlCommand command);
         ///
-        ///namespace Zahar.SqlClient
+        ///        public void BuildCommand(
+        ///            System.Data.SqlClient.SqlCommand command, 
+        ///            System.Data.SqlClient.SqlConnection connection)
+        ///        {
+        ///            if (ReferenceEquals(command, null))
+        ///                throw new System.ArgumentNullException(nameof(command));
+        ///            if (ReferenceEquals(connection, null))
+        ///         [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SqlCmdBuilder {
+            get {
+                return ResourceManager.GetString("SqlCmdBuilder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to namespace Zahar.SqlClient
         ///{
         ///    /// &lt;summary&gt;
         ///    /// 
         ///    /// &lt;/summary&gt;
-        ///    public class SqlDbClient
+        ///    public class SqlCmdBuilderFactory
         ///    {
-        ///        #region Nested Types
-        ///        struct SqlCommandState
-        ///        {
-        ///            readonly System.Data.SqlClient.SqlConnection Connection;
-        ///            readonly System.Data.SqlClient.SqlTransaction Transaction;
+        ///        #region Private Fields
         ///
-        ///            public SqlCommandState(System.Data.SqlClient.SqlCommand command)
-        ///            {
-        ///                Connection = command.Connection;
-        ///     [rest of string was truncated]&quot;;.
+        ///        readonly System.Func&lt;System.Data.SqlClient.SqlConnection&gt; m_connectionFactory;
+        ///
+        ///        #endregion
+        ///
+        ///        #region Ctor
+        ///        /// &lt;summary&gt;
+        ///        /// Initializes a new instance of the &lt;see cref=&quot;SqlCmdBuilderFactory&quot;/&gt; class.
+        ///        /// &lt;/summary&gt;
+        ///        /// &lt;param name=&quot;connectionString&quot;&gt;The connection string.&lt;/param&gt;
+        ///         [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SqlDbClient {
+        internal static string SqlCmdBuilderFactory {
             get {
-                return ResourceManager.GetString("SqlDbClient", resourceCulture);
+                return ResourceManager.GetString("SqlCmdBuilderFactory", resourceCulture);
             }
         }
         
@@ -261,22 +259,24 @@ namespace Zahar.SqlClient {
         /// <summary>
         ///   Looks up a localized string similar to namespace Zahar.SqlClient
         ///{
-        ///    /// &lt;summary&gt;
-        ///    /// 
-        ///    /// &lt;/summary&gt;
-        ///    /// &lt;seealso cref=&quot;Zahar.SqlClient.ISqlTransaction&quot; /&gt;
-        ///    class SqlTransactionWrapper : ISqlTransaction
+        ///    public abstract class SqlSpCmdBuilder : SqlCmdBuilder
         ///    {
-        ///        readonly System.Data.SqlClient.SqlTransaction m_innerTransaction;
-        ///        readonly System.Collections.Generic.Stack&lt;System.Data.SqlClient.SqlTransaction&gt; m_stack;
+        ///        #region Private Fields
+        ///        readonly string m_schemaName;
+        ///        readonly string m_procedureName;
+        ///        readonly string m_fullName; 
+        ///        #endregion
         ///
-        ///        public SqlTransactionWrapper(
-        ///            System.Data.SqlClient.SqlTransaction innerTransaction,
-        ///            System.Collections.Ge [rest of string was truncated]&quot;;.
+        ///        [System.Diagnostics.DebuggerNonUserCode()]
+        ///        protected SqlSpCmdBuilder(string schemaName, string procedureName, string fullName)
+        ///        {
+        ///            m_schemaName = schemaName;
+        ///            m_procedureName = procedureName;
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SqlTransactionWrapper {
+        internal static string SqlSpCmdBuilder {
             get {
-                return ResourceManager.GetString("SqlTransactionWrapper", resourceCulture);
+                return ResourceManager.GetString("SqlSpCmdBuilder", resourceCulture);
             }
         }
         

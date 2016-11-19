@@ -28,8 +28,9 @@ namespace Zahar.SqlClient.Codegen
         public override string TransformText()
         {
 
-	string utilsClassName = typeof(SqlDbClient).Name;
-	string factoryClassName = GetStoredProcedureComponentFactoryClassName(Procedure.FullName);		
+	string utilsClassName = typeof(SqlCmdBuilder).Name;
+	string sqlSpCmdBuilderClassName = typeof(SqlSpCmdBuilder).Name;
+	string factoryClassName = GetStoredProcedureCmdBuilderClassName(Procedure.FullName);		
 	var adapterClassNames = Procedure.ResultSchemas.Select(tbl=> GetStoredProcedureReaderAdapterClassName(Procedure.FullName, Procedure.GetResultOrdinal(tbl))).ToList();
 	var parameters = Procedure.Parameters.ToList();
 	var resultSchemas = Procedure.ResultSchemas.ToList();
@@ -62,11 +63,11 @@ namespace Zahar.SqlClient.Codegen
  
             this.Write(" \r\n\r\n\r\n/// <summary>\r\n/// ");
             this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
-            this.Write(" typed component factory.\r\n/// </summary>\r\npublic partial class ");
+            this.Write(" typed component factory.\r\n/// </summary>\r\npublic sealed partial class ");
             this.Write(this.ToStringHelper.ToStringWithCulture(factoryClassName));
-            this.Write("\r\n{\r\n\tpublic const string ProcedureName = \"");
-            this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
-            this.Write("\";\r\n\r\n\t#region Private Fields\r\n\t");
+            this.Write(" : ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(sqlSpCmdBuilderClassName));
+            this.Write("\r\n{\r\n\t#region Private Fields\r\n\t");
  foreach(var p in tableInputParameters){ 
             this.Write(" \r\n\t[global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.Debu" +
                     "ggerBrowsableState.Never)]\r\n\tprivate ");
@@ -81,7 +82,13 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
             this.Write("]\r\n\tpublic ");
             this.Write(this.ToStringHelper.ToStringWithCulture(factoryClassName));
-            this.Write("()\r\n\t{\r\n\t\tOnInit();\r\n\t}\r\n\r\n\t#region Partial Methods\r\n\tstatic partial void OnInit(" +
+            this.Write("() : base(\"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.Schema));
+            this.Write("\", \"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.Name));
+            this.Write("\", \"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
+            this.Write("\")\r\n\t{\r\n\t\tOnInit();\r\n\t}\r\n\r\n\t#region Partial Methods\r\n\tstatic partial void OnInit(" +
                     ");\r\n\tstatic partial void OnCommandCreated(global::System.Data.SqlClient.SqlComma" +
                     "nd command);\r\n\t");
  foreach(var p in parameters.Where(p=> p.Direction != ParameterDirection.ReturnValue)){ 
@@ -90,58 +97,17 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(propertyName));
             this.Write("ParameterCreated(global::System.Data.SqlClient.SqlParameter parameter); ");
  } 
-            this.Write(" \r\n\t#endregion\r\n\r\n\t/// <summary>\r\n\t/// Creates new ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
-            this.Write(" -command pre-configured based on this factory object.\r\n\t/// </summary>\r\n\t[");
-            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
-            this.Write("]\r\n\t[");
-            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
-            this.Write("]\r\n\tpublic global::System.Data.SqlClient.SqlCommand ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(BuildCommandMethodName));
-            this.Write("(global::System.Data.SqlClient.SqlConnection connection)\r\n\t{\r\n\t\tif(ReferenceEqual" +
-                    "s(connection, null))\r\n\t\t\tthrow new global::System.ArgumentNullException(nameof(c" +
-                    "onnection));\r\n\t\tvar command = this.");
-            this.Write(this.ToStringHelper.ToStringWithCulture(BuildCommandMethodName));
-            this.Write("();\r\n\t\tcommand.Connection = connection;\r\n\t\treturn command;\r\n\t}\r\n\r\n\t/// <summary>\r" +
-                    "\n\t/// Creates new ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
-            this.Write(" -command pre-configured based on this factory object.\r\n\t/// </summary>\r\n\t[");
-            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
-            this.Write("]\r\n\t[");
-            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
-            this.Write("]\r\n\tpublic global::System.Data.SqlClient.SqlCommand ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(BuildCommandMethodName));
-            this.Write(@"(global::System.Data.SqlClient.SqlTransaction transaction)
-	{
-		if(ReferenceEquals(transaction, null))
-			throw new global::System.ArgumentNullException(nameof(transaction));
-		if(ReferenceEquals(transaction.Connection, null))
-			throw new global::System.InvalidOperationException(""transaction.Connection is null"");
-		var command = this.");
-            this.Write(this.ToStringHelper.ToStringWithCulture(BuildCommandMethodName));
-            this.Write("();\r\n\t\tcommand.Connection = transaction.Connection;\r\n\t\tcommand.Transaction = tran" +
-                    "saction;\r\n\t\treturn command;\r\n\t}\r\n\r\n\t/// <summary>\r\n\t/// Creates new ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
-            this.Write(" -command pre-configured based on this factory object.\r\n\t/// </summary>\r\n\t[");
-            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
-            this.Write("]\r\n\t[");
-            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
-            this.Write("]\r\n\tpublic global::System.Data.SqlClient.SqlCommand ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(BuildCommandMethodName));
-            this.Write("()\r\n\t{\r\n\t\tvar command = new global::System.Data.SqlClient.SqlCommand();\r\n\t\tthis.");
-            this.Write(this.ToStringHelper.ToStringWithCulture(BuildCommandMethodName));
-            this.Write("(command);\r\n\t\treturn command;\r\n\t}\r\n\r\n\t/// <summary>\r\n\t/// Configures the given co" +
-                    "mmand object to execute the ");
+            this.Write(" \r\n\t#endregion\r\n\r\n\t/// <summary>\r\n\t/// Configures the given command object to exe" +
+                    "cute the ");
             this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
             this.Write(" -procedure.\r\n\t/// </summary>\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
             this.Write("]\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
-            this.Write("]\r\n\tpublic void ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(BuildCommandMethodName));
-            this.Write("(global::System.Data.SqlClient.SqlCommand command)\r\n\t{\r\n\t\tif(ReferenceEquals(comm" +
-                    "and, null))\r\n\t\t\tthrow new global::System.ArgumentNullException(nameof(command));" +
-                    "\t\t\r\n\t\tvar parameters = CreateParametersArray();");
+            this.Write("]\r\n\tpublic override void BuildCommand(global::System.Data.SqlClient.SqlCommand co" +
+                    "mmand)\r\n\t{\r\n\t\tif(ReferenceEquals(command, null))\r\n\t\t\tthrow new global::System.Ar" +
+                    "gumentNullException(nameof(command));\t\t\r\n\t\tvar parameters = CreateParametersArra" +
+                    "y();");
  foreach(var p in inputParameters){ 
 			int index = parameters.IndexOf(p); 
 			var propertyName = GetPropertyName(p.ParameterName); 
@@ -151,22 +117,13 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(propertyName));
             this.Write("; ");
  } 
-            this.Write(@" 
-		for (int i = 0; i < parameters.Length; ++i)
-		{
-			var parameter = parameters[i];
-			if (parameter.Value == null)
-				parameter.Value = global::System.DBNull.Value;
-		}
-		command.CommandText = ProcedureName;
-		command.CommandType = global::System.Data.CommandType.StoredProcedure;		
-		command.Parameters.Clear();
-		command.Parameters.AddRange(parameters);
-		OnCommandCreated(command);
-	}
-
-	/// <summary>
-	/// Creates new ");
+            this.Write(" \r\n\t\tfor (int i = 0; i < parameters.Length; ++i)\r\n\t\t{\r\n\t\t\tvar parameter = paramet" +
+                    "ers[i];\r\n\t\t\tif (parameter.Value == null)\r\n\t\t\t\tparameter.Value = global::System.D" +
+                    "BNull.Value;\r\n\t\t}\r\n\t\tcommand.CommandText = \"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
+            this.Write("\";\r\n\t\tcommand.CommandType = global::System.Data.CommandType.StoredProcedure;\t\t\r\n\t" +
+                    "\tcommand.Parameters.Clear();\r\n\t\tcommand.Parameters.AddRange(parameters);\r\n\t\tOnCo" +
+                    "mmandCreated(command);\r\n\t}\r\n\r\n\t/// <summary>\r\n\t/// Creates new ");
             this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
             this.Write(" -command output values set\r\n\t/// </summary>\r\n\t/// <param name=\"command\"></param>" +
                     "\r\n\t/// <returns></returns>\r\n\t[");

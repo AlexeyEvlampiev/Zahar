@@ -130,20 +130,20 @@
   <data name="Disposable1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Disposable.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="ISqlTransaction" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>ISqlTransaction.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="ReturnValueSqlCommandOutput" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>ReturnValueSqlCommandOutput.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="SqlDbClient" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>SqlDbClient.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="SqlCmdBuilder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>SqlCmdBuilder.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="SqlCmdBuilderFactory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>SqlCmdBuilderFactory.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="SqlParameterAttribute" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>SqlParameterAttribute.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="SqlTransactionWrapper" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>SqlTransactionWrapper.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="SqlSpCmdBuilder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>SqlSpCmdBuilder.cs;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Zahar_SqlClient" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Zahar.SqlClient.xsd;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

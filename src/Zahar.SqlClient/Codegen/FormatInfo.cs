@@ -52,7 +52,7 @@
         
         public virtual string FieldPrefix => "m_";
 
-        public abstract string SqlDbClientClassName { get; }
+        public abstract string SqlCmdBuilderFactoryClassName { get; }
 
         [DebuggerStepThrough]
         private DbObjectInfo GetDbObjectInfo(string fullName)
@@ -60,7 +60,7 @@
             return m_ixDbObjectInfoByFullName.GetOrAdd(fullName, key => new DbObjectInfo(key));
         }
 
-        public virtual string GetStoredProcedureComponentFactoryClassName(string spFullName)
+        public virtual string GetStoredProcedureCmdBuilderClassName(string spFullName)
         {
             var dbObjectInfo = GetDbObjectInfo(spFullName);
             string schemaPart = ToPascalCaseString(Normalize(dbObjectInfo.Schema));

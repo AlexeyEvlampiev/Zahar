@@ -13,12 +13,11 @@
         {
             var parts = new string[] 
             {
-                Resources.Disposable,
-                Resources.SqlDbClient,
+                Resources.SqlCmdBuilder,
+                Resources.SqlSpCmdBuilder,
+                Resources.SqlCmdBuilderFactory,
                 Resources.ReturnValueSqlCommandOutput,
-                Resources.SqlParameterAttribute,
-                Resources.ISqlTransaction,
-                Resources.SqlTransactionWrapper
+                Resources.SqlParameterAttribute
             };
 
             var sb = new StringBuilder();

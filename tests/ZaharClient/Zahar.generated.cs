@@ -3,16 +3,20 @@
 	/// <summary>
 	/// 
 	/// </summary>
-	public sealed class Client : SqlDbClient
+	public sealed class ZaharCmdBuilderFactory : SqlCmdBuilderFactory
 	{
-		/// <summary>
-	    /// 
-	    /// </summary>
-		public Client(string connectionString)
-			: base(connectionString)
-		{
-			
-		} 
+		#region Ctor
+	
+		public ZaharCmdBuilderFactory(string connectionString) : base(connectionString) {}
+	
+		public ZaharCmdBuilderFactory() : base() { }
+	
+		public ZaharCmdBuilderFactory(System.Func<string> connectionStringFactory) : base(connectionStringFactory) {}
+	
+		public ZaharCmdBuilderFactory(System.Func<System.Data.SqlClient.SqlConnection> connectionFactory) : base(connectionFactory) {}
+		#endregion
+	
+	 
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspEcho01] components factory.
@@ -34,10 +38,8 @@
 	/// <summary>
 	/// [dbo].[uspEcho01] typed component factory.
 	/// </summary>
-	public partial class DboUspEcho01ComponentFactory
+	public sealed partial class DboUspEcho01ComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[dbo].[uspEcho01]";
-	
 		#region Private Fields
 		 
 		[global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -48,7 +50,7 @@
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspEcho01ComponentFactory()
+		public DboUspEcho01ComponentFactory() : base("dbo", "uspEcho01", "[dbo].[uspEcho01]")
 		{
 			OnInit();
 		}
@@ -66,54 +68,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [dbo].[uspEcho01] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspEcho01] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspEcho01] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [dbo].[uspEcho01] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -130,7 +89,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[dbo].[uspEcho01]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -287,19 +246,19 @@
 		/// 
 		/// </summary>
 		[SqlParameter(0,"RETURN_VALUE", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.ReturnValue)]
-		public int? RETURN_VALUE => SqlDbClient.ToClrValue<int?>(m_command.Parameters["@RETURN_VALUE"].Value);
+		public int? RETURN_VALUE => SqlCmdBuilder.ToClrValue<int?>(m_command.Parameters["@RETURN_VALUE"].Value);
 		 
 		/// <summary>
 		/// 
 		/// </summary>
 		[SqlParameter(4,"FirstOutputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
-		public int? FirstOutputParameter => SqlDbClient.ToClrValue<int?>(m_command.Parameters["@FirstOutputParameter"].Value);
+		public int? FirstOutputParameter => SqlCmdBuilder.ToClrValue<int?>(m_command.Parameters["@FirstOutputParameter"].Value);
 		 
 		/// <summary>
 		/// 
 		/// </summary>
 		[SqlParameter(5,"SecondOutputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
-		public int? SecondOutputParameter => SqlDbClient.ToClrValue<int?>(m_command.Parameters["@SecondOutputParameter"].Value);
+		public int? SecondOutputParameter => SqlCmdBuilder.ToClrValue<int?>(m_command.Parameters["@SecondOutputParameter"].Value);
 		 
 	}
 	
@@ -342,11 +301,11 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Field1 => SqlDbClient.ToClrValue<int?>(InnerReader[0]);  
+		public int? Field1 => SqlCmdBuilder.ToClrValue<int?>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Field2 => SqlDbClient.ToClrValue<int?>(InnerReader[1]);  
+		public int? Field2 => SqlCmdBuilder.ToClrValue<int?>(InnerReader[1]);  
 	}
 	/// <summary>
 	/// [dbo].[uspEcho01] result[1]
@@ -386,15 +345,15 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int Id => SqlDbClient.ToClrValue<int>(InnerReader[0]);  
+		public int Id => SqlCmdBuilder.ToClrValue<int>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string Name => SqlDbClient.ToClrValue<string>(InnerReader[1]);  
+		public string Name => SqlCmdBuilder.ToClrValue<string>(InnerReader[1]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public System.DateTime? Date => SqlDbClient.ToClrValue<System.DateTime?>(InnerReader[2]);  
+		public System.DateTime? Date => SqlCmdBuilder.ToClrValue<System.DateTime?>(InnerReader[2]);  
 	}
 	/// <summary>
 	/// [dbo].[uspEcho01] result[2]
@@ -423,11 +382,11 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? Id => SqlDbClient.ToClrValue<int?>(InnerReader[0]);  
+		public int? Id => SqlCmdBuilder.ToClrValue<int?>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string Name => SqlDbClient.ToClrValue<string>(InnerReader[1]);  
+		public string Name => SqlCmdBuilder.ToClrValue<string>(InnerReader[1]);  
 	}
 
 	 
@@ -436,17 +395,15 @@
 	/// <summary>
 	/// [dbo].[uspSelectFromTemporaryTable] typed component factory.
 	/// </summary>
-	public partial class DboUspSelectFromTemporaryTableComponentFactory
+	public sealed partial class DboUspSelectFromTemporaryTableComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[dbo].[uspSelectFromTemporaryTable]";
-	
 		#region Private Fields
 		 
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspSelectFromTemporaryTableComponentFactory()
+		public DboUspSelectFromTemporaryTableComponentFactory() : base("dbo", "uspSelectFromTemporaryTable", "[dbo].[uspSelectFromTemporaryTable]")
 		{
 			OnInit();
 		}
@@ -460,54 +417,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [dbo].[uspSelectFromTemporaryTable] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspSelectFromTemporaryTable] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspSelectFromTemporaryTable] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [dbo].[uspSelectFromTemporaryTable] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -520,7 +434,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[dbo].[uspSelectFromTemporaryTable]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -705,8 +619,8 @@
 		[global::System.ComponentModel.DataAnnotations.Schema.Column("Id", Order = 0)]
 		public int Id
 		{
-			get { return SqlDbClient.ToClrValue<int>(this[0]); }
-			set { this[0] = SqlDbClient.ToSqlValue(value); }
+			get { return SqlCmdBuilder.ToClrValue<int>(this[0]); }
+			set { this[0] = SqlCmdBuilder.ToSqlValue(value); }
 		}
 		 
 		/// <summary>
@@ -717,8 +631,8 @@
 		[global::System.ComponentModel.DataAnnotations.Schema.Column("Name", Order = 1)]
 		public string Name
 		{
-			get { return SqlDbClient.ToClrValue<string>(this[1]); }
-			set { this[1] = SqlDbClient.ToSqlValue(value); }
+			get { return SqlCmdBuilder.ToClrValue<string>(this[1]); }
+			set { this[1] = SqlCmdBuilder.ToSqlValue(value); }
 		}
 		 
 		/// <summary>
@@ -729,8 +643,8 @@
 		[global::System.ComponentModel.DataAnnotations.Schema.Column("Date", Order = 2)]
 		public System.DateTime? Date
 		{
-			get { return SqlDbClient.ToClrValue<System.DateTime?>(this[2]); }
-			set { this[2] = SqlDbClient.ToSqlValue(value); }
+			get { return SqlCmdBuilder.ToClrValue<System.DateTime?>(this[2]); }
+			set { this[2] = SqlCmdBuilder.ToSqlValue(value); }
 		}
 		 
 	}
@@ -828,8 +742,8 @@
 		[global::System.ComponentModel.DataAnnotations.Schema.Column("Id", Order = 0)]
 		public int? Id
 		{
-			get { return SqlDbClient.ToClrValue<int?>(this[0]); }
-			set { this[0] = SqlDbClient.ToSqlValue(value); }
+			get { return SqlCmdBuilder.ToClrValue<int?>(this[0]); }
+			set { this[0] = SqlCmdBuilder.ToSqlValue(value); }
 		}
 		 
 		/// <summary>
@@ -840,356 +754,68 @@
 		[global::System.ComponentModel.DataAnnotations.Schema.Column("Name", Order = 1)]
 		public string Name
 		{
-			get { return SqlDbClient.ToClrValue<string>(this[1]); }
-			set { this[1] = SqlDbClient.ToSqlValue(value); }
+			get { return SqlCmdBuilder.ToClrValue<string>(this[1]); }
+			set { this[1] = SqlCmdBuilder.ToSqlValue(value); }
 		}
 		 
 	}
 
-    
-    /// <summary>
-    /// <see cref="global::System.IDisposable"/> factory.
-    /// </summary>
-    public static class Disposable
+
+    public abstract class SqlCmdBuilder
     {
-        public static readonly global::System.IDisposable Null = new DisposableNullObject();
+        public abstract void BuildCommand(global::System.Data.SqlClient.SqlCommand command);
 
-        public static global::System.IDisposable Create(global::System.Action callback) { return new RelayDisposable(callback); }
-
-        sealed class DisposableNullObject : global::System.IDisposable
-        {
-            public void Dispose() { }
-        }
-
-        sealed class RelayDisposable : global::System.IDisposable
-        {
-            private global::System.Action m_callback;
-
-            public RelayDisposable(global::System.Action callback)
-            {
-                m_callback = callback;
-            }
-
-            public void Dispose()
-            {
-                m_callback?.Invoke();
-                m_callback = null;
-            }
-        }
-    }
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public class SqlDbClient
-    {
-        #region Private Fields
-        readonly global::System.Collections.Generic.Stack<global::System.Data.SqlClient.SqlTransaction>
-            m_transactions = new global::System.Collections.Generic.Stack<global::System.Data.SqlClient.SqlTransaction>(); 
-        #endregion
-
-        #region Nested Types
-        struct SqlCommandState
-        {
-            readonly global::System.Data.SqlClient.SqlConnection Connection;
-            readonly global::System.Data.SqlClient.SqlTransaction Transaction;
-
-            public SqlCommandState(global::System.Data.SqlClient.SqlCommand command)
-            {
-                Connection = command.Connection;
-                Transaction = command.Transaction;
-            }
-
-            public void ApplyTo(global::System.Data.SqlClient.SqlCommand command)
-            {
-                command.Connection = Connection;
-                command.Transaction = Transaction;
-            }
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Gets the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> object.
-        /// </summary>
-        public global::System.Data.SqlClient.SqlConnection Connection { get; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SqlDbClient"/> class.
-        /// </summary>
-        /// <param name="connectionString">The connection string.</param>
-        /// <exception cref="global::System.ArgumentNullException">connectionString</exception>
-        public SqlDbClient(string connectionString)
-        {
-            if (ReferenceEquals(connectionString, null))
-                throw new global::System.ArgumentNullException(nameof(connectionString));
-            Connection = new global::System.Data.SqlClient.SqlConnection(connectionString);
-        }
-
-        /// <summary>
-        /// Closes the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> object.
-        /// </summary>
-        /// <returns></returns>
-        public bool CloseSession()
-        {
-            if ((Connection.State | global::System.Data.ConnectionState.Closed) != global::System.Data.ConnectionState.Closed)
-                return false;
-            Connection.Close();
-            return true;
-        }
-
-        /// <summary>
-        /// Opens the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> if not yet opened.
-        /// </summary>
-        /// <returns></returns>
-        public global::System.IDisposable OpenSession()
-        {
-            if ((Connection.State | global::System.Data.ConnectionState.Closed) == global::System.Data.ConnectionState.Closed)
-            {
-                Connection.Open();
-                return Disposable.Create(Connection.Close);
-            }
-
-            return Disposable.Null;
-        }
-
-        /// <summary>
-        /// Opens the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> asynchronously if not yet opened.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        /// <returns></returns>
-        public async global::System.Threading.Tasks.Task<global::System.IDisposable> OpenSessionAsync(global::System.Threading.CancellationToken token)
-        {
-            if ((Connection.State & global::System.Data.ConnectionState.Closed) == global::System.Data.ConnectionState.Closed)
-            {
-                await Connection.OpenAsync(token);
-                return Disposable.Create(Connection.Close);
-            }
-
-            return Disposable.Null;
-        }
-
-        public int ExecuteNonQuery(global::System.Data.SqlClient.SqlCommand command)
-        {
-            using (OpenSession())
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return command.ExecuteNonQuery();
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
-        }
-
-        public async global::System.Threading.Tasks.Task<int> ExecuteNonQueryAsync(
+        public void BuildCommand(
             global::System.Data.SqlClient.SqlCommand command, 
-            global::System.Threading.CancellationToken token)
+            global::System.Data.SqlClient.SqlConnection connection)
         {
-            using (await OpenSessionAsync(token))
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    //command.Connection = this.m_connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return await command.ExecuteNonQueryAsync(token);
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
+            if (ReferenceEquals(command, null))
+                throw new global::System.ArgumentNullException(nameof(command));
+            if (ReferenceEquals(connection, null))
+                throw new global::System.ArgumentNullException(nameof(connection));
+            this.BuildCommand(command);
+            command.Connection = connection;
         }
 
-        public object ExecuteScalar(global::System.Data.SqlClient.SqlCommand command)
-        {
-            using (OpenSession())
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return command.ExecuteScalar();
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
-        }
-
-        public async global::System.Threading.Tasks.Task<object> ExecuteScalarAsync(
-            global::System.Data.SqlClient.SqlCommand command, 
-            global::System.Threading.CancellationToken token)
-        {
-            using (await OpenSessionAsync(token))
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return await command.ExecuteScalarAsync(token);
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
-        }
-
-        public global::System.Data.SqlClient.SqlDataReader ExecuteReader(
+        public void BuildCommand(
             global::System.Data.SqlClient.SqlCommand command,
-            global::System.Data.CommandBehavior commandBehavior = global::System.Data.CommandBehavior.Default)
+            global::System.Data.SqlClient.SqlTransaction transaction)
         {
-            var initialState = new SqlCommandState(command);
-            bool autoOpen = Connection.State == global::System.Data.ConnectionState.Closed;
-            try
-            {
-                command.Connection = Connection;
-
-                if (autoOpen)
-                {
-                    Connection.Open();
-                    commandBehavior |= global::System.Data.CommandBehavior.CloseConnection;
-                }
-
-                var reader = command.ExecuteReader(commandBehavior);
-                return reader;
-
-            }
-            catch
-            {
-                if (autoOpen && Connection.State != global::System.Data.ConnectionState.Closed)
-                    Connection.Close();
-                throw;
-            }
-            finally
-            {
-                initialState.ApplyTo(command);
-            }
+            if (ReferenceEquals(command, null))
+                throw new global::System.ArgumentNullException(nameof(command));
+            if (ReferenceEquals(transaction, null))
+                throw new global::System.ArgumentNullException(nameof(transaction));
+            this.BuildCommand(command);
+            command.Connection = transaction.Connection;
+            command.Transaction = transaction;
         }
 
-        public async global::System.Threading.Tasks.Task<global::System.Data.SqlClient.SqlDataReader> ExecuteReaderAsync(
-            global::System.Data.SqlClient.SqlCommand command,
-            global::System.Threading.CancellationToken token, 
-            global::System.Data.CommandBehavior commandBehavior = global::System.Data.CommandBehavior.Default)
+        public global::System.Data.SqlClient.SqlCommand BuildCommand()
         {
-            var initialState = new SqlCommandState(command);
-            bool autoOpen = Connection.State == global::System.Data.ConnectionState.Closed;
-            try
-            {
-                command.Connection = Connection;
-
-                if (autoOpen)
-                {
-                    await Connection.OpenAsync();
-                    commandBehavior |= global::System.Data.CommandBehavior.CloseConnection;
-                }
-
-                var reader = command.ExecuteReader(commandBehavior);
-                return reader;
-
-            }
-            catch
-            {
-                if (autoOpen && Connection.State != global::System.Data.ConnectionState.Closed)
-                    Connection.Close();
-                throw;
-            }
-            finally
-            {
-                initialState.ApplyTo(command);
-            }
+            var command = new global::System.Data.SqlClient.SqlCommand();
+            this.BuildCommand(command);
+            return command;
         }
 
-        public global::System.Xml.XmlReader ExecuteXmlReader(global::System.Data.SqlClient.SqlCommand command)
+        public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
         {
-            using (OpenSession())
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return command.ExecuteXmlReader();
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
+            var command = new global::System.Data.SqlClient.SqlCommand();
+            this.BuildCommand(command, connection);
+            return command;
         }
 
-        public async global::System.Threading.Tasks.Task<global::System.Xml.XmlReader> ExecuteXmlReaderAsync(
-            global::System.Data.SqlClient.SqlCommand command,
-            global::System.Threading.CancellationToken token)
+        public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
         {
-            using (await OpenSessionAsync(token))
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    command.Connection = Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return await command.ExecuteXmlReaderAsync(token);
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
+            var command = new global::System.Data.SqlClient.SqlCommand();
+            this.BuildCommand(command, transaction);
+            return command;
         }
 
         /// <summary>
-        /// Starts a database transaction.
+        /// Converts the given SQL value to the corresponding CLR primitive
         /// </summary>
-        /// <exception cref="global::System.Data.SqlClient.SqlException">Parallel transactions are not allowed when using Multiple Active Result Sets (MARS).</exception>
-        /// <exception cref="global::System.InvalidOperationException">Parallel transactions are not supported.</exception>
-        public ISqlTransaction BeginTransaction()
-        {
-            return new SqlTransactionWrapper(this.Connection.BeginTransaction(), m_transactions);
-        }
-
-        /// <summary>
-        /// Starts a database transaction with the specified isolation level.
-        /// </summary>
-        /// <param name="iso">The isolation level under which the transaction should run.</param>
-        /// <exception cref="global::System.Data.SqlClient.SqlException">Parallel transactions are not allowed when using Multiple Active Result Sets (MARS).</exception>
-        /// <exception cref="global::System.InvalidOperationException">Parallel transactions are not supported.</exception>
-        public ISqlTransaction BeginTransaction(global::System.Data.IsolationLevel iso)
-        {
-            return new SqlTransactionWrapper(this.Connection.BeginTransaction(iso), m_transactions);
-        }
-
-        /// <summary>
-        /// Starts a database transaction with the specified transaction name.
-        /// </summary>
-        /// <param name="transactionName">The name of the transaction..</param>
-        /// <exception cref="global::System.Data.SqlClient.SqlException">Parallel transactions are not allowed when using Multiple Active Result Sets (MARS).</exception>
-        /// <exception cref="global::System.InvalidOperationException">Parallel transactions are not supported.</exception>
-        public ISqlTransaction BeginTransaction(string transactionName)
-        {
-            return new SqlTransactionWrapper(this.Connection.BeginTransaction(transactionName), m_transactions);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
+        /// <typeparam name="T">Target CLR primitive type</typeparam>
+        /// <param name="value">SQL value.</param>
         public static T ToClrValue<T>(object value)
         {
             return (ReferenceEquals(value, null) || global::System.DBNull.Value.Equals(value))
@@ -1198,15 +824,98 @@
         }
 
         /// <summary>
-        /// 
+        /// Converts the given CLR primitive to the corresponding SQL value
         /// </summary>
+        /// <typeparam name="T">CLR primitive type</typeparam>
+        /// <param name="value">The SQL value.</param>
+        /// <returns></returns>
         public static object ToSqlValue<T>(T value)
         {
             return value == null
                 ? (object)global::System.DBNull.Value
                 : value;
         }
+    }
 
+
+    public abstract class SqlSpCmdBuilder : SqlCmdBuilder
+    {
+        #region Private Fields
+        readonly string m_schemaName;
+        readonly string m_procedureName;
+        readonly string m_fullName; 
+        #endregion
+
+        [global::System.Diagnostics.DebuggerNonUserCode()]
+        protected SqlSpCmdBuilder(string schemaName, string procedureName, string fullName)
+        {
+            m_schemaName = schemaName;
+            m_procedureName = procedureName;
+            m_fullName = fullName;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCode()]
+        public string GetProcedureSchemaName() { return m_schemaName; }
+
+        [global::System.Diagnostics.DebuggerNonUserCode()]
+        public string GetProcedureName() { return m_procedureName; }
+
+        [global::System.Diagnostics.DebuggerNonUserCode()]
+        public string GetProcedureFullName() { return m_fullName; }
+
+        public override string ToString() { return m_fullName; }
+
+        public override int GetHashCode() { return m_fullName.GetHashCode(); }
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class SqlCmdBuilderFactory
+    {
+        #region Private Fields
+
+        readonly global::System.Func<global::System.Data.SqlClient.SqlConnection> m_connectionFactory;
+
+        #endregion
+
+        #region Ctor
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SqlCmdBuilderFactory"/> class.
+        /// </summary>
+        /// <param name="connectionString">The connection string.</param>
+        /// <exception cref="global::System.ArgumentNullException">connectionString</exception>
+        public SqlCmdBuilderFactory(string connectionString)
+        {
+            if (ReferenceEquals(connectionString, null))
+                throw new global::System.ArgumentNullException(nameof(connectionString));
+            m_connectionFactory = () => new global::System.Data.SqlClient.SqlConnection(connectionString);
+        }
+
+        public SqlCmdBuilderFactory() : this("context connection=true") { }
+
+        public SqlCmdBuilderFactory(global::System.Func<string> connectionStringFactory)
+        {
+            if (ReferenceEquals(null, connectionStringFactory))
+                throw new global::System.ArgumentNullException(nameof(connectionStringFactory));
+            this.m_connectionFactory = () =>
+            {
+                var connectionString = connectionStringFactory();
+                var connection = new global::System.Data.SqlClient.SqlConnection(connectionString);
+                return connection;
+            };
+        }
+
+        public SqlCmdBuilderFactory(global::System.Func<global::System.Data.SqlClient.SqlConnection> connectionFactory)
+        {
+            if (ReferenceEquals(null, connectionFactory))
+                throw new global::System.ArgumentNullException(nameof(connectionFactory));
+            this.m_connectionFactory = connectionFactory;
+        }
+        #endregion
+
+        public global::System.Data.SqlClient.SqlConnection CreateConnection() { return m_connectionFactory(); }
     }
 
 
@@ -1235,7 +944,7 @@
         /// 
         /// </summary>
         [SqlParameter(0, "RETURN_VALUE", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.ReturnValue)]
-        public int? RETURN_VALUE => SqlDbClient.ToClrValue<int?>(m_returnValueParameter.Value);
+        public int? RETURN_VALUE => SqlCmdBuilder.ToClrValue<int?>(m_returnValueParameter.Value);
     }
 
 
@@ -1277,143 +986,6 @@
         public global::System.Data.ParameterDirection Direction { get; }
 
         public int? Size { get; }
-    }
-
-
-    /// <summary>
-    /// Represents a Transact-SQL transaction to be made in a SQL Server database.
-    /// </summary>
-    public interface ISqlTransaction : global::System.IDisposable
-    {
-        /// <summary>
-        /// Gets the isolation level for this transaction.
-        /// </summary>
-        global::System.Data.IsolationLevel IsolationLevel { get; }
-
-        /// <summary>
-        /// Commits the database transaction.
-        /// </summary>
-        /// <exception cref="global::System.Exception">An error occurred while trying to commit the transaction.</exception>
-        /// <exception cref="global::System.InvalidOperationException">The transaction has already been committed or rolled back or 
-        /// the connection is broken.</exception>
-        void Commit();
-
-        /// <summary>
-        /// Rolls back a transaction from a pending state.
-        /// </summary>
-        /// <exception cref="global::System.Exception">An error occurred while trying to rollback the transaction.</exception>
-        /// <exception cref="global::System.InvalidOperationException">The transaction has already been committed or rolled back or 
-        /// the connection is broken.</exception>
-        void Rollback();
-
-        /// <summary>
-        /// Rolls back a transaction from a pending state, and specifies the transaction or savepoint name.
-        /// </summary>
-        /// <param name="transactionName">The name of the transaction to roll back, or the savepoint to which to roll back.</param>
-        /// <exception cref="global::System.ArgumentException">No transaction name was specified.</exception>
-        /// <exception cref="global::System.InvalidOperationException">The transaction has already been committed or rolled back or 
-        /// the connection is broken.</exception>
-        void Rollback(string transactionName);
-
-        /// <summary>
-        /// Creates a savepoint in the transaction that can be used to roll back a part of the transaction, and specifies the savepoint name.
-        /// </summary>
-        /// <param name="savePointName">The name of the savepoint.</param>
-        /// <exception cref="global::System.Exception">An error occurred while trying to commit the transaction..</exception>
-        /// <exception cref="global::System.InvalidOperationException">The transaction has already been committed or rolled back or 
-        /// the connection is broken.</exception>
-        void Save(string savePointName);
-    }
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <seealso cref="Zahar.SqlClient.ISqlTransaction" />
-    class SqlTransactionWrapper : ISqlTransaction
-    {
-        readonly global::System.Data.SqlClient.SqlTransaction m_innerTransaction;
-        readonly global::System.Collections.Generic.Stack<global::System.Data.SqlClient.SqlTransaction> m_stack;
-
-        public SqlTransactionWrapper(
-            global::System.Data.SqlClient.SqlTransaction innerTransaction,
-            global::System.Collections.Generic.Stack<global::System.Data.SqlClient.SqlTransaction> stack)
-        {
-            global::System.Diagnostics.Debug.Assert(innerTransaction != null);
-            global::System.Diagnostics.Debug.Assert(stack != null);
-            global::System.Diagnostics.Debug.Assert(stack.Peek() != innerTransaction);
-            m_innerTransaction = innerTransaction;
-            m_stack = stack;
-            m_stack.Push(innerTransaction);
-        }
-
-        public global::System.Data.IsolationLevel IsolationLevel => m_innerTransaction.IsolationLevel;
-
-        public void Commit()
-        {
-            try { }
-            finally {
-                while (m_stack.Count > 0)
-                {
-                    var transaction = m_stack.Pop();
-                    transaction.Commit();
-                    if (ReferenceEquals(m_innerTransaction, transaction))
-                        break;
-                }
-            }            
-        }
-
-        public void Dispose()
-        {
-            try { }
-            finally
-            {
-                while (m_stack.Count > 0)
-                {
-                    var transaction = m_stack.Pop();
-                    transaction.Dispose();
-                    if (ReferenceEquals(m_innerTransaction, transaction))
-                        break;
-                }
-            }
-        }
-
-        public void Rollback()
-        {
-            try { }
-            finally
-            {
-                while (m_stack.Count > 0)
-                {
-                    var transaction = m_stack.Pop();
-                    transaction.Rollback();
-                    if (ReferenceEquals(m_innerTransaction, transaction))
-                        break;
-                }
-            }
-        }
-
-        public void Rollback(string transactionName)
-        {
-            try { }
-            finally
-            {
-                while (m_stack.Count > 0)
-                {
-                    if (m_stack.Peek() == m_innerTransaction)
-                    {
-                        m_innerTransaction.Rollback(transactionName);
-                        break;
-                    }
-                    else { m_stack.Pop().Rollback(); }                    
-                }
-            }
-        }
-
-        public void Save(string savePointName)
-        {
-            m_innerTransaction.Save(savePointName);
-        }
     }
 
 

@@ -5,7 +5,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#  
-	string utilsClassName = typeof(SqlDbClient).Name;
+	string utilsClassName = typeof(SqlCmdBuilder).Name;
 	string dataTableClassName = GetUserDefinedDataTableClassName(Schema.TableName);
 	string dataRowClassName = GetUserDefinedDataRowClassName(Schema.TableName);
 	var columns = Schema.Columns.OfType<DataColumn>().ToList();

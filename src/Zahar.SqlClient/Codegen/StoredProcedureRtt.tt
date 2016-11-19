@@ -6,8 +6,9 @@
 <#@ import namespace="System.Text.RegularExpressions" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#
-	string utilsClassName = typeof(SqlDbClient).Name;
-	string factoryClassName = GetStoredProcedureComponentFactoryClassName(Procedure.FullName);		
+	string utilsClassName = typeof(SqlCmdBuilder).Name;
+	string sqlSpCmdBuilderClassName = typeof(SqlSpCmdBuilder).Name;
+	string factoryClassName = GetStoredProcedureCmdBuilderClassName(Procedure.FullName);		
 	var adapterClassNames = Procedure.ResultSchemas.Select(tbl=> GetStoredProcedureReaderAdapterClassName(Procedure.FullName, Procedure.GetResultOrdinal(tbl))).ToList();
 	var parameters = Procedure.Parameters.ToList();
 	var resultSchemas = Procedure.ResultSchemas.ToList();
@@ -43,10 +44,8 @@
 /// <summary>
 /// <#= Procedure.FullName #> typed component factory.
 /// </summary>
-public partial class <#= factoryClassName #>
+public sealed partial class <#= factoryClassName #> : <#= sqlSpCmdBuilderClassName #>
 {
-	public const string ProcedureName = "<#= Procedure.FullName #>";
-
 	#region Private Fields
 	<# foreach(var p in tableInputParameters){ #> 
 	[global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
@@ -55,7 +54,7 @@ public partial class <#= factoryClassName #>
 
 	[<#= DebuggerNonUserCodeAttribute #>]
 	[<#= GeneratedCodeAttribute #>]
-	public <#= factoryClassName #>()
+	public <#= factoryClassName #>() : base("<#= Procedure.Schema #>", "<#= Procedure.Name #>", "<#= Procedure.FullName #>")
 	{
 		OnInit();
 	}
@@ -69,54 +68,11 @@ public partial class <#= factoryClassName #>
 	#endregion
 
 	/// <summary>
-	/// Creates new <#= Procedure.FullName #> -command pre-configured based on this factory object.
-	/// </summary>
-	[<#= DebuggerNonUserCodeAttribute #>]
-	[<#= GeneratedCodeAttribute #>]
-	public global::System.Data.SqlClient.SqlCommand <#= BuildCommandMethodName #>(global::System.Data.SqlClient.SqlConnection connection)
-	{
-		if(ReferenceEquals(connection, null))
-			throw new global::System.ArgumentNullException(nameof(connection));
-		var command = this.<#= BuildCommandMethodName #>();
-		command.Connection = connection;
-		return command;
-	}
-
-	/// <summary>
-	/// Creates new <#= Procedure.FullName #> -command pre-configured based on this factory object.
-	/// </summary>
-	[<#= DebuggerNonUserCodeAttribute #>]
-	[<#= GeneratedCodeAttribute #>]
-	public global::System.Data.SqlClient.SqlCommand <#= BuildCommandMethodName #>(global::System.Data.SqlClient.SqlTransaction transaction)
-	{
-		if(ReferenceEquals(transaction, null))
-			throw new global::System.ArgumentNullException(nameof(transaction));
-		if(ReferenceEquals(transaction.Connection, null))
-			throw new global::System.InvalidOperationException("transaction.Connection is null");
-		var command = this.<#= BuildCommandMethodName #>();
-		command.Connection = transaction.Connection;
-		command.Transaction = transaction;
-		return command;
-	}
-
-	/// <summary>
-	/// Creates new <#= Procedure.FullName #> -command pre-configured based on this factory object.
-	/// </summary>
-	[<#= DebuggerNonUserCodeAttribute #>]
-	[<#= GeneratedCodeAttribute #>]
-	public global::System.Data.SqlClient.SqlCommand <#= BuildCommandMethodName #>()
-	{
-		var command = new global::System.Data.SqlClient.SqlCommand();
-		this.<#= BuildCommandMethodName #>(command);
-		return command;
-	}
-
-	/// <summary>
 	/// Configures the given command object to execute the <#= Procedure.FullName #> -procedure.
 	/// </summary>
 	[<#= DebuggerNonUserCodeAttribute #>]
 	[<#= GeneratedCodeAttribute #>]
-	public void <#= BuildCommandMethodName #>(global::System.Data.SqlClient.SqlCommand command)
+	public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 	{
 		if(ReferenceEquals(command, null))
 			throw new global::System.ArgumentNullException(nameof(command));		
@@ -130,7 +86,7 @@ public partial class <#= factoryClassName #>
 			if (parameter.Value == null)
 				parameter.Value = global::System.DBNull.Value;
 		}
-		command.CommandText = ProcedureName;
+		command.CommandText = "<#= Procedure.FullName #>";
 		command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 		command.Parameters.Clear();
 		command.Parameters.AddRange(parameters);

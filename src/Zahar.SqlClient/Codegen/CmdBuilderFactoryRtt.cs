@@ -19,7 +19,7 @@ namespace Zahar.SqlClient.Codegen
     /// Class to produce the template output
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class DbClientRtt : Zahar.SqlClient.Codegen.RuntimeTextTemplate
+    public partial class CmdBuilderFactoryRtt : Zahar.SqlClient.Codegen.RuntimeTextTemplate
     {
         /// <summary>
         /// Create the template output
@@ -27,13 +27,21 @@ namespace Zahar.SqlClient.Codegen
         public override string TransformText()
         {
             this.Write("\r\n/// <summary>\r\n/// \r\n/// </summary>\r\npublic sealed class ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(SqlDbClientClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
             this.Write(" : ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(typeof(SqlDbClient).Name));
-            this.Write("\r\n{\r\n\t/// <summary>\r\n    /// \r\n    /// </summary>\r\n\tpublic ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(SqlDbClientClassName));
-            this.Write("(string connectionString)\r\n\t\t: base(connectionString)\r\n\t{\r\n\t\t\r\n\t}");
- foreach(var spFullName in SpFullNames){ string factoryClass = GetStoredProcedureComponentFactoryClassName(spFullName); 
+            this.Write(this.ToStringHelper.ToStringWithCulture(typeof(SqlCmdBuilderFactory).Name));
+            this.Write("\r\n{\r\n\t#region Ctor\r\n\r\n\tpublic ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
+            this.Write("(string connectionString) : base(connectionString) {}\r\n\r\n\tpublic ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
+            this.Write("() : base() { }\r\n\r\n\tpublic ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
+            this.Write("(System.Func<string> connectionStringFactory) : base(connectionStringFactory) {}\r" +
+                    "\n\r\n\tpublic ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
+            this.Write("(System.Func<System.Data.SqlClient.SqlConnection> connectionFactory) : base(conne" +
+                    "ctionFactory) {}\r\n\t#endregion\r\n\r\n");
+ foreach(var spFullName in SpFullNames){ string factoryClass = GetStoredProcedureCmdBuilderClassName(spFullName); 
             this.Write(" \r\n\r\n\t/// <summary>\r\n    /// Creates a new instance of the ");
             this.Write(this.ToStringHelper.ToStringWithCulture(spFullName));
             this.Write(" components factory.\r\n    /// </summary>\r\n\t[");

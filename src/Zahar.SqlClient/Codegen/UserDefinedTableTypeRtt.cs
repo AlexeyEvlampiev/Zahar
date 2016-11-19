@@ -27,7 +27,7 @@ namespace Zahar.SqlClient.Codegen
         public override string TransformText()
         {
   
-	string utilsClassName = typeof(SqlDbClient).Name;
+	string utilsClassName = typeof(SqlCmdBuilder).Name;
 	string dataTableClassName = GetUserDefinedDataTableClassName(Schema.TableName);
 	string dataRowClassName = GetUserDefinedDataRowClassName(Schema.TableName);
 	var columns = Schema.Columns.OfType<DataColumn>().ToList();

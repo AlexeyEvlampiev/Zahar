@@ -24,7 +24,7 @@
         /// <summary>
         /// 
         /// </summary>
-		string SqlDbClientClassName { get; }
+		string SqlCmdBuilderFactoryClassName { get; }
 	 
 
         /// <summary>
@@ -66,7 +66,7 @@
         /// <summary>
         /// 
         /// </summary>
-		string GetStoredProcedureComponentFactoryClassName(string spFullName);  
+		string GetStoredProcedureCmdBuilderClassName(string spFullName);  
 
         /// <summary>
         /// 
@@ -156,10 +156,10 @@
         /// <summary>
         /// 
         /// </summary>
-		public string SqlDbClientClassName 
+		public string SqlCmdBuilderFactoryClassName 
 		{ 
 			[DebuggerStepThrough]
-			get { return m_cache.GetOrAdd("SqlDbClientClassName", m_innerFormatInfo.SqlDbClientClassName); }
+			get { return m_cache.GetOrAdd("SqlCmdBuilderFactoryClassName", m_innerFormatInfo.SqlCmdBuilderFactoryClassName); }
 		}
 		 
 
@@ -231,9 +231,9 @@
         /// 
         /// </summary>
 		[DebuggerStepThrough]
-		public string GetStoredProcedureComponentFactoryClassName(string spFullName)
+		public string GetStoredProcedureCmdBuilderClassName(string spFullName)
 		{
-			return m_cache.GetOrAdd($"GetStoredProcedureComponentFactoryClassName_{spFullName}", InvokeGetStoredProcedureComponentFactoryClassName(spFullName));
+			return m_cache.GetOrAdd($"GetStoredProcedureCmdBuilderClassName_{spFullName}", InvokeGetStoredProcedureCmdBuilderClassName(spFullName));
 		}  
 
         /// <summary>
@@ -314,10 +314,10 @@
 			return result;
 		}  
 
-		private string InvokeGetStoredProcedureComponentFactoryClassName(string spFullName)
+		private string InvokeGetStoredProcedureCmdBuilderClassName(string spFullName)
 		{
-			string result = m_innerFormatInfo.GetStoredProcedureComponentFactoryClassName(spFullName);
-			AssertCsIdentifier("GetStoredProcedureComponentFactoryClassName", result);
+			string result = m_innerFormatInfo.GetStoredProcedureCmdBuilderClassName(spFullName);
+			AssertCsIdentifier("GetStoredProcedureCmdBuilderClassName", result);
 			return result;
 		}  
 
@@ -376,10 +376,10 @@
         /// <summary>
         /// 
         /// </summary>
-		public string SqlDbClientClassName 
+		public string SqlCmdBuilderFactoryClassName 
 		{ 
 			[DebuggerStepThrough]
-			get { return m_formatInfo.SqlDbClientClassName; }
+			get { return m_formatInfo.SqlCmdBuilderFactoryClassName; }
 		}
 		 
 
@@ -451,9 +451,9 @@
         /// 
         /// </summary>
 		[DebuggerStepThrough]
-		public string GetStoredProcedureComponentFactoryClassName(string spFullName)
+		public string GetStoredProcedureCmdBuilderClassName(string spFullName)
 		{
-			return m_formatInfo.GetStoredProcedureComponentFactoryClassName(spFullName);
+			return m_formatInfo.GetStoredProcedureCmdBuilderClassName(spFullName);
 		}  
 
         /// <summary>

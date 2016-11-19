@@ -3,16 +3,20 @@
 	/// <summary>
 	/// 
 	/// </summary>
-	public sealed class Client : SqlDbClient
+	public sealed class AdventureWorks2014CmdBuilderFactory : SqlCmdBuilderFactory
 	{
-		/// <summary>
-	    /// 
-	    /// </summary>
-		public Client(string connectionString)
-			: base(connectionString)
-		{
-			
-		} 
+		#region Ctor
+	
+		public AdventureWorks2014CmdBuilderFactory(string connectionString) : base(connectionString) {}
+	
+		public AdventureWorks2014CmdBuilderFactory() : base() { }
+	
+		public AdventureWorks2014CmdBuilderFactory(System.Func<string> connectionStringFactory) : base(connectionStringFactory) {}
+	
+		public AdventureWorks2014CmdBuilderFactory(System.Func<System.Data.SqlClient.SqlConnection> connectionFactory) : base(connectionFactory) {}
+		#endregion
+	
+	 
 	
 		/// <summary>
 	    /// Creates a new instance of the [HumanResources].[uspUpdateEmployeeHireInfo] components factory.
@@ -90,17 +94,15 @@
 	/// <summary>
 	/// [dbo].[uspGetBillOfMaterials] typed component factory.
 	/// </summary>
-	public partial class DboUspGetBillOfMaterialsComponentFactory
+	public sealed partial class DboUspGetBillOfMaterialsComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[dbo].[uspGetBillOfMaterials]";
-	
 		#region Private Fields
 		 
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetBillOfMaterialsComponentFactory()
+		public DboUspGetBillOfMaterialsComponentFactory() : base("dbo", "uspGetBillOfMaterials", "[dbo].[uspGetBillOfMaterials]")
 		{
 			OnInit();
 		}
@@ -114,54 +116,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [dbo].[uspGetBillOfMaterials] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspGetBillOfMaterials] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspGetBillOfMaterials] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [dbo].[uspGetBillOfMaterials] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -174,7 +133,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[dbo].[uspGetBillOfMaterials]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -290,35 +249,35 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? ProductAssemblyID => SqlDbClient.ToClrValue<int?>(InnerReader[0]);  
+		public int? ProductAssemblyID => SqlCmdBuilder.ToClrValue<int?>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? ComponentID => SqlDbClient.ToClrValue<int?>(InnerReader[1]);  
+		public int? ComponentID => SqlCmdBuilder.ToClrValue<int?>(InnerReader[1]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string ComponentDesc => SqlDbClient.ToClrValue<string>(InnerReader[2]);  
+		public string ComponentDesc => SqlCmdBuilder.ToClrValue<string>(InnerReader[2]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal? TotalQuantity => SqlDbClient.ToClrValue<decimal?>(InnerReader[3]);  
+		public decimal? TotalQuantity => SqlCmdBuilder.ToClrValue<decimal?>(InnerReader[3]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal? StandardCost => SqlDbClient.ToClrValue<decimal?>(InnerReader[4]);  
+		public decimal? StandardCost => SqlCmdBuilder.ToClrValue<decimal?>(InnerReader[4]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal? ListPrice => SqlDbClient.ToClrValue<decimal?>(InnerReader[5]);  
+		public decimal? ListPrice => SqlCmdBuilder.ToClrValue<decimal?>(InnerReader[5]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public short? BOMLevel => SqlDbClient.ToClrValue<short?>(InnerReader[6]);  
+		public short? BOMLevel => SqlCmdBuilder.ToClrValue<short?>(InnerReader[6]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? RecursionLevel => SqlDbClient.ToClrValue<int?>(InnerReader[7]);  
+		public int? RecursionLevel => SqlCmdBuilder.ToClrValue<int?>(InnerReader[7]);  
 	}
 
 	 
@@ -327,17 +286,15 @@
 	/// <summary>
 	/// [dbo].[uspGetEmployeeManagers] typed component factory.
 	/// </summary>
-	public partial class DboUspGetEmployeeManagersComponentFactory
+	public sealed partial class DboUspGetEmployeeManagersComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[dbo].[uspGetEmployeeManagers]";
-	
 		#region Private Fields
 		 
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetEmployeeManagersComponentFactory()
+		public DboUspGetEmployeeManagersComponentFactory() : base("dbo", "uspGetEmployeeManagers", "[dbo].[uspGetEmployeeManagers]")
 		{
 			OnInit();
 		}
@@ -350,54 +307,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [dbo].[uspGetEmployeeManagers] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspGetEmployeeManagers] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspGetEmployeeManagers] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [dbo].[uspGetEmployeeManagers] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -409,7 +323,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[dbo].[uspGetEmployeeManagers]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -515,31 +429,31 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? RecursionLevel => SqlDbClient.ToClrValue<int?>(InnerReader[0]);  
+		public int? RecursionLevel => SqlCmdBuilder.ToClrValue<int?>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? BusinessEntityID => SqlDbClient.ToClrValue<int?>(InnerReader[1]);  
+		public int? BusinessEntityID => SqlCmdBuilder.ToClrValue<int?>(InnerReader[1]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string FirstName => SqlDbClient.ToClrValue<string>(InnerReader[2]);  
+		public string FirstName => SqlCmdBuilder.ToClrValue<string>(InnerReader[2]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string LastName => SqlDbClient.ToClrValue<string>(InnerReader[3]);  
+		public string LastName => SqlCmdBuilder.ToClrValue<string>(InnerReader[3]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string OrganizationNode => SqlDbClient.ToClrValue<string>(InnerReader[4]);  
+		public string OrganizationNode => SqlCmdBuilder.ToClrValue<string>(InnerReader[4]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string ManagerFirstName => SqlDbClient.ToClrValue<string>(InnerReader[5]);  
+		public string ManagerFirstName => SqlCmdBuilder.ToClrValue<string>(InnerReader[5]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string ManagerLastName => SqlDbClient.ToClrValue<string>(InnerReader[6]);  
+		public string ManagerLastName => SqlCmdBuilder.ToClrValue<string>(InnerReader[6]);  
 	}
 
 	 
@@ -548,17 +462,15 @@
 	/// <summary>
 	/// [dbo].[uspGetManagerEmployees] typed component factory.
 	/// </summary>
-	public partial class DboUspGetManagerEmployeesComponentFactory
+	public sealed partial class DboUspGetManagerEmployeesComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[dbo].[uspGetManagerEmployees]";
-	
 		#region Private Fields
 		 
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetManagerEmployeesComponentFactory()
+		public DboUspGetManagerEmployeesComponentFactory() : base("dbo", "uspGetManagerEmployees", "[dbo].[uspGetManagerEmployees]")
 		{
 			OnInit();
 		}
@@ -571,54 +483,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [dbo].[uspGetManagerEmployees] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspGetManagerEmployees] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspGetManagerEmployees] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [dbo].[uspGetManagerEmployees] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -630,7 +499,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[dbo].[uspGetManagerEmployees]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -736,31 +605,31 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? RecursionLevel => SqlDbClient.ToClrValue<int?>(InnerReader[0]);  
+		public int? RecursionLevel => SqlCmdBuilder.ToClrValue<int?>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string OrganizationNode => SqlDbClient.ToClrValue<string>(InnerReader[1]);  
+		public string OrganizationNode => SqlCmdBuilder.ToClrValue<string>(InnerReader[1]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string ManagerFirstName => SqlDbClient.ToClrValue<string>(InnerReader[2]);  
+		public string ManagerFirstName => SqlCmdBuilder.ToClrValue<string>(InnerReader[2]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string ManagerLastName => SqlDbClient.ToClrValue<string>(InnerReader[3]);  
+		public string ManagerLastName => SqlCmdBuilder.ToClrValue<string>(InnerReader[3]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? BusinessEntityID => SqlDbClient.ToClrValue<int?>(InnerReader[4]);  
+		public int? BusinessEntityID => SqlCmdBuilder.ToClrValue<int?>(InnerReader[4]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string FirstName => SqlDbClient.ToClrValue<string>(InnerReader[5]);  
+		public string FirstName => SqlCmdBuilder.ToClrValue<string>(InnerReader[5]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string LastName => SqlDbClient.ToClrValue<string>(InnerReader[6]);  
+		public string LastName => SqlCmdBuilder.ToClrValue<string>(InnerReader[6]);  
 	}
 
 	 
@@ -769,17 +638,15 @@
 	/// <summary>
 	/// [dbo].[uspGetWhereUsedProductID] typed component factory.
 	/// </summary>
-	public partial class DboUspGetWhereUsedProductIDComponentFactory
+	public sealed partial class DboUspGetWhereUsedProductIDComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[dbo].[uspGetWhereUsedProductID]";
-	
 		#region Private Fields
 		 
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspGetWhereUsedProductIDComponentFactory()
+		public DboUspGetWhereUsedProductIDComponentFactory() : base("dbo", "uspGetWhereUsedProductID", "[dbo].[uspGetWhereUsedProductID]")
 		{
 			OnInit();
 		}
@@ -793,54 +660,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [dbo].[uspGetWhereUsedProductID] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspGetWhereUsedProductID] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspGetWhereUsedProductID] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [dbo].[uspGetWhereUsedProductID] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -853,7 +677,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[dbo].[uspGetWhereUsedProductID]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -969,35 +793,35 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? ProductAssemblyID => SqlDbClient.ToClrValue<int?>(InnerReader[0]);  
+		public int? ProductAssemblyID => SqlCmdBuilder.ToClrValue<int?>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? ComponentID => SqlDbClient.ToClrValue<int?>(InnerReader[1]);  
+		public int? ComponentID => SqlCmdBuilder.ToClrValue<int?>(InnerReader[1]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public string ComponentDesc => SqlDbClient.ToClrValue<string>(InnerReader[2]);  
+		public string ComponentDesc => SqlCmdBuilder.ToClrValue<string>(InnerReader[2]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal? TotalQuantity => SqlDbClient.ToClrValue<decimal?>(InnerReader[3]);  
+		public decimal? TotalQuantity => SqlCmdBuilder.ToClrValue<decimal?>(InnerReader[3]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal? StandardCost => SqlDbClient.ToClrValue<decimal?>(InnerReader[4]);  
+		public decimal? StandardCost => SqlCmdBuilder.ToClrValue<decimal?>(InnerReader[4]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal? ListPrice => SqlDbClient.ToClrValue<decimal?>(InnerReader[5]);  
+		public decimal? ListPrice => SqlCmdBuilder.ToClrValue<decimal?>(InnerReader[5]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public short? BOMLevel => SqlDbClient.ToClrValue<short?>(InnerReader[6]);  
+		public short? BOMLevel => SqlCmdBuilder.ToClrValue<short?>(InnerReader[6]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? RecursionLevel => SqlDbClient.ToClrValue<int?>(InnerReader[7]);  
+		public int? RecursionLevel => SqlCmdBuilder.ToClrValue<int?>(InnerReader[7]);  
 	}
 
 	 
@@ -1006,17 +830,15 @@
 	/// <summary>
 	/// [dbo].[uspLogError] typed component factory.
 	/// </summary>
-	public partial class DboUspLogErrorComponentFactory
+	public sealed partial class DboUspLogErrorComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[dbo].[uspLogError]";
-	
 		#region Private Fields
 		 
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspLogErrorComponentFactory()
+		public DboUspLogErrorComponentFactory() : base("dbo", "uspLogError", "[dbo].[uspLogError]")
 		{
 			OnInit();
 		}
@@ -1029,54 +851,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [dbo].[uspLogError] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspLogError] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspLogError] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [dbo].[uspLogError] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -1088,7 +867,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[dbo].[uspLogError]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -1175,13 +954,13 @@
 		/// 
 		/// </summary>
 		[SqlParameter(0,"RETURN_VALUE", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.ReturnValue)]
-		public int? RETURN_VALUE => SqlDbClient.ToClrValue<int?>(m_command.Parameters["@RETURN_VALUE"].Value);
+		public int? RETURN_VALUE => SqlCmdBuilder.ToClrValue<int?>(m_command.Parameters["@RETURN_VALUE"].Value);
 		 
 		/// <summary>
 		/// 
 		/// </summary>
 		[SqlParameter(1,"ErrorLogID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
-		public int? ErrorLogID => SqlDbClient.ToClrValue<int?>(m_command.Parameters["@ErrorLogID"].Value);
+		public int? ErrorLogID => SqlCmdBuilder.ToClrValue<int?>(m_command.Parameters["@ErrorLogID"].Value);
 		 
 	}
 	
@@ -1193,17 +972,15 @@
 	/// <summary>
 	/// [dbo].[uspPrintError] typed component factory.
 	/// </summary>
-	public partial class DboUspPrintErrorComponentFactory
+	public sealed partial class DboUspPrintErrorComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[dbo].[uspPrintError]";
-	
 		#region Private Fields
 		 
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspPrintErrorComponentFactory()
+		public DboUspPrintErrorComponentFactory() : base("dbo", "uspPrintError", "[dbo].[uspPrintError]")
 		{
 			OnInit();
 		}
@@ -1215,54 +992,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [dbo].[uspPrintError] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspPrintError] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspPrintError] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [dbo].[uspPrintError] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -1273,7 +1007,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[dbo].[uspPrintError]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -1338,17 +1072,15 @@
 	/// <summary>
 	/// [dbo].[uspSearchCandidateResumes] typed component factory.
 	/// </summary>
-	public partial class DboUspSearchCandidateResumesComponentFactory
+	public sealed partial class DboUspSearchCandidateResumesComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[dbo].[uspSearchCandidateResumes]";
-	
 		#region Private Fields
 		 
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public DboUspSearchCandidateResumesComponentFactory()
+		public DboUspSearchCandidateResumesComponentFactory() : base("dbo", "uspSearchCandidateResumes", "[dbo].[uspSearchCandidateResumes]")
 		{
 			OnInit();
 		}
@@ -1364,54 +1096,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [dbo].[uspSearchCandidateResumes] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspSearchCandidateResumes] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [dbo].[uspSearchCandidateResumes] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [dbo].[uspSearchCandidateResumes] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -1426,7 +1115,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[dbo].[uspSearchCandidateResumes]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -1573,11 +1262,11 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int JobCandidateID => SqlDbClient.ToClrValue<int>(InnerReader[0]);  
+		public int JobCandidateID => SqlCmdBuilder.ToClrValue<int>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? RANK => SqlDbClient.ToClrValue<int?>(InnerReader[1]);  
+		public int? RANK => SqlCmdBuilder.ToClrValue<int?>(InnerReader[1]);  
 	}
 	/// <summary>
 	/// [dbo].[uspSearchCandidateResumes] result[1]
@@ -1617,11 +1306,11 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int JobCandidateID => SqlDbClient.ToClrValue<int>(InnerReader[0]);  
+		public int JobCandidateID => SqlCmdBuilder.ToClrValue<int>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? RANK => SqlDbClient.ToClrValue<int?>(InnerReader[1]);  
+		public int? RANK => SqlCmdBuilder.ToClrValue<int?>(InnerReader[1]);  
 	}
 	/// <summary>
 	/// [dbo].[uspSearchCandidateResumes] result[2]
@@ -1661,11 +1350,11 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int JobCandidateID => SqlDbClient.ToClrValue<int>(InnerReader[0]);  
+		public int JobCandidateID => SqlCmdBuilder.ToClrValue<int>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? RANK => SqlDbClient.ToClrValue<int?>(InnerReader[1]);  
+		public int? RANK => SqlCmdBuilder.ToClrValue<int?>(InnerReader[1]);  
 	}
 	/// <summary>
 	/// [dbo].[uspSearchCandidateResumes] result[3]
@@ -1694,11 +1383,11 @@
 		/// <summary>
 		/// 
 		/// </summary>
-		public int JobCandidateID => SqlDbClient.ToClrValue<int>(InnerReader[0]);  
+		public int JobCandidateID => SqlCmdBuilder.ToClrValue<int>(InnerReader[0]);  
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? RANK => SqlDbClient.ToClrValue<int?>(InnerReader[1]);  
+		public int? RANK => SqlCmdBuilder.ToClrValue<int?>(InnerReader[1]);  
 	}
 
 	 
@@ -1707,17 +1396,15 @@
 	/// <summary>
 	/// [HumanResources].[uspUpdateEmployeeHireInfo] typed component factory.
 	/// </summary>
-	public partial class HumanResourcesUspUpdateEmployeeHireInfoComponentFactory
+	public sealed partial class HumanResourcesUspUpdateEmployeeHireInfoComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[HumanResources].[uspUpdateEmployeeHireInfo]";
-	
 		#region Private Fields
 		 
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public HumanResourcesUspUpdateEmployeeHireInfoComponentFactory()
+		public HumanResourcesUspUpdateEmployeeHireInfoComponentFactory() : base("HumanResources", "uspUpdateEmployeeHireInfo", "[HumanResources].[uspUpdateEmployeeHireInfo]")
 		{
 			OnInit();
 		}
@@ -1736,54 +1423,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [HumanResources].[uspUpdateEmployeeHireInfo] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [HumanResources].[uspUpdateEmployeeHireInfo] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [HumanResources].[uspUpdateEmployeeHireInfo] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [HumanResources].[uspUpdateEmployeeHireInfo] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -1801,7 +1445,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[HumanResources].[uspUpdateEmployeeHireInfo]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -1936,17 +1580,15 @@
 	/// <summary>
 	/// [HumanResources].[uspUpdateEmployeeLogin] typed component factory.
 	/// </summary>
-	public partial class HumanResourcesUspUpdateEmployeeLoginComponentFactory
+	public sealed partial class HumanResourcesUspUpdateEmployeeLoginComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[HumanResources].[uspUpdateEmployeeLogin]";
-	
 		#region Private Fields
 		 
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public HumanResourcesUspUpdateEmployeeLoginComponentFactory()
+		public HumanResourcesUspUpdateEmployeeLoginComponentFactory() : base("HumanResources", "uspUpdateEmployeeLogin", "[HumanResources].[uspUpdateEmployeeLogin]")
 		{
 			OnInit();
 		}
@@ -1964,54 +1606,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [HumanResources].[uspUpdateEmployeeLogin] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [HumanResources].[uspUpdateEmployeeLogin] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [HumanResources].[uspUpdateEmployeeLogin] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [HumanResources].[uspUpdateEmployeeLogin] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -2028,7 +1627,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[HumanResources].[uspUpdateEmployeeLogin]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -2153,17 +1752,15 @@
 	/// <summary>
 	/// [HumanResources].[uspUpdateEmployeePersonalInfo] typed component factory.
 	/// </summary>
-	public partial class HumanResourcesUspUpdateEmployeePersonalInfoComponentFactory
+	public sealed partial class HumanResourcesUspUpdateEmployeePersonalInfoComponentFactory : SqlSpCmdBuilder
 	{
-		public const string ProcedureName = "[HumanResources].[uspUpdateEmployeePersonalInfo]";
-	
 		#region Private Fields
 		 
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public HumanResourcesUspUpdateEmployeePersonalInfoComponentFactory()
+		public HumanResourcesUspUpdateEmployeePersonalInfoComponentFactory() : base("HumanResources", "uspUpdateEmployeePersonalInfo", "[HumanResources].[uspUpdateEmployeePersonalInfo]")
 		{
 			OnInit();
 		}
@@ -2180,54 +1777,11 @@
 		#endregion
 	
 		/// <summary>
-		/// Creates new [HumanResources].[uspUpdateEmployeePersonalInfo] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
-		{
-			if(ReferenceEquals(connection, null))
-				throw new global::System.ArgumentNullException(nameof(connection));
-			var command = this.BuildCommand();
-			command.Connection = connection;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [HumanResources].[uspUpdateEmployeePersonalInfo] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
-		{
-			if(ReferenceEquals(transaction, null))
-				throw new global::System.ArgumentNullException(nameof(transaction));
-			if(ReferenceEquals(transaction.Connection, null))
-				throw new global::System.InvalidOperationException("transaction.Connection is null");
-			var command = this.BuildCommand();
-			command.Connection = transaction.Connection;
-			command.Transaction = transaction;
-			return command;
-		}
-	
-		/// <summary>
-		/// Creates new [HumanResources].[uspUpdateEmployeePersonalInfo] -command pre-configured based on this factory object.
-		/// </summary>
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public global::System.Data.SqlClient.SqlCommand BuildCommand()
-		{
-			var command = new global::System.Data.SqlClient.SqlCommand();
-			this.BuildCommand(command);
-			return command;
-		}
-	
-		/// <summary>
 		/// Configures the given command object to execute the [HumanResources].[uspUpdateEmployeePersonalInfo] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
-		public void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
 				throw new global::System.ArgumentNullException(nameof(command));		
@@ -2243,7 +1797,7 @@
 				if (parameter.Value == null)
 					parameter.Value = global::System.DBNull.Value;
 			}
-			command.CommandText = ProcedureName;
+			command.CommandText = "[HumanResources].[uspUpdateEmployeePersonalInfo]";
 			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
 			command.Parameters.Clear();
 			command.Parameters.AddRange(parameters);
@@ -2352,313 +1906,62 @@
 	
 	
 
-    
-    /// <summary>
-    /// <see cref="global::System.IDisposable"/> factory.
-    /// </summary>
-    public static class Disposable
+
+    public abstract class SqlCmdBuilder
     {
-        public static readonly global::System.IDisposable Null = new DisposableNullObject();
+        public abstract void BuildCommand(global::System.Data.SqlClient.SqlCommand command);
 
-        public static global::System.IDisposable Create(global::System.Action callback) { return new RelayDisposable(callback); }
-
-        sealed class DisposableNullObject : global::System.IDisposable
-        {
-            public void Dispose() { }
-        }
-
-        sealed class RelayDisposable : global::System.IDisposable
-        {
-            private global::System.Action m_callback;
-
-            public RelayDisposable(global::System.Action callback)
-            {
-                m_callback = callback;
-            }
-
-            public void Dispose()
-            {
-                m_callback?.Invoke();
-                m_callback = null;
-            }
-        }
-    }
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public class SqlDbClient
-    {
-        #region Nested Types
-        struct SqlCommandState
-        {
-            readonly global::System.Data.SqlClient.SqlConnection Connection;
-            readonly global::System.Data.SqlClient.SqlTransaction Transaction;
-
-            public SqlCommandState(global::System.Data.SqlClient.SqlCommand command)
-            {
-                Connection = command.Connection;
-                Transaction = command.Transaction;
-            }
-
-            public void ApplyTo(global::System.Data.SqlClient.SqlCommand command)
-            {
-                command.Connection = Connection;
-                command.Transaction = Transaction;
-            }
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Gets the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> object.
-        /// </summary>
-        public global::System.Data.SqlClient.SqlConnection Connection { get; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SqlDbClient"/> class.
-        /// </summary>
-        /// <param name="connectionString">The connection string.</param>
-        /// <exception cref="global::System.ArgumentNullException">connectionString</exception>
-        public SqlDbClient(string connectionString)
-        {
-            if (ReferenceEquals(connectionString, null))
-                throw new global::System.ArgumentNullException(nameof(connectionString));
-            Connection = new global::System.Data.SqlClient.SqlConnection(connectionString);
-        }
-
-        /// <summary>
-        /// Closes the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> object.
-        /// </summary>
-        /// <returns></returns>
-        public bool CloseSession()
-        {
-            if ((Connection.State | global::System.Data.ConnectionState.Closed) != global::System.Data.ConnectionState.Closed)
-                return false;
-            Connection.Close();
-            return true;
-        }
-
-        /// <summary>
-        /// Opens the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> if not yet opened.
-        /// </summary>
-        /// <returns></returns>
-        public global::System.IDisposable OpenSession()
-        {
-            if ((Connection.State | global::System.Data.ConnectionState.Closed) == global::System.Data.ConnectionState.Closed)
-            {
-                Connection.Open();
-                return Disposable.Create(Connection.Close);
-            }
-
-            return Disposable.Null;
-        }
-
-        /// <summary>
-        /// Opens the underlying <see cref="global::System.Data.SqlClient.SqlConnection"/> asynchronously if not yet opened.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        /// <returns></returns>
-        public async global::System.Threading.Tasks.Task<global::System.IDisposable> OpenSessionAsync(global::System.Threading.CancellationToken token)
-        {
-            if ((Connection.State & global::System.Data.ConnectionState.Closed) == global::System.Data.ConnectionState.Closed)
-            {
-                await Connection.OpenAsync(token);
-                return Disposable.Create(Connection.Close);
-            }
-
-            return Disposable.Null;
-        }
-
-        public int ExecuteNonQuery(global::System.Data.SqlClient.SqlCommand command)
-        {
-            using (OpenSession())
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return command.ExecuteNonQuery();
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
-        }
-
-        public async global::System.Threading.Tasks.Task<int> ExecuteNonQueryAsync(
+        public void BuildCommand(
             global::System.Data.SqlClient.SqlCommand command, 
-            global::System.Threading.CancellationToken token)
+            global::System.Data.SqlClient.SqlConnection connection)
         {
-            using (await OpenSessionAsync(token))
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    //command.Connection = this.m_connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return await command.ExecuteNonQueryAsync(token);
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
+            if (ReferenceEquals(command, null))
+                throw new global::System.ArgumentNullException(nameof(command));
+            if (ReferenceEquals(connection, null))
+                throw new global::System.ArgumentNullException(nameof(connection));
+            this.BuildCommand(command);
+            command.Connection = connection;
         }
 
-        public object ExecuteScalar(global::System.Data.SqlClient.SqlCommand command)
-        {
-            using (OpenSession())
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return command.ExecuteScalar();
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
-        }
-
-        public async global::System.Threading.Tasks.Task<object> ExecuteScalarAsync(
-            global::System.Data.SqlClient.SqlCommand command, 
-            global::System.Threading.CancellationToken token)
-        {
-            using (await OpenSessionAsync(token))
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return await command.ExecuteScalarAsync(token);
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
-        }
-
-        public global::System.Data.SqlClient.SqlDataReader ExecuteReader(
+        public void BuildCommand(
             global::System.Data.SqlClient.SqlCommand command,
-            global::System.Data.CommandBehavior commandBehavior = global::System.Data.CommandBehavior.Default)
+            global::System.Data.SqlClient.SqlTransaction transaction)
         {
-            var initialState = new SqlCommandState(command);
-            bool autoOpen = Connection.State == global::System.Data.ConnectionState.Closed;
-            try
-            {
-                command.Connection = Connection;
-
-                if (autoOpen)
-                {
-                    Connection.Open();
-                    commandBehavior |= global::System.Data.CommandBehavior.CloseConnection;
-                }
-
-                var reader = command.ExecuteReader(commandBehavior);
-                return reader;
-
-            }
-            catch
-            {
-                if (autoOpen && Connection.State != global::System.Data.ConnectionState.Closed)
-                    Connection.Close();
-                throw;
-            }
-            finally
-            {
-                initialState.ApplyTo(command);
-            }
+            if (ReferenceEquals(command, null))
+                throw new global::System.ArgumentNullException(nameof(command));
+            if (ReferenceEquals(transaction, null))
+                throw new global::System.ArgumentNullException(nameof(transaction));
+            this.BuildCommand(command);
+            command.Connection = transaction.Connection;
+            command.Transaction = transaction;
         }
 
-        public async global::System.Threading.Tasks.Task<global::System.Data.SqlClient.SqlDataReader> ExecuteReaderAsync(
-            global::System.Data.SqlClient.SqlCommand command,
-            global::System.Threading.CancellationToken token, 
-            global::System.Data.CommandBehavior commandBehavior = global::System.Data.CommandBehavior.Default)
+        public global::System.Data.SqlClient.SqlCommand BuildCommand()
         {
-            var initialState = new SqlCommandState(command);
-            bool autoOpen = Connection.State == global::System.Data.ConnectionState.Closed;
-            try
-            {
-                command.Connection = Connection;
-
-                if (autoOpen)
-                {
-                    await Connection.OpenAsync();
-                    commandBehavior |= global::System.Data.CommandBehavior.CloseConnection;
-                }
-
-                var reader = command.ExecuteReader(commandBehavior);
-                return reader;
-
-            }
-            catch
-            {
-                if (autoOpen && Connection.State != global::System.Data.ConnectionState.Closed)
-                    Connection.Close();
-                throw;
-            }
-            finally
-            {
-                initialState.ApplyTo(command);
-            }
+            var command = new global::System.Data.SqlClient.SqlCommand();
+            this.BuildCommand(command);
+            return command;
         }
 
-        public global::System.Xml.XmlReader ExecuteXmlReader(global::System.Data.SqlClient.SqlCommand command)
+        public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
         {
-            using (OpenSession())
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    command.Connection = this.Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return command.ExecuteXmlReader();
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
+            var command = new global::System.Data.SqlClient.SqlCommand();
+            this.BuildCommand(command, connection);
+            return command;
         }
 
-        public async global::System.Threading.Tasks.Task<global::System.Xml.XmlReader> ExecuteXmlReaderAsync(
-            global::System.Data.SqlClient.SqlCommand command,
-            global::System.Threading.CancellationToken token)
+        public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
         {
-            using (await OpenSessionAsync(token))
-            {
-                var initialState = new SqlCommandState(command);
-                try
-                {
-                    command.Connection = Connection;
-                    //if (m_transactions.Count > 0)
-                    //    command.Transaction = m_transactions.Peek();
-                    return await command.ExecuteXmlReaderAsync(token);
-                }
-                finally
-                {
-                    initialState.ApplyTo(command);
-                }
-            }
+            var command = new global::System.Data.SqlClient.SqlCommand();
+            this.BuildCommand(command, transaction);
+            return command;
         }
 
         /// <summary>
-        /// 
+        /// Converts the given SQL value to the corresponding CLR primitive
         /// </summary>
+        /// <typeparam name="T">Target CLR primitive type</typeparam>
+        /// <param name="value">SQL value.</param>
         public static T ToClrValue<T>(object value)
         {
             return (ReferenceEquals(value, null) || global::System.DBNull.Value.Equals(value))
@@ -2667,15 +1970,98 @@
         }
 
         /// <summary>
-        /// 
+        /// Converts the given CLR primitive to the corresponding SQL value
         /// </summary>
+        /// <typeparam name="T">CLR primitive type</typeparam>
+        /// <param name="value">The SQL value.</param>
+        /// <returns></returns>
         public static object ToSqlValue<T>(T value)
         {
             return value == null
                 ? (object)global::System.DBNull.Value
                 : value;
         }
+    }
 
+
+    public abstract class SqlSpCmdBuilder : SqlCmdBuilder
+    {
+        #region Private Fields
+        readonly string m_schemaName;
+        readonly string m_procedureName;
+        readonly string m_fullName; 
+        #endregion
+
+        [global::System.Diagnostics.DebuggerNonUserCode()]
+        protected SqlSpCmdBuilder(string schemaName, string procedureName, string fullName)
+        {
+            m_schemaName = schemaName;
+            m_procedureName = procedureName;
+            m_fullName = fullName;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCode()]
+        public string GetProcedureSchemaName() { return m_schemaName; }
+
+        [global::System.Diagnostics.DebuggerNonUserCode()]
+        public string GetProcedureName() { return m_procedureName; }
+
+        [global::System.Diagnostics.DebuggerNonUserCode()]
+        public string GetProcedureFullName() { return m_fullName; }
+
+        public override string ToString() { return m_fullName; }
+
+        public override int GetHashCode() { return m_fullName.GetHashCode(); }
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class SqlCmdBuilderFactory
+    {
+        #region Private Fields
+
+        readonly global::System.Func<global::System.Data.SqlClient.SqlConnection> m_connectionFactory;
+
+        #endregion
+
+        #region Ctor
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SqlCmdBuilderFactory"/> class.
+        /// </summary>
+        /// <param name="connectionString">The connection string.</param>
+        /// <exception cref="global::System.ArgumentNullException">connectionString</exception>
+        public SqlCmdBuilderFactory(string connectionString)
+        {
+            if (ReferenceEquals(connectionString, null))
+                throw new global::System.ArgumentNullException(nameof(connectionString));
+            m_connectionFactory = () => new global::System.Data.SqlClient.SqlConnection(connectionString);
+        }
+
+        public SqlCmdBuilderFactory() : this("context connection=true") { }
+
+        public SqlCmdBuilderFactory(global::System.Func<string> connectionStringFactory)
+        {
+            if (ReferenceEquals(null, connectionStringFactory))
+                throw new global::System.ArgumentNullException(nameof(connectionStringFactory));
+            this.m_connectionFactory = () =>
+            {
+                var connectionString = connectionStringFactory();
+                var connection = new global::System.Data.SqlClient.SqlConnection(connectionString);
+                return connection;
+            };
+        }
+
+        public SqlCmdBuilderFactory(global::System.Func<global::System.Data.SqlClient.SqlConnection> connectionFactory)
+        {
+            if (ReferenceEquals(null, connectionFactory))
+                throw new global::System.ArgumentNullException(nameof(connectionFactory));
+            this.m_connectionFactory = connectionFactory;
+        }
+        #endregion
+
+        public global::System.Data.SqlClient.SqlConnection CreateConnection() { return m_connectionFactory(); }
     }
 
 
@@ -2704,7 +2090,7 @@
         /// 
         /// </summary>
         [SqlParameter(0, "RETURN_VALUE", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.ReturnValue)]
-        public int? RETURN_VALUE => SqlDbClient.ToClrValue<int?>(m_returnValueParameter.Value);
+        public int? RETURN_VALUE => SqlCmdBuilder.ToClrValue<int?>(m_returnValueParameter.Value);
     }
 
 

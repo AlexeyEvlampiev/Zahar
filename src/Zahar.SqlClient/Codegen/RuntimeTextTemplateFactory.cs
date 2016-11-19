@@ -33,10 +33,10 @@
             return new CommonRtt(m_diagnosticsCallback, m_formatInfo);
         }
 
-        public IRuntimeTextTemplate CreateDbClientRtt()
+        public IRuntimeTextTemplate CreateCmdBuilderFactoryRtt()
         {
             var spFullNames = m_projection.Procedures.Select(sp=> sp.FullName);
-            return new DbClientRtt(spFullNames, m_diagnosticsCallback, m_formatInfo);
+            return new CmdBuilderFactoryRtt(spFullNames, m_diagnosticsCallback, m_formatInfo);
         }
 
         public IEnumerable<IRuntimeTextTemplate> CreateUserDefinedTableRtts()
@@ -83,11 +83,11 @@
         }
     }
 
-    public partial class DbClientRtt
+    public partial class CmdBuilderFactoryRtt
     {
         readonly IReadOnlyList<string> SpFullNames;
 
-        public DbClientRtt(IEnumerable<string> spFullNames, 
+        public CmdBuilderFactoryRtt(IEnumerable<string> spFullNames, 
                 IDiagnosticsCallback diagnosticsCallback, 
                 IFormatInfo formatInfo)
             : base(diagnosticsCallback, formatInfo)

@@ -47,10 +47,10 @@
     <Compile Include="Catalog\ProcedureInfo.cs" />
     <Compile Include="Catalog\SqlParameterInfo.cs" />
     <Compile Include="Codegen\CommonRtt.cs" />
-    <Compile Include="Codegen\DbClientRtt.cs">
+    <Compile Include="Codegen\CmdBuilderFactoryRtt.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DbClientRtt.tt</DependentUpon>
+      <DependentUpon>CmdBuilderFactoryRtt.tt</DependentUpon>
     </Compile>
     <Compile Include="Codegen\FormatInfo.cs" />
     <Compile Include="Codegen\FormatInfo.generated.cs">
@@ -79,7 +79,6 @@
     <Compile Include="DiagnosticsCallbackScope.cs" />
     <Compile Include="Disposable.cs" />
     <Compile Include="IDiagnosticsCallback.cs" />
-    <Compile Include="ISqlTransaction.cs" />
     <Compile Include="Mapping\MappingFileNotFoundException.cs" />
     <Compile Include="Mapping\Procedure.cs" />
     <Compile Include="Projection\Projection.cs" />
@@ -94,15 +93,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SqlCmdBuilder.cs" />
     <Compile Include="SqlDbTypeInfo.cs" />
     <Compile Include="SqlParameterAttribute.cs" />
-    <Compile Include="SqlTransactionWrapper.cs" />
+    <Compile Include="SqlSpCmdBuilder.cs" />
     <Compile Include="XmlValidationException.cs" />
     <Compile Include="ProcessingCancelledException.cs" />
     <Compile Include="ReturnValueSqlCommandOutput.cs" />
     <Compile Include="SelectorsFileNotFoundException.cs" />
     <Compile Include="SchemaValidatingXmlSerializer.cs" />
-    <Compile Include="SqlDbClient.cs" />
+    <Compile Include="SqlCmdBuilderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,9 +112,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Codegen\DbClientRtt.tt">
+    <Content Include="Codegen\CmdBuilderFactoryRtt.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DbClientRtt.cs</LastGenOutput>
+      <LastGenOutput>CmdBuilderFactoryRtt.cs</LastGenOutput>
     </Content>
     <Content Include="Codegen\FormatInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
