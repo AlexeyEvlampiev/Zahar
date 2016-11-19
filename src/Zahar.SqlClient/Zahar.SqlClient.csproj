@@ -140,6 +140,7 @@
     <None Include="pre-build.ps1" />
     <None Include="Zahar.SqlClient.xsd">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup />

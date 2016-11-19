@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>SqlClient Transaction Script Code Generator</Name>
+    <Description>SqlClient Strongly Typed Stored Procedures Code Generator</Description>
+    <Icon>Zahar.SqlClient.ItemTemplate.ico</Icon>
+    <TemplateID>cbe6338c-5b2d-4ebd-9ecf-d116aa597625</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>MyDatabase.tt</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>        
+      </Reference>
+      <Reference>
+        <Assembly>System.Data</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>System.ComponentModel.DataAnnotations</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem ReplaceParameters="true" CustomTool="TextTemplatingFileGenerator" TargetFileName="$fileinputname$.tt">MyDatabase.tt</ProjectItem>
+    <ProjectItem TargetFileName="$fileinputname$.xml">MyDatabase.xml</ProjectItem>
+    <ProjectItem TargetFileName="Zahar.SqlClient.dll">Zahar.SqlClient.dll</ProjectItem>
+    <ProjectItem TargetFileName="Zahar.SqlClient.xsd">Zahar.SqlClient.xsd</ProjectItem>    
+  </TemplateContent>
+</VSTemplate>
