@@ -2,8 +2,12 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
     <Identity Id="Zahar.SqlClient.Vsix.Microsoft Corporation.b76b4c7c-d0b5-43ed-9e50-8ea35b3d9a83" Version="1.0" Language="en-US" Publisher="Alexey Evlampiev" />
-    <DisplayName>SQL Server Transaction Script Code Generator</DisplayName>
-    <Description>Empty VSIX Project.</Description>
+    <DisplayName>SqlClient Transaction Script Code Generator</DisplayName>
+    <Description xml:space="preserve">SqlClient Transaction Script Code Generator </Description>
+    <License>GPL 2</License>
+    <Icon>Icon.png</Icon>
+    <PreviewImage>Preview.png</PreviewImage>
+    <Tags>ADO, SQL, DAL, Strongly Typed, Stored Procedures, data access</Tags>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0]" />

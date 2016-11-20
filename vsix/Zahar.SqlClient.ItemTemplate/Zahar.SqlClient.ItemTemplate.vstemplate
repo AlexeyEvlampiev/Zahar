@@ -3,7 +3,7 @@
   <TemplateData>
     <Name>SqlClient Transaction Script Code Generator</Name>
     <Description>SqlClient Strongly Typed Stored Procedures Code Generator</Description>
-    <Icon>Zahar.SqlClient.ItemTemplate.ico</Icon>
+    <Icon>Icon.png</Icon>
     <TemplateID>cbe6338c-5b2d-4ebd-9ecf-d116aa597625</TemplateID>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>

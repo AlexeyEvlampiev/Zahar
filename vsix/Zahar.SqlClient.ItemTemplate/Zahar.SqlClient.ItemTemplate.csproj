@@ -99,6 +99,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icon.png" />
     <Content Include="MyDatabase.tt" />
     <Content Include="MyDatabase.xml" />
     <Content Include="Zahar.SqlClient.dll" />
