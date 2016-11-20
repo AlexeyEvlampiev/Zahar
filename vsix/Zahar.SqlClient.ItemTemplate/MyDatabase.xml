@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="Zahar.SqlClient.xsd"
+         xmlns="Zahar.SqlClient.Mapping">
+  <!--
+    This mapping file allows you to declare for which stored procedures of the [$safeitemrootname$] database
+    the tool needs to generated strongly typed classes.
+    
+    After making changes to this file, do not forget to regenerate the typed classes by 
+      - Opening and saving the [$safeitemrootname$].tt file, or
+      - Right click on [$safeitemrootname$].tt > click on Run Custom Tool
+   -->
+  <Procedures>
+    <!--<Add Schema="dbo" Name="MyStoredProcedure" />-->
+  </Procedures>
+</Mapping>
+

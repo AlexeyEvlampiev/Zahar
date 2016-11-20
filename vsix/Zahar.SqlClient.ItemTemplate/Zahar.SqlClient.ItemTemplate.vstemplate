@@ -19,11 +19,16 @@
         <Assembly>System.Data</Assembly>
       </Reference>
       <Reference>
+        <Assembly>System.Data.DataSetExtensions</Assembly>
+      </Reference>
+      <Reference>
         <Assembly>System.ComponentModel.DataAnnotations</Assembly>
       </Reference>
     </References>
     <ProjectItem ReplaceParameters="true" CustomTool="TextTemplatingFileGenerator" TargetFileName="$fileinputname$.tt">MyDatabase.tt</ProjectItem>
-    <ProjectItem TargetFileName="$fileinputname$.xml">MyDatabase.xml</ProjectItem>
+    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.xml">MyDatabase.xml</ProjectItem>
+    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.readme" OpenInEditor="true">MyDatabase.rm</ProjectItem>
+    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.examples.cs">Examples.cs</ProjectItem>
     <ProjectItem TargetFileName="Zahar.SqlClient.dll">Zahar.SqlClient.dll</ProjectItem>
     <ProjectItem TargetFileName="Zahar.SqlClient.xsd">Zahar.SqlClient.xsd</ProjectItem>    
   </TemplateContent>

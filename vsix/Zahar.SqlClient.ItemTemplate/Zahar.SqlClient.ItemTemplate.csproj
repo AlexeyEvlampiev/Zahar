@@ -76,7 +76,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Class.cs" />
+    <None Include="Examples.cs" />
+    <None Include="MyDatabase.rm" />
     <None Include="Zahar.SqlClient.ItemTemplate.ico" />
     <None Include="Zahar.SqlClient.xsd">
       <SubType>Designer</SubType>

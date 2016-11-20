@@ -8,8 +8,8 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".generated.cs" #><# 
-	var connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=MyDatabase;Integrated Security=True;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-	var mappingFile = "MyDatabase.xml";
+	var connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=$safeitemrootname$;Integrated Security=True;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+	var mappingFile = "$safeitemrootname$.xml";
 	
 	var templates = new List<IRuntimeTextTemplate>();
 	try
@@ -42,6 +42,6 @@ namespace $rootnamespace$
 }<#+ 
 	sealed class CustomFormatInfo : FormatInfo
 	{
-		public override string SqlCmdBuilderFactoryClassName { get { return "MyDatabaseCmdBuilderFactory"; } }
+		public override string SqlCmdBuilderFactoryClassName { get { return "$safeitemrootname$CmdBuilderFactory"; } }
 	} 
 #>

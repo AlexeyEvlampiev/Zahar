@@ -19,12 +19,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZaharClient", "tests\ZaharC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.Zahar.SqlClient.Codegen", "tests\IntegrationTests.Zahar.SqlClient.Codegen\IntegrationTests.Zahar.SqlClient.Codegen.csproj", "{D22DF00E-72B0-4ADA-993B-0351398419A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zahar.SqlClient.ItemTemplate", "Zahar.SqlClient.ItemTemplate\Zahar.SqlClient.ItemTemplate.csproj", "{75349B6C-454D-4810-BB41-CEF0321B7956}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vsix", "vsix", "{9324C239-D43E-4514-ABAA-1DFB15A96CA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zahar.SqlClient.ItemTemplate", "vsix\Zahar.SqlClient.ItemTemplate\Zahar.SqlClient.ItemTemplate.csproj", "{75349B6C-454D-4810-BB41-CEF0321B7956}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D3844458-798B-4FB8-A040-40F76EC99A48} = {D3844458-798B-4FB8-A040-40F76EC99A48}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zahar.SqlClient.Vsix", "Zahar.SqlClient.Vsix\Zahar.SqlClient.Vsix.csproj", "{7345B410-D80C-4F1E-BC5A-C51EC7D7ECB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zahar.SqlClient.Vsix", "vsix\Zahar.SqlClient.Vsix\Zahar.SqlClient.Vsix.csproj", "{7345B410-D80C-4F1E-BC5A-C51EC7D7ECB0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D3844458-798B-4FB8-A040-40F76EC99A48} = {D3844458-798B-4FB8-A040-40F76EC99A48}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,5 +86,7 @@ Global
 		{21D11182-05EA-4EE5-9C90-DE5B4A5750D8} = {83C800AA-17A1-4ACC-953D-921816E4F3C3}
 		{1A8F823D-5710-4BDE-92BF-A72A79AF49DE} = {83C800AA-17A1-4ACC-953D-921816E4F3C3}
 		{D22DF00E-72B0-4ADA-993B-0351398419A8} = {83C800AA-17A1-4ACC-953D-921816E4F3C3}
+		{75349B6C-454D-4810-BB41-CEF0321B7956} = {9324C239-D43E-4514-ABAA-1DFB15A96CA2}
+		{7345B410-D80C-4F1E-BC5A-C51EC7D7ECB0} = {9324C239-D43E-4514-ABAA-1DFB15A96CA2}
 	EndGlobalSection
 EndGlobal

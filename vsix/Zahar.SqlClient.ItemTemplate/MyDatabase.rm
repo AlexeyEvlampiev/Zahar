@@ -1,0 +1,26 @@
+﻿To start 
+
+1. Open the $fileinputname$.tt code generator file and replace the connection string with the actual value
+
+	var connectionString = @"Your connection string goes here...";
+
+2. Open the $fileinputname$.xml mapping file and Add stored procedure selectors you would like to generate code for
+
+  <Procedures>
+    <Add Schema="dbo" Name="Your 1st stored procedure name goes here..." />
+	<Add Schema="dbo" Name="Your 2nd stored procedure name goes here..." />
+	...
+  </Procedures>
+
+3. Optional: In order to change the Command Builder Factory generated class name, open the $fileinputname$.tt file 
+	and specify your custom name as shown below
+
+	sealed class CustomFormatInfo : FormatInfo
+	{
+		public override string SqlCmdBuilderFactoryClassName { get { return "Your Command Builder Factory class name goes here..."; } }
+	} 
+
+4. $rootnamespace$.examples.cs contains some samples of using the AdventureWorks2014 generated classes. 
+	You can safely delete the examples file from your project.
+
+  Happy coding!

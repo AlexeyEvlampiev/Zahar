@@ -46,7 +46,8 @@
                 }
                 else
                 {
-                    message.Append(" Make sure that the specified SQL Server instance is up and running.");
+                    message.Append(" Make sure that the connection string specified in Transaction Script Code Generating tool is valid");
+                    message.Append($" and also that the {DataSource} SQL Server instance is up and running.");
                 }
                 m_diagnosticsCallback.Error(message.ToString());
                 throw new DatabaseNotAccessibleException();

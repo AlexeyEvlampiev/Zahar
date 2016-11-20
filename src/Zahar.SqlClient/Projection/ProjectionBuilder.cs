@@ -8,6 +8,7 @@
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
+    using System.Text;
     using System.Threading.Tasks;
 
     public class ProjectionBuilder
@@ -73,7 +74,10 @@
             foreach (var sp in mapping.Procedures
                 .Where(sp => false == ixProcedureFullNames.Contains(sp.FullName)))
             {
-                _diagnosticsCallbackScope.Error($"{sp.FullName} could not be found.");
+                var message = new StringBuilder($"{sp.FullName} stored procedure specified in the maping xml-file could not be found.")
+                    .Append($" Make sure that every database object specified in the mapping does exist in the target database.");
+
+                _diagnosticsCallbackScope.Error(message.ToString());
             }
 
             foreach (var task in tasks)
