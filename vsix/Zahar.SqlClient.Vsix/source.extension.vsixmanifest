@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Zahar-SqlClient" Version="1.0" Language="en-US" Publisher="alexeyevlampiev" />
+    <Identity Id="Zahar-SqlClient" Version="1.0.2" Language="en-US" Publisher="alexeyevlampiev" />
     <DisplayName>SqlClient Transaction Script Code Generator</DisplayName>
     <Description xml:space="preserve">SqlClient Transaction Script Code Generator </Description>
     <License>LICENSE</License>

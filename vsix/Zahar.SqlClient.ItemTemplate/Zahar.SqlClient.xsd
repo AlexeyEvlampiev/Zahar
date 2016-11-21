@@ -5,7 +5,7 @@
            xmlns:z="Zahar.SqlClient.Mapping">
   <xs:simpleType name="SysName">
     <xs:restriction base="xs:string">
-      <xs:pattern value="^\w+(?:\s+\w+)*$" />
+      <xs:pattern value="^\S+$" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="Mapping">

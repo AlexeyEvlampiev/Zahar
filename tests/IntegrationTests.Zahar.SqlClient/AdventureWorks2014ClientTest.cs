@@ -1,4 +1,7 @@
-﻿namespace Zahar.SqlClient
+﻿using Xunit;
+using Zahar.SqlClient.Projection;
+
+namespace Zahar.SqlClient
 {
     using System;
     using System.Collections.Generic;
@@ -8,5 +11,10 @@
 
     public class AdventureWorks2014ClientTest
     {
+        [Fact]
+        public void Test()
+        {
+
+        }
     }
 }
