@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AdventureWorks2014Client")]
+[assembly: AssemblyTitle("TransactionScript.AdventureWorks2014")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
-[assembly: AssemblyProduct("AdventureWorks2014Client")]
+[assembly: AssemblyProduct("TransactionScript.AdventureWorks2014")]
 [assembly: AssemblyCopyright("Copyright © Microsoft Corporation 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("21d11182-05ea-4ee5-9c90-de5b4a5750d8")]
+[assembly: Guid("541691f3-0d21-4261-97fa-c96f8bad285e")]
 
 // Version information for an assembly consists of the following four values:
 //

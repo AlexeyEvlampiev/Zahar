@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>Zahar</Name>
+    <Name>UseCaseDb</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{fc25cc12-ae9f-49a9-b379-e76d36329ce5}</ProjectGuid>
+    <ProjectGuid>{ee15d141-7ebf-4f17-81bf-10ac37a5d86b}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>Zahar</RootNamespace>
-    <AssemblyName>Zahar</AssemblyName>
+    <RootNamespace>UseCaseDb</RootNamespace>
+    <AssemblyName>UseCaseDb</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -61,12 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Udtt01.sql" />
-    <Build Include="dbo\uspEcho01.sql" />
     <Build Include="dbo\Udtt02.sql" />
-    <Build Include="dbo\uspSelectFromTemporaryTable.sql" />
     <Build Include="dbo\uspDefinedWithCSharpKeywords.sql" />
+    <Build Include="dbo\uspEcho01.sql" />
+    <Build Include="dbo\uspSelectFromTemporaryTable.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Zahar.sql-express.publish.publish.xml" />
+    <None Include="UseCaseDb.publish.xml" />
   </ItemGroup>
 </Project>

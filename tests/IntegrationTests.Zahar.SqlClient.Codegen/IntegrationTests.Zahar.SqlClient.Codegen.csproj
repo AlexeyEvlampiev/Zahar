@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,25 +60,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdventureWorks2014_CreateDboUspGetBillOfMaterials_Should.cs" />
+    <Compile Include="AdventureWorks2014.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Zahar_uspEcho01_Should.cs" />
+    <Compile Include="UseCaseDb.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AdventureWorks2014Client\AdventureWorks2014Client.csproj">
-      <Project>{21d11182-05ea-4ee5-9c90-de5b4a5750d8}</Project>
-      <Name>AdventureWorks2014Client</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IntegrationTests.Zahar.SqlClient\IntegrationTests.Zahar.SqlClient.csproj">
       <Project>{90c846d7-5b19-43c0-b268-7d148303cbac}</Project>
       <Name>IntegrationTests.Zahar.SqlClient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ZaharClient\ZaharClient.csproj">
-      <Project>{1a8f823d-5710-4bde-92bf-a72a79af49de}</Project>
-      <Name>ZaharClient</Name>
+    <ProjectReference Include="..\TransactionScript.AdventureWorks2014\TransactionScript.AdventureWorks2014.csproj">
+      <Project>{541691f3-0d21-4261-97fa-c96f8bad285e}</Project>
+      <Name>TransactionScript.AdventureWorks2014</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransactionScript.UseCaseDb\TransactionScript.UseCaseDb.csproj">
+      <Project>{5615C986-457E-4127-BD8C-375B197F83EE}</Project>
+      <Name>TransactionScript.UseCaseDb</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

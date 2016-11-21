@@ -7,7 +7,7 @@
         [Fact]
         public void Work()
         {
-            var client = new SqlCmdBuilderFactory(Constants.ZaharConnectionString);
+            var client = new SqlCmdBuilderFactory(Constants.UseCaseDbConnectionString);
             client.CreateConnection();
         }
     }

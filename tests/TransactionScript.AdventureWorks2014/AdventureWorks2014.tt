@@ -8,8 +8,8 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".generated.cs" #><# 
-	var connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Zahar;Integrated Security=True;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-	var mappingFile = "Zahar.xml";
+	var connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=AdventureWorks2014;Integrated Security=True;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+	var mappingFile = "AdventureWorks2014.xml";
 	
 	var templates = new List<IRuntimeTextTemplate>();
 	try
@@ -32,7 +32,7 @@
 	}
 
  #>
-namespace Zahar
+namespace TransactionScript.AdventureWorks2014
 {<# 
 	foreach(var rtt in templates)
 	{
@@ -42,6 +42,6 @@ namespace Zahar
 }<#+ 
 	sealed class CustomFormatInfo : FormatInfo
 	{
-		public override string SqlCmdBuilderFactoryClassName { get { return "ZaharCmdBuilderFactory"; } }
+		public override string SqlCmdBuilderFactoryClassName { get { return "AdventureWorks2014CmdBuilderFactory"; } }
 	} 
 #>

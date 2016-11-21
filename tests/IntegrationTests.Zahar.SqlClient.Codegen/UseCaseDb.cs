@@ -3,15 +3,16 @@
     using System;
     using System.Data;
     using System.Linq;
+    using TransactionScript.UseCaseDb;
     using Xunit;
 
-    public class Zahar_uspEcho01_Should
+    public class UseCaseDb
     {
         [Fact]
         public void BeReaderExecutable()
         {
             const int testRowsCount = 3;
-            var factory = new Zahar.ZaharCmdBuilderFactory(Constants.ZaharConnectionString);
+            var factory = new UseCaseDbCmdBuilderFactory(Constants.UseCaseDbConnectionString);
             var builder = factory.CreateDboUspEcho01CmdBuilder();
 
 
