@@ -67,5 +67,14 @@
             Assert.Equal("mySchema", target.Schema, StringComparer.Ordinal);
             Assert.Equal("uspMyProcedure", target.Name, StringComparer.Ordinal);
         }
+
+
+        [Fact]
+        public void ParseValidNames()
+        {
+            var target = new DbObjectInfo("[some-schema-with-dashes].[uspMyProcedure]");
+            Assert.Equal("some-schema-with-dashes", target.Schema, StringComparer.Ordinal);
+            Assert.Equal("uspMyProcedure", target.Name, StringComparer.Ordinal);
+        }
     }
 }

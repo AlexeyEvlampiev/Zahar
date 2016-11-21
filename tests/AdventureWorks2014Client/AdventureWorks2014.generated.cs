@@ -22,70 +22,70 @@
 	    /// Creates a new instance of the [HumanResources].[uspUpdateEmployeeHireInfo] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public HumanResourcesUspUpdateEmployeeHireInfoCmdBuilder CreateHumanResourcesUspUpdateEmployeeHireInfoCmdBuilder() { return new HumanResourcesUspUpdateEmployeeHireInfoCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [HumanResources].[uspUpdateEmployeeLogin] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public HumanResourcesUspUpdateEmployeeLoginCmdBuilder CreateHumanResourcesUspUpdateEmployeeLoginCmdBuilder() { return new HumanResourcesUspUpdateEmployeeLoginCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [HumanResources].[uspUpdateEmployeePersonalInfo] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public HumanResourcesUspUpdateEmployeePersonalInfoCmdBuilder CreateHumanResourcesUspUpdateEmployeePersonalInfoCmdBuilder() { return new HumanResourcesUspUpdateEmployeePersonalInfoCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspGetBillOfMaterials] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetBillOfMaterialsCmdBuilder CreateDboUspGetBillOfMaterialsCmdBuilder() { return new DboUspGetBillOfMaterialsCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspGetEmployeeManagers] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetEmployeeManagersCmdBuilder CreateDboUspGetEmployeeManagersCmdBuilder() { return new DboUspGetEmployeeManagersCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspGetManagerEmployees] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetManagerEmployeesCmdBuilder CreateDboUspGetManagerEmployeesCmdBuilder() { return new DboUspGetManagerEmployeesCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspGetWhereUsedProductID] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetWhereUsedProductIDCmdBuilder CreateDboUspGetWhereUsedProductIDCmdBuilder() { return new DboUspGetWhereUsedProductIDCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspLogError] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspLogErrorCmdBuilder CreateDboUspLogErrorCmdBuilder() { return new DboUspLogErrorCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspPrintError] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspPrintErrorCmdBuilder CreateDboUspPrintErrorCmdBuilder() { return new DboUspPrintErrorCmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspSearchCandidateResumes] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspSearchCandidateResumesCmdBuilder CreateDboUspSearchCandidateResumesCmdBuilder() { return new DboUspSearchCandidateResumesCmdBuilder(); }  
 	}
 	 
@@ -101,7 +101,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetBillOfMaterialsCmdBuilder() : base("dbo", "uspGetBillOfMaterials", "[dbo].[uspGetBillOfMaterials]")
 		{
 			OnInit();
@@ -119,7 +119,7 @@
 		/// Configures the given command object to execute the [dbo].[uspGetBillOfMaterials] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -146,7 +146,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new ReturnValueSqlCommandOutput(command);
@@ -157,7 +157,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetBillOfMaterialsSqlDataReaderAdapter BuildRecordAdapter(global::System.Data.SqlClient.SqlDataReader reader)
 		{		
 			return new DboUspGetBillOfMaterialsSqlDataReaderAdapter(reader);
@@ -167,7 +167,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? startProductID, System.DateTime? checkDate)
 		{
 			var builder = new DboUspGetBillOfMaterialsCmdBuilder()		
@@ -183,7 +183,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -204,14 +204,14 @@
 		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(1,"StartProductID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? StartProductID { get; set; }
 		/// <summary>
 		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(2,"CheckDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? CheckDate { get; set; }
 	
@@ -293,7 +293,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetEmployeeManagersCmdBuilder() : base("dbo", "uspGetEmployeeManagers", "[dbo].[uspGetEmployeeManagers]")
 		{
 			OnInit();
@@ -310,7 +310,7 @@
 		/// Configures the given command object to execute the [dbo].[uspGetEmployeeManagers] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -336,7 +336,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new ReturnValueSqlCommandOutput(command);
@@ -347,7 +347,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetEmployeeManagersSqlDataReaderAdapter BuildRecordAdapter(global::System.Data.SqlClient.SqlDataReader reader)
 		{		
 			return new DboUspGetEmployeeManagersSqlDataReaderAdapter(reader);
@@ -357,7 +357,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? businessEntityID)
 		{
 			var builder = new DboUspGetEmployeeManagersCmdBuilder()		
@@ -372,7 +372,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -391,7 +391,7 @@
 		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(1,"BusinessEntityID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? BusinessEntityID { get; set; }
 	
@@ -469,7 +469,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetManagerEmployeesCmdBuilder() : base("dbo", "uspGetManagerEmployees", "[dbo].[uspGetManagerEmployees]")
 		{
 			OnInit();
@@ -486,7 +486,7 @@
 		/// Configures the given command object to execute the [dbo].[uspGetManagerEmployees] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -512,7 +512,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new ReturnValueSqlCommandOutput(command);
@@ -523,7 +523,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetManagerEmployeesSqlDataReaderAdapter BuildRecordAdapter(global::System.Data.SqlClient.SqlDataReader reader)
 		{		
 			return new DboUspGetManagerEmployeesSqlDataReaderAdapter(reader);
@@ -533,7 +533,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? businessEntityID)
 		{
 			var builder = new DboUspGetManagerEmployeesCmdBuilder()		
@@ -548,7 +548,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -567,7 +567,7 @@
 		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(1,"BusinessEntityID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? BusinessEntityID { get; set; }
 	
@@ -645,7 +645,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetWhereUsedProductIDCmdBuilder() : base("dbo", "uspGetWhereUsedProductID", "[dbo].[uspGetWhereUsedProductID]")
 		{
 			OnInit();
@@ -663,7 +663,7 @@
 		/// Configures the given command object to execute the [dbo].[uspGetWhereUsedProductID] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -690,7 +690,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new ReturnValueSqlCommandOutput(command);
@@ -701,7 +701,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspGetWhereUsedProductIDSqlDataReaderAdapter BuildRecordAdapter(global::System.Data.SqlClient.SqlDataReader reader)
 		{		
 			return new DboUspGetWhereUsedProductIDSqlDataReaderAdapter(reader);
@@ -711,7 +711,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? startProductID, System.DateTime? checkDate)
 		{
 			var builder = new DboUspGetWhereUsedProductIDCmdBuilder()		
@@ -727,7 +727,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -748,14 +748,14 @@
 		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(1,"StartProductID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? StartProductID { get; set; }
 		/// <summary>
 		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(2,"CheckDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? CheckDate { get; set; }
 	
@@ -837,7 +837,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspLogErrorCmdBuilder() : base("dbo", "uspLogError", "[dbo].[uspLogError]")
 		{
 			OnInit();
@@ -854,7 +854,7 @@
 		/// Configures the given command object to execute the [dbo].[uspLogError] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -880,7 +880,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspLogErrorOutputValueSet BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new DboUspLogErrorOutputValueSet(command);
@@ -890,7 +890,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? errorLogID)
 		{
 			var builder = new DboUspLogErrorCmdBuilder()		
@@ -905,7 +905,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -924,7 +924,7 @@
 		/// Parameter 1 (InputOutput).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(1,"ErrorLogID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
 		public int? ErrorLogID { get; set; }
 	
@@ -979,7 +979,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspPrintErrorCmdBuilder() : base("dbo", "uspPrintError", "[dbo].[uspPrintError]")
 		{
 			OnInit();
@@ -995,7 +995,7 @@
 		/// Configures the given command object to execute the [dbo].[uspPrintError] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -1020,7 +1020,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new ReturnValueSqlCommandOutput(command);
@@ -1030,7 +1030,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand()
 		{
 			var builder = new DboUspPrintErrorCmdBuilder()		
@@ -1044,7 +1044,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -1079,7 +1079,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspSearchCandidateResumesCmdBuilder() : base("dbo", "uspSearchCandidateResumes", "[dbo].[uspSearchCandidateResumes]")
 		{
 			OnInit();
@@ -1099,7 +1099,7 @@
 		/// Configures the given command object to execute the [dbo].[uspSearchCandidateResumes] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -1128,7 +1128,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new ReturnValueSqlCommandOutput(command);
@@ -1139,7 +1139,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspSearchCandidateResumesSqlDataReaderAdapter BuildRecordAdapter(global::System.Data.SqlClient.SqlDataReader reader)
 		{		
 			return new DboUspSearchCandidateResumesSqlDataReaderAdapter(reader);
@@ -1149,7 +1149,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(string searchString, bool? useInflectional, bool? useThesaurus, int? language)
 		{
 			var builder = new DboUspSearchCandidateResumesCmdBuilder()		
@@ -1167,7 +1167,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -1192,28 +1192,28 @@
 		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(1,"searchString", global::System.Data.SqlDbType.NVarChar, global::System.Data.ParameterDirection.Input, 1000)]
 		public string SearchString { get; set; }
 		/// <summary>
 		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(2,"useInflectional", global::System.Data.SqlDbType.Bit, global::System.Data.ParameterDirection.Input)]
 		public bool? UseInflectional { get; set; }
 		/// <summary>
 		/// Parameter 3 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(3,"useThesaurus", global::System.Data.SqlDbType.Bit, global::System.Data.ParameterDirection.Input)]
 		public bool? UseThesaurus { get; set; }
 		/// <summary>
 		/// Parameter 4 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(4,"language", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? Language { get; set; }
 	
@@ -1403,7 +1403,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public HumanResourcesUspUpdateEmployeeHireInfoCmdBuilder() : base("HumanResources", "uspUpdateEmployeeHireInfo", "[HumanResources].[uspUpdateEmployeeHireInfo]")
 		{
 			OnInit();
@@ -1426,7 +1426,7 @@
 		/// Configures the given command object to execute the [HumanResources].[uspUpdateEmployeeHireInfo] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -1458,7 +1458,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new ReturnValueSqlCommandOutput(command);
@@ -1468,7 +1468,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? businessEntityID, string jobTitle, System.DateTime? hireDate, System.DateTime? rateChangeDate, decimal? rate, byte? payFrequency, bool? currentFlag)
 		{
 			var builder = new HumanResourcesUspUpdateEmployeeHireInfoCmdBuilder()		
@@ -1489,7 +1489,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -1520,49 +1520,49 @@
 		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(1,"BusinessEntityID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? BusinessEntityID { get; set; }
 		/// <summary>
 		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(2,"JobTitle", global::System.Data.SqlDbType.NVarChar, global::System.Data.ParameterDirection.Input, 50)]
 		public string JobTitle { get; set; }
 		/// <summary>
 		/// Parameter 3 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(3,"HireDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? HireDate { get; set; }
 		/// <summary>
 		/// Parameter 4 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(4,"RateChangeDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? RateChangeDate { get; set; }
 		/// <summary>
 		/// Parameter 5 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(5,"Rate", global::System.Data.SqlDbType.Money, global::System.Data.ParameterDirection.Input)]
 		public decimal? Rate { get; set; }
 		/// <summary>
 		/// Parameter 6 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(6,"PayFrequency", global::System.Data.SqlDbType.TinyInt, global::System.Data.ParameterDirection.Input)]
 		public byte? PayFrequency { get; set; }
 		/// <summary>
 		/// Parameter 7 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(7,"CurrentFlag", global::System.Data.SqlDbType.Bit, global::System.Data.ParameterDirection.Input)]
 		public bool? CurrentFlag { get; set; }
 	
@@ -1587,7 +1587,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public HumanResourcesUspUpdateEmployeeLoginCmdBuilder() : base("HumanResources", "uspUpdateEmployeeLogin", "[HumanResources].[uspUpdateEmployeeLogin]")
 		{
 			OnInit();
@@ -1609,7 +1609,7 @@
 		/// Configures the given command object to execute the [HumanResources].[uspUpdateEmployeeLogin] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -1640,7 +1640,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new ReturnValueSqlCommandOutput(command);
@@ -1650,7 +1650,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? businessEntityID, object organizationNode, string loginID, string jobTitle, System.DateTime? hireDate, bool? currentFlag)
 		{
 			var builder = new HumanResourcesUspUpdateEmployeeLoginCmdBuilder()		
@@ -1670,7 +1670,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -1699,42 +1699,42 @@
 		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(1,"BusinessEntityID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? BusinessEntityID { get; set; }
 		/// <summary>
 		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(2,"OrganizationNode", global::System.Data.SqlDbType.Udt, global::System.Data.ParameterDirection.Input, 892)]
 		public object OrganizationNode { get; set; }
 		/// <summary>
 		/// Parameter 3 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(3,"LoginID", global::System.Data.SqlDbType.NVarChar, global::System.Data.ParameterDirection.Input, 256)]
 		public string LoginID { get; set; }
 		/// <summary>
 		/// Parameter 4 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(4,"JobTitle", global::System.Data.SqlDbType.NVarChar, global::System.Data.ParameterDirection.Input, 50)]
 		public string JobTitle { get; set; }
 		/// <summary>
 		/// Parameter 5 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(5,"HireDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? HireDate { get; set; }
 		/// <summary>
 		/// Parameter 6 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(6,"CurrentFlag", global::System.Data.SqlDbType.Bit, global::System.Data.ParameterDirection.Input)]
 		public bool? CurrentFlag { get; set; }
 	
@@ -1759,7 +1759,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public HumanResourcesUspUpdateEmployeePersonalInfoCmdBuilder() : base("HumanResources", "uspUpdateEmployeePersonalInfo", "[HumanResources].[uspUpdateEmployeePersonalInfo]")
 		{
 			OnInit();
@@ -1780,7 +1780,7 @@
 		/// Configures the given command object to execute the [HumanResources].[uspUpdateEmployeePersonalInfo] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -1810,7 +1810,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new ReturnValueSqlCommandOutput(command);
@@ -1820,7 +1820,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? businessEntityID, string nationalIDNumber, System.DateTime? birthDate, string maritalStatus, string gender)
 		{
 			var builder = new HumanResourcesUspUpdateEmployeePersonalInfoCmdBuilder()		
@@ -1839,7 +1839,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -1866,35 +1866,35 @@
 		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(1,"BusinessEntityID", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? BusinessEntityID { get; set; }
 		/// <summary>
 		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(2,"NationalIDNumber", global::System.Data.SqlDbType.NVarChar, global::System.Data.ParameterDirection.Input, 15)]
 		public string NationalIDNumber { get; set; }
 		/// <summary>
 		/// Parameter 3 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(3,"BirthDate", global::System.Data.SqlDbType.DateTime, global::System.Data.ParameterDirection.Input)]
 		public System.DateTime? BirthDate { get; set; }
 		/// <summary>
 		/// Parameter 4 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(4,"MaritalStatus", global::System.Data.SqlDbType.NChar, global::System.Data.ParameterDirection.Input, 1)]
 		public string MaritalStatus { get; set; }
 		/// <summary>
 		/// Parameter 5 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(5,"Gender", global::System.Data.SqlDbType.NChar, global::System.Data.ParameterDirection.Input, 1)]
 		public string Gender { get; set; }
 	

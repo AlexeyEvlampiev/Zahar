@@ -139,7 +139,7 @@
 
         private static bool IsValidName(string name)
         {
-            return Regex.IsMatch(name, @"^\w+(?:\s+\w+)*$");
+            return Regex.IsMatch(name, @"^\w+(?:[\s-]+\w+)*$");
         }
     }
 }

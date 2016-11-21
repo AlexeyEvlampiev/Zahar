@@ -11,6 +11,7 @@
         #region Private Fields        
         readonly Dictionary<Type, string> m_csTypeAliases = new Dictionary<Type, string>();
         readonly ConcurrentDictionary<string, DbObjectInfo> m_ixDbObjectInfoByFullName = new ConcurrentDictionary<string, DbObjectInfo>(StringComparer.OrdinalIgnoreCase);
+        readonly CSharpInfo m_csarpInfo = new CSharpInfo();
         #endregion
 
         internal const string UserDefinedDataTableClassNamePostfix = "UserDefinedDataTable";
@@ -129,17 +130,25 @@
             string propertyName = name;
             propertyName = Normalize(propertyName);
             propertyName = ToPascalCaseString(propertyName);
+            if (m_csarpInfo.IsKeyword(propertyName))
+                propertyName = $"@{propertyName}";
             return propertyName;
         }
 
         public virtual string GetParameterName(string name)
         {
-            return ToCamelCaseString(GetPropertyName(name));
+            string parametyerName = ToCamelCaseString(GetPropertyName(name));
+            if (m_csarpInfo.IsKeyword(parametyerName))
+                parametyerName = $"@{parametyerName}";
+            return parametyerName;
         }
 
         public virtual string GetFieldName(string name)
         {
-            return FieldPrefix + GetParameterName(name);
+            string fieldName = FieldPrefix + GetParameterName(name);
+            if (m_csarpInfo.IsKeyword(fieldName))
+                fieldName = $"@{fieldName}";
+            return fieldName;
         }
 
 

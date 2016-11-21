@@ -19,19 +19,1050 @@
 	 
 	
 		/// <summary>
+	    /// Creates a new instance of the [dbo].[uspDefinedWithCSharpKeywords] components factory.
+	    /// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		public DboUspDefinedWithCSharpKeywordsCmdBuilder CreateDboUspDefinedWithCSharpKeywordsCmdBuilder() { return new DboUspDefinedWithCSharpKeywordsCmdBuilder(); }  
+	
+		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspEcho01] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspEcho01CmdBuilder CreateDboUspEcho01CmdBuilder() { return new DboUspEcho01CmdBuilder(); }  
 	
 		/// <summary>
 	    /// Creates a new instance of the [dbo].[uspSelectFromTemporaryTable] components factory.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspSelectFromTemporaryTableCmdBuilder CreateDboUspSelectFromTemporaryTableCmdBuilder() { return new DboUspSelectFromTemporaryTableCmdBuilder(); }  
 	}
+	 
+	
+	
+	/// <summary>
+	/// [dbo].[uspDefinedWithCSharpKeywords] typed component factory.
+	/// </summary>
+	public sealed partial class DboUspDefinedWithCSharpKeywordsCmdBuilder : SqlSpCmdBuilder
+	{
+		#region Private Fields
+		 
+		#endregion
+	
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		public DboUspDefinedWithCSharpKeywordsCmdBuilder() : base("dbo", "uspDefinedWithCSharpKeywords", "[dbo].[uspDefinedWithCSharpKeywords]")
+		{
+			OnInit();
+		}
+	
+		#region Partial Methods
+		static partial void OnInit();
+		static partial void OnCommandCreated(global::System.Data.SqlClient.SqlCommand command);
+		 
+		static partial void OnAbstractParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnAsParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnBaseParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnBoolParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnBreakParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnByteParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnCaseParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnCatchParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnCharParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnCheckedParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnClassParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnConstParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnContinueParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnDecimalParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnDefaultParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnDelegateParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnDoParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnDoubleParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnElseParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnEnumParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnEventParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnExplicitParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnExternParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnFalseParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnFinallyParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnFixedParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnFloatParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnForParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnForeachParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnGotoParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnIfParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnImplicitParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnInParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnIntParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnInterfaceParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnInternalParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnIsParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnLockParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnLongParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnNamespaceParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnNewParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnNullParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnObjectParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnOperatorParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnOutParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnOverrideParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnParamsParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnPrivateParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnProtectedParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnPublicParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnReadonlyParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnRefParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnReturnParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnSbyteParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnSealedParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnShortParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnSizeofParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnStackallocParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnStaticParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnStringParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnStructParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnSwitchParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnThisParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnThrowParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnTrueParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnTryParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnTypeofParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnUintParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnUlongParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnUncheckedParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnUnsafeParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnUshortParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnUsingParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnVirtualParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnVoidParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnVolatileParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		static partial void OnWhileParameterCreated(global::System.Data.SqlClient.SqlParameter parameter);  
+		#endregion
+	
+		/// <summary>
+		/// Configures the given command object to execute the [dbo].[uspDefinedWithCSharpKeywords] -procedure.
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
+		{
+			if(ReferenceEquals(command, null))
+				throw new global::System.ArgumentNullException(nameof(command));		
+			var parameters = CreateParametersArray(); 
+			parameters[1].Value = this.Abstract;  
+			parameters[2].Value = this.As;  
+			parameters[3].Value = this.Base;  
+			parameters[4].Value = this.Bool;  
+			parameters[5].Value = this.Break;  
+			parameters[6].Value = this.Byte;  
+			parameters[7].Value = this.Case;  
+			parameters[8].Value = this.Catch;  
+			parameters[9].Value = this.Char;  
+			parameters[10].Value = this.Checked;  
+			parameters[11].Value = this.Class;  
+			parameters[12].Value = this.Const;  
+			parameters[13].Value = this.Continue;  
+			parameters[14].Value = this.Decimal;  
+			parameters[15].Value = this.Default;  
+			parameters[16].Value = this.Delegate;  
+			parameters[17].Value = this.Do;  
+			parameters[18].Value = this.Double;  
+			parameters[19].Value = this.Else;  
+			parameters[20].Value = this.Enum;  
+			parameters[21].Value = this.Event;  
+			parameters[22].Value = this.Explicit;  
+			parameters[23].Value = this.Extern;  
+			parameters[24].Value = this.False;  
+			parameters[25].Value = this.Finally;  
+			parameters[26].Value = this.Fixed;  
+			parameters[27].Value = this.Float;  
+			parameters[28].Value = this.For;  
+			parameters[29].Value = this.Foreach;  
+			parameters[30].Value = this.Goto;  
+			parameters[31].Value = this.If;  
+			parameters[32].Value = this.Implicit;  
+			parameters[33].Value = this.In;  
+			parameters[34].Value = this.Int;  
+			parameters[35].Value = this.Interface;  
+			parameters[36].Value = this.Internal;  
+			parameters[37].Value = this.Is;  
+			parameters[38].Value = this.Lock;  
+			parameters[39].Value = this.Long;  
+			parameters[40].Value = this.Namespace;  
+			parameters[41].Value = this.New;  
+			parameters[42].Value = this.Null;  
+			parameters[43].Value = this.Object;  
+			parameters[44].Value = this.Operator;  
+			parameters[45].Value = this.Out;  
+			parameters[46].Value = this.Override;  
+			parameters[47].Value = this.Params;  
+			parameters[48].Value = this.Private;  
+			parameters[49].Value = this.Protected;  
+			parameters[50].Value = this.Public;  
+			parameters[51].Value = this.Readonly;  
+			parameters[52].Value = this.Ref;  
+			parameters[53].Value = this.Return;  
+			parameters[54].Value = this.Sbyte;  
+			parameters[55].Value = this.Sealed;  
+			parameters[56].Value = this.Short;  
+			parameters[57].Value = this.Sizeof;  
+			parameters[58].Value = this.Stackalloc;  
+			parameters[59].Value = this.Static;  
+			parameters[60].Value = this.String;  
+			parameters[61].Value = this.Struct;  
+			parameters[62].Value = this.Switch;  
+			parameters[63].Value = this.This;  
+			parameters[64].Value = this.Throw;  
+			parameters[65].Value = this.True;  
+			parameters[66].Value = this.Try;  
+			parameters[67].Value = this.Typeof;  
+			parameters[68].Value = this.Uint;  
+			parameters[69].Value = this.Ulong;  
+			parameters[70].Value = this.Unchecked;  
+			parameters[71].Value = this.Unsafe;  
+			parameters[72].Value = this.Ushort;  
+			parameters[73].Value = this.Using;  
+			parameters[74].Value = this.Virtual;  
+			parameters[75].Value = this.Void;  
+			parameters[76].Value = this.Volatile;  
+			parameters[77].Value = this.While;  
+			for (int i = 0; i < parameters.Length; ++i)
+			{
+				var parameter = parameters[i];
+				if (parameter.Value == null)
+					parameter.Value = global::System.DBNull.Value;
+			}
+			command.CommandText = "[dbo].[uspDefinedWithCSharpKeywords]";
+			command.CommandType = global::System.Data.CommandType.StoredProcedure;		
+			command.Parameters.Clear();
+			command.Parameters.AddRange(parameters);
+			OnCommandCreated(command);
+		}
+	
+		/// <summary>
+		/// Creates new [dbo].[uspDefinedWithCSharpKeywords] -command output values set
+		/// </summary>
+		/// <param name="command"></param>
+		/// <returns></returns>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
+		{			
+			return new ReturnValueSqlCommandOutput(command);
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? @abstract, int? @as, int? @base, int? @bool, int? @break, int? @byte, int? @case, int? @catch, int? @char, int? @checked, int? @class, int? @const, int? @continue, int? @decimal, int? @default, int? @delegate, int? @do, int? @double, int? @else, int? @enum, int? @event, int? @explicit, int? @extern, int? @false, int? @finally, int? @fixed, int? @float, int? @for, int? @foreach, int? @goto, int? @if, int? @implicit, int? @in, int? @int, int? @interface, int? @internal, int? @is, int? @lock, int? @long, int? @namespace, int? @new, int? @null, int? @object, int? @operator, int? @out, int? @override, int? @params, int? @private, int? @protected, int? @public, int? @readonly, int? @ref, int? @return, int? @sbyte, int? @sealed, int? @short, int? @sizeof, int? @stackalloc, int? @static, int? @string, int? @struct, int? @switch, int? @this, int? @throw, int? @true, int? @try, int? @typeof, int? @uint, int? @ulong, int? @unchecked, int? @unsafe, int? @ushort, int? @using, int? @virtual, int? @void, int? @volatile, int? @while)
+		{
+			var builder = new DboUspDefinedWithCSharpKeywordsCmdBuilder()		
+			{ 
+				Abstract = @abstract,  
+				As = @as,  
+				Base = @base,  
+				Bool = @bool,  
+				Break = @break,  
+				Byte = @byte,  
+				Case = @case,  
+				Catch = @catch,  
+				Char = @char,  
+				Checked = @checked,  
+				Class = @class,  
+				Const = @const,  
+				Continue = @continue,  
+				Decimal = @decimal,  
+				Default = @default,  
+				Delegate = @delegate,  
+				Do = @do,  
+				Double = @double,  
+				Else = @else,  
+				Enum = @enum,  
+				Event = @event,  
+				Explicit = @explicit,  
+				Extern = @extern,  
+				False = @false,  
+				Finally = @finally,  
+				Fixed = @fixed,  
+				Float = @float,  
+				For = @for,  
+				Foreach = @foreach,  
+				Goto = @goto,  
+				If = @if,  
+				Implicit = @implicit,  
+				In = @in,  
+				Int = @int,  
+				Interface = @interface,  
+				Internal = @internal,  
+				Is = @is,  
+				Lock = @lock,  
+				Long = @long,  
+				Namespace = @namespace,  
+				New = @new,  
+				Null = @null,  
+				Object = @object,  
+				Operator = @operator,  
+				Out = @out,  
+				Override = @override,  
+				Params = @params,  
+				Private = @private,  
+				Protected = @protected,  
+				Public = @public,  
+				Readonly = @readonly,  
+				Ref = @ref,  
+				Return = @return,  
+				Sbyte = @sbyte,  
+				Sealed = @sealed,  
+				Short = @short,  
+				Sizeof = @sizeof,  
+				Stackalloc = @stackalloc,  
+				Static = @static,  
+				String = @string,  
+				Struct = @struct,  
+				Switch = @switch,  
+				This = @this,  
+				Throw = @throw,  
+				True = @true,  
+				Try = @try,  
+				Typeof = @typeof,  
+				Uint = @uint,  
+				Ulong = @ulong,  
+				Unchecked = @unchecked,  
+				Unsafe = @unsafe,  
+				Ushort = @ushort,  
+				Using = @using,  
+				Virtual = @virtual,  
+				Void = @void,  
+				Volatile = @volatile,  
+				While = @while,  
+			};
+			
+			return builder.BuildCommand();
+		}
+	
+		/// <summary>
+		/// 
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
+		{
+			var parameters = new []
+			{ 
+				new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.ReturnValue}, 
+				new global::System.Data.SqlClient.SqlParameter("@abstract", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@as", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@base", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@bool", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@break", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@byte", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@case", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@catch", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@char", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@checked", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@class", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@const", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@continue", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@decimal", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@default", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@delegate", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@do", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@double", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@else", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@enum", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@event", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@explicit", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@extern", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@false", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@finally", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@fixed", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@float", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@for", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@foreach", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@goto", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@if", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@implicit", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@in", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@int", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@interface", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@internal", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@is", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@lock", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@long", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@namespace", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@new", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@null", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@object", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@operator", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@out", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@override", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@params", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@private", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@protected", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@public", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@readonly", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@ref", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@return", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@sbyte", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@sealed", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@short", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@sizeof", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@stackalloc", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@static", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@string", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@struct", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@switch", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@this", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@throw", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@true", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@try", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@typeof", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@uint", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@ulong", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@unchecked", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@unsafe", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@ushort", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@using", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@virtual", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@void", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@volatile", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+				new global::System.Data.SqlClient.SqlParameter("@while", global::System.Data.SqlDbType.Int){ Direction = global::System.Data.ParameterDirection.Input}, 
+			};
+	
+			 
+			OnAbstractParameterCreated(parameters[1]);  
+			OnAsParameterCreated(parameters[2]);  
+			OnBaseParameterCreated(parameters[3]);  
+			OnBoolParameterCreated(parameters[4]);  
+			OnBreakParameterCreated(parameters[5]);  
+			OnByteParameterCreated(parameters[6]);  
+			OnCaseParameterCreated(parameters[7]);  
+			OnCatchParameterCreated(parameters[8]);  
+			OnCharParameterCreated(parameters[9]);  
+			OnCheckedParameterCreated(parameters[10]);  
+			OnClassParameterCreated(parameters[11]);  
+			OnConstParameterCreated(parameters[12]);  
+			OnContinueParameterCreated(parameters[13]);  
+			OnDecimalParameterCreated(parameters[14]);  
+			OnDefaultParameterCreated(parameters[15]);  
+			OnDelegateParameterCreated(parameters[16]);  
+			OnDoParameterCreated(parameters[17]);  
+			OnDoubleParameterCreated(parameters[18]);  
+			OnElseParameterCreated(parameters[19]);  
+			OnEnumParameterCreated(parameters[20]);  
+			OnEventParameterCreated(parameters[21]);  
+			OnExplicitParameterCreated(parameters[22]);  
+			OnExternParameterCreated(parameters[23]);  
+			OnFalseParameterCreated(parameters[24]);  
+			OnFinallyParameterCreated(parameters[25]);  
+			OnFixedParameterCreated(parameters[26]);  
+			OnFloatParameterCreated(parameters[27]);  
+			OnForParameterCreated(parameters[28]);  
+			OnForeachParameterCreated(parameters[29]);  
+			OnGotoParameterCreated(parameters[30]);  
+			OnIfParameterCreated(parameters[31]);  
+			OnImplicitParameterCreated(parameters[32]);  
+			OnInParameterCreated(parameters[33]);  
+			OnIntParameterCreated(parameters[34]);  
+			OnInterfaceParameterCreated(parameters[35]);  
+			OnInternalParameterCreated(parameters[36]);  
+			OnIsParameterCreated(parameters[37]);  
+			OnLockParameterCreated(parameters[38]);  
+			OnLongParameterCreated(parameters[39]);  
+			OnNamespaceParameterCreated(parameters[40]);  
+			OnNewParameterCreated(parameters[41]);  
+			OnNullParameterCreated(parameters[42]);  
+			OnObjectParameterCreated(parameters[43]);  
+			OnOperatorParameterCreated(parameters[44]);  
+			OnOutParameterCreated(parameters[45]);  
+			OnOverrideParameterCreated(parameters[46]);  
+			OnParamsParameterCreated(parameters[47]);  
+			OnPrivateParameterCreated(parameters[48]);  
+			OnProtectedParameterCreated(parameters[49]);  
+			OnPublicParameterCreated(parameters[50]);  
+			OnReadonlyParameterCreated(parameters[51]);  
+			OnRefParameterCreated(parameters[52]);  
+			OnReturnParameterCreated(parameters[53]);  
+			OnSbyteParameterCreated(parameters[54]);  
+			OnSealedParameterCreated(parameters[55]);  
+			OnShortParameterCreated(parameters[56]);  
+			OnSizeofParameterCreated(parameters[57]);  
+			OnStackallocParameterCreated(parameters[58]);  
+			OnStaticParameterCreated(parameters[59]);  
+			OnStringParameterCreated(parameters[60]);  
+			OnStructParameterCreated(parameters[61]);  
+			OnSwitchParameterCreated(parameters[62]);  
+			OnThisParameterCreated(parameters[63]);  
+			OnThrowParameterCreated(parameters[64]);  
+			OnTrueParameterCreated(parameters[65]);  
+			OnTryParameterCreated(parameters[66]);  
+			OnTypeofParameterCreated(parameters[67]);  
+			OnUintParameterCreated(parameters[68]);  
+			OnUlongParameterCreated(parameters[69]);  
+			OnUncheckedParameterCreated(parameters[70]);  
+			OnUnsafeParameterCreated(parameters[71]);  
+			OnUshortParameterCreated(parameters[72]);  
+			OnUsingParameterCreated(parameters[73]);  
+			OnVirtualParameterCreated(parameters[74]);  
+			OnVoidParameterCreated(parameters[75]);  
+			OnVolatileParameterCreated(parameters[76]);  
+			OnWhileParameterCreated(parameters[77]);  
+	
+			return parameters;
+		}
+		#region Sql Parameter Properties
+		/// <summary>
+		/// Parameter 1 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(1,"abstract", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Abstract { get; set; }
+		/// <summary>
+		/// Parameter 2 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(2,"as", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? As { get; set; }
+		/// <summary>
+		/// Parameter 3 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(3,"base", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Base { get; set; }
+		/// <summary>
+		/// Parameter 4 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(4,"bool", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Bool { get; set; }
+		/// <summary>
+		/// Parameter 5 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(5,"break", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Break { get; set; }
+		/// <summary>
+		/// Parameter 6 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(6,"byte", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Byte { get; set; }
+		/// <summary>
+		/// Parameter 7 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(7,"case", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Case { get; set; }
+		/// <summary>
+		/// Parameter 8 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(8,"catch", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Catch { get; set; }
+		/// <summary>
+		/// Parameter 9 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(9,"char", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Char { get; set; }
+		/// <summary>
+		/// Parameter 10 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(10,"checked", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Checked { get; set; }
+		/// <summary>
+		/// Parameter 11 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(11,"class", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Class { get; set; }
+		/// <summary>
+		/// Parameter 12 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(12,"const", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Const { get; set; }
+		/// <summary>
+		/// Parameter 13 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(13,"continue", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Continue { get; set; }
+		/// <summary>
+		/// Parameter 14 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(14,"decimal", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Decimal { get; set; }
+		/// <summary>
+		/// Parameter 15 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(15,"default", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Default { get; set; }
+		/// <summary>
+		/// Parameter 16 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(16,"delegate", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Delegate { get; set; }
+		/// <summary>
+		/// Parameter 17 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(17,"do", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Do { get; set; }
+		/// <summary>
+		/// Parameter 18 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(18,"double", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Double { get; set; }
+		/// <summary>
+		/// Parameter 19 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(19,"else", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Else { get; set; }
+		/// <summary>
+		/// Parameter 20 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(20,"enum", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Enum { get; set; }
+		/// <summary>
+		/// Parameter 21 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(21,"event", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Event { get; set; }
+		/// <summary>
+		/// Parameter 22 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(22,"explicit", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Explicit { get; set; }
+		/// <summary>
+		/// Parameter 23 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(23,"extern", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Extern { get; set; }
+		/// <summary>
+		/// Parameter 24 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(24,"false", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? False { get; set; }
+		/// <summary>
+		/// Parameter 25 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(25,"finally", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Finally { get; set; }
+		/// <summary>
+		/// Parameter 26 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(26,"fixed", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Fixed { get; set; }
+		/// <summary>
+		/// Parameter 27 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(27,"float", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Float { get; set; }
+		/// <summary>
+		/// Parameter 28 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(28,"for", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? For { get; set; }
+		/// <summary>
+		/// Parameter 29 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(29,"foreach", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Foreach { get; set; }
+		/// <summary>
+		/// Parameter 30 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(30,"goto", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Goto { get; set; }
+		/// <summary>
+		/// Parameter 31 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(31,"if", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? If { get; set; }
+		/// <summary>
+		/// Parameter 32 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(32,"implicit", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Implicit { get; set; }
+		/// <summary>
+		/// Parameter 33 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(33,"in", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? In { get; set; }
+		/// <summary>
+		/// Parameter 34 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(34,"int", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Int { get; set; }
+		/// <summary>
+		/// Parameter 35 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(35,"interface", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Interface { get; set; }
+		/// <summary>
+		/// Parameter 36 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(36,"internal", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Internal { get; set; }
+		/// <summary>
+		/// Parameter 37 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(37,"is", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Is { get; set; }
+		/// <summary>
+		/// Parameter 38 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(38,"lock", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Lock { get; set; }
+		/// <summary>
+		/// Parameter 39 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(39,"long", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Long { get; set; }
+		/// <summary>
+		/// Parameter 40 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(40,"namespace", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Namespace { get; set; }
+		/// <summary>
+		/// Parameter 41 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(41,"new", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? New { get; set; }
+		/// <summary>
+		/// Parameter 42 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(42,"null", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Null { get; set; }
+		/// <summary>
+		/// Parameter 43 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(43,"object", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Object { get; set; }
+		/// <summary>
+		/// Parameter 44 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(44,"operator", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Operator { get; set; }
+		/// <summary>
+		/// Parameter 45 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(45,"out", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Out { get; set; }
+		/// <summary>
+		/// Parameter 46 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(46,"override", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Override { get; set; }
+		/// <summary>
+		/// Parameter 47 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(47,"params", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Params { get; set; }
+		/// <summary>
+		/// Parameter 48 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(48,"private", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Private { get; set; }
+		/// <summary>
+		/// Parameter 49 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(49,"protected", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Protected { get; set; }
+		/// <summary>
+		/// Parameter 50 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(50,"public", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Public { get; set; }
+		/// <summary>
+		/// Parameter 51 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(51,"readonly", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Readonly { get; set; }
+		/// <summary>
+		/// Parameter 52 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(52,"ref", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Ref { get; set; }
+		/// <summary>
+		/// Parameter 53 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(53,"return", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Return { get; set; }
+		/// <summary>
+		/// Parameter 54 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(54,"sbyte", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Sbyte { get; set; }
+		/// <summary>
+		/// Parameter 55 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(55,"sealed", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Sealed { get; set; }
+		/// <summary>
+		/// Parameter 56 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(56,"short", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Short { get; set; }
+		/// <summary>
+		/// Parameter 57 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(57,"sizeof", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Sizeof { get; set; }
+		/// <summary>
+		/// Parameter 58 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(58,"stackalloc", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Stackalloc { get; set; }
+		/// <summary>
+		/// Parameter 59 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(59,"static", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Static { get; set; }
+		/// <summary>
+		/// Parameter 60 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(60,"string", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? String { get; set; }
+		/// <summary>
+		/// Parameter 61 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(61,"struct", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Struct { get; set; }
+		/// <summary>
+		/// Parameter 62 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(62,"switch", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Switch { get; set; }
+		/// <summary>
+		/// Parameter 63 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(63,"this", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? This { get; set; }
+		/// <summary>
+		/// Parameter 64 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(64,"throw", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Throw { get; set; }
+		/// <summary>
+		/// Parameter 65 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(65,"true", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? True { get; set; }
+		/// <summary>
+		/// Parameter 66 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(66,"try", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Try { get; set; }
+		/// <summary>
+		/// Parameter 67 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(67,"typeof", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Typeof { get; set; }
+		/// <summary>
+		/// Parameter 68 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(68,"uint", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Uint { get; set; }
+		/// <summary>
+		/// Parameter 69 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(69,"ulong", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Ulong { get; set; }
+		/// <summary>
+		/// Parameter 70 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(70,"unchecked", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Unchecked { get; set; }
+		/// <summary>
+		/// Parameter 71 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(71,"unsafe", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Unsafe { get; set; }
+		/// <summary>
+		/// Parameter 72 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(72,"ushort", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Ushort { get; set; }
+		/// <summary>
+		/// Parameter 73 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(73,"using", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Using { get; set; }
+		/// <summary>
+		/// Parameter 74 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(74,"virtual", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Virtual { get; set; }
+		/// <summary>
+		/// Parameter 75 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(75,"void", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Void { get; set; }
+		/// <summary>
+		/// Parameter 76 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(76,"volatile", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? Volatile { get; set; }
+		/// <summary>
+		/// Parameter 77 (Input).
+		/// </summary>
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
+		[SqlParameter(77,"while", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
+		public int? While { get; set; }
+	
+	
+		#endregion
+	}
+	
+	
+	
+	
+
 	 
 	
 	
@@ -49,7 +1080,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspEcho01CmdBuilder() : base("dbo", "uspEcho01", "[dbo].[uspEcho01]")
 		{
 			OnInit();
@@ -71,7 +1102,7 @@
 		/// Configures the given command object to execute the [dbo].[uspEcho01] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -102,7 +1133,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspEcho01OutputValueSet BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new DboUspEcho01OutputValueSet(command);
@@ -113,7 +1144,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspEcho01SqlDataReaderAdapter BuildRecordAdapter(global::System.Data.SqlClient.SqlDataReader reader)
 		{		
 			return new DboUspEcho01SqlDataReaderAdapter(reader);
@@ -123,7 +1154,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? firstInputParameter, int? secondInputParameter, DboUdtt01UserDefinedDataTable firstTableValueParam, int? firstOutputParameter, int? secondOutputParameter, DboUdtt02UserDefinedDataTable secondTableValueParam)
 		{
 			var builder = new DboUspEcho01CmdBuilder()		
@@ -143,7 +1174,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -172,28 +1203,28 @@
 		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(1,"FirstInputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? FirstInputParameter { get; set; }
 		/// <summary>
 		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(2,"SecondInputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? SecondInputParameter { get; set; }
 		/// <summary>
 		/// Parameter 4 (InputOutput).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(4,"FirstOutputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
 		public int? FirstOutputParameter { get; set; }
 		/// <summary>
 		/// Parameter 5 (InputOutput).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(5,"SecondOutputParameter", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.InputOutput)]
 		public int? SecondOutputParameter { get; set; }
 	
@@ -202,7 +1233,7 @@
 		/// Parameter 3 (User defined table type: [dbo].[Udtt01])
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(3,"FirstTableValueParam", global::System.Data.SqlDbType.Structured, global::System.Data.ParameterDirection.Input)]
 		public DboUdtt01UserDefinedDataTable FirstTableValueParam
 		{
@@ -213,7 +1244,7 @@
 		/// Parameter 6 (User defined table type: [dbo].[Udtt02])
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(6,"SecondTableValueParam", global::System.Data.SqlDbType.Structured, global::System.Data.ParameterDirection.Input)]
 		public DboUdtt02UserDefinedDataTable SecondTableValueParam
 		{
@@ -402,7 +1433,7 @@
 		#endregion
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUspSelectFromTemporaryTableCmdBuilder() : base("dbo", "uspSelectFromTemporaryTable", "[dbo].[uspSelectFromTemporaryTable]")
 		{
 			OnInit();
@@ -420,7 +1451,7 @@
 		/// Configures the given command object to execute the [dbo].[uspSelectFromTemporaryTable] -procedure.
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public override void BuildCommand(global::System.Data.SqlClient.SqlCommand command)
 		{
 			if(ReferenceEquals(command, null))
@@ -447,7 +1478,7 @@
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public ReturnValueSqlCommandOutput BuildOutputValues(global::System.Data.SqlClient.SqlCommand command)
 		{			
 			return new ReturnValueSqlCommandOutput(command);
@@ -457,7 +1488,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlCommand CreateCommand(int? param1, int? param2)
 		{
 			var builder = new DboUspSelectFromTemporaryTableCmdBuilder()		
@@ -473,7 +1504,7 @@
 		/// 
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public static global::System.Data.SqlClient.SqlParameter[] CreateParametersArray()
 		{
 			var parameters = new []
@@ -494,14 +1525,14 @@
 		/// Parameter 1 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(1,"param1", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? Param1 { get; set; }
 		/// <summary>
 		/// Parameter 2 (Input).
 		/// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		[SqlParameter(2,"param2", global::System.Data.SqlDbType.Int, global::System.Data.ParameterDirection.Input)]
 		public int? Param2 { get; set; }
 	
@@ -521,7 +1552,7 @@
 	public partial class DboUdtt01UserDefinedDataTable : global::System.Data.TypedTableBase<DboUdtt01UserDefinedDataTableRow>
 	{
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUdtt01UserDefinedDataTable()
 		{
 			this.TableName = @"[dbo].[Udtt01]";
@@ -531,7 +1562,7 @@
 		}
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		protected DboUdtt01UserDefinedDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
 				base(info, context) 
 		{
@@ -551,15 +1582,15 @@
 		}
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public new DboUdtt01UserDefinedDataTableRow NewRow() { return ((DboUdtt01UserDefinedDataTableRow)(base.NewRow())); }
 				
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) { return new DboUdtt01UserDefinedDataTableRow(builder); }
 				
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		protected override global::System.Type GetRowType() { return typeof(DboUdtt01UserDefinedDataTableRow); }
 	
 		public static global::System.Data.DataColumn[] CreateColumnsArray()
@@ -600,13 +1631,13 @@
 	public partial class DboUdtt01UserDefinedDataTableRow : global::System.Data.DataRow
 	{	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		internal DboUdtt01UserDefinedDataTableRow(global::System.Data.DataRowBuilder rb) : base(rb) 
 		{
 		}
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public new DboUdtt01UserDefinedDataTable Table => (DboUdtt01UserDefinedDataTable)base.Table;
 	
 		 
@@ -614,7 +1645,7 @@
 	    /// Gets or sets the "Id" value.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")] 
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")] 
 		[global::System.ComponentModel.DataAnnotations.Key()]  
 		[global::System.ComponentModel.DataAnnotations.Schema.Column("Id", Order = 0)]
 		public int Id
@@ -627,7 +1658,7 @@
 	    /// Gets or sets the "Name" value.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")] 
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")] 
 		[global::System.ComponentModel.DataAnnotations.Schema.Column("Name", Order = 1)]
 		public string Name
 		{
@@ -639,7 +1670,7 @@
 	    /// Gets or sets the "Date" value.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")] 
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")] 
 		[global::System.ComponentModel.DataAnnotations.Schema.Column("Date", Order = 2)]
 		public System.DateTime? Date
 		{
@@ -657,7 +1688,7 @@
 	public partial class DboUdtt02UserDefinedDataTable : global::System.Data.TypedTableBase<DboUdtt02UserDefinedDataTableRow>
 	{
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public DboUdtt02UserDefinedDataTable()
 		{
 			this.TableName = @"[dbo].[Udtt02]";
@@ -667,7 +1698,7 @@
 		}
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		protected DboUdtt02UserDefinedDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
 				base(info, context) 
 		{
@@ -687,15 +1718,15 @@
 		}
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public new DboUdtt02UserDefinedDataTableRow NewRow() { return ((DboUdtt02UserDefinedDataTableRow)(base.NewRow())); }
 				
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) { return new DboUdtt02UserDefinedDataTableRow(builder); }
 				
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		protected override global::System.Type GetRowType() { return typeof(DboUdtt02UserDefinedDataTableRow); }
 	
 		public static global::System.Data.DataColumn[] CreateColumnsArray()
@@ -724,13 +1755,13 @@
 	public partial class DboUdtt02UserDefinedDataTableRow : global::System.Data.DataRow
 	{	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		internal DboUdtt02UserDefinedDataTableRow(global::System.Data.DataRowBuilder rb) : base(rb) 
 		{
 		}
 	
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")]
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")]
 		public new DboUdtt02UserDefinedDataTable Table => (DboUdtt02UserDefinedDataTable)base.Table;
 	
 		 
@@ -738,7 +1769,7 @@
 	    /// Gets or sets the "Id" value.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")] 
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")] 
 		[global::System.ComponentModel.DataAnnotations.Schema.Column("Id", Order = 0)]
 		public int? Id
 		{
@@ -750,7 +1781,7 @@
 	    /// Gets or sets the "Name" value.
 	    /// </summary>
 		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.0.0")] 
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Zahar", "1.0.6169.20846")] 
 		[global::System.ComponentModel.DataAnnotations.Schema.Column("Name", Order = 1)]
 		public string Name
 		{

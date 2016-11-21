@@ -64,6 +64,7 @@
     <Build Include="dbo\uspEcho01.sql" />
     <Build Include="dbo\Udtt02.sql" />
     <Build Include="dbo\uspSelectFromTemporaryTable.sql" />
+    <Build Include="dbo\uspDefinedWithCSharpKeywords.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Zahar.sql-express.publish.publish.xml" />

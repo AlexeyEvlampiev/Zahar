@@ -72,6 +72,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserDefinedTableTypeRtt.tt</DependentUpon>
     </Compile>
+    <Compile Include="CSharpInfo.cs" />
     <Compile Include="CustomizationException.cs" />
     <Compile Include="DatabaseNotAccessibleException.cs" />
     <Compile Include="DbObjectInfo.cs" />

@@ -4,5 +4,6 @@
   <Procedures>
     <Add Schema="dbo" Name="uspEcho01"/>
     <Add Schema="dbo" Name="uspSelectFromTemporaryTable"/>
+    <Add Schema="dbo" Name="uspDefinedWithCSharpKeywords"/>
   </Procedures>
 </Mapping>
