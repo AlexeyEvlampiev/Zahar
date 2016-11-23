@@ -1,6 +1,5 @@
-# Zahar
-## Transaction Script Code Generator
-Goals
+# Zahar: C# Transaction Script Code Generator
+## Goals
 
 Simple C# data access code generator for SQL Server Database.
 The generated code shall 

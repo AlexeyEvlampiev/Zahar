@@ -25,7 +25,7 @@
             "this",    "throw", "true", "try",
             "typeof",   "uint",    "ulong",   "unchecked",
             "unsafe", "ushort", "using",    "virtual",
-            "void", "volatile", "while",
+            "void", "volatile", "while", "async", "await",
 
         };
         public bool IsKeyword(string text)
