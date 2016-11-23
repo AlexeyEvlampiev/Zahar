@@ -6,25 +6,52 @@
 <#@ import namespace="System.Collections.Generic" #>
 
 /// <summary>
-/// 
+/// SQL command builder factory. Use istances of this class to construct stored procedure command builder objects.
 /// </summary>
-public sealed class <#= SqlCmdBuilderFactoryClassName #> : <#= typeof(SqlCmdBuilderFactory).Name #>
+public sealed partial class <#= SqlCmdBuilderFactoryClassName #> : <#= typeof(SqlCmdBuilderFactory).Name #>
 {
 	#region Ctor
 
-	public <#= SqlCmdBuilderFactoryClassName #>(string connectionString) : base(connectionString) {}
-
-	public <#= SqlCmdBuilderFactoryClassName #>() : base() { }
-
-	public <#= SqlCmdBuilderFactoryClassName #>(System.Func<string> connectionStringFactory) : base(connectionStringFactory) {}
-
-	public <#= SqlCmdBuilderFactoryClassName #>(System.Func<System.Data.SqlClient.SqlConnection> connectionFactory) : base(connectionFactory) {}
-	#endregion
-
-<# foreach(var spFullName in SpFullNames){ string factoryClass = GetStoredProcedureCmdBuilderClassName(spFullName); #> 
+	partial void OnCreated();
 
 	/// <summary>
-    /// Creates a new instance of the <#= spFullName #> components factory.
+    /// Initializes a new instance of the <see cref="<#= SqlCmdBuilderFactoryClassName #>"/> class.
+    /// </summary>
+    /// <param name="connectionString">SQL Server database connection string.</param>
+	/// <exception cref="global::System.ArgumentNullException">connectionString</exception>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public <#= SqlCmdBuilderFactoryClassName #>(string connectionString) : base(connectionString) { OnCreated(); }
+
+	/// <summary>
+    /// Initializes a new instance of the <see cref="<#= SqlCmdBuilderFactoryClassName #>"/> class.
+	/// Implies the SQL Server context connection.
+    /// </summary>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public <#= SqlCmdBuilderFactoryClassName #>() : base() { OnCreated(); }
+
+	/// <summary>
+    /// Initializes a new instance of the <see cref="<#= SqlCmdBuilderFactoryClassName #>"/> class.
+    /// </summary>
+    /// <param name="connectionStringFactory">SQL Server database connection string factory.</param>
+	/// <exception cref="System.ArgumentNullException">connectionStringFactory</exception>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public <#= SqlCmdBuilderFactoryClassName #>(System.Func<string> connectionStringFactory) : base(connectionStringFactory) { OnCreated(); }
+
+	/// <summary>
+    /// Initializes a new instance of the <see cref="<#= SqlCmdBuilderFactoryClassName #>"/> class.
+    /// </summary>
+    /// <param name="connectionFactory">SQL Server database connection string factory.</param>
+    /// <exception cref="System.ArgumentNullException">connectionFactory</exception>
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public <#= SqlCmdBuilderFactoryClassName #>(System.Func<System.Data.SqlClient.SqlConnection> connectionFactory) : base(connectionFactory) { OnCreated(); }
+	#endregion <# foreach(var spFullName in SpFullNames){ string factoryClass = GetStoredProcedureCmdBuilderClassName(spFullName); #> 
+
+	/// <summary>
+    /// Creates a new instance of the <#= spFullName #> command builder.
     /// </summary>
 	[<#= DebuggerNonUserCodeAttribute #>]
 	[<#= GeneratedCodeAttribute #>]

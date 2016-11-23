@@ -42,7 +42,7 @@
 
 
 /// <summary>
-/// <#= Procedure.FullName #> typed component factory.
+/// <#= Procedure.FullName #> typed command builder.
 /// </summary>
 public sealed partial class <#= factoryClassName #> : <#= sqlSpCmdBuilderClassName #>
 {
@@ -52,6 +52,9 @@ public sealed partial class <#= factoryClassName #> : <#= sqlSpCmdBuilderClassNa
 	private <#= ixPropertyTypeNamesByParameter[p] #> <#= GetFieldName(p.ParameterName) #>; <# } #> 
 	#endregion
 
+	/// <summary>
+    /// Initializes a new instance of the <see cref="<#= factoryClassName #>"/> class (<#= Procedure.FullName #>). 
+    /// </summary>
 	[<#= DebuggerNonUserCodeAttribute #>]
 	[<#= GeneratedCodeAttribute #>]
 	public <#= factoryClassName #>() : base("<#= Procedure.Schema #>", "<#= Procedure.Name #>", "<#= Procedure.FullName #>")
@@ -107,7 +110,7 @@ public sealed partial class <#= factoryClassName #> : <#= sqlSpCmdBuilderClassNa
 	<# if(adapterClassNames.Count > 0){  #> 
 
 	/// <summary>
-	/// 
+	/// Creates a typed wrapper for the given reader object.
 	/// </summary>
 	[<#= DebuggerNonUserCodeAttribute #>]
 	[<#= GeneratedCodeAttribute #>]

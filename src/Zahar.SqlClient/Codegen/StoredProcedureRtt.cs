@@ -63,7 +63,7 @@ namespace Zahar.SqlClient.Codegen
  
             this.Write(" \r\n\r\n\r\n/// <summary>\r\n/// ");
             this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
-            this.Write(" typed component factory.\r\n/// </summary>\r\npublic sealed partial class ");
+            this.Write(" typed command builder.\r\n/// </summary>\r\npublic sealed partial class ");
             this.Write(this.ToStringHelper.ToStringWithCulture(factoryClassName));
             this.Write(" : ");
             this.Write(this.ToStringHelper.ToStringWithCulture(sqlSpCmdBuilderClassName));
@@ -76,7 +76,12 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(GetFieldName(p.ParameterName)));
             this.Write("; ");
  } 
-            this.Write(" \r\n\t#endregion\r\n\r\n\t[");
+            this.Write(" \r\n\t#endregion\r\n\r\n\t/// <summary>\r\n    /// Initializes a new instance of the <see " +
+                    "cref=\"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(factoryClassName));
+            this.Write("\"/> class (");
+            this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
+            this.Write("). \r\n    /// </summary>\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
             this.Write("]\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
@@ -137,7 +142,8 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(outputValuesClassName));
             this.Write("(command);\r\n\t}\r\n\t");
  if(adapterClassNames.Count > 0){  
-            this.Write(" \r\n\r\n\t/// <summary>\r\n\t/// \r\n\t/// </summary>\r\n\t[");
+            this.Write(" \r\n\r\n\t/// <summary>\r\n\t/// Creates a typed wrapper for the given reader object.\r\n\t" +
+                    "/// </summary>\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
             this.Write("]\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));

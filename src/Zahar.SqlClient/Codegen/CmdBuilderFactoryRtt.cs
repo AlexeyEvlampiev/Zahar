@@ -26,25 +26,62 @@ namespace Zahar.SqlClient.Codegen
         /// </summary>
         public override string TransformText()
         {
-            this.Write("\r\n/// <summary>\r\n/// \r\n/// </summary>\r\npublic sealed class ");
+            this.Write("\r\n/// <summary>\r\n/// SQL command builder factory. Use istances of this class to c" +
+                    "onstruct stored procedure command builder objects.\r\n/// </summary>\r\npublic seale" +
+                    "d partial class ");
             this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
             this.Write(" : ");
             this.Write(this.ToStringHelper.ToStringWithCulture(typeof(SqlCmdBuilderFactory).Name));
-            this.Write("\r\n{\r\n\t#region Ctor\r\n\r\n\tpublic ");
+            this.Write("\r\n{\r\n\t#region Ctor\r\n\r\n\tpartial void OnCreated();\r\n\r\n\t/// <summary>\r\n    /// Initi" +
+                    "alizes a new instance of the <see cref=\"");
             this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
-            this.Write("(string connectionString) : base(connectionString) {}\r\n\r\n\tpublic ");
+            this.Write("\"/> class.\r\n    /// </summary>\r\n    /// <param name=\"connectionString\">SQL Server" +
+                    " database connection string.</param>\r\n\t/// <exception cref=\"global::System.Argum" +
+                    "entNullException\">connectionString</exception>\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
+            this.Write("]\r\n\tpublic ");
             this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
-            this.Write("() : base() { }\r\n\r\n\tpublic ");
+            this.Write("(string connectionString) : base(connectionString) { OnCreated(); }\r\n\r\n\t/// <summ" +
+                    "ary>\r\n    /// Initializes a new instance of the <see cref=\"");
             this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
-            this.Write("(System.Func<string> connectionStringFactory) : base(connectionStringFactory) {}\r" +
-                    "\n\r\n\tpublic ");
+            this.Write("\"/> class.\r\n\t/// Implies the SQL Server context connection.\r\n    /// </summary>\r\n" +
+                    "\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
+            this.Write("]\r\n\tpublic ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
+            this.Write("() : base() { OnCreated(); }\r\n\r\n\t/// <summary>\r\n    /// Initializes a new instanc" +
+                    "e of the <see cref=\"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
+            this.Write("\"/> class.\r\n    /// </summary>\r\n    /// <param name=\"connectionStringFactory\">SQL" +
+                    " Server database connection string factory.</param>\r\n\t/// <exception cref=\"Syste" +
+                    "m.ArgumentNullException\">connectionStringFactory</exception>\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
+            this.Write("]\r\n\tpublic ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
+            this.Write("(System.Func<string> connectionStringFactory) : base(connectionStringFactory) { O" +
+                    "nCreated(); }\r\n\r\n\t/// <summary>\r\n    /// Initializes a new instance of the <see " +
+                    "cref=\"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
+            this.Write("\"/> class.\r\n    /// </summary>\r\n    /// <param name=\"connectionFactory\">SQL Serve" +
+                    "r database connection string factory.</param>\r\n    /// <exception cref=\"System.A" +
+                    "rgumentNullException\">connectionFactory</exception>\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
+            this.Write("]\r\n\tpublic ");
             this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
             this.Write("(System.Func<System.Data.SqlClient.SqlConnection> connectionFactory) : base(conne" +
-                    "ctionFactory) {}\r\n\t#endregion\r\n\r\n");
+                    "ctionFactory) { OnCreated(); }\r\n\t#endregion ");
  foreach(var spFullName in SpFullNames){ string factoryClass = GetStoredProcedureCmdBuilderClassName(spFullName); 
             this.Write(" \r\n\r\n\t/// <summary>\r\n    /// Creates a new instance of the ");
             this.Write(this.ToStringHelper.ToStringWithCulture(spFullName));
-            this.Write(" components factory.\r\n    /// </summary>\r\n\t[");
+            this.Write(" command builder.\r\n    /// </summary>\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
             this.Write("]\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));

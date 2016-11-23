@@ -24,8 +24,17 @@
             m_connectionFactory = () => new global::System.Data.SqlClient.SqlConnection(connectionString);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SqlCmdBuilderFactory"/> class.
+        /// Implies SQL Server database context connection.
+        /// </summary>
         public SqlCmdBuilderFactory() : this("context connection=true") { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SqlCmdBuilderFactory"/> class.
+        /// </summary>
+        /// <param name="connectionStringFactory">The connection string factory.</param>
+        /// <exception cref="System.ArgumentNullException">connectionStringFactory</exception>
         public SqlCmdBuilderFactory(global::System.Func<string> connectionStringFactory)
         {
             if (ReferenceEquals(null, connectionStringFactory))
@@ -38,6 +47,11 @@
             };
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SqlCmdBuilderFactory"/> class.
+        /// </summary>
+        /// <param name="connectionFactory">The connection factory.</param>
+        /// <exception cref="System.ArgumentNullException">connectionFactory</exception>
         public SqlCmdBuilderFactory(global::System.Func<global::System.Data.SqlClient.SqlConnection> connectionFactory)
         {
             if (ReferenceEquals(null, connectionFactory))
