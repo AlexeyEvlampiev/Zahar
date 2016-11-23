@@ -4,17 +4,18 @@
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
+    using System.Threading.Tasks;
     using Xunit;
 
     public class CatalogReader_ReadAsync_Should
     {
         [Fact]
-        public void HandleLoadingAdventureWorks2014Catalog()
+        public async Task HandleLoadingAdventureWorks2014Catalog()
         {
             var reader = new CatalogReader(
                 Constants.AdventureWorks2014ConnectionString, 
                 new RelayDiagnosticsCallback(OnWarning));
-            var catalog = reader.ReadAsync().GetAwaiter().GetResult();
+            var catalog = await reader.ReadAsync();
 
             var comparer = StringComparer.Ordinal;
             var schemaNames = catalog.Schema.Select(s=> s.Name).ToList();

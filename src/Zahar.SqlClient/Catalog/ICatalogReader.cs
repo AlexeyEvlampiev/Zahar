@@ -7,6 +7,6 @@
     {
         Task<Catalog> ReadAsync();
 
-        Task<ProcedureInfo> ReadSpInfoAsync(string spFullName, IDictionary<string, object> session);
+        Task<ProcedureInfo> ReadSpInfoAsync(string spFullName, IContext context, IDictionary<string, object> session);
     }
 }

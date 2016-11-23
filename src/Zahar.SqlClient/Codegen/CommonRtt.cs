@@ -26,7 +26,7 @@
                 sb.AppendLine(m_csCodeNamespaceTags.Replace(csCode, string.Empty) );
             }
 
-            return Regex.Replace(sb.ToString(), @"(?=\bSystem\.)", "global::");
+            return sb.ToString();
         }
     }
 }

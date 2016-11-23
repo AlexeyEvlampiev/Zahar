@@ -39,5 +39,8 @@
         <xs:documentation>Stored procedure name</xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="IgnoreQueryResult" type="xs:boolean">
+      <xs:annotation><xs:documentation>When True, causes the processor to skip result schema evaluation.</xs:documentation></xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 </xs:schema>

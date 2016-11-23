@@ -2,50 +2,50 @@
 {
     public abstract class SqlCmdBuilder
     {
-        public abstract void BuildCommand(System.Data.SqlClient.SqlCommand command);
+        public abstract void BuildCommand(global::System.Data.SqlClient.SqlCommand command);
 
         public void BuildCommand(
-            System.Data.SqlClient.SqlCommand command, 
-            System.Data.SqlClient.SqlConnection connection)
+            global::System.Data.SqlClient.SqlCommand command, 
+            global::System.Data.SqlClient.SqlConnection connection)
         {
             if (ReferenceEquals(command, null))
-                throw new System.ArgumentNullException(nameof(command));
+                throw new global::System.ArgumentNullException(nameof(command));
             if (ReferenceEquals(connection, null))
-                throw new System.ArgumentNullException(nameof(connection));
+                throw new global::System.ArgumentNullException(nameof(connection));
             this.BuildCommand(command);
             command.Connection = connection;
         }
 
         public void BuildCommand(
-            System.Data.SqlClient.SqlCommand command,
-            System.Data.SqlClient.SqlTransaction transaction)
+            global::System.Data.SqlClient.SqlCommand command,
+            global::System.Data.SqlClient.SqlTransaction transaction)
         {
             if (ReferenceEquals(command, null))
-                throw new System.ArgumentNullException(nameof(command));
+                throw new global::System.ArgumentNullException(nameof(command));
             if (ReferenceEquals(transaction, null))
-                throw new System.ArgumentNullException(nameof(transaction));
+                throw new global::System.ArgumentNullException(nameof(transaction));
             this.BuildCommand(command);
             command.Connection = transaction.Connection;
             command.Transaction = transaction;
         }
 
-        public System.Data.SqlClient.SqlCommand BuildCommand()
+        public global::System.Data.SqlClient.SqlCommand BuildCommand()
         {
-            var command = new System.Data.SqlClient.SqlCommand();
+            var command = new global::System.Data.SqlClient.SqlCommand();
             this.BuildCommand(command);
             return command;
         }
 
-        public System.Data.SqlClient.SqlCommand BuildCommand(System.Data.SqlClient.SqlConnection connection)
+        public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlConnection connection)
         {
-            var command = new System.Data.SqlClient.SqlCommand();
+            var command = new global::System.Data.SqlClient.SqlCommand();
             this.BuildCommand(command, connection);
             return command;
         }
 
-        public System.Data.SqlClient.SqlCommand BuildCommand(System.Data.SqlClient.SqlTransaction transaction)
+        public global::System.Data.SqlClient.SqlCommand BuildCommand(global::System.Data.SqlClient.SqlTransaction transaction)
         {
-            var command = new System.Data.SqlClient.SqlCommand();
+            var command = new global::System.Data.SqlClient.SqlCommand();
             this.BuildCommand(command, transaction);
             return command;
         }
@@ -57,7 +57,7 @@
         /// <param name="value">SQL value.</param>
         public static T ToClrValue<T>(object value)
         {
-            return (ReferenceEquals(value, null) || System.DBNull.Value.Equals(value))
+            return (ReferenceEquals(value, null) || global::System.DBNull.Value.Equals(value))
                     ? default(T)
                     : (T)value;
         }
@@ -71,7 +71,7 @@
         public static object ToSqlValue<T>(T value)
         {
             return value == null
-                ? (object)System.DBNull.Value
+                ? (object)global::System.DBNull.Value
                 : value;
         }
     }

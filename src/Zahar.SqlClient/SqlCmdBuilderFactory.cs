@@ -7,7 +7,7 @@
     {
         #region Private Fields
 
-        readonly System.Func<System.Data.SqlClient.SqlConnection> m_connectionFactory;
+        readonly global::System.Func<global::System.Data.SqlClient.SqlConnection> m_connectionFactory;
 
         #endregion
 
@@ -16,36 +16,36 @@
         /// Initializes a new instance of the <see cref="SqlCmdBuilderFactory"/> class.
         /// </summary>
         /// <param name="connectionString">The connection string.</param>
-        /// <exception cref="System.ArgumentNullException">connectionString</exception>
+        /// <exception cref="global::System.ArgumentNullException">connectionString</exception>
         public SqlCmdBuilderFactory(string connectionString)
         {
             if (ReferenceEquals(connectionString, null))
-                throw new System.ArgumentNullException(nameof(connectionString));
-            m_connectionFactory = () => new System.Data.SqlClient.SqlConnection(connectionString);
+                throw new global::System.ArgumentNullException(nameof(connectionString));
+            m_connectionFactory = () => new global::System.Data.SqlClient.SqlConnection(connectionString);
         }
 
         public SqlCmdBuilderFactory() : this("context connection=true") { }
 
-        public SqlCmdBuilderFactory(System.Func<string> connectionStringFactory)
+        public SqlCmdBuilderFactory(global::System.Func<string> connectionStringFactory)
         {
             if (ReferenceEquals(null, connectionStringFactory))
-                throw new System.ArgumentNullException(nameof(connectionStringFactory));
+                throw new global::System.ArgumentNullException(nameof(connectionStringFactory));
             this.m_connectionFactory = () =>
             {
                 var connectionString = connectionStringFactory();
-                var connection = new System.Data.SqlClient.SqlConnection(connectionString);
+                var connection = new global::System.Data.SqlClient.SqlConnection(connectionString);
                 return connection;
             };
         }
 
-        public SqlCmdBuilderFactory(System.Func<System.Data.SqlClient.SqlConnection> connectionFactory)
+        public SqlCmdBuilderFactory(global::System.Func<global::System.Data.SqlClient.SqlConnection> connectionFactory)
         {
             if (ReferenceEquals(null, connectionFactory))
-                throw new System.ArgumentNullException(nameof(connectionFactory));
+                throw new global::System.ArgumentNullException(nameof(connectionFactory));
             this.m_connectionFactory = connectionFactory;
         }
         #endregion
 
-        public System.Data.SqlClient.SqlConnection CreateConnection() { return m_connectionFactory(); }
+        public global::System.Data.SqlClient.SqlConnection CreateConnection() { return m_connectionFactory(); }
     }
 }

@@ -80,29 +80,28 @@ namespace Zahar.SqlClient {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT 
-        ///	s.[Name],
-        ///	(
-        ///		SELECT p.[name] AS [Name], QUOTENAME(s.[name]) + &apos;.&apos; + QUOTENAME(p.[name]) AS [FullName]
-        ///		FROM sys.procedures AS p
-        ///		WHERE p.schema_id = s.schema_id
-        ///		AND p.is_ms_shipped = 0
-        ///		FOR XML RAW(&apos;Procedure&apos;), TYPE
-        ///	)
-        ///FROM sys.schemas AS s
-        ///WHERE s.[name] NOT IN (
-        ///	&apos;db_accessadmin&apos;
-        ///	,&apos;db_backupoperator&apos;
-        ///	,&apos;db_datareader&apos;
-        ///	,&apos;db_datawriter&apos;
-        ///	,&apos;db_ddladmin&apos;
-        ///	,&apos;db_denydatareader&apos;
-        ///	,&apos;db_denydatawriter&apos;
-        ///	,&apos;db_owner&apos;
-        ///	,&apos;db_securityadmin&apos;
-        ///	,&apos;guest&apos;
-        ///	,&apos;INFORMATION_SCHEMA&apos;
-        ///	,&apos;sy [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to DECLARE @Xml AS NVARCHAR(MAX)
+        ///SELECT @Xml = 
+        ///(
+        ///	SELECT 
+        ///		s.[Name],
+        ///		(
+        ///			SELECT p.[name] AS [Name], QUOTENAME(s.[name]) + &apos;.&apos; + QUOTENAME(p.[name]) AS [FullName]
+        ///			FROM sys.procedures AS p
+        ///			WHERE p.schema_id = s.schema_id
+        ///			AND p.is_ms_shipped = 0
+        ///			FOR XML RAW(&apos;Procedure&apos;), TYPE
+        ///		)
+        ///	FROM sys.schemas AS s
+        ///	WHERE s.[name] NOT IN (
+        ///		&apos;db_accessadmin&apos;
+        ///		,&apos;db_backupoperator&apos;
+        ///		,&apos;db_datareader&apos;
+        ///		,&apos;db_datawriter&apos;
+        ///		,&apos;db_ddladmin&apos;
+        ///		,&apos;db_denydatareader&apos;
+        ///		,&apos;db_denydatawriter&apos;
+        ///		,&apos;db_o [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CatalogQuery {
             get {
@@ -132,31 +131,6 @@ namespace Zahar.SqlClient {
         internal static string Disposable {
             get {
                 return ResourceManager.GetString("Disposable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to namespace Zahar.SqlClient
-        ///{    
-        ///    /// &lt;summary&gt;
-        ///    /// &lt;see cref=&quot;System.IDisposable&quot;/&gt; factory.
-        ///    /// &lt;/summary&gt;
-        ///    public static class Disposable
-        ///    {
-        ///        public static readonly System.IDisposable Null = new DisposableNullObject();
-        ///
-        ///        public static System.IDisposable Create(System.Action callback) { return new RelayDisposable(callback); }
-        ///
-        ///        sealed class DisposableNullObject : System.IDisposable
-        ///        {
-        ///            public void Dispose() { }
-        ///        }
-        ///
-        ///        seale [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Disposable1 {
-            get {
-                return ResourceManager.GetString("Disposable1", resourceCulture);
             }
         }
         
@@ -286,13 +260,15 @@ namespace Zahar.SqlClient {
         ///           xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; 
         ///           targetNamespace=&quot;Zahar.SqlClient.Mapping&quot; 
         ///           xmlns:z=&quot;Zahar.SqlClient.Mapping&quot;&gt;
+        ///  &lt;xs:simpleType name=&quot;SysName&quot;&gt;
+        ///    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+        ///      &lt;xs:pattern value=&quot;^\S+$&quot; /&gt;
+        ///    &lt;/xs:restriction&gt;
+        ///  &lt;/xs:simpleType&gt;
         ///  &lt;xs:element name=&quot;Mapping&quot;&gt;
         ///    &lt;xs:complexType&gt;
         ///      &lt;xs:sequence&gt;
-        ///        &lt;xs:element name=&quot;Procedures&quot;&gt;
-        ///          &lt;xs:complexType&gt;
-        ///            &lt;xs:sequence&gt;
-        ///              &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; nam [rest of string was truncated]&quot;;.
+        ///         [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Zahar_SqlClient {
             get {

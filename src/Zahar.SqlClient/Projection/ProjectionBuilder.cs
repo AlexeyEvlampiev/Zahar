@@ -65,17 +65,18 @@
             if (_diagnosticsCallbackScope.ErrorsCount > 0)
                 throw new NotImplementedException();
 
+            var context = new Context(mapping);
             var projection = new Projection();
-            var tasks = mapping.Procedures
-                .Where(sp => ixProcedureFullNames.Contains(sp.FullName))
-                .Select(sp => _catalogReader.ReadSpInfoAsync(sp.FullName, session))
+            var tasks = context.SelectedSpFullNames
+                .Where(spFullName => ixProcedureFullNames.Contains(spFullName))
+                .Select(spFullName => _catalogReader.ReadSpInfoAsync(spFullName, context, session))
                 .ToList();
 
             foreach (var sp in mapping.Procedures
                 .Where(sp => false == ixProcedureFullNames.Contains(sp.FullName)))
             {
                 var message = new StringBuilder($"{sp.FullName} stored procedure specified in the maping xml-file could not be found.")
-                    .Append($" Make sure that every database object specified in the mapping does exist in the target database.");
+                    .Append($" Make sure that every database object specified in the given mapping does exist in the target database.");
 
                 _diagnosticsCallbackScope.Error(message.ToString());
             }

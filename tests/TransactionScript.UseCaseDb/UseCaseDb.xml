@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<Mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="Zahar.SqlClient.xsd"
          xmlns="Zahar.SqlClient.Mapping">
   <Procedures>
     <Add Schema="dbo" Name="uspEcho01"/>
     <Add Schema="dbo" Name="uspSelectFromTemporaryTable"/>
+    <Add Schema="dbo" Name="uspSelectFromTemporaryTable2" IgnoreQueryResult="true" />
     <Add Schema="dbo" Name="uspDefinedWithCSharpKeywords"/>
   </Procedures>
 </Mapping>

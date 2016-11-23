@@ -44,6 +44,7 @@
     <Compile Include="Catalog\CatalogReader.cs" />
     <Compile Include="Catalog\CatalogSerializer.cs" />
     <Compile Include="Catalog\ICatalogReader.cs" />
+    <Compile Include="Catalog\IContext.cs" />
     <Compile Include="Catalog\ProcedureInfo.cs" />
     <Compile Include="Catalog\SqlParameterInfo.cs" />
     <Compile Include="Codegen\CommonRtt.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="IDiagnosticsCallback.cs" />
     <Compile Include="Mapping\MappingFileNotFoundException.cs" />
     <Compile Include="Mapping\Procedure.cs" />
+    <Compile Include="Projection\Context.cs" />
     <Compile Include="Projection\Projection.cs" />
     <Compile Include="Projection\ProjectionBuilder.cs" />
     <Compile Include="RelayDiagnosticsCallback.cs" />

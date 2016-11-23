@@ -50,6 +50,10 @@ namespace Zahar.SqlClient.Mapping {
         
         private string nameField;
         
+        private bool ignoreQueryResultField;
+        
+        private bool ignoreQueryResultFieldSpecified;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Schema {
@@ -69,6 +73,28 @@ namespace Zahar.SqlClient.Mapping {
             }
             set {
                 this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool IgnoreQueryResult {
+            get {
+                return this.ignoreQueryResultField;
+            }
+            set {
+                this.ignoreQueryResultField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IgnoreQueryResultSpecified {
+            get {
+                return this.ignoreQueryResultFieldSpecified;
+            }
+            set {
+                this.ignoreQueryResultFieldSpecified = value;
             }
         }
     }

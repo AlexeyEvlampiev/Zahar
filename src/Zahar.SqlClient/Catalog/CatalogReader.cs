@@ -84,7 +84,7 @@
             }
         }
 
-        public async Task<ProcedureInfo> ReadSpInfoAsync(string spFullName, IDictionary<string, object> session = null)
+        public async Task<ProcedureInfo> ReadSpInfoAsync(string spFullName, IContext context, IDictionary<string, object> session = null)
         {
             using (var connection = new SqlConnection(m_connectionString))
             using (var command = new SqlCommand(spFullName, connection))
@@ -135,6 +135,9 @@
                     }
                 }
 
+                if (context?.IgnoreQueryResult(spFullName) == true)
+                    return sp;
+
                 try
                 {
                     DataSet schema = new DataSet();
@@ -149,10 +152,13 @@
                 }
                 catch (SqlException ex)
                 {
-                    var message = new StringBuilder($"Could not retrieve {spFullName} result schema information.");
+                    var message = new StringBuilder($"Could not retrieve the {spFullName} query result information.");
                     if (ex.Message.Contains("Invalid object name '#"))
                     {
-                        message.Append($" In order to resolve this issue, alter the {spFullName} procedure code so that it does not use temporary tables.");
+                        var procedureObj = new Mapping.Procedure();
+                        var flagName = nameof(procedureObj.IgnoreQueryResult);
+                        message.Append($" If typed query result is required, avoid using temporary table(s) in the {spFullName} procedure code.");
+                        message.Append($" Otherwise, to suppress this message, mark the procedure with the {flagName} attribute in the mapping.");
                         m_diagnosticsCallback.Warning(message.ToString());
                     }
                     else

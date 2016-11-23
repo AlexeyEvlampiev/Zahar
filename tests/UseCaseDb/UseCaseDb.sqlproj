@@ -65,6 +65,7 @@
     <Build Include="dbo\uspDefinedWithCSharpKeywords.sql" />
     <Build Include="dbo\uspEcho01.sql" />
     <Build Include="dbo\uspSelectFromTemporaryTable.sql" />
+    <Build Include="dbo\uspSelectFromTemporaryTable2.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="UseCaseDb.publish.xml" />
