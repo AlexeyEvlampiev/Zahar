@@ -4,9 +4,9 @@
 Simple C# data access code generator for SQL Server Database.
 The generated code shall 
 
-1. Be stored procedure centric (Transaction Script pattern)
-2. Embrace the native ADO.NET provider object model (SqlCommand, SqlDataReader etc.), and thus not become a framework on its own
-3. Simplify 
+- Be stored procedure centric (Transaction Script pattern)
+- Embrace the native ADO.NET provider object model (SqlCommand, SqlDataReader etc.), and thus not become a framework on its own
+- Simplify 
 	* building SqlCommand objects
 	* consuming tabular results returned by queries
 	* consuming procedure output- and return- values
@@ -15,11 +15,11 @@ The generated code shall
 
 ### Comand Builders
 For selected stored procedures the generator shall create a dedicated command builder C# class confirming to the following 
-1. Stored procedure parameter values can be set using strongly typed instance-level properties named accordinally
-2. Table Value parameters are represented with properties of the DataTable type
-3. The instance BuildCommand- method shall yield a preconfigured and ready to use SqlCommand 
-4. The instance BuildRecordAdapter- method shall convert the given SqlDataReader object to a stronly typed data record type defined by the generator
-5. The instance BuildOutputValues- values shall convert the given SqlCommand to a stronly typed set of return and output- values
+- Stored procedure parameter values can be set using strongly typed instance-level properties named accordinally
+- Table Value parameters are represented with properties of the DataTable type
+- The instance BuildCommand- method shall yield a preconfigured and ready to use SqlCommand 
+- The instance BuildRecordAdapter- method shall convert the given SqlDataReader object to a stronly typed data record type defined by the generator
+- The instance BuildOutputValues- values shall convert the given SqlCommand to a stronly typed set of return and output- values
 	
 ### Comand Builder Factory
 Command builder factory C# class, generated per database, shall provide a set of Create[Schema Name][Stored Procedure Name]CmdBuilder- factory methods 
