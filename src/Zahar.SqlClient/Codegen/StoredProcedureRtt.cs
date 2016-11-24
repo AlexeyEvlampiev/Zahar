@@ -130,8 +130,9 @@ namespace Zahar.SqlClient.Codegen
                     "\tcommand.Parameters.Clear();\r\n\t\tcommand.Parameters.AddRange(parameters);\r\n\t\tOnCo" +
                     "mmandCreated(command);\r\n\t}\r\n\r\n\t/// <summary>\r\n\t/// Creates new ");
             this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
-            this.Write(" -command output values set\r\n\t/// </summary>\r\n\t/// <param name=\"command\"></param>" +
-                    "\r\n\t/// <returns></returns>\r\n\t[");
+            this.Write(" command output values set. \r\n\t/// </summary>\r\n\t/// <param name=\"command\">");
+            this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
+            this.Write(" command</param>\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
             this.Write("]\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
@@ -154,25 +155,7 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(adapterClassNames[0]));
             this.Write("(reader);\r\n\t}\r\n\t");
  } 
-            this.Write("\r\n\t/// <summary>\r\n\t/// \r\n\t/// </summary>\r\n\t[");
-            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
-            this.Write("]\r\n\t[");
-            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
-            this.Write("]\r\n\tpublic static global::System.Data.SqlClient.SqlCommand CreateCommand(");
-            this.Write(this.ToStringHelper.ToStringWithCulture(paramsDeclaration));
-            this.Write(")\r\n\t{\r\n\t\tvar builder = new ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(factoryClassName));
-            this.Write("()\t\t\r\n\t\t{");
- foreach(var p in inputParameters){ 
-            this.Write(" \r\n\t\t\t");
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetPropertyName(p.ParameterName)));
-            this.Write(" = ");
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetParameterName(p.ParameterName)));
-            this.Write(", ");
- } 
-            this.Write(" \r\n\t\t};\r\n\t\t\r\n\t\treturn builder.");
-            this.Write(this.ToStringHelper.ToStringWithCulture(BuildCommandMethodName));
-            this.Write("();\r\n\t}\r\n\r\n\t/// <summary>\r\n\t/// \r\n\t/// </summary>\r\n\t[");
+            this.Write("\t\r\n\r\n\t/// <summary>\r\n\t/// \r\n\t/// </summary>\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
             this.Write("]\r\n\t[");
             this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
@@ -332,12 +315,23 @@ namespace Zahar.SqlClient.Codegen
 	var schema = resultSchemas[i]; 
             this.Write("/// <summary>\r\n/// ");
             this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
-            this.Write(" result[");
+            this.Write(" query result[");
             this.Write(this.ToStringHelper.ToStringWithCulture(i));
-            this.Write("]\r\n/// </summary>\r\npublic partial struct ");
+            this.Write("]. \r\n/// </summary>\r\npublic partial struct ");
             this.Write(this.ToStringHelper.ToStringWithCulture(className));
-            this.Write("\r\n{\r\n\t/// <summary>\r\n\t/// \r\n\t/// </summary>\r\n\tpublic global::System.Data.SqlClien" +
-                    "t.SqlDataReader InnerReader { get; }\r\n\r\n\tpublic ");
+            this.Write(@"
+{
+	/// <summary>
+	/// Gets the inner <see cref=""System.Data.SqlClient.SqlDataReader""/> object.
+	/// </summary>
+	public global::System.Data.SqlClient.SqlDataReader InnerReader { get; }
+
+	/// <summary>
+    /// Initializes a new instance of the <see cref=""");
+            this.Write(this.ToStringHelper.ToStringWithCulture(className));
+            this.Write("\"/> struct.\r\n    /// </summary>\r\n    /// <param name=\"reader\">The inner <see cref" +
+                    "=\"System.Data.SqlClient.SqlDataReader\"/>.</param>\r\n    /// <exception cref=\"Syst" +
+                    "em.ArgumentNullException\">reader</exception>\r\n\tpublic ");
             this.Write(this.ToStringHelper.ToStringWithCulture(className));
             this.Write(@"(
 		global::System.Data.SqlClient.SqlDataReader reader) : this()
@@ -348,11 +342,48 @@ namespace Zahar.SqlClient.Codegen
 	}
 
 	/// <summary>
-	/// 
+	/// An asynchronous version of Read, which advances the inner <see cref=""System.Data.SqlClient.SqlDataReader""/> to the next record in a result set. 
+	/// This method invokes ReadAsync with CancellationToken.None.
 	/// </summary>
-	public bool Read() { return InnerReader.Read(); } ");
+	[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
+            this.Write(@"]
+	public global::System.Threading.Tasks.Task<bool> ReadAsync() { return InnerReader.ReadAsync(global::System.Threading.CancellationToken.None); }
+
+	/// <summary>
+	/// An asynchronous version of Read, which advances the inner <see cref=""System.Data.SqlClient.SqlDataReader""/> to the next record in a result set. 
+	/// </summary>
+	/// <param name=""token"">The cancellation instruction.</param>
+	/// <returns>A task representing the asynchronous operation.</returns>
+	[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
+            this.Write(@"]
+	public global::System.Threading.Tasks.Task<bool> ReadAsync(global::System.Threading.CancellationToken token) { return InnerReader.ReadAsync(token); }
+
+
+	/// <summary>
+	/// Advances the inner <see cref=""System.Data.SqlClient.SqlDataReader""/> to the next record.
+	/// </summary>
+	/// <returns>true if there are more rows; otherwise false.</returns>
+	[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
+            this.Write("]\r\n\tpublic bool Read() { return InnerReader.Read(); } ");
  if( nextReaderClassName != null ){ 
-            this.Write(" \r\n\r\n\t/// <summary>\r\n\t/// \r\n\t/// </summary>\r\n\tpublic ");
+            this.Write(" \r\n\r\n\t/// <summary>\r\n\t/// Advances the inner data reader to the next result, when" +
+                    " reading the results of batch Transact-SQL statements.\r\n\t/// </summary>\r\n\t/// <r" +
+                    "eturns>Next result <see cref=\"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(nextReaderClassName));
+            this.Write("\"/> typed record adapter.</returns>\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
+            this.Write("]\r\n\tpublic ");
             this.Write(this.ToStringHelper.ToStringWithCulture(nextReaderClassName));
             this.Write(" NextResult() \r\n\t{ \r\n\t\tif(!InnerReader.NextResult())\r\n\t\t\tthrow new global::System" +
                     ".InvalidOperationException($\"");
@@ -361,7 +392,48 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(i+1));
             this.Write(").\");\r\n\t\treturn new ");
             this.Write(this.ToStringHelper.ToStringWithCulture(nextReaderClassName));
-            this.Write("(InnerReader); \r\n\t}\r\n\t");
+            this.Write(@"(InnerReader); 
+	}
+
+	/// <summary>
+	/// An asynchronous version of NextResult, which advances the inner reader to the next result when reading the results of a batch of statements.
+	/// </summary>
+	/// <param name=""token"">The cancellation instruction.</param>
+	/// <returns>Next result <see cref=""");
+            this.Write(this.ToStringHelper.ToStringWithCulture(nextReaderClassName));
+            this.Write("\"/> typed record adapter.</returns>\r\n\t/// <exception cref=\"System.InvalidOperatio" +
+                    "nException\"></exception>\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
+            this.Write("]\r\n\tpublic async global::System.Threading.Tasks.Task<");
+            this.Write(this.ToStringHelper.ToStringWithCulture(nextReaderClassName));
+            this.Write("> NextResultAsync(global::System.Threading.CancellationToken token) \r\n\t{ \r\n\t\tif(!" +
+                    "(await InnerReader.NextResultAsync(token)))\r\n\t\t\tthrow new global::System.Invalid" +
+                    "OperationException($\"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(Procedure.FullName));
+            this.Write(" > InnerReader.NextResult() returned false (next result number: ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(i+1));
+            this.Write(").\");\r\n\t\treturn new ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(nextReaderClassName));
+            this.Write(@"(InnerReader); 
+	}
+
+	/// <summary>
+	/// An asynchronous version of NextResult, which advances the inner reader to the next result when reading the results of a batch of statements.
+	/// This method invokes NextResultAsync with CancellationToken.None.
+	/// </summary>
+	/// <returns>Next result <see cref=""");
+            this.Write(this.ToStringHelper.ToStringWithCulture(nextReaderClassName));
+            this.Write("\"/> typed record adapter.</returns>\r\n\t/// <exception cref=\"System.InvalidOperatio" +
+                    "nException\"></exception>\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
+            this.Write("]\r\n\tpublic global::System.Threading.Tasks.Task<");
+            this.Write(this.ToStringHelper.ToStringWithCulture(nextReaderClassName));
+            this.Write("> NextResultAsync() { return this.NextResultAsync(global::System.Threading.Cancel" +
+                    "lationToken.None); }\r\n\t");
  } 
             this.Write(" \r\n\r\n\t");
  foreach(DataColumn column in schema.Columns){ 

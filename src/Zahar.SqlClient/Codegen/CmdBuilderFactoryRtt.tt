@@ -48,12 +48,54 @@ public sealed partial class <#= SqlCmdBuilderFactoryClassName #> : <#= typeof(Sq
 	[<#= DebuggerNonUserCodeAttribute #>]
 	[<#= GeneratedCodeAttribute #>]
 	public <#= SqlCmdBuilderFactoryClassName #>(System.Func<System.Data.SqlClient.SqlConnection> connectionFactory) : base(connectionFactory) { OnCreated(); }
-	#endregion <# foreach(var spFullName in SpFullNames){ string factoryClass = GetStoredProcedureCmdBuilderClassName(spFullName); #> 
+	#endregion <# foreach(var procedure in Procedures){ 
+	string spFullName = procedure.FullName;
+	string factoryClass = GetStoredProcedureCmdBuilderClassName(spFullName);
+	var parameters = procedure.Parameters.ToList();
+	var inputParameters = parameters.Where(p=> p.Direction == ParameterDirection.Input || p.Direction == ParameterDirection.InputOutput).ToList();
+	var tableInputParameters = inputParameters.Where(p=> p.TableTypeSchema != null);
+	var ixPropertyTypeNamesByParameter = new Dictionary<object, string>();
+	foreach(var p in parameters)
+	{
+		ixPropertyTypeNamesByParameter[p] = GetPropertyTypeName(p.DataType, true);
+	}
+	foreach(var p in tableInputParameters)
+	{
+		var schema = p.TableTypeSchema;
+		var dataTypeName = GetUserDefinedDataTableClassName(schema.TableName);
+		ixPropertyTypeNamesByParameter[p] = dataTypeName;
+	}
+	string paramsDeclaration = string.Join(", ",
+		from p in inputParameters
+		let type = ixPropertyTypeNamesByParameter[p]
+		let name = GetParameterName(p.ParameterName)
+		select string.Format("{0} {1}", type, name));
+	 #> 
 
 	/// <summary>
     /// Creates a new instance of the <#= spFullName #> command builder.
     /// </summary>
 	[<#= DebuggerNonUserCodeAttribute #>]
 	[<#= GeneratedCodeAttribute #>]
-	public <#= factoryClass #> Create<#= factoryClass #>() { return new <#= factoryClass #>(); } <# } #> 
+	public <#= factoryClass #> Create<#= factoryClass #>() { return new <#= factoryClass #>(); } 
+
+	<# if(inputParameters.Any()){ #>
+
+	/// <summary>
+    /// Creates a new instance of the <#= spFullName #> command builder.
+    /// </summary><# foreach(var p in inputParameters){ #> 
+	/// <param name="<#= GetParameterName(p.ParameterName) #>">Parameter <#= parameters.IndexOf(p) #> (<#= p.Direction #>)</param> <# } #> 
+	[<#= DebuggerNonUserCodeAttribute #>]
+	[<#= GeneratedCodeAttribute #>]
+	public <#= factoryClass #> Create<#= factoryClass #>(<#= paramsDeclaration #>) 
+	{ 
+		return new <#= factoryClass #>()
+		{<# foreach(var p in inputParameters){ #> 
+			<#= GetPropertyName(p.ParameterName) #> = <#= GetParameterName(p.ParameterName) #>, <# } #> 			
+		}; 
+	} 
+
+	<# } #>
+	
+	<# } /* foreach(var procedure in Procedures) */ #> 
 }

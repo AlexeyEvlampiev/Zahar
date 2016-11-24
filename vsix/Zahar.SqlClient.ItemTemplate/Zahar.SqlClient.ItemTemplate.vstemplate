@@ -29,7 +29,7 @@
     <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.xml">MyDatabase.xml</ProjectItem>
     <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.readme" OpenInEditor="true">MyDatabase.rm</ProjectItem>
     <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$.examples.cs">Examples.cs</ProjectItem>
-    <ProjectItem TargetFileName="Zahar.SqlClient.dll">Zahar.SqlClient.dll</ProjectItem>
-    <ProjectItem TargetFileName="Zahar.SqlClient.xsd">Zahar.SqlClient.xsd</ProjectItem>    
+    <ProjectItem TargetFileName="Zahar.SqlClient.dll" ItemType="None">Zahar.SqlClient.dll</ProjectItem>
+    <ProjectItem TargetFileName="Zahar.SqlClient.xsd" ItemType="None">Zahar.SqlClient.xsd</ProjectItem>    
   </TemplateContent>
 </VSTemplate>

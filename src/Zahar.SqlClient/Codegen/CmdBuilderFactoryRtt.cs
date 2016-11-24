@@ -78,7 +78,29 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(SqlCmdBuilderFactoryClassName));
             this.Write("(System.Func<System.Data.SqlClient.SqlConnection> connectionFactory) : base(conne" +
                     "ctionFactory) { OnCreated(); }\r\n\t#endregion ");
- foreach(var spFullName in SpFullNames){ string factoryClass = GetStoredProcedureCmdBuilderClassName(spFullName); 
+ foreach(var procedure in Procedures){ 
+	string spFullName = procedure.FullName;
+	string factoryClass = GetStoredProcedureCmdBuilderClassName(spFullName);
+	var parameters = procedure.Parameters.ToList();
+	var inputParameters = parameters.Where(p=> p.Direction == ParameterDirection.Input || p.Direction == ParameterDirection.InputOutput).ToList();
+	var tableInputParameters = inputParameters.Where(p=> p.TableTypeSchema != null);
+	var ixPropertyTypeNamesByParameter = new Dictionary<object, string>();
+	foreach(var p in parameters)
+	{
+		ixPropertyTypeNamesByParameter[p] = GetPropertyTypeName(p.DataType, true);
+	}
+	foreach(var p in tableInputParameters)
+	{
+		var schema = p.TableTypeSchema;
+		var dataTypeName = GetUserDefinedDataTableClassName(schema.TableName);
+		ixPropertyTypeNamesByParameter[p] = dataTypeName;
+	}
+	string paramsDeclaration = string.Join(", ",
+		from p in inputParameters
+		let type = ixPropertyTypeNamesByParameter[p]
+		let name = GetParameterName(p.ParameterName)
+		select string.Format("{0} {1}", type, name));
+	 
             this.Write(" \r\n\r\n\t/// <summary>\r\n    /// Creates a new instance of the ");
             this.Write(this.ToStringHelper.ToStringWithCulture(spFullName));
             this.Write(" command builder.\r\n    /// </summary>\r\n\t[");
@@ -91,8 +113,44 @@ namespace Zahar.SqlClient.Codegen
             this.Write(this.ToStringHelper.ToStringWithCulture(factoryClass));
             this.Write("() { return new ");
             this.Write(this.ToStringHelper.ToStringWithCulture(factoryClass));
-            this.Write("(); } ");
+            this.Write("(); } \r\n\r\n\t");
+ if(inputParameters.Any()){ 
+            this.Write("\r\n\t/// <summary>\r\n    /// Creates a new instance of the ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(spFullName));
+            this.Write(" command builder.\r\n    /// </summary>");
+ foreach(var p in inputParameters){ 
+            this.Write(" \r\n\t/// <param name=\"");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetParameterName(p.ParameterName)));
+            this.Write("\">Parameter ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(parameters.IndexOf(p)));
+            this.Write(" (");
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Direction));
+            this.Write(")</param> ");
  } 
+            this.Write(" \r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(DebuggerNonUserCodeAttribute));
+            this.Write("]\r\n\t[");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GeneratedCodeAttribute));
+            this.Write("]\r\n\tpublic ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(factoryClass));
+            this.Write(" Create");
+            this.Write(this.ToStringHelper.ToStringWithCulture(factoryClass));
+            this.Write("(");
+            this.Write(this.ToStringHelper.ToStringWithCulture(paramsDeclaration));
+            this.Write(") \r\n\t{ \r\n\t\treturn new ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(factoryClass));
+            this.Write("()\r\n\t\t{");
+ foreach(var p in inputParameters){ 
+            this.Write(" \r\n\t\t\t");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetPropertyName(p.ParameterName)));
+            this.Write(" = ");
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetParameterName(p.ParameterName)));
+            this.Write(", ");
+ } 
+            this.Write(" \t\t\t\r\n\t\t}; \r\n\t} \r\n\r\n\t");
+ } 
+            this.Write("\t\r\n\t");
+ } /* foreach(var procedure in Procedures) */ 
             this.Write(" \r\n}");
             return this.GenerationEnvironment.ToString();
         }

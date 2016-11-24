@@ -11,15 +11,28 @@
         readonly AdventureWorks2014CmdBuilderFactory
             _factory = new AdventureWorks2014CmdBuilderFactory(Constants.AdventureWorks2014ConnectionString);
 
+
+
         [Fact]
         public void DboUspGetBillOfMaterials()
+        {
+            var builder = _factory.CreateDboUspGetBillOfMaterialsCmdBuilder();
+            builder.StartProductID = 3;
+            builder.CheckDate = new DateTime(2016, 01, 01);
+            DboUspGetBillOfMaterials(builder);
+
+            builder = _factory.CreateDboUspGetBillOfMaterialsCmdBuilder(3, new DateTime(2016, 01, 01));
+            DboUspGetBillOfMaterials(builder);
+        }
+
+
+
+        private void DboUspGetBillOfMaterials(DboUspGetBillOfMaterialsCmdBuilder builder)
         {
             using (var connection = _factory.CreateConnection())
             {
                 connection.Open();
-                var builder = _factory.CreateDboUspGetBillOfMaterialsCmdBuilder();
-                builder.StartProductID = 3;
-                builder.CheckDate = new DateTime(2016, 01, 01);
+                
 
                 var command = builder.BuildCommand(connection);
                 using (var reader = command.ExecuteReader())
@@ -72,11 +85,19 @@
             }
         }
 
+
         [Fact]
         public void DboUspGetEmployeeManagers()
         {
             var builder = _factory.CreateDboUspGetEmployeeManagersCmdBuilder();
             builder.BusinessEntityID = 4;
+            DboUspGetEmployeeManagers(builder);
+            DboUspGetEmployeeManagers(_factory.CreateDboUspGetEmployeeManagersCmdBuilder(4));
+        }
+        
+        private void DboUspGetEmployeeManagers(DboUspGetEmployeeManagersCmdBuilder builder)
+        {
+            
             using (var connection = _factory.CreateConnection())
             using (var command = connection.CreateCommand())
             {

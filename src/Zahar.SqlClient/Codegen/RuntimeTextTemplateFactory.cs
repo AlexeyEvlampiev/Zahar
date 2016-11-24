@@ -35,8 +35,7 @@
 
         public IRuntimeTextTemplate CreateCmdBuilderFactoryRtt()
         {
-            var spFullNames = m_projection.Procedures.Select(sp=> sp.FullName);
-            return new CmdBuilderFactoryRtt(spFullNames, m_diagnosticsCallback, m_formatInfo);
+            return new CmdBuilderFactoryRtt(m_projection.Procedures, m_diagnosticsCallback, m_formatInfo);
         }
 
         public IEnumerable<IRuntimeTextTemplate> CreateUserDefinedTableRtts()
@@ -85,16 +84,19 @@
 
     public partial class CmdBuilderFactoryRtt
     {
+        readonly IReadOnlyList<ProcedureInfo> Procedures;
         readonly IReadOnlyList<string> SpFullNames;
 
-        public CmdBuilderFactoryRtt(IEnumerable<string> spFullNames, 
+        public CmdBuilderFactoryRtt(
+                IEnumerable<ProcedureInfo> procedures, 
                 IDiagnosticsCallback diagnosticsCallback, 
                 IFormatInfo formatInfo)
             : base(diagnosticsCallback, formatInfo)
         {
-            if (ReferenceEquals(spFullNames, null))
-                throw new ArgumentNullException(nameof(spFullNames));
-            SpFullNames = spFullNames.OrderBy(fn=> fn, StringComparer.Ordinal).ToList();
+            procedures = procedures ?? Enumerable.Empty<ProcedureInfo>();
+            Procedures = procedures.OrderBy(sp=> sp.FullName, StringComparer.Ordinal).ToList();
+            SpFullNames = Procedures.Select(sp=> sp.FullName).ToList();
         }
+
     }
 }
