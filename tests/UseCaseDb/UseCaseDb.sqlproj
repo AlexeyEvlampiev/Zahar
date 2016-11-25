@@ -58,6 +58,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="dbo" />
+    <Folder Include="dbo\ServiceBroker" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Udtt01.sql" />
@@ -66,6 +67,13 @@
     <Build Include="dbo\uspEcho01.sql" />
     <Build Include="dbo\uspSelectFromTemporaryTable.sql" />
     <Build Include="dbo\uspSelectFromTemporaryTable2.sql" />
+    <Build Include="dbo\ServiceBroker\CreateAccountMessageType.sql" />
+    <Build Include="dbo\ServiceBroker\AccountCreatedMessageType.sql" />
+    <Build Include="dbo\ServiceBroker\DeleteAccountMessageType.sql" />
+    <Build Include="dbo\ServiceBroker\AccountDeletedMessageType.sql" />
+    <Build Include="dbo\ServiceBroker\AccountServiceContract.sql" />
+    <Build Include="dbo\ServiceBroker\AccountQueue.sql" />
+    <Build Include="dbo\ServiceBroker\AccountService.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="UseCaseDb.publish.xml" />
