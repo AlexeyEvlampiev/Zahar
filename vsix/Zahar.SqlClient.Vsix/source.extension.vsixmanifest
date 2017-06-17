@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Zahar-SqlClient" Version="1.0.4" Language="en-US" Publisher="alexeyevlampiev" />
+    <Identity Id="Zahar-SqlClient" Version="1.1.0" Language="en-US" Publisher="alexeyevlampiev" />
     <DisplayName>SqlClient Transaction Script Code Generator</DisplayName>
     <Description xml:space="preserve">SqlClient Transaction Script Code Generator </Description>
     <License>LICENSE</License>
@@ -18,4 +18,7 @@
   <Assets>
     <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="Zahar.SqlClient.ItemTemplate" d:TargetPath="|Zahar.SqlClient.ItemTemplate;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
   </Assets>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.Net.Component.4.6.TargetingPack" Version="[15.0.26208.0,16.0)" DisplayName=".NET Framework 4.6 targeting pack" />
+  </Prerequisites>
 </PackageManifest>

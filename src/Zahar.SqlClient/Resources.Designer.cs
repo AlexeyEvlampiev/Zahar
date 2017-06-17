@@ -163,16 +163,15 @@ namespace Zahar.SqlClient {
         ///{
         ///    public abstract class SqlCmdBuilder
         ///    {
-        ///        public abstract void BuildCommand(System.Data.SqlClient.SqlCommand command);
+        ///        public abstract void BuildCommand(global::System.Data.SqlClient.SqlCommand command);
         ///
         ///        public void BuildCommand(
-        ///            System.Data.SqlClient.SqlCommand command, 
-        ///            System.Data.SqlClient.SqlConnection connection)
+        ///            global::System.Data.SqlClient.SqlCommand command, 
+        ///            global::System.Data.SqlClient.SqlConnection connection)
         ///        {
         ///            if (ReferenceEquals(command, null))
-        ///                throw new System.ArgumentNullException(nameof(command));
-        ///            if (ReferenceEquals(connection, null))
-        ///         [rest of string was truncated]&quot;;.
+        ///                throw new global::System.ArgumentNullException(nameof(command));
+        ///            if (ReferenceEqu [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SqlCmdBuilder {
             get {
@@ -190,7 +189,7 @@ namespace Zahar.SqlClient {
         ///    {
         ///        #region Private Fields
         ///
-        ///        readonly System.Func&lt;System.Data.SqlClient.SqlConnection&gt; m_connectionFactory;
+        ///        readonly global::System.Func&lt;global::System.Data.SqlClient.SqlConnection&gt; m_connectionFactory;
         ///
         ///        #endregion
         ///
@@ -198,8 +197,7 @@ namespace Zahar.SqlClient {
         ///        /// &lt;summary&gt;
         ///        /// Initializes a new instance of the &lt;see cref=&quot;SqlCmdBuilderFactory&quot;/&gt; class.
         ///        /// &lt;/summary&gt;
-        ///        /// &lt;param name=&quot;connectionString&quot;&gt;The connection string.&lt;/param&gt;
-        ///         [rest of string was truncated]&quot;;.
+        ///        /// &lt;param name=&quot;connectionString&quot;&gt;The connection string.&lt;/ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SqlCmdBuilderFactory {
             get {
@@ -241,12 +239,11 @@ namespace Zahar.SqlClient {
         ///        readonly string m_fullName; 
         ///        #endregion
         ///
-        ///        [System.Diagnostics.DebuggerNonUserCode()]
+        ///        [global::System.Diagnostics.DebuggerNonUserCode()]
         ///        protected SqlSpCmdBuilder(string schemaName, string procedureName, string fullName)
         ///        {
         ///            m_schemaName = schemaName;
-        ///            m_procedureName = procedureName;
-        ///  [rest of string was truncated]&quot;;.
+        ///            m_procedureName = procedure [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SqlSpCmdBuilder {
             get {
