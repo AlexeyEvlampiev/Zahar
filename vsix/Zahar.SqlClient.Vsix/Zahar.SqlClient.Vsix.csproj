@@ -33,7 +33,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Zahar.SqlClient.Vsix</RootNamespace>
-    <AssemblyName>Zahar.SqlClient.Vsix</AssemblyName>
+    <AssemblyName>Zahar.SqlClient..Vsix</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>
